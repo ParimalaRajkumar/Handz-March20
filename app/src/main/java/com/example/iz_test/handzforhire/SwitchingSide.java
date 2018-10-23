@@ -181,6 +181,7 @@ public class SwitchingSide extends Activity implements SimpleGestureFilter.Simpl
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
+                finish();
                 break;
            /* case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);

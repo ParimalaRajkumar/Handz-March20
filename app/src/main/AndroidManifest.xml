@@ -214,7 +214,8 @@
             android:name=".EditCreateJob2"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <activity android:name=".ProfilePage" />
+        <activity android:name=".ProfilePage"
+            />
 
         <activity
             android:name=".CreateJob"

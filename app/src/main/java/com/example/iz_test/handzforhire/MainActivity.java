@@ -82,6 +82,7 @@ public class MainActivity extends Activity {
                 {
                     Intent i = new Intent(MainActivity.this, ProfilePage.class);
                     startActivity(i);
+                    finish();
                     String a = "if_condition";
                     System.out.println("pppppppp:::::::"+a);
                 }
