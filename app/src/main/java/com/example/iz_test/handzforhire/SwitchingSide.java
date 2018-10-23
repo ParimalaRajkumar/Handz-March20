@@ -54,13 +54,13 @@ public class SwitchingSide extends Activity implements SimpleGestureFilter.Simpl
 
         System.out.println("ssssssssssss:switchside::::"+Profilevalues.usertype);
 
-        if(Profilevalues.usertype.equals("1")){
+        if(Profilevalues.usertype != null && Profilevalues.usertype.equals("1")){
             lend_txt.setVisibility(View.VISIBLE);
             lend_hand.setVisibility(View.VISIBLE);
             need_txt.setVisibility(View.GONE);
             need_hand.setVisibility(View.GONE);
         }
-        if(Profilevalues.usertype.equals("2")){
+        if(Profilevalues.usertype != null && Profilevalues.usertype.equals("2")){
             lend_txt.setVisibility(View.GONE);
             lend_hand.setVisibility(View.GONE);
             need_txt.setVisibility(View.VISIBLE);
