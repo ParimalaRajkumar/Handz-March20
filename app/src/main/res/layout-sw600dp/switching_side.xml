@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#3B3B3B">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="90sp"
+            android:layout_marginTop="90sp"
+            android:layout_marginBottom="90sp"
+            android:layout_marginRight="90sp"
+            android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:background="@drawable/logo"
+        android:layout_gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="20sp"
+                android:background="#DCDCDC"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:id="@+id/lend_txt"
+                android:textColor="#DCDCDC"
+                android:layout_marginTop="5sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5sp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:text="you are currently using \n the &quot;need a hand&quot; side. \n would you like to switch? "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/need_txt"
+                android:textSize="22sp"
+                android:textColor="#DCDCDC"
+                android:layout_marginTop="5sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5sp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:visibility="gone"
+                android:text="you are currently using \n the &quot;lend a hand&quot; side. \n would you like to switch? "/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#DCDCDC"/>
+
+            <Button
+               android:id="@+id/lend_hand"
+               android:layout_width="match_parent"
+               android:layout_height="90sp"
+               android:text="lend a hand"
+               android:textSize="40sp"
+               android:textStyle="bold"
+               android:layout_marginTop="20sp"
+               android:background="#007779"
+               android:textAllCaps="true"/>
+            <Button
+                android:id="@+id/need_hand"
+                android:layout_width="match_parent"
+                android:layout_height="80sp"
+                android:text="need a hand"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20sp"
+                android:background="#E8C64B"
+                android:textAllCaps="true"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:id="@+id/promo_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:background="@drawable/border_gray"
+                android:layout_marginTop="20sp">
+
+                <ImageView
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10sp"
+                    android:background="@drawable/question"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="What is Handz?"
+                    android:textSize="24sp"
+                    android:paddingLeft="10sp"
+                    android:paddingRight="10sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10sp"
+                    android:layout_marginTop="10sp"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:textColor="#DCDCDC" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/sign_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="log out"
+                android:gravity="center"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:padding="20sp"
+                android:background="@drawable/border_gray"
+                android:textAllCaps="true"
+                android:textColor="#DCDCDC"
+                android:layout_marginTop="15sp"
+                android:layout_gravity="center" />
+
+            </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="150sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="-60sp"
+        android:layout_marginLeft="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="left"
+        android:background="@drawable/handz"/>
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4c4c4c"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure you want to cancel the job?"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#c1c1c1"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            >
+            <TextView
+                 android:layout_width="50dp"
+                 android:layout_height="35dp"
+                android:text="YES"
+                android:id="@+id/txt_yes"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_gray"/>
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:text="NO"
+                android:id="@+id/txt_no"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="@drawable/border_gray"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"/>
+        </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B3B3B">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginLeft="70sp"
+            android:layout_marginRight="70sp"
+            android:layout_marginTop="70sp">
+
+            <RelativeLayout
+                android:id="@+id/rela1"
+                android:layout_width="match_parent"
+                android:layout_height="170sp"
+                android:background="#178487"
+                android:layout_marginTop="20sp">
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="180sp"
+                    android:layout_height="40sp"
+                    android:gravity="center"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginRight="15sp"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_alignParentRight="true"/>
+
+                <RelativeLayout
+                    android:id="@+id/rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text1"
+                    android:layout_marginRight="50sp"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:id="@+id/text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rating: "
+                        android:textStyle="bold"
+                        android:layout_toLeftOf="@+id/text3"
+                        android:layout_marginRight="10sp"
+                        android:textSize="28sp"
+                        android:layout_centerVertical="true"
+                        android:textColor="#000000"/>
+
+                    <ImageView
+                        android:layout_width="55sp"
+                        android:layout_height="55sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/text2"
+                        android:background="@drawable/starnew"/>
+
+                    <TextView
+                        android:id="@+id/text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="4.5"
+                        android:layout_alignParentRight="true"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/rela1"
+                android:background="#000000"/>
+
+            <RelativeLayout
+                android:layout_width="140sp"
+                android:layout_height="140sp"
+                android:layout_marginLeft="20sp" >
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/image_border"
+                    android:src="@drawable/default_profile"
+                    android:scaleType="fitCenter"
+                    android:layerType="software"  />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|right"
+        android:gravity="right" >
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="70sp"
+            android:layout_marginRight="70sp"
+            android:layout_marginBottom="70sp"
+            >
+        </ListView>
+
+        <ImageView
+            android:layout_width="120sp"
+            android:layout_height="120sp"
+            android:id="@+id/logo"
+            android:layout_marginRight="80sp"
+            android:background="@drawable/logo"
+            android:layout_marginTop="475sp"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

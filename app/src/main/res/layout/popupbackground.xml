@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <com.daasuu.bl.BubbleLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:bl_arrowDirection="top"
+        app:bl_arrowHeight="8dp"
+        app:bl_arrowPosition="12dp"
+        app:bl_arrowWidth="8dp"
+         android:paddingTop="8dp"
+        app:bl_bubbleColor="@android:color/darker_gray"
+        android:background="@android:color/transparent"
+        app:bl_cornersRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+          <ListView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/list_category"
+              android:background="@android:color/white"/>
+        </LinearLayout>
+
+    </com.daasuu.bl.BubbleLayout>
+

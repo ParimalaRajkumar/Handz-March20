@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B3B3B">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="90sp"
+            android:layout_marginTop="90sp"
+            android:layout_marginRight="90sp"
+            android:layout_marginBottom="90sp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <RelativeLayout
+                    android:id="@+id/rela1"
+                    android:layout_width="match_parent"
+                    android:layout_height="170sp"
+                    android:background="#BF178487"
+                    android:layout_marginTop="40sp">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="180sp"
+                        android:layout_height="40sp"
+                        android:layout_marginTop="15sp"
+                        android:hint="Type Name Here"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:textColorHint="#000000"
+                        android:background="@drawable/type_bg"
+                        android:layout_marginRight="18sp"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:layout_alignParentRight="true"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/name"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginRight="60sp"
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:id="@+id/text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rating: "
+                            android:layout_toLeftOf="@+id/text3"
+                            android:layout_marginRight="5sp"
+                            android:textSize="28sp"
+                            android:layout_centerVertical="true"
+                            android:textColor="#000000"/>
+
+                        <ImageView
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:layout_marginRight="10sp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/text2"
+                            android:background="@drawable/starnew"/>
+
+                        <TextView
+                            android:id="@+id/text3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:textSize="26sp"
+                            android:textColor="#000000"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="140sp"
+                        android:layout_height="140sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="20sp"
+                        android:layout_marginLeft="10sp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/dashed_line"/>
+
+
+                    <TextView
+                        android:id="@+id/text_photo"
+                        android:layout_width="120sp"
+                        android:layout_height="120sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="10sp"
+                        android:paddingLeft="10sp"
+                        android:alpha="0.75"
+                        android:layout_marginTop="20sp"
+                        android:paddingRight="10sp"
+                        android:textSize="16sp"
+                        android:text="Click Here to Insert Photo"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_link"
+                android:text="ADD YOUR Linkedln PROFILE"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_marginTop="10sp"
+                android:textColor="#9A9999"
+                android:textAllCaps="false"
+                android:textSize="26sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Coming Soon"
+                android:gravity="right"
+                android:layout_marginRight="50sp"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_marginTop="5sp"
+                android:textColor="#9A9999"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="5sp"
+                android:background="#9A9999"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/change_home_address"
+                android:text="CHANGE HOME ADDRESS"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:background="@null"
+                android:textColor="#9A9999"
+                android:textSize="26sp"
+                android:layout_marginTop="10sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+            <!--
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10sp"
+                            android:background="#9A9999"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/change_email"
+                    android:text="CHANGE EMAIL"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@null"
+                    android:layout_marginTop="10sp"
+                    android:textColor="#9A9999"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10sp"
+                            android:background="#9A9999"/>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/condition"
+                android:text="handz terms &amp; conditions"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:layout_marginTop="10sp"
+                android:textStyle="bold"
+                android:background="@null"
+                android:textColor="#9A9999"
+                android:textSize="26sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/login"
+                android:text="link to paypal login"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:layout_marginTop="10sp"
+                android:background="@null"
+                android:textColor="#9A9999"
+                android:textSize="26sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/update_email"
+                android:text="UPDATE Email/PASSWORD"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_marginTop="10sp"
+                android:textColor="#9A9999"
+                android:textAllCaps="true"
+                android:textSize="26sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10sp"
+                android:background="#9A9999"/>
+
+            <Button
+                android:layout_width="120sp"
+                android:layout_height="120sp"
+                android:id="@+id/h_icon"
+                android:layout_marginTop="20sp"
+                android:layout_gravity="center"
+                android:background="@drawable/logo"/>
+
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:layout_width="150sp"
+        android:layout_height="60sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="-60sp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/handz"/>
+
+</LinearLayout>

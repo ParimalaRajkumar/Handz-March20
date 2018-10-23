@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="420sp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/popup_border">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="50sp"
+        android:text="What features?"
+        android:gravity="center"
+        android:layout_marginLeft="10sp"
+        android:textColor="#000000"
+        android:textSize="20sp"/>
+
+        <ImageView
+            android:id="@+id/close_btn"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/exit"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:textColor="#000000"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You give us permission to \n access your camera so that \n you are able to upload a \n profile picture."
+        android:layout_marginLeft="20sp"
+        android:textColor="#000000"
+        android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You give us permission to \n access your location so that \n you may use the GPS \n features in the app. Your \n location will never be \n disclosed unless you give \n permission."
+            android:layout_marginLeft="20sp"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

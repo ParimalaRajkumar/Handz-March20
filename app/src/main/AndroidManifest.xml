@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.iz_test.handzforhire"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="info.androidhive.googlemapsv2.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission
+        android:name="net.simplifiedcoding.androidgcm.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="net.simplifiedcoding.androidgcm.permission.C2D_MESSAGE" />
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
+        <meta-data
+            android:name="asset_statements"
+            android:resource="@string/asset_statements" />
+
+        <activity
+            android:name="com.example.iz_test.handzforhire.SplashScreen"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAINACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".EditUserProfile"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ChangeCurrentAddress"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ChangeCurrentEmailAddress"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ChangeCurrentUsernamePassword"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name=".ConfirmationActivity" />
+
+        <activity
+            android:name=".ApplyJob"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name=".JobDetails" />
+
+        <activity
+            android:name=".LendComments"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".LendNeedHelp"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".LendRating" />
+
+        <activity android:name=".LeaveComments"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+        <activity android:name=".LeaveRating" />
+
+        <activity android:name=".LendEditRating" />
+
+        <activity android:name=".LendLeaveRating" />
+
+        <activity android:name=".EditComments"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+        <activity
+            android:name=".IntegrationPaypal"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".SearchJob"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+
+        <activity
+            android:name=".MapActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+
+        <activity android:name=".SwitchingSide" />
+
+        <activity
+            android:name=".PayEmployee"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+
+        <activity
+            android:name=".PayEmployee1"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".ActiveJobs" />
+
+        <activity android:name=".LendActiveJobs" />
+
+        <activity
+            android:name=".LendJobHistory"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".JobHistory"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".PaymentDetails"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name=".PendingJobs" />
+
+        <activity
+            android:name=".ViewApplicant"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".UpdateCard"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".RegisterPage1"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".RegisterPage2"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".RegisterPage3"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+
+
+        <activity
+            android:name="com.example.iz_test.handzforhire.PaypalReturnActivity"
+            android:launchMode="singleTask">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="https"
+                    android:host="handzadmin.com" />
+                <data
+                    android:scheme="https"
+                    android:host="www.handzadmin.com" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterPage4" />
+
+        <activity android:name=".MakePayment" />
+
+        <activity android:name=".TermsAndConditions" />
+
+        <activity android:name=".FindJobMap" />
+
+        <activity
+            android:name=".EditCreateJob"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".JobCancelEditComments"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".JobCancelLeaveComments"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".EditCreateJob2"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".ProfilePage" />
+
+        <activity
+            android:name=".CreateJob"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".NeedHelp"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name=".PromoVideo" />
+
+        <activity android:name=".ReviewRating" />
+
+        <activity android:name=".LendReviewRating" />
+
+        <activity
+            android:name=".LendEditUserProfile"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".CreateJob2"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity android:name=".ManagePaymentOptions" />
+
+        <activity
+            android:name=".ChatNeed"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".NeedComments"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".EditPostedJobs" />
+
+        <activity android:name=".PostedJobs" />
+
+        <activity
+            android:name=".ForgotPassword"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".JobDescription" />
+
+        <activity
+            android:name=".PaymentMethod"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendLoginPage"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+
+        <activity android:name=".LendProfilePage" />
+
+        <activity
+            android:name=".LendRegisterPage2"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendRegisterPage3"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name=".LendRegisterPage4" />
+
+        <activity android:name=".ViewSearchJob" />
+
+        <activity
+            android:name=".AddCheckingAccount"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name=".LendPaymentMethod" />
+
+        <activity
+            android:name=".UpdateAccount"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendPaypalAccount"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendCreditDebit"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendCheckingAccount"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".PayPalAccount"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".CreditDebit"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity android:name=".EditRating" />
+
+
+        <activity
+            android:name=".SummaryAdd"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".SummaryMultiply"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".SummarySubtract"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".RehireJob"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".RehireAdd"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendEditComments"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendLeaveComments"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".RehireSubtract"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".RehireMultiply"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".PlayTutorialVideo"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <activity
+            android:name=".ArchievedJob"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".LinkedInActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <!--<activity android:name=".Progressbar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>-->
+
+
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAmVOfcJceMi9fdaJYAX10Ib5QUM19rTcI" />
+
+
+        <!-- Firebase Notifications -->
+        <service android:name="com.service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name="com.service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- ./Firebase Notifications -->
+
+    </application>
+
+</manifest>

@@ -1,0 +1,63 @@
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'android'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    sourceSets {
+        androidTest {
+          setRoot('src/test')
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    signingConfigs {
+        sdkTest {
+            storeFile file("debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+
+        release {
+            storeFile file("debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+    buildTypes {
+        sdkTest {
+            signingConfig signingConfigs.sdkTest
+            debuggable true
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    compile 'com.android.support:appcompat-v7:25.+'
+
+    androidTestCompile('junit:junit:4.12')
+}
+

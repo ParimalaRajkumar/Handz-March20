@@ -1,0 +1,44 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgenericrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10960\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 1. Get Access Token(completed)\
+2. Partner Referral Data API(completed)\
+3. Redirect to Browser and do sign up process,(completed)\
+Have to work on below tasks,\
+\
+4. Return to app and call, following API,\
+
+\f1 \cb3 getPartnerReferralData()\
+Request Url for this api call is taken from previous response, Link dictionary first href link.\
+\
+5. getMerchantIdOfSeller()\
+Request url : https://api.sandbox.paypal.com/v1/customer/partners/2NPBRNULVL7GS/merchant-integrations?tracking_id=\\(trackingID!)\
+In this we have to pass tracking ID(we will get from step 4)\
+\
+6. getMerchantStatus()\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+\cf2 \cb3 https://api.sandbox.paypal.com/v1/customer/partners/2NPBRNULVL7GS/merchant-integrations/\\(merchantID!)\
+In this we have to pass merchantID(this we will get from step 5)\
+\
+\
+
+\f2\b\fs28 Sign up process,
+\f1\b0\fs24 \
+From step 6, we have to save merchantId in session and redirect to \
+Welcome page, here we will call the register service.\
+\
+\
+
+\f2\b\fs28 Update in Edit User Profile Page,
+\f1\b0\fs24 \
+From step 6, we have to call following service to update the merchantID for the login user.\
+\
+"https://www.handzadmin.com/service/user_merchant_id_update?X-APP-KEY=HandzForHire@~&user_id=\\(userid!)&merchant_id=\\(merchantID!)\'94\
+GET Method. \
+\
+}

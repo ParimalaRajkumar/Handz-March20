@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rel_viewapplicant">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/refu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF1919"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:visibility="gone"
+            android:layout_weight="0.01">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp">
+
+                <ImageView
+                    android:id="@+id/widget_title_icon1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/refuse_smiley" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100sp"
+                    android:layout_marginTop="10sp"
+                    android:text="so sorry ! !"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20sp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/refuse_smiley" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="36sp"
+                    android:text="unfortunately"
+                    android:layout_marginLeft="10sp"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:layout_toRightOf="@+id/widget_title_icon1"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="58sp"
+                    android:layout_toRightOf="@+id/widget_title_icon1"
+                    android:text="you didn't get the job"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="5sp"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="76sp"
+                    android:layout_toRightOf="@+id/widget_title_icon1"
+                    android:text="never give up! keep trying!"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="click this box to remove  this job"
+                    android:textAllCaps="true"
+                    android:layout_below="@+id/textView7"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="25sp"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hol"
+            android:layout_width="match_parent"
+            android:layout_height="115sp"
+            android:layout_weight="0.01"
+            android:background="#3c3c3c"
+            android:gravity="center"
+            android:visibility="gone"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10sp"
+                android:text="your application is under review!"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="8sp"
+                android:layout_toRightOf="@+id/widget_title_icon"
+                android:text="the employer has not decided yet."
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="12sp"
+                android:text="click this box to minimize this message"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/hiree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:background="#00b050"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp">
+
+                <ImageView
+                    android:id="@+id/widget_title_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/hire_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90sp"
+                    android:layout_marginTop="10sp"
+                    android:text="congratulations !!"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20sp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/hire_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginTop="36sp"
+                    android:layout_toRightOf="@+id/widget_title_icon"
+                    android:text="you are hired!!"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="62sp"
+                    android:layout_toRightOf="@+id/widget_title_icon"
+                    android:text="click this box and this"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="77sp"
+                    android:layout_toRightOf="@+id/widget_title_icon"
+                    android:text="job will move to active jobs"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView3"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10sp"
+                    android:text="you will be able to directly message employer"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/job"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="40sp"
+                        android:paddingRight="70sp"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:id="@+id/gray_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10sp">
+
+                        <ImageView
+                            android:id="@+id/gray"
+                            android:layout_marginRight="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/circle_gray"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/gra"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="   job\nstatus"
+                            android:layout_alignParentEnd="true"
+                            android:textAllCaps="true"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:layout_below="@+id/gray"
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/red_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10sp">
+
+                        <ImageView
+                            android:id="@+id/red"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10sp"
+                            android:background="@drawable/circle_red"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/redd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="   job\nstatus"
+                            android:textAllCaps="true"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#000000"
+                            android:visibility="gone"
+                            android:layout_below="@+id/red"
+                            />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/green_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10sp">
+
+                        <ImageView
+                            android:id="@+id/green"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5sp"
+                            android:background="@drawable/circle_green"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/gr"
+                            android:layout_below="@+id/green"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="   job\nstatus"
+                            android:layout_alignParentEnd="true"
+                            android:textAllCaps="true"
+                            android:visibility="gone"
+                            android:textColor="#000000" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/lay"
+                    android:layout_marginTop="5sp">
+
+                    <TextView
+                        android:id="@+id/t1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rating"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10sp"
+                        android:textAllCaps="true"
+                        android:text="When: "
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/when"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="5sp"
+                        android:textSize="17sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/lay"
+                    android:layout_marginTop="5sp">
+
+                    <TextView
+                        android:id="@+id/t2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/relay2"
+                        android:layout_marginLeft="10sp"
+                        android:text="Expected Duration: "
+                        android:textAllCaps="true"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/expected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="5sp"
+                        android:textSize="17sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_below="@+id/lay"
+                    android:layout_marginTop="5sp">
+
+                    <TextView
+                        android:id="@+id/t3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Pay:"
+                        android:textAllCaps="true"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:id="@+id/pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="5sp"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lin_hold"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <include layout="@layout/hold_popup" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lin_refuse"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="gone">
+            <include layout="@layout/refuse_popup" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lin_hire"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="gone">
+            <include layout="@layout/hire_popup" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="10sp"
+        android:background="#000000"/>
+
+</LinearLayout>
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/popup_border">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:text="pros:"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:layout_marginTop="20sp"
+                android:layout_marginLeft="20sp"
+                android:textColor="#000000"
+                android:textSize="24sp"/>
+
+            <ImageView
+                android:id="@+id/close_btn"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginTop="20sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20sp"
+                android:background="@drawable/exit"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Posting your address, it will be easy for a potential employee to access how close you are to their location. Your job will also show up in map view with a clickable pinpoint circle. Potential employees can scan the map and click the pinpoint circle to view your posted job."
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="30sp"
+            android:layout_marginTop="30sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:text="If you are going to be at the job site while the job is taking place or working with the employee, then publishing the address is beneficial to attracting potential candidates."
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

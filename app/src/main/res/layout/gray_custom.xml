@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B3B3B"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3sp"
+            android:background="#000000"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:background="#BFAAAAAA"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:background="@drawable/tick"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="20sp"
+            android:textStyle="bold"
+            android:layout_marginRight="20sp"
+            android:textSize="20sp"
+            android:textColor="#ffffff"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#3B3B3B"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ok"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:text="ok"
+                    android:textAllCaps="true"
+                    android:padding="10sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="#DCDCDC"
+                    android:textSize="22sp"
+                    android:background="@drawable/border_gray"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3sp"
+            android:background="#000000"
+            android:layout_alignParentTop="true" />
+
+    </LinearLayout>
+
+</LinearLayout>

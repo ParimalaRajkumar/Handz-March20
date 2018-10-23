@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/layout_hold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d2cfc7"
+        android:gravity="center"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="your application is under review! the"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10sp"
+
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_toRightOf="@+id/widget_title_icon"
+            android:text=" employer has not decided yet."
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="12sp"
+            android:text="click the circle to minimize this message"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+           android:textSize="12sp" />
+
+
+    </LinearLayout>
+</LinearLayout>
+

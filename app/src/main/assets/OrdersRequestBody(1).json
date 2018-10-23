@@ -1,0 +1,39 @@
+{
+    "purchase_units": [
+                       {
+                           "reference_id": "HandzForHire_2018-06-16T21:51:26Z",
+                           "description": "Handz Job Payment",
+                           "amount": {
+                               "currency": "USD",
+                               "details": {
+                                    "subtotal": "10.00"
+                                    },
+                                "total": "10.00"
+                            },
+
+                           "application_context": {
+                               "shipping_preference" : "NO_SHIPPING",
+                               "user_action" : "commit"
+                           },
+
+
+                           "payee": {
+                           "merchant_id": "RN85VJBFKMDLS"
+                           },
+                       
+                           "partner_fee_details": {
+                               "receiver": {
+                               "email": "jay@handzforhire.com"
+                               },
+                               "amount": {
+                                   "value": "1.00",
+                                   "currency": "USD"
+                               }
+                           }
+                       }
+                       ],
+    "redirect_urls": {
+        "return_url": "https://handzadmin.com",
+        "cancel_url": "https://handzadmin.com"
+    }
+}

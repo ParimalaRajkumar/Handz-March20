@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4D4D4D">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4D4D4D"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="posted jobs"
+                    android:layout_marginTop="10sp"
+                    android:textSize="30sp"
+                    android:textColor="#DCDCDC"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginBottom="10sp"
+                    android:layout_marginRight="10sp">
+
+                    <Button
+                        android:id="@+id/btn1"
+                        android:layout_width="70sp"
+                        android:layout_height="90sp"
+                        android:paddingTop="10sp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:paddingBottom="10sp"
+                        android:background="@drawable/active_button"/>
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:layout_weight="1"
+                        android:src="@drawable/logo" />
+
+                    <Button
+                        android:id="@+id/btn2"
+                        android:layout_width="70sp"
+                        android:layout_height="90sp"
+                        android:paddingTop="10sp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:paddingBottom="10sp"
+                        android:background="@drawable/job_history_button"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#000000"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/lay1"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginTop="5sp"
+                android:layout_below="@+id/header">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCDCDC"/>
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textAllCaps="true"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="#DCDCDC"/>
+
+                <ImageView
+                    android:id="@+id/close_btn"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10sp"
+                    android:background="@drawable/gray_x_button"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC"/>
+
+            <RelativeLayout
+                android:id="@+id/footer"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/lay1"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom|right"
+                android:gravity="right" >
+
+                <ListView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </ListView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

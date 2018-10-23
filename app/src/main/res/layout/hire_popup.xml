@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    >
+
+    <LinearLayout
+        android:id="@+id/layout_hire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:background="#00b050"
+        android:clickable="true"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp">
+
+            <ImageView
+                android:id="@+id/widget_title_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/hire_green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90sp"
+                android:layout_marginTop="10sp"
+                android:text="congratulations !!"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20sp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/hire_green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40sp"
+                android:layout_marginTop="36sp"
+                android:layout_toRightOf="@+id/widget_title_icon"
+                android:text="you are hired!!"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="62sp"
+                android:layout_toRightOf="@+id/widget_title_icon"
+                android:text="click this box and this"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="77sp"
+                android:layout_toRightOf="@+id/widget_title_icon"
+                android:text="job will move to active jobs"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10sp"
+                android:text="you will be able to directly message employer"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/yellow_border">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:text="cons:"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:layout_marginTop="10sp"
+                android:layout_marginLeft="20sp"
+                android:textColor="#000000"
+                android:textSize="24sp"/>
+
+            <ImageView
+                android:id="@+id/close_btn"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginTop="10sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20sp"
+                android:background="@drawable/exit"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By posting your address, potential employees will know where the job site is located. If you do not check the box, then your address will remain anonymous until you disclose to the person you hire."
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:layout_marginTop="10sp"
+                android:text="However, when a potential employeee is scanning the map view, and your job site is somewhere in view on the map, a message box at the bottom of the map will appear and state, &quot;additional undisclosed locations available&quot;."
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="20sp"
+                android:text="The user will be able to move to list view to see what these potential jobs are without revealing your address."
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
