@@ -400,7 +400,7 @@
         </RelativeLayout>
 
         <TextView
-            android:layout_width="120sp"
+            android:layout_width="130sp"
             android:layout_height="40sp"
             android:layout_marginTop="20sp"
             android:layout_alignParentBottom="true"
