@@ -23,9 +23,7 @@
         android:name="net.simplifiedcoding.androidgcm.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="net.simplifiedcoding.androidgcm.permission.C2D_MESSAGE" />
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="23" />
+    <uses-sdk android:targetSdkVersion="23" />
 
     <application
         android:allowBackup="true"

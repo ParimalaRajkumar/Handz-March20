@@ -25,7 +25,7 @@ android {
         key{
             keyAlias 'handzforhire'
             keyPassword 'android'
-            storeFile file('/Users/mohanbabu/Downloads/handz.jks')
+            storeFile file('C:/Users/Mohanbabu/Desktop/handz.jks')
             storePassword 'android'
         }
     }
@@ -55,10 +55,11 @@ android {
 }
 
 repositories {
+
     maven {
         url uri('mint-plugin-repo-5.2.2')
     }
-    maven { url 'https://dl.google.com/dl/android/maven2/' }
+    maven { url 'https://dl.google.com/dl/android/maven2/'}
 }
 
 dependencies {
