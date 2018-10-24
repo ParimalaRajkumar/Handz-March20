@@ -625,9 +625,10 @@ public class ProfilePage extends Activity implements SimpleGestureFilter.SimpleG
             e.printStackTrace();
         } /*catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+            }*/
+         catch (IllegalArgumentException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 

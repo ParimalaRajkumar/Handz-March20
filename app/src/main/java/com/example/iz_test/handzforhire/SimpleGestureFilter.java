@@ -1,6 +1,7 @@
 package com.example.iz_test.handzforhire;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -17,9 +18,10 @@ public class SimpleGestureFilter extends SimpleOnGestureListener {
     public final static int MODE_DYNAMIC     = 2;
 
     private final static int ACTION_FAKE = -13; //just an unlikely number
-    private int swipe_Min_Distance = 50;
-    private int swipe_Max_Distance = 350;
+    private int swipe_Min_Distance = 75;
+    private int swipe_Max_Distance = 700;
     private int swipe_Min_Velocity = 50;
+    private int swipe_Max_yDistance = 500;
 
     private int mode             = MODE_DYNAMIC;
     private boolean running      = true;
@@ -104,6 +106,8 @@ public class SimpleGestureFilter extends SimpleOnGestureListener {
         final float xDistance = Math.abs(e1.getX() - e2.getX());
         final float yDistance = Math.abs(e1.getY() - e2.getY());
 
+        Log.d("mohan","e1  :" +e1.getX() +", " + e1.getY());
+        Log.d("mohan","e2  :" +e2.getX() +" ," + e2.getY());
         if(xDistance > this.swipe_Max_Distance || yDistance > this.swipe_Max_Distance)
             return false;
 
@@ -111,8 +115,8 @@ public class SimpleGestureFilter extends SimpleOnGestureListener {
         velocityY = Math.abs(velocityY);
         boolean result = false;
 
-        if(velocityX > this.swipe_Min_Velocity && xDistance > this.swipe_Min_Distance){
-            if(e1.getX() > e2.getX()) // right to left
+        if(velocityX > this.swipe_Min_Velocity && xDistance > this.swipe_Min_Distance && yDistance <swipe_Max_yDistance){
+            if( e1.getX() > e2.getX()) // right to left
                 this.listener.onSwipe(SWIPE_LEFT);
             else
                 this.listener.onSwipe(SWIPE_RIGHT);

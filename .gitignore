@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+linkedin-sdk/build/generated/not_namespaced_r_class_sources/
+linkedin-sdk/build/intermediates/
