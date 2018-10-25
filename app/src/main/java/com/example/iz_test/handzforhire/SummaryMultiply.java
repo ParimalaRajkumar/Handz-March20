@@ -247,6 +247,7 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                 j.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(j);
+                overridePendingTransition(R.anim.slide_from_left ,R.anim.slide_to_right);
                 finish();
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
@@ -259,6 +260,7 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_from_right ,R.anim.slide_to_left);
                 finish();
 
                 break;

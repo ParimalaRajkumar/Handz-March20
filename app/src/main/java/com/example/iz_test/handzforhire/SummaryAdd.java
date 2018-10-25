@@ -465,6 +465,7 @@ public class SummaryAdd extends Activity implements SimpleGestureFilter.SimpleGe
             if(status.equals("success"))
             {
                 Intent i = new Intent(SummaryAdd.this,PostedJobs.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.putExtra("userId", id);
                 i.putExtra("jobId",job_id);
                 i.putExtra("address", address);
