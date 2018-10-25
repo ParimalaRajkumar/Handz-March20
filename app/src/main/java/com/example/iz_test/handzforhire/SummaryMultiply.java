@@ -245,6 +245,7 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
 
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
+                j.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(j);
                 finish();
                 break;
@@ -256,6 +257,7 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("city", Profilevalues.city);
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 finish();
 
