@@ -181,6 +181,7 @@ public class SwitchingSide extends Activity implements SimpleGestureFilter.Simpl
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_from_left ,R.anim.slide_to_right);
                 finish();
                 break;
            /* case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
