@@ -148,6 +148,9 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
         total.setTypeface(tf2);
         processing_fee.setTypeface(tf2);
 
+        Firebase.setAndroidContext(this);
+        reference1 = new Firebase("https://handz-8ac86.firebaseio.com/channels");
+
         String paymentdetails  = session.Readpaymentdetails();
         System.out.println("Payment "+paymentdetails);
         try {

@@ -210,6 +210,7 @@ public class SummaryAdd extends Activity implements SimpleGestureFilter.SimpleGe
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SummaryAdd.this,ProfilePage.class);
+                i.setFlags(Intent.c)
                 startActivity(i);
             }
         });
@@ -774,6 +775,7 @@ public class SummaryAdd extends Activity implements SimpleGestureFilter.SimpleGe
 
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
+                j.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(j);
                 finish();
                 break;
@@ -785,6 +787,7 @@ public class SummaryAdd extends Activity implements SimpleGestureFilter.SimpleGe
                 i.putExtra("city", Profilevalues.city);
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 finish();
 
