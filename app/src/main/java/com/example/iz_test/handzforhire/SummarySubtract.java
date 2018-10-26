@@ -195,16 +195,16 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onBackPressed();
-                String hourly_wage = hourly_value.getText().toString();
-                String expected_hours = expected_value.getText().toString();
-                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
-                Intent i = new Intent(SummarySubtract.this,SummaryMultiply.class);
-                i.putExtra("payment_amount",hourly_wage);
-                i.putExtra("expected_hours",expected_hours);
-                i.putExtra("edit_job",edit_job);
-                startActivity(i);
-                finish();
+                onBackPressed();
+//                String hourly_wage = hourly_value.getText().toString();
+//                String expected_hours = expected_value.getText().toString();
+//                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
+//                Intent i = new Intent(SummarySubtract.this,SummaryMultiply.class);
+//                i.putExtra("payment_amount",hourly_wage);
+//                i.putExtra("expected_hours",expected_hours);
+//                i.putExtra("edit_job",edit_job);
+//                startActivity(i);
+//                finish();
             }
         });
 
@@ -782,6 +782,7 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("city", city);
                 i.putExtra("state", state);
                 i.putExtra("zipcode", zipcode);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 finish();
             } else {

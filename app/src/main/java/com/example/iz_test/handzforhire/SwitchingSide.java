@@ -170,19 +170,22 @@ public class SwitchingSide extends Activity implements SimpleGestureFilter.Simpl
 
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent i;
-                if(Profilevalues.usertype.equals("1")) {
-                    i = new Intent(getApplicationContext(), ProfilePage.class);
-                }else{
-                    i = new Intent(getApplicationContext(), LendProfilePage.class);
-                }
-                i.putExtra("userId", Profilevalues.user_id);
-                i.putExtra("address", Profilevalues.address);
-                i.putExtra("city", Profilevalues.city);
-                i.putExtra("state", Profilevalues.state);
-                i.putExtra("zipcode", Profilevalues.zipcode);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_from_left ,R.anim.slide_to_right);
-                finish();
+               if(Profilevalues.usertype != null) {
+                   if (Profilevalues.usertype.equals("1")) {
+                       i = new Intent(getApplicationContext(), ProfilePage.class);
+                   } else {
+                       i = new Intent(getApplicationContext(), LendProfilePage.class);
+                   }
+
+                   i.putExtra("userId", Profilevalues.user_id);
+                   i.putExtra("address", Profilevalues.address);
+                   i.putExtra("city", Profilevalues.city);
+                   i.putExtra("state", Profilevalues.state);
+                   i.putExtra("zipcode", Profilevalues.zipcode);
+                   startActivity(i);
+                   overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                   finish();
+               }
                 break;
            /* case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
