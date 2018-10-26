@@ -98,7 +98,7 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("job_id", job_id);
                 i.putExtra("duration", duration);
                 startActivity(i);
-                finish();
+
             }
         });
 
@@ -139,7 +139,7 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("job_id", job_id);
                 i.putExtra("duration", duration);
                 startActivity(i);
-                finish();
+
             }
         });
 
