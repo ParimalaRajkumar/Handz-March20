@@ -695,12 +695,14 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
                                     @Override
                                     public void onClick(View v) {
                                         dialog.dismiss();
-
                                         Map<String, String> map = new HashMap<String, String>();
                                         map.put("senderId", sender_id);
                                         map.put("senderName", get_user);
                                         map.put("text", "FROM HANDZ: Transaction completed on "+transaction_date+" for the amount of $"+job_payout);
                                         reference1.child(child_id).child("messages").push().setValue(map);
+                                        Intent i =new Intent(PayEmployee.this,ProfilePage.class);
+                                        startActivity(i);
+
                                     }
                                 });
 
