@@ -171,11 +171,13 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
                             Toast.makeText(getApplicationContext(),"Network error while performing the request "+error.getMessage(),Toast.LENGTH_LONG).show();
                         }else {
                             try {
-                                String responseBody = new String(error.networkResponse.data, "utf-8");
-                                JSONObject jsonObject = new JSONObject(responseBody);
-                                System.out.println("error" + jsonObject);
-                                String status = jsonObject.getString("msg");
-                             //   if (status.equals("No Jobs Found")) {
+                                if(error != null && error.networkResponse != null) {
+
+                                    String responseBody = new String(error.networkResponse.data, "utf-8");
+                                    JSONObject jsonObject = new JSONObject(responseBody);
+                                    System.out.println("error" + jsonObject);
+                                    String status = jsonObject.getString("msg");
+                                    //   if (status.equals("No Jobs Found")) {
                                     // custom dialog
                                     final Dialog dialog = new Dialog(ActiveJobs.this);
                                     dialog.setContentView(R.layout.custom_dialog);
@@ -196,7 +198,8 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
                                     Window window = dialog.getWindow();
                                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                           //     }
+                                    //     }
+                                }
                             } catch (JSONException e) {
                                 //Handle a malformed json response
                                 System.out.println("volley error ::" + e.getMessage());
