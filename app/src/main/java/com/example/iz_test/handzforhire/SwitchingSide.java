@@ -168,28 +168,29 @@ public class SwitchingSide extends Activity implements SimpleGestureFilter.Simpl
 
         switch (direction) {
 
-            case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
+//            case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
+//
+//                break;
+            case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
                 Intent i;
-                if(Profilevalues.usertype.equals("1")) {
-                    i = new Intent(getApplicationContext(), ProfilePage.class);
-                }else{
-                    i = new Intent(getApplicationContext(), LendProfilePage.class);
+                if(Profilevalues.usertype != null) {
+                    if (Profilevalues.usertype.equals("1")) {
+                        i = new Intent(getApplicationContext(), ProfilePage.class);
+                    } else {
+                        i = new Intent(getApplicationContext(), LendProfilePage.class);
+                    }
+
+                    i.putExtra("userId", Profilevalues.user_id);
+                    i.putExtra("address", Profilevalues.address);
+                    i.putExtra("city", Profilevalues.city);
+                    i.putExtra("state", Profilevalues.state);
+                    i.putExtra("zipcode", Profilevalues.zipcode);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+                    finish();
                 }
-                i.putExtra("userId", Profilevalues.user_id);
-                i.putExtra("address", Profilevalues.address);
-                i.putExtra("city", Profilevalues.city);
-                i.putExtra("state", Profilevalues.state);
-                i.putExtra("zipcode", Profilevalues.zipcode);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_from_left ,R.anim.slide_to_right);
-                finish();
                 break;
-           /* case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
-                Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
-                startActivity(j);
-                finish();
-                break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+         /*   case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
                 break;*/

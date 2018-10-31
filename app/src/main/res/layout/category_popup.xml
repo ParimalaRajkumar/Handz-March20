@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
         android:listSelector="@android:color/transparent"
-        android:groupIndicator="@drawable/plus_image"
+        android:groupIndicator="@drawable/selector"
         android:cacheColorHint="#00000000"/>
 
 </LinearLayout>

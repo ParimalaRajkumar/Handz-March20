@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,9 +19,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -30,6 +33,7 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -40,8 +44,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -59,6 +62,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
     Calendar calendar;
     String user_id,address,city,state,zipcode,cat_type,cat_id,job_cat_name,name,date,amount,jobId;
     String emplrid,empleid;
+
     String jobname,jobdate,pay,esti,jobstatus;
     ImageView logo;
     ProgressDialog progress_dialog;
@@ -304,8 +308,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
         }
     }
 
-
-    public class PendingAdapter extends BaseAdapter {
+        public class PendingAdapter extends BaseAdapter {
         private  final String emp_reject = Constant.SERVER_URL + "employee_reject";
         private  final String job_list = Constant.SERVER_URL + "job_lists";
 
@@ -356,51 +359,32 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             TextView pay = (TextView) vi.findViewById(R.id.pay);
             TextView job_type = (TextView) vi.findViewById(R.id.expected);
             TextView jobId = (TextView) vi.findViewById(R.id.job_id);
-            final ImageView gray = (ImageView) vi.findViewById(R.id.gray);
-            final ImageView red = (ImageView) vi.findViewById(R.id.red);
-            final ImageView green = (ImageView) vi.findViewById(R.id.green);
+            ImageView gray = (ImageView) vi.findViewById(R.id.gray);
+            ImageView red = (ImageView) vi.findViewById(R.id.red);
+            //ImageView green = (ImageView) vi.findViewById(R.id.green);
             TextView gry=(TextView)vi.findViewById(R.id.gra);
             TextView re=(TextView)vi.findViewById(R.id.redd);
             TextView gre=(TextView)vi.findViewById(R.id.gr);
-            TextView t1=(TextView)vi.findViewById(R.id.t1);
-            TextView t2=(TextView)vi.findViewById(R.id.t2);
-            LinearLayout rel_viewapplicant=(LinearLayout)vi.findViewById(R.id.rel_viewapplicant);
-            RelativeLayout gray_layout=(RelativeLayout)vi.findViewById(R.id.gray_layout);
-            RelativeLayout red_layout=(RelativeLayout)vi.findViewById(R.id.red_layout);
-            RelativeLayout green_layout=(RelativeLayout)vi.findViewById(R.id.green_layout);
-
-
-            TextView t3=(TextView)vi.findViewById(R.id.t3);
-
-            String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
-            Typeface font = Typeface.createFromAsset(activity.getAssets(), fontPath);
-            job_date.setTypeface(font);
-            pay.setTypeface(font);
-            job_type.setTypeface(font);
-            job_name.setTypeface(font);
-            t1.setTypeface(font);
-            t2.setTypeface(font);
-            t3.setTypeface(font);
 
             final LinearLayout lin_hold=(LinearLayout)vi.findViewById(R.id.lin_hold);
-            final LinearLayout lin_hire=(LinearLayout)vi.findViewById(R.id.lin_hire);
+            //final LinearLayout lin_hire=(LinearLayout)vi.findViewById(R.id.lin_hire);
             final LinearLayout lin_refuse=(LinearLayout)vi.findViewById(R.id.lin_refuse);
 
             final LinearLayout layout_refuse=(LinearLayout)vi.findViewById(R.id.layout_refuse);
             final LinearLayout layout_hold=(LinearLayout)vi.findViewById(R.id.layout_hold);
-            final LinearLayout layout_hire=(LinearLayout)vi.findViewById(R.id.layout_hire);
+            //final LinearLayout layout_hire=(LinearLayout)vi.findViewById(R.id.layout_hire);
 
             HashMap<String, String> items = new HashMap<String, String>();
             items = data.get(position);
             final String get_jobname = items.get("name");
             final String get_jobdate = items.get("date");
-            final String get_pay = items.get("amount");
+            String get_pay = items.get("amount");
             final String get_esti = items.get("type");
             get_status = items.get("status");
             user_id = items.get("employeeid");
 
             if (get_status.equals("Hired")) {
-                green.setVisibility(View.VISIBLE);
+                //green.setVisibility(View.VISIBLE);
                 gray.setVisibility(View.INVISIBLE);
                 red.setVisibility(View.INVISIBLE);
                 gre.setVisibility(View.VISIBLE);
@@ -409,18 +393,23 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
             } else if (get_status.equals("Hold")) {
                 gray.setVisibility(View.VISIBLE);
-                green.setVisibility(View.INVISIBLE);
+               // green.setVisibility(View.INVISIBLE);
                 red.setVisibility(View.INVISIBLE);
                 gre.setVisibility(View.INVISIBLE);
                 re.setVisibility(View.INVISIBLE);
                 gry.setVisibility(View.VISIBLE);
+
+
+
             } else {
                 red.setVisibility(View.VISIBLE);
-                green.setVisibility(View.INVISIBLE);
+                //green.setVisibility(View.INVISIBLE);
                 gray.setVisibility(View.INVISIBLE);
                 gre.setVisibility(View.INVISIBLE);
                 re.setVisibility(View.VISIBLE);
                 gry.setVisibility(View.INVISIBLE);
+
+
             }
 
             System.out.println("pos "+visible_pos);
@@ -428,27 +417,26 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             if(position==visible_pos){
                 if(visible_lay==1){
                     lin_hold.setVisibility(View.VISIBLE);
-                    lin_hire.setVisibility(View.GONE);
+                    //lin_hire.setVisibility(View.GONE);
                     lin_refuse.setVisibility(View.GONE);
                 }else if(visible_lay==2){
                     lin_hold.setVisibility(View.GONE);
-                    lin_hire.setVisibility(View.GONE);
+                    //lin_hire.setVisibility(View.GONE);
                     lin_refuse.setVisibility(View.VISIBLE);
                 }else if(visible_lay==3){
                     lin_hold.setVisibility(View.GONE);
-                    lin_hire.setVisibility(View.VISIBLE);
+                    //lin_hire.setVisibility(View.VISIBLE);
                     lin_refuse.setVisibility(View.GONE);
                 }
             }else{
                 lin_hold.setVisibility(View.GONE);
-                lin_hire.setVisibility(View.GONE);
+                //lin_hire.setVisibility(View.GONE);
                 lin_refuse.setVisibility(View.GONE);
             }
 
             layout_refuse.setTag(position);
             layout_hold.setTag(position);
-            layout_hire.setTag(position);
-            rel_viewapplicant.setTag(position);
+            //layout_hire.setTag(position);
 
             layout_hold.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -459,14 +447,14 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 }
             });
 
-            layout_hire.setOnClickListener(new View.OnClickListener() {
+           /* layout_hire.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     lin_hire.setVisibility(View.GONE);
                     visible_pos=-1;
                     visible_lay=0;
                 }
-            });
+            });*/
 
             layout_refuse.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -484,11 +472,10 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 }
             });
 
-                    gray_layout.setTag(position);
-                    red_layout.setTag(position);
-                    green_layout.setTag(position);
-
-            gray_layout.setOnClickListener(new View.OnClickListener() {
+            gray.setTag(position);
+            red.setTag(position);
+            //green.setTag(position);
+            gray.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos= (int) v.getTag();
@@ -498,7 +485,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                     return;
                 }
             });
-            red_layout.setOnClickListener(new View.OnClickListener() {
+            red.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos= (int) v.getTag();
@@ -509,7 +496,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 }
 
             });
-            green_layout.setOnClickListener(new View.OnClickListener() {
+            /*green.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos= (int) v.getTag();
@@ -520,11 +507,10 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
                 }
             });
-
+*/
             get_jobid = items.get("jobId");
             get_emplrid = items.get("emrid");
             get_employeeid = items.get("employeeid");
-
 
             DateFormat dateInstance = SimpleDateFormat.getDateInstance();
             DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
@@ -535,10 +521,12 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 System.out.println("converted " + destDf.format(dates));
                 job_name.setText(get_jobname);
                 job_date.setText(destDf.format(dates));
-                pay.setText(get_pay);
+                get_pay=get_pay.substring(1);
+                pay.setText("PAY:$"+get_pay);
                 job_type.setText(get_esti);
                 //jobId.setText(get_id);
                 //job_name.setText("PAY"+get_jobname);
+                System.out.println("000000"+pay);
 
             } catch (Exception e) {
                 System.out.println("error " + e.getMessage());
@@ -547,7 +535,8 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             return vi;
         }
 
-        private void refusee() {
+        private void refusee()
+        {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, emp_reject,
                     new Response.Listener<String>() {
@@ -596,7 +585,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }
                             } catch (JSONException e) {
@@ -622,16 +611,16 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
             RequestQueue requestQueue = Volley.newRequestQueue(activity);
             requestQueue.add(stringRequest);
-
         }
     }
 
     @Override
-    public void onSwipe(int direction) {
+    public void onSwipe(int direction)
+    {
         String str = "";
 
-        switch (direction) {
-
+        switch (direction)
+        {
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                 startActivity(j);
@@ -639,11 +628,14 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
                 Intent i;
-                if(Profilevalues.usertype.equals("1")) {
+                if(Profilevalues.usertype.equals("1"))
+                {
                     i = new Intent(getApplicationContext(), ProfilePage.class);
-                }else{
-                    i = new Intent(getApplicationContext(), LendProfilePage.class);
-                }
+
+                }else
+                    {
+                        i = new Intent(getApplicationContext(), LendProfilePage.class);
+                    }
                 i.putExtra("userId", Profilevalues.user_id);
                 i.putExtra("address", Profilevalues.address);
                 i.putExtra("city", Profilevalues.city);
@@ -653,9 +645,9 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 finish();
 
                 break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+            case SimpleGestureFilter.SWIPE_DOWN : str = "Swipe Down";
                 break;
-            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
+            case SimpleGestureFilter.SWIPE_UP : str = "Swipe Up";
                 break;
 
         }
