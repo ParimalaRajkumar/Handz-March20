@@ -210,7 +210,7 @@ public class SummaryAdd extends Activity implements SimpleGestureFilter.SimpleGe
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SummaryAdd.this,ProfilePage.class);
-                i.setFlags(Intent.c)
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
         });
