@@ -19,7 +19,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -40,6 +39,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.app.AppConstant;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.Glideconstants;
@@ -53,7 +53,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfilePage extends Activity implements SimpleGestureFilter.SimpleGestureListener,ResponseListener {
+public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
     TextView profile_name,rating,rating_value;
     TextView txt_postedjobcnt,txt_activejobscnt,job_historycnt;
@@ -81,7 +81,7 @@ public class ProfilePage extends Activity implements SimpleGestureFilter.SimpleG
     String description="https://www.handzforhire.com";
     String tittle="Whether you need a hand or would like to lend a hand, Handz for Hire is built to connect you and your neighbors looking to get jobs done. Visit HandzForHire.com or download the app in the App Store or Google Play.\"\n" +
             "along with that website url and logo";
-    private SimpleGestureFilter detector;
+
     float x1,x2;
     float y1, y2;
     RequestMethods req;
@@ -97,7 +97,7 @@ public class ProfilePage extends Activity implements SimpleGestureFilter.SimpleG
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        detector = new SimpleGestureFilter(this,this);
+
 
         Button edit_profile = (Button) findViewById(R.id.edit_user_profile);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
@@ -317,6 +317,12 @@ public class ProfilePage extends Activity implements SimpleGestureFilter.SimpleG
         });
 
     }
+
+    @Override
+    AppConstant.SWIPETYPE SwipeType() {
+        return AppConstant.SWIPETYPE.LEFTTORIGHT;
+    }
+
     public void getAverageRatigng() {
         dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_AVERAGERAT,
@@ -799,53 +805,6 @@ public class ProfilePage extends Activity implements SimpleGestureFilter.SimpleG
 
         // Return the bordered circular bitmap
         return dstBitmap;
-    }
-
-
-    @Override
-    public void onSwipe(int direction) {
-        String str = "";
-
-        switch (direction) {
-
-            case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
-                Intent j = new Intent(ProfilePage.this, SwitchingSide.class);
-                startActivity(j);
-                overridePendingTransition(R.anim.slide_from_left ,R.anim.slide_to_right);
-                finish();
-                break;
-            case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
-//                Intent i = new Intent(ProfilePage.this, ProfilePage.class);
-//                i.putExtra("userId", id);
-//                i.putExtra("address", address);
-//                i.putExtra("city", city);
-//                i.putExtra("state", state);
-//                i.putExtra("zipcode", zipcode);
-//                startActivity(i);
-//                overridePendingTransition(R.anim.slide_from_right ,R.anim.slide_to_left);
-//                finish();
-
-                break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
-                break;
-            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;
-
-        }
-      //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onDoubleTap() {
-
-    }
-
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event){
-
-        this.detector.onTouchEvent(event);
-        return super.dispatchTouchEvent(event);
     }
 
     @Override
