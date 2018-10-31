@@ -815,15 +815,15 @@ public class ProfilePage extends Activity implements SimpleGestureFilter.SimpleG
                 finish();
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
-                Intent i = new Intent(ProfilePage.this, ProfilePage.class);
-                i.putExtra("userId", id);
-                i.putExtra("address", address);
-                i.putExtra("city", city);
-                i.putExtra("state", state);
-                i.putExtra("zipcode", zipcode);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_from_right ,R.anim.slide_to_left);
-                finish();
+//                Intent i = new Intent(ProfilePage.this, ProfilePage.class);
+//                i.putExtra("userId", id);
+//                i.putExtra("address", address);
+//                i.putExtra("city", city);
+//                i.putExtra("state", state);
+//                i.putExtra("zipcode", zipcode);
+//                startActivity(i);
+//                overridePendingTransition(R.anim.slide_from_right ,R.anim.slide_to_left);
+//                finish();
 
                 break;
             case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
