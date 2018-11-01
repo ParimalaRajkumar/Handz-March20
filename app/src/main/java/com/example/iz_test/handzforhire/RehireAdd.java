@@ -182,14 +182,14 @@ public class RehireAdd extends Activity implements SimpleGestureFilter.SimpleGes
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // onBackPressed();
-                String hourly_wage = hourly_value.getText().toString();
-                String expected_hours = expected_value.getText().toString();
-                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
-                Intent i = new Intent(RehireAdd.this,RehireMultiply.class);
-                i.putExtra("payment_amount",hourly_wage);
-                i.putExtra("expected_hours",expected_hours);
-                startActivity(i);
+               onBackPressed();
+//                String hourly_wage = hourly_value.getText().toString();
+//                String expected_hours = expected_value.getText().toString();
+//                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
+//                Intent i = new Intent(RehireAdd.this,RehireMultiply.class);
+//                i.putExtra("payment_amount",hourly_wage);
+//                i.putExtra("expected_hours",expected_hours);
+//                startActivity(i);
             }
         });
 
@@ -197,6 +197,7 @@ public class RehireAdd extends Activity implements SimpleGestureFilter.SimpleGes
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(RehireAdd.this,ProfilePage.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
         });
