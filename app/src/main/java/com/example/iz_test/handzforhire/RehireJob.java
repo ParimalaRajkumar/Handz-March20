@@ -711,6 +711,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         }
 
         expected_hours = end_time_text.getText().toString();
+        expected_hours = end_time_text.getText().toString().replaceAll("[^0-9]","");
         System.out.println("eeeeeeeee:expected_hours:::"+expected_hours);
         job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
         System.out.println("eeeeeeeee:estimated:::"+job_estimated);
