@@ -137,6 +137,10 @@ public class RehireAdd extends Activity implements SimpleGestureFilter.SimpleGes
         job_id = i.getStringExtra("job_id");
         duration = i.getStringExtra("duration");
         employeeId = i.getStringExtra("employeeId");
+        current_location = i.getStringExtra("current_location");
+        post_address = i.getStringExtra("post_address");
+        latitude = i.getStringExtra("latitude");
+        longitude = i.getStringExtra("longitude");
 
         session = new SessionManager(getApplicationContext());
         HashMap<String, String> check = session.getCheckboxStatus();
