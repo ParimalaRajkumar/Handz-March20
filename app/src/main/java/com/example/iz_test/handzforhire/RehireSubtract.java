@@ -142,6 +142,10 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
         duration = i.getStringExtra("duration");
         job_id = i.getStringExtra("job_id");
         employeeId = i.getStringExtra("employeeId");
+        current_location = i.getStringExtra("current_location");
+        post_address = i.getStringExtra("post_address");
+        latitude = i.getStringExtra("latitude");
+        longitude = i.getStringExtra("longitude");
 
         detector = new SimpleGestureFilter(this,this);
 

@@ -92,7 +92,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    String header,sub_category,job_category_color,job_expire,expected_hours,post_address;
+    String header,sub_category,job_category_color,job_expire,expected_hours,post_address ,current_location;
     Dialog dialog;
     private SimpleGestureFilter detector;
     ImageView main_category_image;
@@ -739,6 +739,15 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         i.putExtra("job_expire", job_expire);
         i.putExtra("duration", duration);
         i.putExtra("employeeId", employeeId);
+        i.putExtra("current_location", current_location);
+        i.putExtra("post_address", post_address);
+        i.putExtra("duration", duration);
+        i.putExtra("job_address", address);
+        i.putExtra("latitude",latitude);
+        i.putExtra("longitude", longitude);
+        i.putExtra("job_city", city);
+        i.putExtra("job_state", state);
+        i.putExtra("job_zipcode", zipcode);
         startActivity(i);
     }
 
@@ -858,6 +867,22 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
 
                 String firstname = object.getString("firstname");
 
+                post_address = object.getString("post_address");
+
+                current_location = object.getString("currentlocation");
+
+                latitude = object.getString("latitude");
+
+                longitude = object.getString("longitude");
+
+//                String job_address = object.getString("job_address");
+//
+//                String job_state = object.getString("job_state");
+//
+//                String job_city = object.getString("job_city");
+//
+//                String job_zipcode = object.getString("job_zipcode");
+
                 if(profilename.equals(""))
                 {
                     username_text.setText(username);
@@ -895,7 +920,6 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                     date_text.setText(new_date_format);
 
                 } catch (ParseException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
 
@@ -909,7 +933,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                     System.out.println("ddddddd:new_time_format: " + new_time_format);
                     start_time_text.setText(new_time_format);
                 } catch (ParseException e) {
-                    // TODO Auto-generated catch block
+
                     e.printStackTrace();
                 }
 
