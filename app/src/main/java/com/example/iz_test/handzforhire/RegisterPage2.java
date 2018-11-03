@@ -28,6 +28,7 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -44,6 +45,7 @@ public class RegisterPage2 extends Activity{
 
     Button next;
     EditText first_name,last_name,address1,address2,city,state,zipcode,email,retype_email;
+    EditText  pass, re_pass;
     String f_name,l_name,add1,add2,cit,stat,zip,em,re_email;
     RelativeLayout layout;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -54,6 +56,7 @@ public class RegisterPage2 extends Activity{
     ImageView logo;
     Dialog dialog;
     SessionManager sessionManager;
+    String  password, retype_password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,8 @@ public class RegisterPage2 extends Activity{
         retype_email = (EditText)findViewById(R.id.retype_email);
         layout = (RelativeLayout) findViewById(R.id.layout);
         logo = (ImageView) findViewById(R.id.logo);
+        pass = (EditText) findViewById(R.id.password);
+        re_pass = (EditText) findViewById(R.id.retype_password);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
@@ -128,6 +133,9 @@ public class RegisterPage2 extends Activity{
                 zip = zipcode.getText().toString().trim();
                 em = email.getText().toString().trim();
                 re_email = retype_email.getText().toString().trim();
+
+                password = pass.getText().toString().trim();
+                retype_password = re_pass.getText().toString().trim();
 
                 if(TextUtils.isEmpty(f_name))
                 {
@@ -344,6 +352,122 @@ public class RegisterPage2 extends Activity{
                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     return;
                 }
+
+                if (TextUtils.isEmpty(password)) {
+                    // custom dialog
+                    final Dialog dialog = new Dialog(RegisterPage2.this);
+                    dialog.setContentView(R.layout.custom_dialog);
+
+                    // set the custom dialog components - text, image and button
+                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                    text.setText("Must Fill In \"Password\" Box");
+                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                    // if button is clicked, close the custom dialog
+                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    return;
+                }
+                if (password.length() < 8) {
+                    // custom dialog
+                    final Dialog dialog = new Dialog(RegisterPage2.this);
+                    dialog.setContentView(R.layout.custom_dialog);
+
+                    // set the custom dialog components - text, image and button
+                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                    text.setText("Password is too short, Please input with 8-32 characters");
+                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                    // if button is clicked, close the custom dialog
+                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    return;
+                }
+                if (password.length() > 32) {
+                    // custom dialog
+                    final Dialog dialog = new Dialog(RegisterPage2.this);
+                    dialog.setContentView(R.layout.custom_dialog);
+
+                    // set the custom dialog components - text, image and button
+                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                    text.setText("Password is too long, Please input with 8-32 characters");
+                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                    // if button is clicked, close the custom dialog
+                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    return;
+                }
+                if (TextUtils.isEmpty(retype_password)) {
+                    // custom dialog
+                    final Dialog dialog = new Dialog(RegisterPage2.this);
+                    dialog.setContentView(R.layout.custom_dialog);
+
+                    // set the custom dialog components - text, image and button
+                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                    text.setText("Must Fill In \"Retype Password\" Box");
+                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                    // if button is clicked, close the custom dialog
+                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    return;
+                }
+                if (!password.equals(retype_password)) {
+                    // custom dialog
+                    final Dialog dialog = new Dialog(RegisterPage2.this);
+                    dialog.setContentView(R.layout.custom_dialog);
+
+                    // set the custom dialog components - text, image and button
+                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                    text.setText("Password and Retype Password does not match");
+                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                    // if button is clicked, close the custom dialog
+                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    return;
+                }
                 if(em.equals(re_email))
                 {
                     webservice();
@@ -500,7 +624,8 @@ public class RegisterPage2 extends Activity{
             if(status.equals("success"))
             {
                  Intent i = new Intent(RegisterPage2.this, RegisterPage3.class);
-                  /*  i.putExtra("isfrom", "reg");
+
+                /*i.putExtra("isfrom", "reg");
                     i.putExtra("firstname", f_name);
                     i.putExtra("lastname", l_name);
                     i.putExtra("address1", add1);
@@ -524,6 +649,8 @@ public class RegisterPage2 extends Activity{
                 map.put("retype_email",re_email);
                 JSONObject object = new JSONObject(map);
                 sessionManager.saveregistrationdet(object.toString());
+                sessionManager.savePaypalRedirect("0");
+                sessionManager.savepass(password);
                 startActivity(i);
                 finish();
             }

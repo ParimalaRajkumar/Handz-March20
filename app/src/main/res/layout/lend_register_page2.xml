@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4D4D4D">
+    android:background="#3B3B3B">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="530sp"
+                android:layout_height="650sp"
                 android:layout_gravity="bottom|center"
                 android:orientation="vertical"
                 android:weightSum="1"
@@ -29,7 +29,7 @@
                     android:layout_marginTop="100sp"
                     android:layout_centerInParent="true"
                     android:layout_gravity="top|center"
-                    android:background="#AE944F"
+                    android:background="#BFE8C64B"
                     android:gravity="top">
 
                     <LinearLayout
@@ -180,6 +180,37 @@
                         android:hint="Re-type Email Address"
                         android:background="@drawable/shape"/>
 
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_marginLeft="12sp"
+                        android:layout_width="match_parent"
+                        android:textColorHint="#000000"
+                        android:layout_height="40sp"
+                        android:textSize="16sp"
+                        android:layout_below="@+id/retype_email"
+                        android:inputType="textPassword"
+                        android:layout_weight="1"
+                        android:layout_marginRight="12sp"
+                        android:hint="Password(8-30 Characters...)"
+                        android:paddingLeft="12sp"
+                        android:layout_marginTop="30sp"
+                        android:background="@drawable/shape" />
+
+                    <EditText
+                        android:id="@+id/retype_password"
+                        android:layout_marginLeft="12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40sp"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:inputType="textPassword"
+                        android:layout_below="@+id/password"
+                        android:textColorHint="#000000"
+                        android:layout_marginRight="12sp"
+                        android:hint="Re-type Password"
+                        android:paddingLeft="12sp"
+                        android:layout_marginTop="15sp"
+                        android:background="@drawable/shape" />
                 </RelativeLayout>
 
                 <ImageView
@@ -197,25 +228,25 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="30sp"
                 android:layout_alignParentBottom="true">
 
                 <TextView
                     android:layout_width="120sp"
-                    android:layout_height="40sp"
-                    android:layout_marginLeft="20sp"
+                    android:layout_height="45sp"
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/handz"/>
 
                 <Button
                     android:id="@+id/next1"
                     android:layout_width="50sp"
-                    android:layout_height="50sp"
+                    android:layout_height="45sp"
                     android:textAllCaps="true"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/next_arrow"
                     android:layout_gravity="right"
-                    android:layout_marginRight="20sp"/>
+                    android:layout_marginRight="15sp"/>
 
             </RelativeLayout>
         </LinearLayout>

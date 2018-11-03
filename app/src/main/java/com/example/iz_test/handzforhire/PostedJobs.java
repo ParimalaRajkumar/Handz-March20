@@ -1,6 +1,5 @@
 package com.example.iz_test.handzforhire;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -44,6 +43,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -390,6 +390,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
                     applicants = object.getString("no_of_applicants_applied");
                     job_id = object.getString("job_id");
                     dlist=object.getString("delist");
+                    String start_time=object.getString("start_time");
 
                     HashMap<String,String> map = new HashMap<String,String>();
                     map.put("name", name);
@@ -404,6 +405,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
                     map.put("zipcode",zipcode);
                     map.put("jobId",job_id);
                     map.put("d_list",dlist);
+                    map.put("start_time",start_time);
                     job_list.add(map);
                     System.out.println("job_list:::" + job_list);
                    /* ViewListAdapter adapter = new ViewListAdapter(this, job_list);
@@ -548,6 +550,8 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
             final TextView applicants = (TextView) vi.findViewById(R.id.no_applicants);
             LinearLayout rel_viewapplicant=(LinearLayout)vi.findViewById(R.id.rel_viewapplicant);
             TextView expected = (TextView) vi.findViewById(R.id.expected);
+            TextView t2 = (TextView) vi.findViewById(R.id.t2);
+            TextView time = (TextView) vi.findViewById(R.id.time);
 
             ImageView checked=(ImageView)vi.findViewById(R.id.img);
             ImageView unchecked=(ImageView)vi.findViewById(R.id.img1);
@@ -568,6 +572,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
             final String city = items.get("city");
             final String state = items.get("state");
             final String zipcode = items.get("zipcode");
+            String start_time = items.get("start_time");
             dlist= items.get("d_list");
             System.out.println("iiiiiidlist::"+dlist);
 
@@ -620,7 +625,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
             DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
             DateFormat destDf = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
             try {
-                java.util.Date dates = srcDf.parse(get_date);
+                Date dates = srcDf.parse(get_date);
                 date.setText("" + destDf.format(dates));
 
             } catch (Exception e)
@@ -637,6 +642,27 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
             {
                 applicants.setText(get_applicants);
             }
+
+            String mStringDate = start_time;
+            String oldFormat= "HH:mm:ss";
+            String newFormat= "hh:mm aaa";
+
+            String formatedDate = "";
+            SimpleDateFormat dateFormat = new SimpleDateFormat(oldFormat);
+            Date myDate = null;
+            try {
+                myDate = dateFormat.parse(mStringDate);
+            } catch (java.text.ParseException e) {
+                e.printStackTrace();
+            }
+
+            SimpleDateFormat timeFormat = new SimpleDateFormat(newFormat);
+            formatedDate = timeFormat.format(myDate).toUpperCase().replace(".","");
+            System.out.println("hhhhhhhhhhhhh:newFormat:::"+formatedDate);
+
+            time.setText(formatedDate);
+            time.setTypeface(font);
+            t2.setTypeface(font);
 
             job_name.setText(get_name);
             job_name.setTypeface(font);

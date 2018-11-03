@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -250,6 +251,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                     jobId = object.getString("id");
                     jobstatus=object.getString("job_status");
                     emplrid=object.getString("employer_id");
+                    String start_time=object.getString("start_time");
 
                     HashMap<String,String> map = new HashMap<String,String>();
                     map.put("name", jobname);
@@ -260,6 +262,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                     map.put("status",jobstatus);
                     map.put("emrid",emplrid);
                     map.put("employeeid",user_id);
+                    map.put("start_time",start_time);
                     job_list.add(map);
                 }
                 System.out.println("job_list:::" + job_list);
@@ -316,7 +319,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
         String value = "HandzForHire@~";
         String type = "employee";
         String user_id;
-        String get_jobid, get_emplrid, get_employeeid, get_status;
+        String get_jobid, get_emplrid, get_employeeid, get_status,start_time;
         public  String KEY_JOBID = "job_id";
         public  String KEY_EMPLOYERID = "employer_id";
         public  String KEY_EMPLOYEEID = "employee_id";
@@ -361,10 +364,22 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             TextView jobId = (TextView) vi.findViewById(R.id.job_id);
             ImageView gray = (ImageView) vi.findViewById(R.id.gray);
             ImageView red = (ImageView) vi.findViewById(R.id.red);
+            TextView time=(TextView)vi.findViewById(R.id.time);
             //ImageView green = (ImageView) vi.findViewById(R.id.green);
             TextView gry=(TextView)vi.findViewById(R.id.gra);
             TextView re=(TextView)vi.findViewById(R.id.redd);
             TextView gre=(TextView)vi.findViewById(R.id.gr);
+
+
+            String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+            Typeface font = Typeface.createFromAsset(activity.getAssets(), fontPath);
+            job_date.setTypeface(font);
+            pay.setTypeface(font);
+            job_type.setTypeface(font);
+            job_name.setTypeface(font);
+
+            time.setTypeface(font);
+
 
             final LinearLayout lin_hold=(LinearLayout)vi.findViewById(R.id.lin_hold);
             //final LinearLayout lin_hire=(LinearLayout)vi.findViewById(R.id.lin_hire);
@@ -382,6 +397,8 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             final String get_esti = items.get("type");
             get_status = items.get("status");
             user_id = items.get("employeeid");
+            String start_time = items.get("start_time");
+
 
             if (get_status.equals("Hired")) {
                 //green.setVisibility(View.VISIBLE);
@@ -511,6 +528,28 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             get_jobid = items.get("jobId");
             get_emplrid = items.get("emrid");
             get_employeeid = items.get("employeeid");
+            start_time = items.get("start_time");
+
+
+            String mStringDate = start_time;
+            String oldFormat= "HH:mm:ss";
+            String newFormat= "hh:mm aaa";
+
+            String formatedDate = "";
+            SimpleDateFormat dateFormat = new SimpleDateFormat(oldFormat);
+            java.util.Date myDate = null;
+            try {
+                myDate = dateFormat.parse(mStringDate);
+            } catch (java.text.ParseException e) {
+                e.printStackTrace();
+            }
+
+            SimpleDateFormat timeFormat = new SimpleDateFormat(newFormat);
+            formatedDate = timeFormat.format(myDate).toUpperCase().replace(".","");
+            System.out.println("hhhhhhhhhhhhh:newFormat:::"+formatedDate);
+
+            time.setText(formatedDate);
+
 
             DateFormat dateInstance = SimpleDateFormat.getDateInstance();
             DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
@@ -524,6 +563,8 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 get_pay=get_pay.substring(1);
                 pay.setText("PAY:$"+get_pay);
                 job_type.setText(get_esti);
+                time.setText(start_time);
+
                 //jobId.setText(get_id);
                 //job_name.setText("PAY"+get_jobname);
                 System.out.println("000000"+pay);

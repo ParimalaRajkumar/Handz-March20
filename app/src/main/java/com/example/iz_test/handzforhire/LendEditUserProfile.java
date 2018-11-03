@@ -157,7 +157,6 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-
         home = (Button) findViewById(R.id.change_home_address);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
         update = (Button) findViewById(R.id.update_email);
@@ -170,7 +169,6 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
         logo = (Button) findViewById(R.id.h_icon);
         layout = (LinearLayout) findViewById(R.id.layout);
         add_link=(Button)findViewById(R.id.add_link);
-
 
         activity = LendEditUserProfile.this;
         FileUpload.activity = LendEditUserProfile.this;
@@ -391,10 +389,13 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
                     Glide.with(LendEditUserProfile.this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
                 }
 
-                if (!profilename.equals("null") && profile_image.equals("")) {
-                    profile_name.setText(profilename);
-                } else {
+                if(profilename.equals(""))
+                {
                     profile_name.setText(user_name);
+                }
+                else
+                {
+                    profile_name.setText(profilename);
                 }
             }
 

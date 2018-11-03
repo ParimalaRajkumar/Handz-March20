@@ -39,6 +39,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,9 +84,9 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
         TextView text2 = (TextView) findViewById(R.id.txt2);
         TextView text5 = (TextView) findViewById(R.id.txt5);
         TextView text6 = (TextView) findViewById(R.id.text6);
+        TextView text7 = (TextView) findViewById(R.id.t4);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
-
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
         description.setTypeface(tf);
         date.setTypeface(tf);
@@ -96,6 +97,7 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
         text5.setTypeface(tf);
         text6.setTypeface(tf);
         rating_value.setTypeface(tf);
+        text7.setTypeface(tf);
 
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
@@ -262,7 +264,7 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 String get_type = object.getString("job_payment_type");
                 String get_profile_name = object.getString("profile_name");
                 String image = object.getString("profile_image");
-
+                String start_time=object.getString("start_time");
                 employerId = object.getString("employer_id");
                 description.setText(get_description);
 
@@ -283,13 +285,30 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
                 DateFormat destDf = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
                 try {
-                    java.util.Date dates = srcDf.parse(get_date);
+                    Date dates = srcDf.parse(get_date);
                     date.setText(""+destDf.format(dates));
                 }catch (Exception e){
 
                 }
 
-                //time.setText(get_start_time);
+                String mStringDate = start_time;
+                String oldFormat= "HH:mm:ss";
+                String newFormat= "hh:mm aaa";
+
+                String formatedDate = "";
+                SimpleDateFormat dateFormat = new SimpleDateFormat(oldFormat);
+                Date myDate = null;
+                try {
+                    myDate = dateFormat.parse(mStringDate);
+                } catch (java.text.ParseException e) {
+                    e.printStackTrace();
+                }
+
+                SimpleDateFormat timeFormat = new SimpleDateFormat(newFormat);
+                formatedDate = timeFormat.format(myDate).toUpperCase().replace(".","");
+                System.out.println("hhhhhhhhhhhhh:newFormat:::"+formatedDate);
+
+                time.setText(formatedDate);
                 type.setText(get_type);
                 amount.setText(get_amount);
                 name.setText(get_name);

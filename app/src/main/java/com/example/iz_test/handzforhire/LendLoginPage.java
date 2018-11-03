@@ -2,6 +2,7 @@ package com.example.iz_test.handzforhire;
 
 import android.Manifest;
 import android.app.Dialog;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -32,16 +34,28 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.app.Config;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,7 +86,9 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
     SessionManager session;
     String userType = "employee";
     Dialog dialog;
-
+    private CallbackManager callbackManager;
+    private AccessToken accessToken;
+    LoginButton login_withfacebook;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +118,10 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
         new_employee.setTypeface(tf);
         forgot_password.setTypeface(tf);
-        //permission();
+
+        initParameters();
+        initViews();
+        permission();
 
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +183,7 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
 
                     dialog.show();
                     Window window = dialog.getWindow();
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     return;
                 }
@@ -187,7 +206,7 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
 
                     dialog.show();
                     Window window = dialog.getWindow();
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     return;
                 }
@@ -264,7 +283,7 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }
                             } catch (JSONException e) {
@@ -284,6 +303,7 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
                 map.put(KEY_TYPE, type);
                 map.put(KEY_DEVICETOKEN, deviceId);
                 map.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println("Params "+map);
                 return map;
             }
         };
@@ -323,7 +343,6 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
                     Profilevalues.state=user_state;
                     Profilevalues.zipcode=user_zipcode;
                     Profilevalues.username=user_name;
-                    Profilevalues.usertype="2";
                 }
                 if (user_type.equals("employer")) {
 
@@ -344,7 +363,7 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
 
                     dialog.show();
                     Window window = dialog.getWindow();
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 } else {
                     session.LendLogin(user_email,user_password,user_name,user_type,user_id,user_address,user_city,user_state,user_zipcode,userType);
@@ -372,7 +391,7 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
 
                 dialog.show();
                 Window window = dialog.getWindow();
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             }
 
@@ -463,4 +482,131 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
                 .create()
                 .show();
     }
+
+    AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
+        @Override
+        protected void onCurrentAccessTokenChanged(
+                AccessToken oldAccessToken,
+                AccessToken currentAccessToken) {
+
+            if (currentAccessToken == null) {
+                //rlProfileArea.setVisibility(View.GONE);
+            }
+        }
+    };
+
+
+
+    public void initParameters() {
+        accessToken = AccessToken.getCurrentAccessToken();
+        callbackManager = CallbackManager.Factory.create();
+
+    }
+    public void initViews() {
+
+        login_withfacebook = (LoginButton) findViewById(R.id.activity_main_btn_login);
+        //rlProfileArea = (RelativeLayout) findViewById(R.id.activity_main_rl_profile_area);
+        //tvName = (TextView) findViewById(R.id.activity_main_tv_name);
+
+        login_withfacebook.setReadPermissions(Arrays.asList(new String[]{"email","public_profile","user_birthday", "user_hometown"}));
+
+        if (accessToken != null) {
+            getProfileData();
+        } else {
+            //  rlProfileArea.setVisibility(View.GONE);
+        }
+
+// Callback registration
+        login_withfacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // Log.d(TAG, “User login successfully”);
+                getProfileData();
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+                //Log.d(TAG, “User cancel login”);
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                //  Log.d(TAG, “Problem for login”);
+            }
+        });
+
+    }
+    public void getProfileData() {
+        try {
+            accessToken = AccessToken.getCurrentAccessToken();
+            LoginManager.getInstance().logOut();
+            // rlProfileArea.setVisibility(View.VISIBLE);
+            GraphRequest request = GraphRequest.newMeRequest(
+                    accessToken,
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(
+                                JSONObject object,
+                                GraphResponse response) {
+                            //Log.d(TAG, “Graph Object :” + object);
+                            try {
+                                String name = object.getString("name");
+                                String id = object.getString("id");
+                                String email = object.getString("email");
+                                String first_name = object.getString("first_name");
+                                String last_name = object.getString("last_name");
+                                JSONObject picture = object.getJSONObject("picture");
+                                JSONObject data = picture.getJSONObject("data");
+                                String url = data.getString("url");
+
+                                Intent i = new Intent(LendLoginPage.this, LendRegisterPage3.class);
+                                HashMap<String,String> map= new HashMap<String, String>();
+                                i.putExtra("isfrom", "reg");
+                                map.put("firstname",first_name);
+                                map.put("lastname",last_name);
+                                map.put("picture",url);
+                                map.put("id",id);
+                                map.put("name",name);
+                                map.put("email",email);
+                                map.put("devicetoken",deviceId);
+                                map.put("user_type","employee");
+                                JSONObject objects = new JSONObject(map);
+                                session.saveregistrationdet(objects.toString());
+                                session.savePaypalRedirect("6");
+
+
+                                //  tvName.setText(“Welcome, ” + name);
+                                System.out.println("Object "+object);
+                                System.out.println("Name "+name);
+                                System.out.println("id "+id);
+                                System.out.println("email "+email);
+                                System.out.println("first_name "+first_name);
+                                System.out.println("last_name "+last_name);
+                                System.out.println("url "+url);
+
+
+                                startActivity(i);
+                                //  Log.d(TAG, “Name :” + name);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name,link,birthday,gender,email,first_name,last_name,picture");
+            request.setParameters(parameters);
+            request.executeAsync();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

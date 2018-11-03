@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#4D4D4D"
+    android:background="#3B3B3B"
     android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/layout3"
@@ -76,7 +78,7 @@
                 android:gravity="center"
                 android:textSize="22sp"
                 android:textAllCaps="true"
-                android:background="#E3C561"
+                android:background="#F2CF6B"
                 android:textColor="#000000"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center" />
@@ -90,9 +92,18 @@
                 android:textSize="22sp"
                 android:textAllCaps="true"
                 android:layout_marginBottom="30sp"
-                android:background="#098F93"
+                android:background="#008A8E"
                 android:textColor="#000000"
                 android:layout_gravity="center" />
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/activity_main_btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+           />
 
         </LinearLayout>
 
@@ -102,9 +113,20 @@
         android:layout_width="120sp"
         android:layout_height="40sp"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20sp"
+        android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/handz"/>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="245dp"
+        android:layout_marginTop="145dp"
+        android:text="login_withfaceboojk"
+        android:visibility="gone"/>
 
 </RelativeLayout>

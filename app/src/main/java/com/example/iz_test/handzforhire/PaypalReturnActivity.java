@@ -29,13 +29,13 @@ public class PaypalReturnActivity extends Activity {
 
         if(paypalredirect.equals("0"))
         {
-            Intent in_reg=new Intent(PaypalReturnActivity.this,RegisterPage3.class);
+            Intent in_reg=new Intent(PaypalReturnActivity.this,RegisterPage4.class);
             in_reg.putExtra("isfrom", "paypal");
             startActivity(in_reg);
 
         } else if(paypalredirect.equals("2"))
         {
-            Intent in_reg=new Intent(PaypalReturnActivity.this,LendRegisterPage3.class);
+            Intent in_reg=new Intent(PaypalReturnActivity.this,LendRegisterPage4.class);
             in_reg.putExtra("isfrom", "paypal");
             startActivity(in_reg);
 
@@ -55,6 +55,16 @@ public class PaypalReturnActivity extends Activity {
         }else if(paypalredirect.equals("1")){
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,PayEmployee.class);
+            in_payment.putExtra("isfrom", "paypal");
+            startActivity(in_payment);
+        }else if(paypalredirect.equals("5")){
+
+            Intent in_payment=new Intent(PaypalReturnActivity.this,RegisterPage4.class);
+            in_payment.putExtra("isfrom", "paypal");
+            startActivity(in_payment);
+        }else if(paypalredirect.equals("6")){
+
+            Intent in_payment=new Intent(PaypalReturnActivity.this,LendRegisterPage4.class);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
         }
