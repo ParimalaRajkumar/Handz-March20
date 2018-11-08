@@ -314,8 +314,9 @@ public class LendRegisterPage4 extends Activity{
                 i.putExtra("state",get_state);
                 i.putExtra("city",get_city);
                 i.putExtra("zipcode",get_zipcode);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
-                startActivity(i);
+
                 finish();
             }
             else

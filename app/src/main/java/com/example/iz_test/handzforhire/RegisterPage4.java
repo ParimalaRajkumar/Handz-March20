@@ -325,6 +325,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1{
                 session.NeedLogin(get_email,get_password,user_name,usertype,user_id,get_address,get_city,get_state,get_zipcode,user_type);
 
                 Intent i = new Intent(RegisterPage4.this,ProfilePage.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.putExtra("userId",user_id);
                 i.putExtra("username",user_name);
                 i.putExtra("email",get_email);
@@ -332,8 +333,9 @@ public class RegisterPage4 extends Activity  implements ResponseListener1{
                 i.putExtra("state",get_state);
                 i.putExtra("city",get_city);
                 i.putExtra("zipcode",get_zipcode);
+
                 startActivity(i);
-                startActivity(i);
+
                 finish();
             }
             else
