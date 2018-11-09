@@ -3,5 +3,6 @@
     <string name="click_here"><u>Click here.</u></string>
     <string name="facebook_app_id">333654204049944</string>
     <string name="skipfornow"><u>Skip for Now</u>.</string>
+    <string name="paypal_link_error">You must link a PayPal Account before you create a job.</string>
     <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://handzadmin.com\",\n  }\n}]</string>
 </resources>
