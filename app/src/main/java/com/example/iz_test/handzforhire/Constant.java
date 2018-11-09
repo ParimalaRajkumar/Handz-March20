@@ -8,5 +8,9 @@ public class Constant {
     public static String ANDROID = "android";
     public static final String FIREBASE_URL = "https://handz-8ac86.firebaseio.com/channels/";
 
+    public static final int LINK_PAYPAL = 100;
+
+    public static final String SUMMARY_ADD ="7";
+
 
 }

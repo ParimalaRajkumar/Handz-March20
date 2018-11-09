@@ -5,7 +5,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -45,5 +47,19 @@ public class Utility {
         } else {
             return true;
         }
+    }
+
+    public static Intent GetPaypalLinkIntent(SessionManager session , Context context , String returnActivity)
+    {
+        String Access_Token=PaypalCon.getAccessToken();
+        String[] href = PaypalCon.partnerReferralPrefillAPI(Access_Token,context);
+        session.saveAccesstoken(Access_Token);
+        session.savePaypalRedirect(returnActivity);
+        session.saveReraalapilink(href[0]);
+        Intent myIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse(href[1]));
+        //myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return myIntent;
     }
 }
