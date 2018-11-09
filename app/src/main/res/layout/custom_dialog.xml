@@ -37,8 +37,8 @@
             android:layout_marginTop="20sp">
 
            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="35sp"
+                android:layout_height="35sp"
                 android:layout_marginLeft="60sp"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/info_icon"/>
@@ -52,12 +52,12 @@
                 android:textStyle="bold"
                 android:layout_centerInParent="true"
                 android:textColor="#BEBEBE"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:background="@drawable/border_gray"/>
 
             <ImageView
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="35sp"
+                android:layout_height="35sp"
                 android:layout_marginRight="60sp"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/info_icon"/>
