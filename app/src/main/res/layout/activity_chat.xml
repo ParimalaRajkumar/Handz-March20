@@ -23,7 +23,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#3C3C3C">
+            android:background="#4d4d4d">
 
             <TextView
                 android:id="@+id/txt1"

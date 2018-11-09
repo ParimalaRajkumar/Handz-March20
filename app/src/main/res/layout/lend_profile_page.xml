@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#4D4D4D"
+    android:background="#4d4d4d"
     tools:context="com.example.iz_test.handzforhire.MainActivity">
 
     <ScrollView
@@ -220,34 +220,27 @@
                         android:gravity="right"
                         android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/pending_job"
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
-                        android:background="@drawable/posted_jobs"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                        <FrameLayout
+                            android:id="@+id/pending_job"
+                            android:layout_width="80sp"
+                            android:background="@drawable/posted_jobs"
+                            android:layout_height="80sp">
 
                             <TextView
                                 android:id="@+id/txt_postedjobcnt"
-                                android:layout_width="30sp"
-                                android:layout_height="30sp"
-                                android:background="@drawable/circle_shape"
-                                android:textColor="#ffffff"
+                                android:layout_width="25sp"
+                                android:layout_height="25sp"
+                                android:layout_gravity="top|right"
+                                android:adjustViewBounds="true"
+                                android:paddingTop="-10dp"
                                 android:visibility="invisible"
+                                android:textColor="#ffffff"
                                 android:textSize="16sp"
-                                android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentEnd="true" />
+                                android:scaleType="fitStart"
+                                android:background="@drawable/circle_shape" />
 
-                        </RelativeLayout>
-
-                    </LinearLayout>
+                        </FrameLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -261,7 +254,7 @@
                             android:layout_below="@+id/pending_job"
                             android:textColor="#ffffff"/>
 
-                        </LinearLayout>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -284,36 +277,27 @@
                         android:orientation="vertical"
                         android:layout_weight="1">
 
-                        <LinearLayout
+                        <FrameLayout
                             android:id="@+id/active_job"
                             android:layout_width="80sp"
-                            android:layout_height="80sp"
-                            android:layout_weight="1"
-                            android:layout_marginRight="5sp"
                             android:background="@drawable/active_jobs"
-                            android:orientation="vertical">
+                            android:layout_height="80sp">
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/txt_activejobscnt"
+                                android:layout_width="25sp"
+                                android:layout_height="25sp"
+                                android:layout_gravity="top|right"
+                                android:adjustViewBounds="true"
+                                android:paddingTop="-10dp"
+                                android:textColor="#ffffff"
+                                android:visibility="invisible"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:scaleType="fitStart"
+                                android:background="@drawable/circle_shape" />
 
-                                <TextView
-                                    android:id="@+id/txt_activejobscnt"
-                                    android:layout_width="30sp"
-                                    android:layout_height="30sp"
-                                    android:background="@drawable/circle_shape"
-                                    android:textColor="#ffffff"
-                                    android:visibility="invisible"
-                                    android:textSize="16sp"
-                                    android:gravity="center"
-                                    android:textStyle="bold"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_alignParentEnd="true" />
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
+                        </FrameLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -345,36 +329,27 @@
                     android:layout_marginLeft="20sp"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:id="@+id/job_history"
                         android:layout_width="80sp"
-                        android:layout_height="80sp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
                         android:background="@drawable/job_history"
-                        android:orientation="vertical">
+                        android:layout_height="80sp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/job_historycnt"
+                            android:layout_width="25sp"
+                            android:layout_height="25sp"
+                            android:layout_gravity="top|right"
+                            android:adjustViewBounds="true"
+                            android:paddingTop="-10dp"
+                            android:textColor="#ffffff"
+                            android:visibility="invisible"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:scaleType="fitStart"
+                            android:background="@drawable/circle_shape" />
 
-                            <TextView
-                                android:id="@+id/job_historycnt"
-                                android:layout_width="30sp"
-                                android:layout_height="30sp"
-                                android:background="@drawable/circle_shape"
-                                android:textColor="#ffffff"
-                                android:visibility="invisible"
-                                android:gravity="center"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentEnd="true" />
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
+                    </FrameLayout>
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -164,7 +164,7 @@
                         android:id="@+id/linear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#4D4D4D"
+                        android:background="#4d4d4d"
                         android:layout_marginLeft="10sp"
                         android:layout_marginRight="10sp"
                         android:layout_below="@+id/r1">

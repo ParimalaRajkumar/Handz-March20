@@ -369,7 +369,7 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
                 System.out.println("response on map" + responseObj);
                 if (status.equals("error")) {
                     undisclosedjob = 0;
-                    txt_undisclosedjob.setText("0 Additional Undisclosed Locations\n Within a 5 mile radius of  map center\n(Click Here for ListView With Job Details)");
+                    txt_undisclosedjob.setText("0  Additional Undisclosed Locations\n within a 5 mile radius of  map center\n(Click Here for ListView With Job Details)");
 
                 } else {
                     googleMap.clear();

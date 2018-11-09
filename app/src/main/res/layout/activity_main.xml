@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#4D4D4D"
+    android:background="#4d4d4d"
     tools:context="com.example.iz_test.handzforhire.MainActivity">
 
     <ScrollView
@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:textSize="44sp"
                 android:layout_marginTop="20sp"
-                android:background="#F2CE6B"/>
+                android:background="#f1ce6b"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:textColor="#000000"
                 android:textSize="44sp"
                 android:gravity="center"
-                android:background="#00888C"/>
+                android:background="#00898d"/>
 
             <LinearLayout
                 android:id="@+id/promo_video"

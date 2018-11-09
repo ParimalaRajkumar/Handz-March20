@@ -479,6 +479,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
                             dialog.show();
                             Window window = dialog.getWindow();
+
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }else if (error instanceof AuthFailureError) {
@@ -707,7 +708,8 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
                             dialog.show();
                             Window window = dialog.getWindow();
-                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                           /* dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));*/
                             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }else if (error instanceof AuthFailureError) {
                             Toast.makeText(getApplicationContext(),"Authentication Failure while performing the request",Toast.LENGTH_LONG).show();

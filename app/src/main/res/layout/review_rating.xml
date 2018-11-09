@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3B3B3B">
+    android:background="#4d4d4d">
 
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="150sp"
     android:orientation="vertical"
-    android:background="#3B3B3B">
+    android:background="#4d4d4d">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:id="@+id/t1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ratings for "
+        android:text="Ratings for Employee..."
         android:textColor="#DCDCDC"
             android:textStyle="bold"
         android:layout_marginLeft="20sp"
@@ -44,8 +44,8 @@
 
         <Button
             android:id="@+id/cancel_btn"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:layout_marginRight="10sp"
             android:layout_alignParentRight="true"
             android:background="@drawable/x_button"/>
@@ -64,7 +64,6 @@
             android:layout_height="40sp"
             android:gravity="center"
             android:text="overall average"
-            android:textStyle="bold"
             android:textAllCaps="true"
             android:layout_marginRight="20sp"
             android:textSize="16sp"
@@ -111,16 +110,16 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="90sp"
-            android:layout_height="90sp"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
             android:layout_marginLeft="20sp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true">
 
            <ImageView
                 android:id="@+id/profile_image"
-                android:layout_width="90sp"
-                android:layout_height="90sp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/image_border"
                android:src="@drawable/default_profile"

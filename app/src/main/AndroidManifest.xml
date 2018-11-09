@@ -26,6 +26,7 @@
     <uses-sdk android:targetSdkVersion="23" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -91,20 +92,21 @@
 
         <activity android:name=".LendRating" />
 
-        <activity android:name=".LeaveComments"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name=".LeaveComments" />
 
         <activity android:name=".LeaveRating" />
 
-        <activity android:name=".LendEditRating" />
-
-        <activity android:name=".LendLeaveRating" />
-
-        <activity android:name=".EditComments"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name=".EditComments" />
 
         <activity
             android:name=".IntegrationPaypal"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".LendLeaveRating"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".LendLeaveComments"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
@@ -201,19 +203,10 @@
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
-            android:name=".JobCancelEditComments"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
-        <activity
-            android:name=".JobCancelLeaveComments"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
-        <activity
             android:name=".EditCreateJob2"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <activity android:name=".ProfilePage"
-            />
+        <activity android:name=".ProfilePage" />
 
         <activity
             android:name=".CreateJob"
@@ -239,6 +232,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <activity android:name=".ManagePaymentOptions" />
+
+        <activity android:name=".NeedRating" />
 
         <activity
             android:name=".ChatNeed"
@@ -335,14 +330,6 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".LendEditComments"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <activity
-            android:name=".LendLeaveComments"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <activity
             android:name=".RehireSubtract"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
@@ -355,6 +342,9 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".LinkPaypal"
+            android:theme="@style/Base.Theme.AppCompat" />
 
         <activity
             android:name=".ArchievedJob"
@@ -362,12 +352,15 @@
         <activity
             android:name=".LinkedInActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!--<activity android:name=".Progressbar"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>-->
 
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

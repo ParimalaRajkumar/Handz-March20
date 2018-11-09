@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#3B3B3B">
+    android:background="#4d4d4d">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -63,22 +63,22 @@
             <Button
                android:id="@+id/lend_hand"
                android:layout_width="match_parent"
-               android:layout_height="80sp"
+               android:layout_height="100sp"
                android:text="lend a hand"
-               android:textSize="34sp"
+               android:textSize="44sp"
                android:textStyle="bold"
                android:layout_marginTop="20sp"
-               android:background="#007779"
+                android:background="#00898d"
                android:textAllCaps="true"/>
             <Button
                 android:id="@+id/need_hand"
                 android:layout_width="match_parent"
-                android:layout_height="80sp"
+                android:layout_height="100sp"
                 android:text="need a hand"
-                android:textSize="40sp"
+                android:textSize="44sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20sp"
-                android:background="#E8C64B"
+                android:background="#f1ce6b"
                 android:textAllCaps="true"
                 android:visibility="gone"/>
             <LinearLayout

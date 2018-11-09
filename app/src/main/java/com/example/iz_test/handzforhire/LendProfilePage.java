@@ -22,8 +22,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,7 +34,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.app.AppConstant;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.Glideconstants;
@@ -47,7 +46,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LendProfilePage extends AbsSwipeActivity implements ResponseListener{
+public class LendProfilePage extends Activity implements SimpleGestureFilter.SimpleGestureListener,ResponseListener{
 
     Button job_list,edit,find_map,need_help;
     String id,address,city,state,zipcode,profile_image,profilename,email,username;
@@ -65,13 +64,12 @@ public class LendProfilePage extends AbsSwipeActivity implements ResponseListene
     TextView profile_name,rating_value;
     RelativeLayout rating_lay;
     SessionManager session;
-    LinearLayout pending,active_job,job_history;
+    FrameLayout pending,active_job,job_history;
     Dialog dialog;
     TextView txt_postedjobcnt,txt_activejobscnt,job_historycnt;
     String tittle="Whether you need a hand or would like to lend a hand, Handz for Hire is built to connect you and your neighbors looking to get jobs done. Visit HandzForHire.com or download the app in the App Store or Google Play.\"\n" +
             "along with that website url and logo";
-   //
-   // private SimpleGestureFilter detector;
+    private SimpleGestureFilter detector;
     RequestMethods req;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +100,9 @@ public class LendProfilePage extends AbsSwipeActivity implements ResponseListene
         tutorial=(ImageView)findViewById(R.id.tutorial);
         profile_name = (TextView) findViewById(R.id.text1);
         find_map = (Button) findViewById(R.id.find_job);
-        pending = (LinearLayout) findViewById(R.id.pending_job);
-        active_job = (LinearLayout) findViewById(R.id.active_job);
-        job_history = (LinearLayout) findViewById(R.id.job_history);
+        pending = (FrameLayout) findViewById(R.id.pending_job);
+        active_job = (FrameLayout) findViewById(R.id.active_job);
+        job_history = (FrameLayout) findViewById(R.id.job_history);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
         menu = (ImageView)findViewById(R.id.menu);
         txt_postedjobcnt = (TextView) findViewById(R.id.txt_postedjobcnt);
@@ -131,7 +129,7 @@ public class LendProfilePage extends AbsSwipeActivity implements ResponseListene
         Profilevalues.state=state;
         Profilevalues.zipcode=zipcode;
 
-      //  detector = new SimpleGestureFilter(this,this);
+        detector = new SimpleGestureFilter(this,this);
 
         share_lend=(ImageView)findViewById(R.id.sha_lend);
         share_lend.setOnClickListener(new View.OnClickListener() {
@@ -315,11 +313,6 @@ public class LendProfilePage extends AbsSwipeActivity implements ResponseListene
             }
         });
 
-    }
-
-    @Override
-    AppConstant.SWIPETYPE SwipeType() {
-        return AppConstant.SWIPETYPE.LEFTTORIGHT;
     }
 
     public void getUsername() {
@@ -592,49 +585,49 @@ public class LendProfilePage extends AbsSwipeActivity implements ResponseListene
 
     }
 
-//    @Override
-//    public void onSwipe(int direction) {
-//        String str = "";
-//
-//        switch (direction) {
-//
-//            case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
-//                Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
-//                startActivity(j);
-//                finish();
-//                break;
-//            case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
-////                Intent i = new Intent(getApplicationContext(), LendProfilePage.class);
-////                i.putExtra("userId", Profilevalues.user_id);
-////                i.putExtra("address", Profilevalues.address);
-////                i.putExtra("city", Profilevalues.city);
-////                i.putExtra("state", Profilevalues.state);
-////                i.putExtra("zipcode", Profilevalues.zipcode);
-////                startActivity(i);
-////                finish();
-//
-//                break;
-//            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
-//                break;
-//            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-//                break;
-//
-//        }
-//        //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    public void onDoubleTap() {
-//
-//    }
+    @Override
+    public void onSwipe(int direction) {
+        String str = "";
 
-//
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event){
-//
-//        this.detector.onTouchEvent(event);
-//        return super.dispatchTouchEvent(event);
-//    }
+        switch (direction) {
+
+            case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
+                Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
+                startActivity(j);
+                finish();
+                break;
+            case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
+                Intent i = new Intent(getApplicationContext(), LendProfilePage.class);
+                i.putExtra("userId", Profilevalues.user_id);
+                i.putExtra("address", Profilevalues.address);
+                i.putExtra("city", Profilevalues.city);
+                i.putExtra("state", Profilevalues.state);
+                i.putExtra("zipcode", Profilevalues.zipcode);
+                startActivity(i);
+                finish();
+
+                break;
+            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+                break;
+            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
+                break;
+
+        }
+        //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDoubleTap() {
+
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event){
+
+        this.detector.onTouchEvent(event);
+        return super.dispatchTouchEvent(event);
+    }
 
     @Override
     public void onResponseReceived(JSONObject responseObj, int requestType) {

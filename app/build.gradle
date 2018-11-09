@@ -9,7 +9,7 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '28.0.3'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.example.iz_test.handzforhire"
@@ -21,11 +21,18 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+
+            abortOnError false
+        }
+    }
     signingConfigs{
         key{
             keyAlias 'handzforhire'
             keyPassword 'android'
-            storeFile file('C:/Users/Mohanbabu/Desktop/handz.jks')
+            storeFile file('E:/Handzdebugfile/handz.jks')
             storePassword 'android'
         }
     }
@@ -80,11 +87,14 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //noinspection OutdatedLibrary
+    compile 'com.facebook.android:facebook-android-sdk:4.5.0'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.google.android.gms:play-services-maps:10.0.1'
     compile 'com.google.android.gms:play-services-location:10.0.1'
     compile 'com.ramesh.mypicker:pickerview:1.0'
     compile 'com.firebase:firebase-client-android:2.5.2'
+
     compile 'com.google.firebase:firebase-storage:10.0.1'
     compile 'com.google.firebase:firebase-auth:10.0.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'

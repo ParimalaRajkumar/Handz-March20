@@ -105,8 +105,8 @@ public class RegisterPage3 extends AppCompatActivity{
         next = (Button) findViewById(R.id.next1);
         check1 = (CheckBox) findViewById(R.id.checkBox1);
         check2 = (CheckBox) findViewById(R.id.checkBox2);
-        pass = (EditText) findViewById(R.id.password);
-        re_pass = (EditText) findViewById(R.id.retype_password);
+       // pass = (EditText) findViewById(R.id.password);
+        //re_pass = (EditText) findViewById(R.id.retype_password);
         layout = (RelativeLayout) findViewById(R.id.layout);
         handz_condition = (TextView) findViewById(R.id.handz_condition);
         feature = (TextView) findViewById(R.id.features);
@@ -133,8 +133,8 @@ public class RegisterPage3 extends AppCompatActivity{
 
         String fontPath2 = "fonts/calibri.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
-        pass.setTypeface(tf2);
-        re_pass.setTypeface(tf2);
+       // pass.setTypeface(tf2);
+        //re_pass.setTypeface(tf2);
 
         String fontPath3 = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf3 = Typeface.createFromAsset(getAssets(), fontPath3);

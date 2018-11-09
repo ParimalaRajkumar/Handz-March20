@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#4D4D4D"
+    android:background="#4d4d4d"
     tools:context="com.example.iz_test.handzforhire.MainActivity">
 
     <ScrollView

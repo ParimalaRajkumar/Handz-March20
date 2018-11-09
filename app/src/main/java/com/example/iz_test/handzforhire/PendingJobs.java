@@ -626,6 +626,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
+
                                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }

@@ -1,6 +1,5 @@
 package com.example.iz_test.handzforhire;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -247,7 +246,8 @@ public class LendRegisterPage3 extends Activity implements ResponseListener1{
                         text.setText("Please fill all the required fields");
                         Button dialogButton = (Button) dialog.findViewById(R.id.ok);
                         // if button is clicked, close the custom dialog
-                        dialogButton.setOnClickListener(new View.OnClickListener() {
+                        dialogButton.setOnClickListener(new View.OnClickListener()
+                        {
                             @Override
                             public void onClick(View v) {
                                 dialog.dismiss();

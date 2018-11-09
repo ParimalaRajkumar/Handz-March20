@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3B3B3B">
+    android:background="#4d4d4d">
 
     <ScrollView
         android:layout_width="match_parent"

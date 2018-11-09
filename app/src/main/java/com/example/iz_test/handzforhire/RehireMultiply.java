@@ -53,10 +53,6 @@ public class RehireMultiply extends Activity implements SimpleGestureFilter.Simp
         job_id = i.getStringExtra("job_id");
         duration = i.getStringExtra("duration");
         employeeId = i.getStringExtra("employeeId");
-        current_location = i.getStringExtra("current_location");
-        post_address = i.getStringExtra("post_address");
-        latitude = i.getStringExtra("latitude");
-        longitude = i.getStringExtra("longitude");
 
         detector = new SimpleGestureFilter(this,this);
 
@@ -99,10 +95,6 @@ public class RehireMultiply extends Activity implements SimpleGestureFilter.Simp
                 i.putExtra("job_id", job_id);
                 i.putExtra("duration", duration);
                 i.putExtra("employeeId", employeeId);
-                i.putExtra("current_location", current_location);
-                i.putExtra("post_address", post_address);
-                i.putExtra("latitude",latitude);
-                i.putExtra("longitude", longitude);
                 startActivity(i);
             }
         });
@@ -132,10 +124,6 @@ public class RehireMultiply extends Activity implements SimpleGestureFilter.Simp
                 i.putExtra("job_id", job_id);
                 i.putExtra("duration", duration);
                 i.putExtra("employeeId", employeeId);
-                i.putExtra("current_location", current_location);
-                i.putExtra("post_address", post_address);
-                i.putExtra("latitude",latitude);
-                i.putExtra("longitude", longitude);
                 startActivity(i);
             }
         });
