@@ -154,10 +154,10 @@ public class MainActivity extends Activity {
 
         ActivityCompat.requestPermissions(MainActivity.this, new String[]
                 {
-                        //CAMERA,
+                        CAMERA,
                         ACCESS_FINE_LOCATION,
-                       // READ_PHONE_STATE,
-                        //READ_EXTERNAL_STORAGE
+                       //READ_PHONE_STATE,
+                        READ_EXTERNAL_STORAGE
                 }, RequestPermissionCode);
 
     }
@@ -170,9 +170,9 @@ public class MainActivity extends Activity {
 
                 if (grantResults.length > 0) {
 
-                    //boolean CameraPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean CameraPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean ReadContactsPermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                   // boolean ReadPhoneStatePermission = grantResults[2] == PackageManager.PERMISSION_GRANTED;
+                   boolean ReadPhoneStatePermission = grantResults[2] == PackageManager.PERMISSION_GRANTED;
                     boolean ReadExternalStoragePermission = grantResults[2] == PackageManager.PERMISSION_GRANTED;
 /*
                     if (CameraPermission && ReadContactsPermission && ReadExternalStoragePermission) {
@@ -191,14 +191,14 @@ public class MainActivity extends Activity {
 
     public boolean checkPermission() {
 
-        //int FirstPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
+        int FirstPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
         int SecondPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
         //int ThirdPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), READ_PHONE_STATE);
-        //int ForthPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
+        int ForthPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
 
-        return //FirstPermissionResult == PackageManager.PERMISSION_GRANTED &&
+        return FirstPermissionResult == PackageManager.PERMISSION_GRANTED &&
                 SecondPermissionResult == PackageManager.PERMISSION_GRANTED ;
-               // ThirdPermissionResult == PackageManager.PERMISSION_GRANTED &&
+               //ThirdPermissionResult == PackageManager.PERMISSION_GRANTED &&
                 //ForthPermissionResult == PackageManager.PERMISSION_GRANTED;
     }
 
