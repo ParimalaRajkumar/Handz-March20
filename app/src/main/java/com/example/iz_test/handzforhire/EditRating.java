@@ -135,13 +135,11 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                rating.setText(String.valueOf(average));
+                //rating.setText(String.valueOf(average));
                 System.out.println("rrrrrrrrrrrr" + average);
 
-                String ratingvalue = rating.getText().toString();
-
                 Intent i = new Intent(EditRating.this, EditComments.class);
-                i.putExtra("rating", ratingvalue);
+                i.putExtra("rating", average);
                 i.putExtra("userId", user_id);
                 i.putExtra("jobId", job_id);
                 i.putExtra("image",image);
@@ -188,7 +186,7 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                rating.setText(String.valueOf(average));
+                //rating.setText(String.valueOf(average));
                 System.out.println("rrrrrrrrrrrr" + average);
             }
         });
@@ -208,7 +206,7 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                rating.setText(String.valueOf(average));
+                //rating.setText(String.valueOf(average));
                 System.out.println("rrrrrrrrrrrr" + average);
             }
         });
@@ -228,7 +226,7 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                rating.setText(String.valueOf(average));
+               // rating.setText(String.valueOf(average));
                 System.out.println("rrrrrrrrrrrr" + average);
             }
         });
@@ -248,7 +246,7 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                rating.setText(String.valueOf(average));
+               // rating.setText(String.valueOf(average));
                 System.out.println("rrrrrrrrrrrr" + average);
             }
         });
@@ -270,7 +268,7 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                rating.setText(String.valueOf(average));
+               // rating.setText(String.valueOf(average));
                 System.out.println("rrrrrrrrrrrr" + average);
             }
         });
