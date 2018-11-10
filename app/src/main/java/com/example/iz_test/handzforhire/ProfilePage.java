@@ -22,6 +22,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -73,7 +74,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     ProgressBar progress;
     RelativeLayout rating_lay;
     SessionManager session;
-    LinearLayout posted,history,active;
+    FrameLayout posted,history,active;
     ProgressBar pb;
     Dialog dialog;
 
@@ -106,9 +107,9 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         need_help = (Button) findViewById(R.id.need_help);
         create = (Button) findViewById(R.id.create_job);
         edit = (Button) findViewById(R.id.edit_posted_job);
-        posted = (LinearLayout) findViewById(R.id.posted_job);
-        active = (LinearLayout) findViewById(R.id.active_job);
-        history = (LinearLayout) findViewById(R.id.job_history);
+        posted = (FrameLayout) findViewById(R.id.posted_job);
+        active = (FrameLayout) findViewById(R.id.active_job);
+        history = (FrameLayout) findViewById(R.id.job_history);
         logo = (ImageView)findViewById(R.id.logo);
         profile = (ImageView)findViewById(R.id.profile_image);
         tutorial=(ImageView)findViewById(R.id.tutorial);
