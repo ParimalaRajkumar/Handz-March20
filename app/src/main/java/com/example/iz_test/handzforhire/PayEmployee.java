@@ -683,33 +683,13 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
                             String job_id=object.getString("job_id");
                             child_id = channel + job_id;
                             if(status.equals("success")){
-                                final Dialog dialog = new Dialog(PayEmployee.this);
-                                dialog.setContentView(R.layout.custom_dialog);
-
-                                // set the custom dialog components - text, image and button
-                                TextView text = (TextView) dialog.findViewById(R.id.text);
-                                text.setText("Transaction completed Successfully");
-                                Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-                                // if button is clicked, close the custom dialog
-                                dialogButton.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        dialog.dismiss();
-                                        Map<String, String> map = new HashMap<String, String>();
-                                        map.put("senderId", sender_id);
-                                        map.put("senderName", get_user);
-                                        map.put("text", "FROM HANDZ: Transaction completed on "+transaction_date+" for the amount of $"+job_payout);
-                                        reference1.child(child_id).child("messages").push().setValue(map);
-                                        Intent i =new Intent(PayEmployee.this,ProfilePage.class);
-                                        startActivity(i);
-
-                                    }
-                                });
-
-                                dialog.show();
-                                Window window = dialog.getWindow();
-                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                Map<String, String> map = new HashMap<String, String>();
+                                map.put("senderId", sender_id);
+                                map.put("senderName", get_user);
+                                map.put("text", "FROM HANDZ: Transaction completed on "+transaction_date+" for the amount of $"+job_payout);
+                                reference1.child(child_id).child("messages").push().setValue(map);
+                                Intent i =new Intent(PayEmployee.this,ProfilePage.class);
+                                startActivity(i);
                             }
                         }catch (Exception e){
                             System.out.println("exception "+e.getMessage());

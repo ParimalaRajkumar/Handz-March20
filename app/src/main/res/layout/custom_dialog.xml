@@ -12,11 +12,12 @@
         android:background="#DCDCDC"/>-->
 
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120sp"
         android:gravity="center"
-        android:background="@drawable/error_popup"
         android:orientation="vertical">
 
 

@@ -148,13 +148,13 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
                     total += rb5.getRating();
                     float average = total / 5;
                     average = Math.round(average);
-                    rating.setText(String.valueOf(average));
+                   // rating.setText(String.valueOf(average));
                     System.out.println("rrrrrrrrrrrr" + average);
 
-                    String ratingvalue = rating.getText().toString();
+                   // String ratingvalue = rating.getText().toString();
 
                     Intent i = new Intent(LendEditRating.this, LendEditComments.class);
-                    i.putExtra("rating", ratingvalue);
+                    i.putExtra("rating", average);
                     i.putExtra("userId", user_id);
                     i.putExtra("jobId", job_id);
                     i.putExtra("image",image);
@@ -201,7 +201,7 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
                     total += rb5.getRating();
                     float average = total / 5;
                     average = Math.round(average);
-                    rating.setText(String.valueOf(average));
+                    //rating.setText(String.valueOf(average));
                     System.out.println("rrrrrrrrrrrr" + average);
                 }
             });
@@ -221,7 +221,7 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
                     total += rb5.getRating();
                     float average = total / 5;
                     average = Math.round(average);
-                    rating.setText(String.valueOf(average));
+                    //rating.setText(String.valueOf(average));
                     System.out.println("rrrrrrrrrrrr" + average);
                 }
             });
@@ -241,7 +241,7 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
                     total += rb5.getRating();
                     float average = total / 5;
                     average = Math.round(average);
-                    rating.setText(String.valueOf(average));
+                   // rating.setText(String.valueOf(average));
                     System.out.println("rrrrrrrrrrrr" + average);
                 }
             });
@@ -261,7 +261,7 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
                     total += rb5.getRating();
                     float average = total / 5;
                     average = Math.round(average);
-                    rating.setText(String.valueOf(average));
+                   // rating.setText(String.valueOf(average));
                     System.out.println("rrrrrrrrrrrr" + average);
                 }
             });
@@ -283,7 +283,7 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
                     total += rb5.getRating();
                     float average = total / 5;
                     average = Math.round(average);
-                    rating.setText(String.valueOf(average));
+                   // rating.setText(String.valueOf(average));
                     System.out.println("rrrrrrrrrrrr" + average);
                 }
             });

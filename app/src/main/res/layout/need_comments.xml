@@ -156,7 +156,7 @@
                     android:layout_marginLeft="20sp"
                     android:layout_marginRight="20sp"
                     android:gravity="top"
-                    android:textColorHint="#ACACAB"
+                    android:textColorHint="#000000"
                     android:background="@drawable/border"
                     android:hint="To need"
                     android:paddingLeft="15sp" />
