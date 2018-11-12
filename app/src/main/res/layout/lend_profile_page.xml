@@ -18,7 +18,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10sp"
+                android:layout_marginTop="5sp"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -29,9 +29,9 @@
                     <RelativeLayout
                         android:id="@+id/rela1"
                         android:layout_width="match_parent"
-                        android:layout_height="120sp"
+                        android:layout_height="110sp"
                         android:background="#007679"
-                        android:layout_marginTop="20sp">
+                        android:layout_marginTop="10sp">
 
                         <RelativeLayout
                             android:id="@+id/relay"
@@ -65,7 +65,6 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/relay"
                             android:gravity="center"
-                            android:layout_marginTop="10sp"
                             android:layout_marginRight="18sp"
                             android:layout_alignParentRight="true">
 
@@ -103,8 +102,8 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:layout_width="120sp"
-                        android:layout_height="120sp"
+                        android:layout_width="110sp"
+                        android:layout_height="110sp"
                         android:layout_marginLeft="20sp" >
 
                         <ImageView
@@ -132,14 +131,12 @@
                     android:background="@null"
                     android:textColor="#CBCACA"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textSize="34sp"
-                    android:layout_marginTop="10sp"/>
+                    android:textSize="34sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10sp"
                     android:gravity="center"
                     android:weightSum="2">
 
@@ -149,8 +146,8 @@
                         android:layout_marginLeft="10sp">
 
                         <Button
-                            android:layout_width="80sp"
-                            android:layout_height="80sp"
+                            android:layout_width="75sp"
+                            android:layout_height="75sp"
                             android:id="@+id/find_job"
                             android:textSize="22sp"
                             android:textColor="#000000"
@@ -180,8 +177,8 @@
 
 
                         <Button
-                            android:layout_width="80sp"
-                            android:layout_height="80sp"
+                            android:layout_width="75sp"
+                            android:layout_height="75sp"
                             android:id="@+id/list_view"
                             android:layout_centerHorizontal="true"
                             android:textColor="#000000"
@@ -222,9 +219,9 @@
 
                         <FrameLayout
                             android:id="@+id/pending_job"
-                            android:layout_width="80sp"
+                            android:layout_width="75sp"
                             android:background="@drawable/posted_jobs"
-                            android:layout_height="80sp">
+                            android:layout_height="75sp">
 
                             <TextView
                                 android:id="@+id/txt_postedjobcnt"
@@ -279,9 +276,9 @@
 
                         <FrameLayout
                             android:id="@+id/active_job"
-                            android:layout_width="80sp"
+                            android:layout_width="75sp"
                             android:background="@drawable/active_jobs"
-                            android:layout_height="80sp">
+                            android:layout_height="75sp">
 
                             <TextView
                                 android:id="@+id/txt_activejobscnt"
@@ -318,8 +315,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120sp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginTop="5sp"
                     android:gravity="center"
                     android:weightSum="2">
 
@@ -331,9 +329,9 @@
 
                         <FrameLayout
                             android:id="@+id/job_history"
-                            android:layout_width="80sp"
+                            android:layout_width="75sp"
                             android:background="@drawable/job_history"
-                            android:layout_height="80sp">
+                            android:layout_height="75sp">
 
                             <TextView
                                 android:id="@+id/job_historycnt"
@@ -371,8 +369,8 @@
 
 
                         <Button
-                            android:layout_width="80sp"
-                            android:layout_height="80sp"
+                            android:layout_width="75sp"
+                            android:layout_height="75sp"
                             android:id="@+id/edit_user_profile"
                             android:textSize="22sp"
                             android:textColor="#000000"
@@ -399,11 +397,12 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5sp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="60sp"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginTop="30sp"
                         android:layout_marginLeft="20sp">
@@ -436,7 +435,7 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="60sp"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="30sp"
                         android:layout_marginRight="20sp">
@@ -466,7 +465,7 @@
                     android:id="@+id/tex1"
                     android:layout_width="120sp"
                     android:layout_height="40sp"
-                    android:layout_marginLeft="20sp"
+                    android:layout_marginLeft="15sp"
                     android:layout_alignParentLeft="true"
                     android:background="@drawable/handz"/>
 

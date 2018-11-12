@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#4d4d4d"
+    android:background="#4D4D4D"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:text="$"
                             android:textSize="22sp"
-                            android:paddingLeft="5sp"
+                            android:paddingLeft="3sp"
                             android:textStyle="bold"
                             android:textAllCaps="true"
                             android:textColor="#000000"
@@ -106,8 +106,8 @@
                             android:textColor="#000000"
                             android:background="@null"
                             android:textColorHint="#000000"
-                            android:paddingLeft="5sp"
-                            android:paddingRight="10sp"
+                            android:paddingLeft="3sp"
+                            android:paddingRight="5sp"
                             android:textAllCaps="true"
                             android:textSize="20sp"
                             android:layout_gravity="center"/>
@@ -195,10 +195,10 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="100sp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginLeft="40sp"
+                        android:layout_marginLeft="30sp"
                         android:gravity="right" >
 
                         <TextView
@@ -231,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:text="Out of Pocket \nExpense"
                         android:textSize="18sp"
-                        android:layout_marginLeft="25sp"
+                        android:layout_marginLeft="35sp"
                         android:textStyle="bold|italic"
                         android:textAllCaps="false"
                         android:textColor="#000000"
@@ -384,7 +384,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="100sp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginLeft="30sp"

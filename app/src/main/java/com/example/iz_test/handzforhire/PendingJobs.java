@@ -23,18 +23,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -45,9 +39,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -530,6 +526,16 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             get_employeeid = items.get("employeeid");
             start_time = items.get("start_time");
 
+            DateFormat dateInstance = SimpleDateFormat.getDateInstance();
+            DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat destDf = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
+            try {
+                Date dates = srcDf.parse(get_jobdate);
+                job_date.setText(""+destDf.format(dates));
+            }catch (Exception e){
+
+            }
+
 
             String mStringDate = start_time;
             String oldFormat= "HH:mm:ss";
@@ -537,7 +543,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
             String formatedDate = "";
             SimpleDateFormat dateFormat = new SimpleDateFormat(oldFormat);
-            java.util.Date myDate = null;
+            Date myDate = null;
             try {
                 myDate = dateFormat.parse(mStringDate);
             } catch (java.text.ParseException e) {
@@ -550,29 +556,10 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
             time.setText(formatedDate);
 
+            job_name.setText(get_jobname);
+            pay.setText(get_pay);
+            job_type.setText(get_esti);
 
-            DateFormat dateInstance = SimpleDateFormat.getDateInstance();
-            DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat destDf = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
-            try {
-                java.util.Date dates = srcDf.parse(get_jobdate);
-                System.out.println("date " + get_jobdate);
-                System.out.println("converted " + destDf.format(dates));
-                job_name.setText(get_jobname);
-                job_date.setText(destDf.format(dates));
-                get_pay=get_pay.substring(1);
-                pay.setText("PAY:$"+get_pay);
-                job_type.setText(get_esti);
-                time.setText(start_time);
-
-                //jobId.setText(get_id);
-                //job_name.setText("PAY"+get_jobname);
-                System.out.println("000000"+pay);
-
-            } catch (Exception e) {
-                System.out.println("error " + e.getMessage());
-            }
-            System.out.println("today date " + dateInstance.format(Calendar.getInstance().getTime()));
             return vi;
         }
 
@@ -626,7 +613,6 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
-
                                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }
@@ -666,7 +652,6 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                 startActivity(j);
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 finish();
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
@@ -685,13 +670,13 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
+
                 break;
-            /*case SimpleGestureFilter.SWIPE_DOWN : str = "Swipe Down";
+            case SimpleGestureFilter.SWIPE_DOWN : str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP : str = "Swipe Up";
-                break;*/
+                break;
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();

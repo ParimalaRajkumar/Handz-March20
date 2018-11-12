@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#ffffff"
     android:id="@+id/rel_viewapplicant">
 
     <FrameLayout
@@ -300,7 +301,6 @@
                             android:text="   job\nstatus"
                             android:layout_alignParentEnd="true"
                             android:textAllCaps="true"
-                            android:layout_marginTop="-2sp"
                             android:textStyle="bold"
                             android:textColor="#000000"
                             android:layout_below="@+id/gray"
@@ -328,7 +328,6 @@
                             android:layout_height="wrap_content"
                             android:text="   job\nstatus"
                             android:textAllCaps="true"
-                            android:layout_marginTop="-2sp"
                             android:layout_alignParentEnd="true"
                             android:textColor="#000000"
                             android:visibility="gone"
@@ -411,7 +410,7 @@
                         android:layout_height="wrap_content"
                         android:text="Start Time:"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         android:textAllCaps="false"/>
 
@@ -421,7 +420,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:layout_marginLeft="10sp"
-                        android:textSize="16sp"/>
+                        android:textSize="18sp"/>
 
                 </LinearLayout>
 
@@ -472,6 +471,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textAllCaps="true"
+                        android:text="Pay: "
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:textSize="22sp" />
@@ -483,7 +483,6 @@
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:textStyle="bold"
-                        android:layout_marginLeft="5sp"
                         android:textSize="22sp"/>
 
                 </LinearLayout>
