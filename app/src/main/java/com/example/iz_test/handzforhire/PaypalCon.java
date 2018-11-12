@@ -1,8 +1,11 @@
 package com.example.iz_test.handzforhire;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
+
+import com.listeners.ApiResponseListener;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -303,45 +306,57 @@ public class PaypalCon {
     }
 
 
-    public static String partnerReferralPrefillData(String  hreflink,String accesstoken) {
+    public static void partnerReferralPrefillData(final String  hreflink, final String accesstoken , final ApiResponseListener listener) {
 
-        String merchantid="";
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpget = new HttpGet(hreflink);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String merchantid="";
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpGet httpget = new HttpGet(hreflink);
 
-        try {
-            httpget.addHeader("Authorization", "Bearer " + accesstoken);
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httpget);
-            String responseContent = EntityUtils.toString(response.getEntity());
-            System.out.println("Response partner-referrals Data"+responseContent);
-            try {
-                JSONObject obj = new JSONObject(responseContent);
-                JSONObject obj1=obj.getJSONObject("referral_data");
-                JSONObject obj2=obj1.getJSONObject("customer_data");
-                JSONArray array=obj2.getJSONArray("partner_specific_identifiers");
-                for(int i=0;i<array.length();i++){
-                    JSONObject obj3=array.getJSONObject(i);
-                    String trackiungvalue=obj3.getString("value");
-                    System.out.println("tracking Value "+trackiungvalue);
-                    merchantid=getMerchantIdOfSeller(trackiungvalue,accesstoken);
+                try {
+                    httpget.addHeader("Authorization", "Bearer " + accesstoken);
+                    // Execute HTTP Post Request
+                    HttpResponse response = httpclient.execute(httpget);
+                    String responseContent = EntityUtils.toString(response.getEntity());
+                    System.out.println("Response partner-referrals Data"+responseContent);
+                    try {
+                        JSONObject obj = new JSONObject(responseContent);
+                        JSONObject obj1=obj.getJSONObject("referral_data");
+                        JSONObject obj2=obj1.getJSONObject("customer_data");
+                        JSONArray array=obj2.getJSONArray("partner_specific_identifiers");
+                        for(int i=0;i<array.length();i++){
+                            JSONObject obj3=array.getJSONObject(i);
+                            String trackiungvalue=obj3.getString("value");
+                            System.out.println("tracking Value "+trackiungvalue);
+                            merchantid=getMerchantIdOfSeller(trackiungvalue,accesstoken);
+                        }
+
+
+                    }catch (Exception e)
+                    {
+                        System.out.println("e "+e.getMessage());
+                    }
+
+
+                } catch (ClientProtocolException e) {
+                    System.out.println("Exception "+e.getMessage());
+// TODO Auto-generated catch block
+                } catch (IOException e) {
+                    System.out.println("Exception "+e.getMessage());
+// TODO Auto-generated catch block
                 }
+                final String result = merchantid;
+                ((Activity)listener).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        listener.OnResponseReceived(result, null);
+                    }
+                });
 
-
-            }catch (Exception e)
-            {
-                System.out.println("e "+e.getMessage());
             }
-
-
-        } catch (ClientProtocolException e) {
-            System.out.println("Exception "+e.getMessage());
-// TODO Auto-generated catch block
-        } catch (IOException e) {
-            System.out.println("Exception "+e.getMessage());
-// TODO Auto-generated catch block
-        }
-        return merchantid;
+        }).start();
     }
 
     public static String getMerchantIdOfSeller(String  trackvalue,String accesstoken) {

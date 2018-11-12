@@ -64,6 +64,7 @@ import com.linkedin.platform.listeners.ApiListener;
 import com.linkedin.platform.listeners.ApiResponse;
 import com.linkedin.platform.listeners.AuthListener;
 import com.linkedin.platform.utils.Scope;
+import com.listeners.ApiResponseListener;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONException;
@@ -78,7 +79,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LendEditUserProfile extends Activity implements SimpleGestureFilter.SimpleGestureListener {
+public class LendEditUserProfile extends Activity implements SimpleGestureFilter.SimpleGestureListener,ApiResponseListener<String ,String> {
 
     ImageView image, photo_bg;
     Button home, email, update, paypal_login, terms_condition, logo,add_link;
@@ -210,9 +211,7 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
         if(i.getStringExtra("isfrom").equals("edit")) {
 
         }else if(i.getStringExtra("isfrom").equals("paypal")){
-            merchantid= PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn());
-            System.out.println("Merchant id "+merchantid);
-            UpdatePaypal();
+            PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(),this);
         }
 
         try {
@@ -519,6 +518,12 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
         }
 
         return path;
+    }
+
+    @Override
+    public void OnResponseReceived(String s, String s2) {
+        merchantid = s;
+        UpdatePaypal();
     }
 
     public static class RealPathUtil {

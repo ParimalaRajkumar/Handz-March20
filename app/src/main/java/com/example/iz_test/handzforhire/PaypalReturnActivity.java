@@ -70,12 +70,14 @@ public class PaypalReturnActivity extends Activity {
         }else if(paypalredirect.equals("7")){
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,SummaryAdd.class);
+          //  in_payment.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
         }
         else if(paypalredirect.equals("8")){
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,SummarySubtract.class);
+           // in_payment.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
         }
@@ -83,6 +85,7 @@ public class PaypalReturnActivity extends Activity {
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,ApplyJob.class);
             in_payment.putExtra("isfrom", "paypal");
+           // in_payment.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(in_payment);
         }
     }
