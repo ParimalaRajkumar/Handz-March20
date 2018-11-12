@@ -96,13 +96,13 @@
                     android:textAllCaps="true"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     android:textColor="#DCDCDC"/>
 
                 <ImageView
                     android:id="@+id/close_btn"
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
+                    android:layout_width="35sp"
+                    android:layout_height="35sp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10sp"

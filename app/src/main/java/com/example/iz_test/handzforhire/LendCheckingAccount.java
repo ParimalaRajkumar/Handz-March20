@@ -472,6 +472,7 @@ public class LendCheckingAccount extends Activity implements SimpleGestureFilter
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                 startActivity(j);
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 finish();
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
@@ -482,6 +483,7 @@ public class LendCheckingAccount extends Activity implements SimpleGestureFilter
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
 
                 break;

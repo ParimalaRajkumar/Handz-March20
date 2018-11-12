@@ -431,10 +431,10 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
                 finish();
 
                 break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+           /* case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;
+                break;*/
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();

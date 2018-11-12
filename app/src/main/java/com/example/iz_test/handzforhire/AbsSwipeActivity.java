@@ -44,12 +44,12 @@ public abstract class AbsSwipeActivity extends Activity implements SimpleGesture
 //                finish();
 
                 break;
-            case SimpleGestureFilter.SWIPE_DOWN:
+           /* case SimpleGestureFilter.SWIPE_DOWN:
                 str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP:
                 str = "Swipe Up";
-                break;
+                break;*/
         }
     }
 

@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4d4d4d"
+    android:background="#1f1f1f"
+    android:alpha="100"
     android:gravity="center">
 
     <!--<View

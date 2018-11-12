@@ -308,6 +308,8 @@ public class LendLeaveRating extends Activity implements SimpleGestureFilter.Sim
                 case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                     Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                     startActivity(j);
+                    overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                    finish();
                     break;
                 case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
                     Intent i;
@@ -322,12 +324,13 @@ public class LendLeaveRating extends Activity implements SimpleGestureFilter.Sim
                     i.putExtra("state", Profilevalues.state);
                     i.putExtra("zipcode", Profilevalues.zipcode);
                     startActivity(i);
-
+                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+                    finish();
                     break;
-                case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+                /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                     break;
                 case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                    break;
+                    break;*/
 
             }
             //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();

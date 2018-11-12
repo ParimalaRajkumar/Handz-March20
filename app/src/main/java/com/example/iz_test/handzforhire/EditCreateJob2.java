@@ -580,10 +580,10 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
                 finish();
 
                 break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;
+                break;*/
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();

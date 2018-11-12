@@ -605,12 +605,11 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
                 finish();
-
                 break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;
+                break;*/
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();

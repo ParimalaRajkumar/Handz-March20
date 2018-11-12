@@ -1032,13 +1032,12 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_from_right ,R.anim.slide_to_left);
                 finish();
-
                 break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
                 break;
-
+*/
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }

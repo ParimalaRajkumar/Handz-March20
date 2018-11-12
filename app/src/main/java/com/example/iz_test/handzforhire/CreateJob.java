@@ -1174,10 +1174,10 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
                 break;
-            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+           /* case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;
+                break;*/
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
