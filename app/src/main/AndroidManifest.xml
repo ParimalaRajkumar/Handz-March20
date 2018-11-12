@@ -75,7 +75,9 @@
 
         <activity
             android:name=".ApplyJob"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:launchMode="singleInstance"
+            />
 
         <activity android:name=".JobDetails" />
 
@@ -317,7 +319,9 @@
 
         <activity
             android:name=".SummarySubtract"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:launchMode="singleInstance"
+            />
 
         <activity
             android:name=".RehireJob"

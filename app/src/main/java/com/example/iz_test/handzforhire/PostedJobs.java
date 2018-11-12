@@ -679,18 +679,19 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
             rel_viewapplicant.setOnClickListener(new View.OnClickListener()
             {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     int pos= (int) v.getTag();
                     HashMap<String, String> items = data.get(pos);
                     if (items.get("no_of_applicants").equals("0")) {
-                        final Dialog dialog = new Dialog(activity);
+                        /*final Dialog dialog = new Dialog(activity);
                         dialog.setContentView(R.layout.custom_dialog);
 
                         // set the custom dialog components - text, image and button
                         TextView text = (TextView) dialog.findViewById(R.id.text);
                         text.setText("No Job Applied");
                         Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-                        // if button is clicked, close the custom dialog
+                        //if button is clicked, close the custom dialog
                         dialogButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -702,7 +703,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
                         Window window = dialog.getWindow();
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        return;
+                        return;*/
                     } else {
                         Intent i = new Intent(activity, ViewApplicant.class);
                         i.putExtra("jobId", items.get("jobId"));

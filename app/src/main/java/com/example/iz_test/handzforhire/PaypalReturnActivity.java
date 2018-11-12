@@ -73,5 +73,17 @@ public class PaypalReturnActivity extends Activity {
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
         }
+        else if(paypalredirect.equals("8")){
+
+            Intent in_payment=new Intent(PaypalReturnActivity.this,SummarySubtract.class);
+            in_payment.putExtra("isfrom", "paypal");
+            startActivity(in_payment);
+        }
+        else if(paypalredirect.equals("9")){
+
+            Intent in_payment=new Intent(PaypalReturnActivity.this,ApplyJob.class);
+            in_payment.putExtra("isfrom", "paypal");
+            startActivity(in_payment);
+        }
     }
 }

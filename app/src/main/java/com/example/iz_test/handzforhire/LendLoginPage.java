@@ -119,6 +119,11 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
         new_employee.setTypeface(tf);
         forgot_password.setTypeface(tf);
 
+        String fontPath1 = "fonts/calibri.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        email.setTypeface(tf1);
+        password.setTypeface(tf1);
+
         initParameters();
         initViews();
         permission();

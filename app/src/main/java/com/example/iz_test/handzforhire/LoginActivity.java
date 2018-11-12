@@ -593,6 +593,9 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
                                 JSONObject picture = object.getJSONObject("picture");
                                 JSONObject data = picture.getJSONObject("data");
                                 String url = data.getString("url");
+
+
+
                                 Intent i = new Intent(LoginActivity.this, RegisterPage3.class);
                                 HashMap<String,String> map= new HashMap<String, String>();
                                 i.putExtra("isfrom", "reg");

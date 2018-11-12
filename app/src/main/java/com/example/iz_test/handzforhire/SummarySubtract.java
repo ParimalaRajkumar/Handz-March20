@@ -1,6 +1,5 @@
 package com.example.iz_test.handzforhire;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -11,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -30,6 +30,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -100,6 +101,205 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
     Dialog dialog;
     SessionManager session;
     TextView create_job,edit;
+    private String merchantid;
+    String app_value = "HandzForHire@~";
+    private static final String PAYPAL_UPDATEURL = Constant.SERVER_URL+"user_merchant_id_update?";
+    public static String KEY_USERID = "user_id";
+    public static String MERCHANTID = "merchant_id";
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(intent != null && intent.getStringExtra("isfrom").equals("paypal")){
+            merchantid= PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn());
+            System.out.println("Merchant id "+merchantid);
+            UpdatePaypal();
+        }
+    }
+
+
+    public  void UpdatePaypal(){
+        dialog.show();
+ /*       System.out.println("URL "+ PAYPAL_UPDATEURL+APP_KEY+"="+value+"&"+KEY_USERID+"="+id+"&"+MERCHANTID+"="+merchantid+"&device=android");
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, PAYPAL_UPDATEURL+APP_KEY+"="+value+"&"+KEY_USERID+"="+id+"&"+MERCHANTID+"="+merchantid+"&device=android",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //Toast.makeText(Registrationpage3.this,response,Toast.LENGTH_LONG).show();
+
+                        System.out.println("eeeee:"+response);
+                        onResponserecieved(response,1);
+                        dialog.dismiss();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        dialog.dismiss();
+                        if (error instanceof TimeoutError ||error instanceof NoConnectionError) {
+                            final Dialog dialog = new Dialog(EditUserProfile.this);
+                            dialog.setContentView(R.layout.custom_dialog);
+                            // set the custom dialog components - text, image and button
+                            TextView text = (TextView) dialog.findViewById(R.id.text);
+                            text.setText("Error Connecting To Network");
+                            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                            // if button is clicked, close the custom dialog
+                            dialogButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            dialog.show();
+                            Window window = dialog.getWindow();
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        }else if (error instanceof AuthFailureError) {
+                            Toast.makeText(getApplicationContext(),"Authentication Failure while performing the request",Toast.LENGTH_LONG).show();
+                        }else if (error instanceof NetworkError) {
+                            Toast.makeText(getApplicationContext(),"Network error while performing the request",Toast.LENGTH_LONG).show();
+                        }else {
+                            try {
+                                String responseBody = new String(error.networkResponse.data, "utf-8");
+                                JSONObject jsonObject = new JSONObject(responseBody);
+                                String status = jsonObject.getString("msg");
+                                if (!status.equals("")) {
+                                    // custom dialog
+                                    final Dialog dialog = new Dialog(EditUserProfile.this);
+                                    dialog.setContentView(R.layout.custom_dialog);
+
+                                    // set the custom dialog components - text, image and button
+                                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                                    text.setText(status);
+                                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                                    // if button is clicked, close the custom dialog
+                                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+
+                                    dialog.show();
+                                    Window window = dialog.getWindow();
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                }
+
+                            } catch (JSONException e) {
+                                //Handle a malformed json response
+                                System.out.println("volley error ::" + e.getMessage());
+                            } catch (UnsupportedEncodingException errors) {
+                                System.out.println("volley error ::" + errors.getMessage());
+                            }
+                        }
+
+                    }
+                }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+              *//*  params.put(APP_KEY,value);
+                params.put(KEY_USERID,id);
+                params.put(MERCHANTID, merchantid);
+                params.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println("Params "+params);*//*
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        //stringRequest.setRetryPolicy(new DefaultRetryPolicy(timeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(stringRequest);*/
+
+        String url= PAYPAL_UPDATEURL+APP_KEY+"="+app_value+"&"+KEY_USERID+"="+id+"&"+MERCHANTID+"="+merchantid+"&device=android";
+
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response)
+                    {
+                        dialog.dismiss();
+                        Log.d("Response", response.toString());
+                        System.out.println("updatea merchantd" + response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        dialog.dismiss();
+                        if (error instanceof TimeoutError ||error instanceof NoConnectionError) {
+                            final Dialog dialog = new Dialog(SummarySubtract.this);
+                            dialog.setContentView(R.layout.custom_dialog);
+                            // set the custom dialog components - text, image and button
+                            TextView text = (TextView) dialog.findViewById(R.id.text);
+                            text.setText("Error Connecting To Network");
+                            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                            // if button is clicked, close the custom dialog
+                            dialogButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            dialog.show();
+                            Window window = dialog.getWindow();
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        }else if (error instanceof AuthFailureError) {
+                            Toast.makeText(getApplicationContext(),"Authentication Failure while performing the request",Toast.LENGTH_LONG).show();
+                        }else if (error instanceof NetworkError) {
+                            Toast.makeText(getApplicationContext(),"Network error while performing the request",Toast.LENGTH_LONG).show();
+                        }else {
+                            try {
+                                String responseBody = new String(error.networkResponse.data, "utf-8");
+                                JSONObject jsonObject = new JSONObject(responseBody);
+                                String status = jsonObject.getString("msg");
+                                if (!status.equals("")) {
+                                    // custom dialog
+                                    final Dialog dialog = new Dialog(SummarySubtract.this);
+                                    dialog.setContentView(R.layout.custom_dialog);
+
+                                    // set the custom dialog components - text, image and button
+                                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                                    text.setText(status);
+                                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                                    // if button is clicked, close the custom dialog
+                                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+
+                                    dialog.show();
+                                    Window window = dialog.getWindow();
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                }
+
+                            } catch (JSONException e) {
+                                //Handle a malformed json response
+                                System.out.println("volley error ::" + e.getMessage());
+                            } catch (UnsupportedEncodingException errors) {
+                                System.out.println("volley error ::" + errors.getMessage());
+                            }
+                        }
+                    }
+                }
+        );
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(getRequest);
+    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -399,13 +599,26 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
                                     dialog.setContentView(R.layout.custom_dialog);
 
                                     // set the custom dialog components - text, image and button
-                                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                                    final TextView text = (TextView) dialog.findViewById(R.id.text);
                                     text.setText(status);
                                     Button dialogButton = (Button) dialog.findViewById(R.id.ok);
                                     // if button is clicked, close the custom dialog
                                     dialogButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
-                                        public void onClick(View v) {
+                                        public void onClick(View v)
+                                        {
+                                            if(text.getText().toString().equals(getString(R.string.paypal_link_error))) {
+
+                                                new Thread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        Intent intent = Utility.GetPaypalLinkIntent(session , SummarySubtract.this , Constant.SUMMARY_SUBTRACT);
+                                                        startActivityForResult(intent ,Constant.LINK_PAYPAL );
+                                                    }
+                                                }).start();
+
+                                            }
+
                                             dialog.dismiss();
                                         }
                                     });

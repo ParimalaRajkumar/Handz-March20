@@ -356,7 +356,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1{
 
                  final  String lastname = obj.getString("lastname");
 
-                 final String picture = obj.getString("picture");
+                 final  String picture = obj.getString("picture");
 
                  final  String id = obj.getString("id");
 
@@ -521,6 +521,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1{
                 i.putExtra("state",get_state);
                 i.putExtra("city",get_city);
                 i.putExtra("zipcode",get_zipcode);
+
                 startActivity(i);
                 finish();
             }
