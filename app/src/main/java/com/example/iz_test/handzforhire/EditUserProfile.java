@@ -54,6 +54,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.Glideconstants;
 import com.glide.RoundedCornersTransformation;
+import com.listeners.ApiResponseListener;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONException;
@@ -66,7 +67,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditUserProfile extends Activity implements SimpleGestureFilter.SimpleGestureListener {
+public class EditUserProfile extends Activity implements SimpleGestureFilter.SimpleGestureListener,ApiResponseListener<String ,String> {
 
     ImageView image, photo_bg;
     Button home, email, update, paypal_login, terms_condition, logo;
@@ -174,9 +175,9 @@ public class EditUserProfile extends Activity implements SimpleGestureFilter.Sim
         if(i.getStringExtra("isfrom").equals("edit")) {
 
         }else if(i.getStringExtra("isfrom").equals("paypal")){
-            merchantid= PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn());
+            PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(),this);
             System.out.println("Merchant id "+merchantid);
-            UpdatePaypal();
+            //UpdatePaypal();
         }
 
         try {
@@ -486,6 +487,13 @@ public class EditUserProfile extends Activity implements SimpleGestureFilter.Sim
         }
 
         return path;
+    }
+
+    @Override
+    public void OnResponseReceived(String s, String s2) {
+        merchantid = s;
+        UpdatePaypal();
+
     }
 
     public static class RealPathUtil {

@@ -37,6 +37,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.listeners.ApiResponseListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,7 +46,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LendRegisterPage3 extends Activity implements ResponseListener1{
+public class LendRegisterPage3 extends Activity implements ResponseListener1 , ApiResponseListener<String ,String> {
 
         Button next;
         EditText u_name, pass, re_pass;
@@ -168,7 +169,7 @@ public class LendRegisterPage3 extends Activity implements ResponseListener1{
             if(i.getStringExtra("isfrom").equals("reg")) {
 
             }else if(i.getStringExtra("isfrom").equals("paypal")){
-                merchantid= PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn());
+                PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(),this);
                 System.out.println("Merchant id "+merchantid);
                 password=session.ReadPass();
                 registerUser();
@@ -434,5 +435,10 @@ public class LendRegisterPage3 extends Activity implements ResponseListener1{
         return null;
     }
 
+    @Override
+    public void OnResponseReceived(String s, String s2) {
+        merchantid = s;
+        //UpdatePaypal();
     }
+}
 

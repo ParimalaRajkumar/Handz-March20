@@ -36,6 +36,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.Glideconstants;
 import com.glide.RoundedCornersTransformation;
+import com.listeners.ApiResponseListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,7 +47,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApplyJob extends Activity implements SimpleGestureFilter.SimpleGestureListener{
+public class ApplyJob extends BackKeyHandlerActivity implements SimpleGestureFilter.SimpleGestureListener , ApiResponseListener<String ,String>{
 
     private static final String JOB_URL = Constant.SERVER_URL+"apply_jobs";
     private static final String GET_AVERAGERAT = Constant.SERVER_URL+"get_average_rating";
@@ -80,10 +81,8 @@ public class ApplyJob extends Activity implements SimpleGestureFilter.SimpleGest
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if(intent != null && intent.getStringExtra("isfrom").equals("paypal")){
-            merchantid= PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn());
-            System.out.println("Merchant id "+merchantid);
-            UpdatePaypal();
+        if(intent.getStringExtra("isfrom") !=null && intent.getStringExtra("isfrom").equals("paypal")){
+            PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(), ApplyJob.this);
         }
     }
 
@@ -502,7 +501,7 @@ public class ApplyJob extends Activity implements SimpleGestureFilter.SimpleGest
                                         @Override
                                         public void onClick(View v)
                                         {
-                                            if(text.getText().toString().equals(getString(R.string.paypal_link_error))) {
+                                            if(text.getText().toString().equals(getString(R.string.paypal_link_error_applyjob))) {
 
                                                 new Thread(new Runnable() {
                                                     @Override
@@ -665,4 +664,9 @@ public class ApplyJob extends Activity implements SimpleGestureFilter.SimpleGest
         return super.dispatchTouchEvent(event);
     }
 
+    @Override
+    public void OnResponseReceived(String i, String s) {
+        merchantid = i;
+        UpdatePaypal();
+    }
 }

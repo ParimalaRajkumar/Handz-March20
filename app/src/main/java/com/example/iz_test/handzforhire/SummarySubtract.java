@@ -33,6 +33,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.listeners.ApiResponseListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +42,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SummarySubtract extends Activity implements SimpleGestureFilter.SimpleGestureListener{
+public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGestureFilter.SimpleGestureListener,ApiResponseListener<String ,String> {
 
     private static final String URL = Constant.SERVER_URL+"create_job";
     private static final String EDIT_URL = Constant.SERVER_URL+"edit_job";
@@ -110,10 +111,9 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if(intent != null && intent.getStringExtra("isfrom").equals("paypal")){
-            merchantid= PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn());
-            System.out.println("Merchant id "+merchantid);
-            UpdatePaypal();
+        if(intent.getStringExtra("isfrom") !=null && intent.getStringExtra("isfrom").equals("paypal")){
+
+            PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(),this);
         }
     }
 
@@ -353,7 +353,7 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
         session_status = check.get(SessionManager.CHECKBOX_STATUS);
         System.out.println("sssssssssssss:session:status:::::"+session_status+"...check:::"+check);
 
-        if(edit_job.equals("yes"))
+        if(edit_job != null && edit_job.equals("yes"))
         {
             create_job.setVisibility(View.INVISIBLE);
             edit.setVisibility(View.VISIBLE);
@@ -1056,4 +1056,10 @@ public class SummarySubtract extends Activity implements SimpleGestureFilter.Sim
         return super.dispatchTouchEvent(event);
     }
 
+    @Override
+    public void OnResponseReceived(String s, String s2) {
+
+        merchantid = s;
+        UpdatePaypal();
+    }
 }

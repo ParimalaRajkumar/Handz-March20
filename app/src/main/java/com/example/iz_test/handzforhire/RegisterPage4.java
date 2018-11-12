@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.app.Config;
+import com.listeners.ApiResponseListener;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -47,7 +48,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RegisterPage4 extends Activity  implements ResponseListener1{
+public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiResponseListener<String ,String> {
 
     TextView text1,text2,text3,text4,text5,text6;
 
@@ -124,7 +125,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1{
         {
             merchantid="";
         }else if(i.getStringExtra("isfrom").equals("paypal")){
-            merchantid= PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn());
+            PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(),this);
         }
 
 
@@ -536,4 +537,9 @@ public class RegisterPage4 extends Activity  implements ResponseListener1{
     }
 
 
+    @Override
+    public void OnResponseReceived(String s, String s2) {
+        merchantid = s;
+        //UpdatePaypal();
+    }
 }

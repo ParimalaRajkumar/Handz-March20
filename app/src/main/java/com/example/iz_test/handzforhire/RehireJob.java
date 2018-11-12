@@ -80,7 +80,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
     public static String XAPP_KEY = "X-APP-KEY";
     public static String JOB_ID = "job_id";
     String value = "HandzForHire@~";
-    String job_id,jobId,paytext,pay_amount,flexible_status,job_estimated,hourr,latitude,longitude,employeeId;
+    String job_id,jobId,paytext,pay_amount,flexible_status,job_estimated,hourr,latitude,longitude,employeeId,current_location;
     ProgressDialog progress_dialog;
     RelativeLayout pay_lay,payment_layout,date_layout,time_layout,estimate_layout,duration_layout;
     CheckBox checkBox;
@@ -733,6 +733,10 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         i.putExtra("expected_hours",expected_hours);
         i.putExtra("payment_type", expected_hours);
         i.putExtra("payment_amount",amount);
+        i.putExtra("current_location", current_location);
+        i.putExtra("post_address", post_address);
+        i.putExtra("latitude",latitude);
+        i.putExtra("longitude", longitude);
         i.putExtra("flexible_status", flexible_status);
         i.putExtra("estimated_amount", job_estimated);
         i.putExtra("job_expire", job_expire);
