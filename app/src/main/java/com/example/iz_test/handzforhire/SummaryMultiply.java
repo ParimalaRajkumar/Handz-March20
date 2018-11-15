@@ -63,7 +63,8 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
         hours.setText(expected_hours);
         String job_estimated = String.valueOf(Float.valueOf(amount)*Float.valueOf(expected_hours));
         System.out.println("sssssssssssss:job_estimated:multiply:"+job_estimated);
-        total.setText(job_estimated);
+        String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+        total.setText(job_pay_value);
 
         pay_amount.addTextChangedListener(tw);
         hours.addTextChangedListener(tw1);
@@ -191,7 +192,8 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
             String new_hours = hours.getText().toString();
             String job_estimated = String.valueOf(Float.valueOf(new_pay_amount)*Float.valueOf(new_hours));
             System.out.println("sssssssssssss:job_estimated:multiply:"+job_estimated);
-            total.setText(job_estimated);
+            String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+            total.setText(job_pay_value);
         }
     };
 
@@ -233,7 +235,8 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
             String new_amount = pay_amount.getText().toString();
             String estimated = String.valueOf(Float.valueOf(new_hours)*Float.valueOf(new_amount));
             System.out.println("sssssssssssss:estimated:multiply:"+estimated);
-            total.setText(estimated);
+            String job_pay_value = String.format("%.2f", Float.valueOf(estimated));
+            total.setText(job_pay_value);
         }
     };
 

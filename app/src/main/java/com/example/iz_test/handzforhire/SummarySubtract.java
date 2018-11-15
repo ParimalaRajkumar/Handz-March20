@@ -369,7 +369,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         String hour = hourly_value.getText().toString();
         String expected = expected_value.getText().toString();
         hour_expected = String.valueOf(Float.valueOf(hour)*Float.valueOf(expected));
-        job_payout.setText(hour_expected);
+         String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
+        job_payout.setText(job_pay_value);
 
         String s1 = "97.1";
         String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(hour_expected));
@@ -665,7 +666,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 params.put(JOB_CITY,city);
                 params.put(JOB_STATE,state);
                 params.put(JOB_ZIPCODE,zipcode);
-                params.put(ESTIMATED_PAYMENT,expense);
+                params.put(ESTIMATED_PAYMENT,payout);
                 params.put(FLEXIBLE,flexible_status);
                 params.put(PAYPAL_FEE,fee);
                 params.put(JOB_PAYOUT,payout);
@@ -758,7 +759,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
             String new_pay_amount = hourly_value.getText().toString();
             String new_hours = expected_value.getText().toString();
             String job_estimated = String.valueOf(Float.valueOf(new_pay_amount)*Float.valueOf(new_hours));
-            job_payout.setText(job_estimated);
+             String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+            job_payout.setText(job_pay_value);
 
             String s1 = "97.1";
             String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(job_estimated));
@@ -831,8 +833,9 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
             String new_hours = expected_value.getText().toString();
             String new_amount = hourly_value.getText().toString();
             String estimated = String.valueOf(Float.valueOf(new_hours)*Float.valueOf(new_amount));
-            job_payout.setText(estimated);
-
+            String job_pay_value = String.format("%.2f", Float.valueOf(estimated));
+            job_payout.setText(job_pay_value);
+			
             String s1 = "97.1";
             String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(estimated));
             String s2 = "130";
@@ -955,7 +958,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 params.put(JOB_CITY,city);
                 params.put(JOB_STATE,state);
                 params.put(JOB_ZIPCODE,zipcode);
-                params.put(ESTIMATED_PAYMENT,expense);
+                params.put(ESTIMATED_PAYMENT,payout);
                 params.put(FLEXIBLE,flexible_status);
                 params.put(PAYPAL_FEE,fee);
                 params.put(JOB_PAYOUT,payout);
@@ -964,7 +967,6 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 params.put(SUB_CATEGORY,sub_category);
                 params.put(CATEGORY_COLOR,job_category_color);
                 params.put(DELIST,delist);
-                params.put(ESTIMATED_PAYMENT,estimated_amount);
                 params.put(JOB_ID,job_id);
                 params.put(Constant.DEVICE, Constant.ANDROID);
                 return params;

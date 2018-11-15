@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,14 +14,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
-import android.text.format.DateUtils;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -30,8 +25,6 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,14 +37,12 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bigkoo.pickerview.MyOptionsPickerView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,7 +53,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -119,7 +109,6 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
         layout = (LinearLayout)findViewById(R.id.relay);
         category_layout = (LinearLayout)findViewById(R.id.linear);
         duration_layout = (RelativeLayout)findViewById(R.id.linear3);
-
         category_name = (TextView)findViewById(R.id.cat_name);
         next = (Button) findViewById(R.id.next);
         job_name = (EditText) findViewById(R.id.descrip);
@@ -728,7 +717,7 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
             flexible_status = "no";
         }
 
-        expected_hours = end_time_text.getText().toString().replaceAll("[^0-9]","");
+        expected_hours = end_time_text.getText().toString();
         System.out.println("eeeeeeeee:expected_hours:::"+expected_hours);
         job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
         System.out.println("eeeeeeeee:estimated:::"+job_estimated);
@@ -1001,9 +990,6 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             // TODO Auto-generated method stub
 
-
-            //TextView textview = (TextView) getActivity().findViewById(R.id.textView1);
-
             Calendar calander2 = Calendar.getInstance();
 
             calander2.setTimeInMillis(0);
@@ -1015,7 +1001,6 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
             int mm = monthOfYear + 1;
             String month = (mm < 10) ? "0" + mm : "" + mm;
             date_format = year + "-" + month + "-" + dayOfMonth;
-
 
             DateFormat dateformat_US = DateFormat.getDateInstance(DateFormat.LONG, Locale.US);
             String StringDateformat_US = dateformat_US.format(SelectedDate);
@@ -1072,7 +1057,6 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                 startActivity(j);
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 finish();
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
@@ -1083,14 +1067,13 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
 
                 break;
-            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;*/
+                break;
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();

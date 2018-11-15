@@ -384,6 +384,9 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
             final LinearLayout layout_refuse=(LinearLayout)vi.findViewById(R.id.layout_refuse);
             final LinearLayout layout_hold=(LinearLayout)vi.findViewById(R.id.layout_hold);
             //final LinearLayout layout_hire=(LinearLayout)vi.findViewById(R.id.layout_hire);
+            final LinearLayout red_lay=(LinearLayout)findViewById(R.id.red_layout);
+            final LinearLayout gry_lay=(LinearLayout)findViewById(R.id.red_layout);
+
 
             HashMap<String, String> items = new HashMap<String, String>();
             items = data.get(position);
@@ -484,11 +487,12 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                     refusee();
                 }
             });
-
-            gray.setTag(position);
-            red.setTag(position);
+            re.setTag(position);
+            gry.setTag(position);
+            //gray.setTag(position);
+            //red.setTag(position);
             //green.setTag(position);
-            gray.setOnClickListener(new View.OnClickListener() {
+            gry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos= (int) v.getTag();
@@ -498,7 +502,7 @@ public class PendingJobs extends Activity implements SimpleGestureFilter.SimpleG
                     return;
                 }
             });
-            red.setOnClickListener(new View.OnClickListener() {
+            re.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos= (int) v.getTag();

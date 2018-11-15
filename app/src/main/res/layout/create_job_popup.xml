@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4d4d4d"
+    android:background="#4D4D4D"
     android:gravity="center">
 
     <LinearLayout
@@ -16,12 +16,32 @@
         android:layout_height="wrap_content"
         android:textColor="#BFBFBF"
         android:textSize="18sp"
-        android:padding="20sp"
-        android:gravity="center"
+        android:padding="10sp"
+        android:gravity="left"
         android:textStyle="bold"
-        android:text="Reminder that the job you just created will move to archived posted jobs folder 24 hours after the set start time. If you do not wish the job to move to archived posted jobs folder, update the date and/or time under &quot;edit a job.&quot; Anyone who you have already hired for this job will not be affected. "/>
+        android:text="The job you just created will move to archived jobs 24 hours after the start time."/>
 
-    <LinearLayout
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#BFBFBF"
+            android:textSize="18sp"
+            android:padding="10sp"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:text="This will not affect any active jobs or persons you have already hired."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#BFBFBF"
+            android:textSize="18sp"
+            android:padding="10sp"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:text="You can change the start time in &quot;edit a job&quot; or reactivate a job that has been archieved.  "/>
+
+        <LinearLayout
         android:id="@+id/lay"
         android:layout_width="match_parent"
         android:layout_height="40sp"

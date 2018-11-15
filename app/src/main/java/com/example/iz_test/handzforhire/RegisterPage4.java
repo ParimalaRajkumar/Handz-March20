@@ -51,7 +51,6 @@ import java.util.Map;
 public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiResponseListener<String ,String> {
 
     TextView text1,text2,text3,text4,text5,text6;
-
     public static String PASS = "password";
     public static String EMAIL = "email";
     public static String FNAME = "firstname";

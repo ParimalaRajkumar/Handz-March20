@@ -65,7 +65,6 @@ public class EditPostedAdapter extends BaseAdapter {
         String get_type = items.get("type");
         String get_id = items.get("jobId");
 
-
         DateFormat dateInstance = SimpleDateFormat.getDateInstance();
         DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat destDf = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
@@ -84,11 +83,13 @@ public class EditPostedAdapter extends BaseAdapter {
         expected.setTypeface(font);
         pay.setTypeface(font);
         date.setTypeface(font);
-        amount.setText(get_amount);
         amount.setTypeface(font);
+        amount.setText(get_amount);
         type.setText(get_type);
         type.setTypeface(font);
         jobId.setText(get_id);
+
+        System.out.println("cccccccccccc:type::::"+get_type);
 
         return vi;
     }

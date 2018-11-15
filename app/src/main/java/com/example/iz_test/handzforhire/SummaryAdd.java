@@ -369,7 +369,8 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
         String hour = hourly_value.getText().toString();
         String expected = expected_value.getText().toString();
         hour_expected = String.valueOf(Float.valueOf(hour)*Float.valueOf(expected));
-        job_payout.setText(hour_expected);
+        String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
+        job_payout.setText(job_pay_value);
 
         String s1 = "100";
         String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(hour_expected));
@@ -667,7 +668,7 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                 params.put(JOB_CITY,city);
                 params.put(JOB_STATE,state);
                 params.put(JOB_ZIPCODE,zipcode);
-                params.put(ESTIMATED_PAYMENT,expense);
+                params.put(ESTIMATED_PAYMENT,payout);
                 params.put(FLEXIBLE,flexible_status);
                 params.put(PAYPAL_FEE,fee);
                 params.put(JOB_PAYOUT,payout);
@@ -762,7 +763,8 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
             String new_hours = expected_value.getText().toString();
             String job_estimated = String.valueOf(Float.valueOf(new_pay_amount)*Float.valueOf(new_hours));
             System.out.println("sssssssssssss:job_estimated:multiply:"+job_estimated);
-            job_payout.setText(job_estimated);
+             String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+            job_payout.setText(job_pay_value);
 
             String s1 = "100";
             String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(job_estimated));
@@ -824,7 +826,8 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
             String new_amount = hourly_value.getText().toString();
             String estimated = String.valueOf(Float.valueOf(new_hours)*Float.valueOf(new_amount));
             System.out.println("sssssssssssss:estimated:multiply:"+estimated);
-            job_payout.setText(estimated);
+             String job_pay_value = String.format("%.2f", Float.valueOf(estimated));
+            job_payout.setText(job_pay_value);
 
             String s1 = "100";
             String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(estimated));
@@ -951,7 +954,7 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                 params.put(JOB_CITY,city);
                 params.put(JOB_STATE,state);
                 params.put(JOB_ZIPCODE,zipcode);
-                params.put(ESTIMATED_PAYMENT,expense);
+                params.put(ESTIMATED_PAYMENT,payout);
                 params.put(FLEXIBLE,flexible_status);
                 params.put(PAYPAL_FEE,fee);
                 params.put(JOB_PAYOUT,payout);
@@ -960,7 +963,6 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                 params.put(SUB_CATEGORY,sub_category);
                 params.put(CATEGORY_COLOR,job_category_color);
                 params.put(DELIST,delist);
-                params.put(ESTIMATED_PAYMENT,estimated_amount);
                 params.put(JOB_ID,job_id);
                 params.put(Constant.DEVICE, Constant.ANDROID);
                 return params;

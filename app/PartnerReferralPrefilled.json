@@ -1,0 +1,52 @@
+{
+    "customer_data": {
+         "person_details": {
+             "nationality_country_code": "US",
+             "home_address": {
+                 "country_code": "US"
+             }
+         },
+        "partner_specific_identifiers": [
+                                         {
+                                         "type": "TRACKING_ID",
+                                         "value": "KJETKESX"
+                                         }
+                                         ]
+    },
+    "requested_capabilities": [
+                               {
+                               "capability": "API_INTEGRATION",
+                               "api_integration_preference": {
+                               "partner_id": "QLMCC9XV8A6GS",
+                               "rest_api_integration": {
+                               "integration_method": "PAYPAL",
+                               "integration_type": "THIRD_PARTY"
+                               },
+                               "rest_third_party_details": {
+                               "partner_client_id": "AUJXB6Fw9-KIrL9Igu4ou05tf7mWydAqV8cHu-OPcWeZJfrUgwp0CXYo9-pG7GukKaM35WKGakqjoClj",
+                               "feature_list": [
+                                                "PAYMENT",
+                                                "REFUND",
+                                                "PARTNER_FEE",
+                                                "DELAY_FUNDS_DISBURSEMENT"
+                                                ]
+                               }
+                               }
+                               }
+                               ],
+    "web_experience_preference": {
+        "partner_logo_url": "http://162.144.41.156/~izaapinn/handzforhire/assets/images/handz_logo.png",
+        "return_url": "https://handzadmin.com",
+        "action_renewal_url": "https://handzadmin.com"
+    },
+    "collected_consents": [
+                           {
+                           "type": "SHARE_DATA_CONSENT",
+                           "granted": true
+                           }
+                           ],
+    "products": [
+                 "EXPRESS_CHECKOUT"
+                 ]    
+}
+

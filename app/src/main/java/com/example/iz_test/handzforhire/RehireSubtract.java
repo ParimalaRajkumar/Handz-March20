@@ -142,6 +142,10 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
         duration = i.getStringExtra("duration");
         job_id = i.getStringExtra("job_id");
         employeeId = i.getStringExtra("employeeId");
+        current_location = i.getStringExtra("current_location");
+        post_address = i.getStringExtra("post_address");
+        latitude = i.getStringExtra("latitude");
+        longitude = i.getStringExtra("longitude");
 
         detector = new SimpleGestureFilter(this,this);
 
@@ -155,7 +159,8 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
         String hour = hourly_value.getText().toString();
         String expected = expected_value.getText().toString();
         hour_expected = String.valueOf(Float.valueOf(hour)*Float.valueOf(expected));
-        job_payout.setText(hour_expected);
+        String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
+        job_payout.setText(job_pay_value);
 
         String s1 = "97.1";
         String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(hour_expected));
@@ -181,14 +186,14 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onBackPressed();
-                String hourly_wage = hourly_value.getText().toString();
-                String expected_hours = expected_value.getText().toString();
-                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
-                Intent i = new Intent(RehireSubtract.this,RehireMultiply.class);
-                i.putExtra("payment_amount",hourly_wage);
-                i.putExtra("expected_hours",expected_hours);
-                startActivity(i);
+                onBackPressed();
+//                String hourly_wage = hourly_value.getText().toString();
+//                String expected_hours = expected_value.getText().toString();
+//                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
+//                Intent i = new Intent(RehireSubtract.this,RehireMultiply.class);
+//                i.putExtra("payment_amount",hourly_wage);
+//                i.putExtra("expected_hours",expected_hours);
+//                startActivity(i);
             }
         });
 
@@ -225,6 +230,7 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(RehireSubtract.this,ProfilePage.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
         });
@@ -387,7 +393,7 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
                 params.put(JOB_CITY,city);
                 params.put(JOB_STATE,state);
                 params.put(JOB_ZIPCODE,zipcode);
-                params.put(ESTIMATED_PAYMENT,expense);
+                params.put(ESTIMATED_PAYMENT,payout);
                 params.put(FLEXIBLE,flexible_status);
                 params.put(PAYPAL_FEE,fee);
                 params.put(JOB_PAYOUT,payout);
@@ -569,7 +575,6 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                 startActivity(j);
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 finish();
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
@@ -585,13 +590,13 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
+
                 break;
-            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;*/
+                break;
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();

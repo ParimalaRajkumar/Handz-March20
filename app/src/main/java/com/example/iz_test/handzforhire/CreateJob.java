@@ -18,7 +18,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -80,7 +79,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
     public static String XAPP_KEY = "X-APP-KEY";
     String value = "HandzForHire@~";
     static ArrayList<HashMap<String, String>> job_title = new ArrayList<HashMap<String, String>>();
-    String job_category_name,job_id,payment_type,pay_amount,flexible_status,job_estimated,paytext,hourr;
+    String job_category_name,job_id,payment_type,pay_amount,flexible_status,job_estimated,paytext,hourr,time_value;
     RelativeLayout pay_lay,payment_layout,date_layout,time_layout,estimate_layout;
     Integer cat;
     CheckBox checkBox;
@@ -126,7 +125,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         job_name = (EditText) findViewById(R.id.descrip);
         job_description = (EditText) findViewById(R.id.detail);
         date_text = (TextView) findViewById(R.id.date_text);
-
 
         start_time_text = (TextView) findViewById(R.id.start_time_text);
         end_time_text = (TextView) findViewById(R.id.end_time_text);
@@ -639,8 +637,13 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                             String min = (minutes < 10) ? "0" + minutes : "" + minutes;
                             String hour_day = (hour < 10) ? "0" + hour : "" + hour;
                             start_time = hour_day + ":" + min + ":" + sec;
-                            System.out.println("77777777:start_time::::::"+start_time);
-
+                            System.out.println("77777777:start_time::::::"+start_time+"..."+hour);
+                            String text = (hour < 10 ? "0" : "") + hour;
+                            System.out.println("77777777:text::::::"+text);
+                            int text1 = Integer.parseInt(text) + 1;
+                            System.out.println("77777777:text1::::::"+text1);
+                            time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
+                            System.out.println("77777777:time_value::::::"+time_value);
                             hourr = hour_day;
                             System.out.println("77777777:hourr::::::"+hourr);
 
@@ -929,6 +932,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             System.out.println("eeeeeeeee:time:::"+expected_hours+"...."+amount);
             job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
             System.out.println("eeeeeeeee:estimated:::"+job_estimated);
+            System.out.println("eeeeeeeee:time_value:::"+time_value);
             String job_expire = date_format + " " + st_time ;
             System.out.println("eeeeeeeee:job_expire:::"+job_expire);
             String hours = hour.getText().toString();
@@ -943,7 +947,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             i.putExtra("sub_category", sub_category);
             i.putExtra("job_decription",description);
             i.putExtra("job_date", date_format);
-            i.putExtra("start_time",st_time);
+            i.putExtra("start_time",time_value);
             i.putExtra("expected_hours",expected_hours);
             i.putExtra("duration",duration);
             i.putExtra("payment_amount",amount);
@@ -1160,7 +1164,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 Intent j = new Intent(getApplicationContext(), SwitchingSide.class);
                 startActivity(j);
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 finish();
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
@@ -1171,13 +1174,13 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                 i.putExtra("state", Profilevalues.state);
                 i.putExtra("zipcode", Profilevalues.zipcode);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
+
                 break;
-           /* case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
             case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;*/
+                break;
 
         }
         //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
