@@ -1,43 +1,43 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
+ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
 	package
-		ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:3:5-45
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
+		ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:3:5-45
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-		ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+		ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-		ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:1-7:12
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+		ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:1-7:12
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:2:11-69
+		ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:5:5-20
+ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:5:5-20
 uses-permission#android.permission.INTERNET
-ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:6:5-66
+ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:6:5-66
 	android:name
-		ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml:6:22-64
+		ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml:6:22-64
 uses-sdk
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-		ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+		ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-		ADDED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
-		INJECTED from /Users/mohanbabu/Downloads/Handz-october-16/linkedin-sdk/src/main/AndroidManifest.xml
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+		ADDED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Izaap-Handz\linkedin-sdk\src\main\AndroidManifest.xml
