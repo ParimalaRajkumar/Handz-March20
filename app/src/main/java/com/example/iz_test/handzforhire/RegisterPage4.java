@@ -514,6 +514,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
                 session.NeedLogin(get_email,get_password,user_name,usertype,user_id,get_address,get_city,get_state,get_zipcode,user_type);
 
                 Intent i = new Intent(RegisterPage4.this,ProfilePage.class);
+                i.putExtra("login_type" ,"facebook");
                 i.putExtra("userId",user_id);
                 i.putExtra("username",user_name);
                 i.putExtra("email",get_email);

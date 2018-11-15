@@ -172,7 +172,8 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         profile_name.setTypeface(tf2);
 
         //paymentCheck();
-        getProfileimage();
+
+        getProfileimage(getIntent());
         getUsername();
         getAverageRatigng();
         edit_profile.setOnClickListener(new View.OnClickListener() {
@@ -446,7 +447,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
     }
 
-    public void getProfileimage()
+    public void getProfileimage(final Intent intent)
     {
         dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_URL,
@@ -454,7 +455,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                     @Override
                     public void onResponse(String response) {
                         System.out.println("ggggggggget:profile:" + response);
-                        onResponserecieved2(response, 2);
+                        onResponserecieved2(response, 2 ,intent);
                         dialog.dismiss();
                     }
                 },
@@ -552,7 +553,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put(XAPP_KEY, value);
                 map.put(KEY_USERID, id);
-                map.put("type", "employer");
+                map.put("type", "employee");
                 map.put(Constant.DEVICE, Constant.ANDROID);
                 System.out.println("Params "+map);
                 return map;
@@ -563,7 +564,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         requestQueue.add(stringRequest);
     }
 
-    public void onResponserecieved2(String jsonobject, int requesttype) {
+    public void onResponserecieved2(String jsonobject, int requesttype ,Intent intent) {
         String status = null;
 
          profile_image = null;
@@ -578,7 +579,15 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
             if(status.equals("success"))
             {
-                profile_image = jResult.getString("profile_image");
+                if(intent.getStringExtra("login_type").equals("facebook"))
+                {
+                    profile_image = "http://graph.facebook.com/"+id+"picture?type=large";
+                }
+                else
+                {
+                    profile_image = jResult.getString("profile_image");
+                }
+
                 profilename = jResult.getString("profile_name");
                 user_name = jResult.getString("username");
                 employer_rating = jResult.getString("employer_rating");
