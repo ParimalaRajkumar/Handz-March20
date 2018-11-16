@@ -86,6 +86,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     float x1,x2;
     float y1, y2;
     RequestMethods req;
+    HashMap<String, String> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +122,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         TextView txt = (TextView) findViewById(R.id.textView5);
 
         session = new SessionManager(getApplicationContext());
-        HashMap<String, String> user = session.getUserDetails();
+        user = session.getUserDetails();
         // get name
         user_name = user.get(SessionManager.KEY_USERNAME);
         id = user.get(SessionManager.KEY_ID);
@@ -172,7 +173,8 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         profile_name.setTypeface(tf2);
 
         //paymentCheck();
-        getProfileimage();
+
+        getProfileimage(getIntent());
         getUsername();
         getAverageRatigng();
         edit_profile.setOnClickListener(new View.OnClickListener() {
@@ -446,7 +448,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
     }
 
-    public void getProfileimage()
+    public void getProfileimage(final Intent intent)
     {
         dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_URL,
@@ -454,7 +456,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                     @Override
                     public void onResponse(String response) {
                         System.out.println("ggggggggget:profile:" + response);
-                        onResponserecieved2(response, 2);
+                        onResponserecieved2(response, 2 ,intent);
                         dialog.dismiss();
                     }
                 },
@@ -552,7 +554,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put(XAPP_KEY, value);
                 map.put(KEY_USERID, id);
-                map.put("type", "employer");
+                map.put("type", "employee");
                 map.put(Constant.DEVICE, Constant.ANDROID);
                 System.out.println("Params "+map);
                 return map;
@@ -563,7 +565,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         requestQueue.add(stringRequest);
     }
 
-    public void onResponserecieved2(String jsonobject, int requesttype) {
+    public void onResponserecieved2(String jsonobject, int requesttype ,Intent intent) {
         String status = null;
 
          profile_image = null;
@@ -578,7 +580,15 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
             if(status.equals("success"))
             {
-                profile_image = jResult.getString("profile_image");
+                if(user.get("facebook_id")!=null )
+                {
+                    profile_image = "http://graph.facebook.com/"+user.get("facebook_id")+"/picture?type=large";
+                }
+                else
+                {
+                    profile_image = jResult.getString("profile_image");
+                }
+
                 profilename = jResult.getString("profile_name");
                 user_name = jResult.getString("username");
                 employer_rating = jResult.getString("employer_rating");

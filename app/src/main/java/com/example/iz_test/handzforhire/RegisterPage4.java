@@ -74,7 +74,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
     String user_name, password, retype_password, address;
     String first, last, add1, add2, city, state, zip, email, re_email;
     private static final String REGISTER_URL = Constant.SERVER_URL+"user_register";
-    String get_email,get_address,get_city,get_state,get_zipcode,user_id,user_type,get_password;
+    String get_email,get_address,get_city,get_state,get_zipcode,user_id,facebook_id,user_type,get_password;
     String merchantid;
     Dialog dialog;
     String registrationdet;
@@ -181,6 +181,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
             email = obj.getString("email");
 
             re_email =obj.getString("retype_email");
+
 
             address = add1 + add2;
 
@@ -333,7 +334,6 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
                 i.putExtra("city",get_city);
                 i.putExtra("zipcode",get_zipcode);
                 startActivity(i);
-                startActivity(i);
                 finish();
             }
             else
@@ -358,7 +358,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
 
                  final  String picture = obj.getString("picture");
 
-                 final  String id = obj.getString("id");
+                 facebook_id = obj.getString("id");
 
                  final String name = obj.getString("name");
 
@@ -468,7 +468,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
                     params.put("user_type", user_type);
                     params.put("devicetoken", devicetoken);
                     params.put("merchantID", merchantid);
-                    params.put("id", id);
+                    params.put("id", facebook_id);
                     params.put("profilePicture", picture);
                     return params;
                 }
@@ -511,7 +511,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
 
 
 
-                session.NeedLogin(get_email,get_password,user_name,usertype,user_id,get_address,get_city,get_state,get_zipcode,user_type);
+                session.NeedLogin(get_email,get_password,user_name,usertype,user_id,facebook_id,get_address,get_city,get_state,get_zipcode,user_type);
 
                 Intent i = new Intent(RegisterPage4.this,ProfilePage.class);
                 i.putExtra("userId",user_id);
@@ -521,7 +521,6 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
                 i.putExtra("state",get_state);
                 i.putExtra("city",get_city);
                 i.putExtra("zipcode",get_zipcode);
-
                 startActivity(i);
                 finish();
             }

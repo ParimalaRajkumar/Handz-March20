@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
     private static final String TAG = "";
     public static String deviceId;
     String value = "HandzForHire@~";
-    String user_id, user_name, user_email, user_password, user_address, user_city, user_state, user_zipcode,user_type;
+    String facebook_user_id ,user_id, user_name, user_email, user_password, user_address, user_city, user_state, user_zipcode,user_type;
     TextView new_employee,forgot;
 
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -85,9 +85,12 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
     private static final int REQUEST_PHONE_STATE = 0;
     SessionManager session;
     String userType = "employer";
+
     private CallbackManager callbackManager;
     private AccessToken accessToken;
     Dialog dialog;
+    private String user_first_name ,user_last_name ,user_profile_pic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -585,44 +588,18 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
                                 GraphResponse response) {
                             //Log.d(TAG, “Graph Object :” + object);
                             try {
-                                String name = object.getString("name");
-                                String id = object.getString("id");
-                                String email = object.getString("email");
-                                String first_name = object.getString("first_name");
-                                String last_name = object.getString("last_name");
+                                user_name = object.getString("name");
+                                facebook_user_id = object.getString("id");
+                                user_email = object.getString("email");
+                                user_first_name = object.getString("first_name");
+                                user_last_name = object.getString("last_name");
                                 JSONObject picture = object.getJSONObject("picture");
                                 JSONObject data = picture.getJSONObject("data");
-                                String url = data.getString("url");
+                               // user_profile_pic = data.getString("url");
+                                user_profile_pic = "http://graph.facebook.com/"+facebook_user_id+"/picture?type=large";
 
+                                CheckFacebookId(object);
 
-
-                                Intent i = new Intent(LoginActivity.this, RegisterPage3.class);
-                                HashMap<String,String> map= new HashMap<String, String>();
-                                i.putExtra("isfrom", "reg");
-                                map.put("firstname",first_name);
-                                map.put("lastname",last_name);
-                                map.put("picture",url);
-                                map.put("id",id);
-                                map.put("name",name);
-                                map.put("email",email);
-                                map.put("devicetoken",deviceId);
-                                map.put("user_type","employee");
-                                JSONObject objects = new JSONObject(map);
-                                session.saveregistrationdet(objects.toString());
-                                session.savePaypalRedirect("5");
-
-
-                              //  tvName.setText(“Welcome, ” + name);
-                                System.out.println("Object "+object);
-                                System.out.println("Name "+name);
-                                System.out.println("id "+id);
-                                System.out.println("email "+email);
-                                System.out.println("first_name "+first_name);
-                                System.out.println("last_name "+last_name);
-                                System.out.println("url "+url);
-
-
-                                startActivity(i);
                               //  Log.d(TAG, “Name :” + name);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -636,6 +613,167 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void CheckFacebookId(JSONObject obj) {
+
+            try {
+
+                dialog.show();
+
+                // String url = "https://www.handzadmin.com/service/users/facebook";
+                String url = "https://www.handzadmin.com/users/facebook";
+
+                StringRequest putRequest = new StringRequest(Request.Method.PUT, url,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response) {
+                                // response
+                                dialog.dismiss();
+                                try {
+                                    onResponserecieveds(response);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                System.out.println("facebook login response "+response);
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // error
+                                //Log.d("Error.Response", response);
+                                dialog.dismiss();
+
+                                if (error instanceof TimeoutError ||error instanceof NoConnectionError) {
+                                    final Dialog dialog = new Dialog(LoginActivity.this);
+                                    dialog.setContentView(R.layout.custom_dialog);
+                                    // set the custom dialog components - text, image and button
+                                    TextView text = (TextView) dialog.findViewById(R.id.text);
+                                    text.setText("Error Connecting To Network");
+                                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                                    // if button is clicked, close the custom dialog
+                                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+
+                                    dialog.show();
+                                    Window window = dialog.getWindow();
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                }else if (error instanceof AuthFailureError) {
+                                    Toast.makeText(getApplicationContext(),"Authentication Failure while performing the request",Toast.LENGTH_LONG).show();
+                                }else if (error instanceof NetworkError) {
+                                    Toast.makeText(getApplicationContext(),"Network error while performing the request",Toast.LENGTH_LONG).show();
+                                }else {
+                                    try {
+                                        String responseBody = new String(error.networkResponse.data, "utf-8");
+                                        JSONObject jsonObject = new JSONObject(responseBody);
+                                        System.out.println("json object "+jsonObject);
+                                        String status = jsonObject.getString("msg");
+                                        if (!status.equals("")) {
+                                            // custom dialog
+                                            final Dialog dialog = new Dialog(LoginActivity.this);
+                                            dialog.setContentView(R.layout.custom_dialog);
+
+                                            // set the custom dialog components - text, image and button
+                                            TextView text = (TextView) dialog.findViewById(R.id.text);
+                                            text.setText(status);
+                                            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                                            // if button is clicked, close the custom dialog
+                                            dialogButton.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    dialog.dismiss();
+                                                }
+                                            });
+
+                                            dialog.show();
+                                            Window window = dialog.getWindow();
+                                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                        }
+
+                                    } catch (JSONException e) {
+                                        //Handle a malformed json response
+                                        System.out.println("volley error ::" + e.getMessage());
+                                    } catch (UnsupportedEncodingException errors) {
+                                        System.out.println("volley error ::" + errors.getMessage());
+                                    }
+                                }
+
+                            }
+                        }
+                ) {
+
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String>  params = new HashMap<String, String> ();
+                        params.put("X-APP-KEY", value);
+                        params.put("email", user_email);
+                        params.put("firstname", user_first_name);
+                        params.put("lastname", user_last_name);
+                        params.put("name", user_name);
+                        params.put("user_type", userType);
+                        params.put("devicetoken", deviceId);
+                        params.put("merchantID", "");
+                        params.put("id", facebook_user_id);
+                        params.put("profilePicture", user_profile_pic);
+                        return params;
+                    }
+
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(this);
+                requestQueue.add(putRequest);
+
+            }catch (Exception e){
+                System.out.println("Exception "+e.getMessage());
+            }
+    }
+    private void onResponserecieveds(String response) throws JSONException {
+
+        JSONObject object = new JSONObject(response);
+        if(object.getString("if_already_exists").equals("yes"))
+        {
+           JSONObject userdata = object.getJSONObject("userdata");
+            user_id = userdata.getString("id");
+            user_name = userdata.getString("username");
+            user_email = userdata.getString("email");
+            user_address = "";
+            user_city ="";
+            user_state = "";
+            user_zipcode = "";
+            user_type = userdata.getString("usertype");
+            session.NeedLogin(user_email,user_password,user_name,userType,user_id,facebook_user_id,"","","","","user_type");
+            Intent i = new Intent(LoginActivity.this,ProfilePage.class);
+            startActivity(i);
+            finish();
+        }else
+        {
+            Intent i = new Intent(LoginActivity.this, RegisterPage3.class);
+            HashMap<String,String> map= new HashMap<String, String>();
+            i.putExtra("isfrom", "reg");
+            map.put("firstname",user_first_name);
+            map.put("lastname",user_last_name);
+            map.put("picture",user_profile_pic);
+            map.put("id",facebook_user_id);
+            map.put("name",user_name);
+            map.put("email",user_email);
+            map.put("devicetoken",deviceId);
+            map.put("user_type","employee");
+            JSONObject objects = new JSONObject(map);
+            session.saveregistrationdet(objects.toString());
+            session.savePaypalRedirect("5");
+            startActivity(i);
+        }
+
     }
 
     @Override
