@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
     private static final String TAG = "";
     public static String deviceId;
     String value = "HandzForHire@~";
-    String user_id, user_name, user_email, user_password, user_address, user_city, user_state, user_zipcode,user_type;
+    String facebook_user_id ,user_id, user_name, user_email, user_password, user_address, user_city, user_state, user_zipcode,user_type;
     TextView new_employee,forgot;
 
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
     private static final int REQUEST_PHONE_STATE = 0;
     SessionManager session;
     String userType = "employer";
+
     private CallbackManager callbackManager;
     private AccessToken accessToken;
     Dialog dialog;
@@ -588,13 +589,14 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
                             //Log.d(TAG, “Graph Object :” + object);
                             try {
                                 user_name = object.getString("name");
-                                user_id = object.getString("id");
+                                facebook_user_id = object.getString("id");
                                 user_email = object.getString("email");
                                 user_first_name = object.getString("first_name");
                                 user_last_name = object.getString("last_name");
                                 JSONObject picture = object.getJSONObject("picture");
                                 JSONObject data = picture.getJSONObject("data");
-                                user_profile_pic = data.getString("url");
+                               // user_profile_pic = data.getString("url");
+                                user_profile_pic = "http://graph.facebook.com/"+facebook_user_id+"/picture?type=large";
 
                                 CheckFacebookId(object);
 
@@ -722,7 +724,7 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
                         params.put("user_type", userType);
                         params.put("devicetoken", deviceId);
                         params.put("merchantID", "");
-                        params.put("id", user_id);
+                        params.put("id", facebook_user_id);
                         params.put("profilePicture", user_profile_pic);
                         return params;
                     }
@@ -734,17 +736,23 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
             }catch (Exception e){
                 System.out.println("Exception "+e.getMessage());
             }
-
     }
-
     private void onResponserecieveds(String response) throws JSONException {
 
-        JSONObject jobj = new JSONObject(response);
-        if(jobj.getString("if_already_exists").equals("yes"))
+        JSONObject object = new JSONObject(response);
+        if(object.getString("if_already_exists").equals("yes"))
         {
-            session.NeedLogin(user_email,user_password,user_name,"employee",user_id,"","","","","empolyee");
+           JSONObject userdata = object.getJSONObject("userdata");
+            user_id = userdata.getString("id");
+            user_name = userdata.getString("username");
+            user_email = userdata.getString("email");
+            user_address = "";
+            user_city ="";
+            user_state = "";
+            user_zipcode = "";
+            user_type = userdata.getString("usertype");
+            session.NeedLogin(user_email,user_password,user_name,userType,user_id,facebook_user_id,"","","","","user_type");
             Intent i = new Intent(LoginActivity.this,ProfilePage.class);
-            i.putExtra("login_type","facebook");
             startActivity(i);
             finish();
         }else
@@ -755,7 +763,7 @@ public class LoginActivity extends AppCompatActivity implements ResponseListener
             map.put("firstname",user_first_name);
             map.put("lastname",user_last_name);
             map.put("picture",user_profile_pic);
-            map.put("id",user_id);
+            map.put("id",facebook_user_id);
             map.put("name",user_name);
             map.put("email",user_email);
             map.put("devicetoken",deviceId);

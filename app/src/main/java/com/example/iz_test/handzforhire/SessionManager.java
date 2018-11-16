@@ -30,6 +30,7 @@ public class SessionManager {
 
     // Email address (make variable public to access from outside)
     public static final String KEY_ID = "id";
+    public static final String KEY_FACEBOOK_ID = "facebook_id";
     public static final String KEY_USERNAME = "user_name";
     public static final String KEY_PASSWORD = "pass_word";
     public static final String KEY_EMAIL = "email";
@@ -219,6 +220,27 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void NeedLogin(String email,String password,String name,String type,String id,String facebook_id ,String address,String city,String state,String zipcode,String usertype){
+        // Storing login value as TRUE
+        editor.putBoolean(LOGIN_STATUS, true);
+        editor.putBoolean(IS_LOGIN, false);
+
+        // Storing name in preferences
+        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_PASSWORD, password);
+        editor.putString(KEY_USERNAME, name);
+        editor.putString(KEY_TYPE, type);
+        editor.putString(KEY_ID, id);
+        editor.putString(KEY_FACEBOOK_ID,facebook_id);
+        editor.putString(KEY_ADDRESS, address);
+        editor.putString(KEY_CITY, city);
+        editor.putString(KEY_STATE, state);
+        editor.putString(KEY_ZIPCODE, zipcode);
+        editor.putString(USER_TYPE, usertype);
+
+        editor.commit();
+    }
+
     public void savelocation(String lat,String lon){
 
         // Storing name in preferences
@@ -269,6 +291,7 @@ public class SessionManager {
         user.put(KEY_ZIPCODE, pref.getString(KEY_ZIPCODE, null));
         user.put(KEY_STATE, pref.getString(KEY_STATE, null));
         user.put(USER_TYPE, pref.getString(USER_TYPE, null));
+        user.put(KEY_FACEBOOK_ID , pref.getString(KEY_FACEBOOK_ID, null));
 
         user.put(ID, pref.getString(ID, null));
         user.put(USERNAME, pref.getString(USERNAME, null));

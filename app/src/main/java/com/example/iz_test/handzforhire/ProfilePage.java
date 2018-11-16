@@ -86,6 +86,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     float x1,x2;
     float y1, y2;
     RequestMethods req;
+    HashMap<String, String> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +122,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         TextView txt = (TextView) findViewById(R.id.textView5);
 
         session = new SessionManager(getApplicationContext());
-        HashMap<String, String> user = session.getUserDetails();
+        user = session.getUserDetails();
         // get name
         user_name = user.get(SessionManager.KEY_USERNAME);
         id = user.get(SessionManager.KEY_ID);
@@ -579,9 +580,9 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
             if(status.equals("success"))
             {
-                if(intent.getStringExtra("login_type").equals("facebook"))
+                if(user.get("facebook_id")!=null )
                 {
-                    profile_image = "http://graph.facebook.com/"+id+"picture?type=large";
+                    profile_image = "http://graph.facebook.com/"+user.get("facebook_id")+"/picture?type=large";
                 }
                 else
                 {
