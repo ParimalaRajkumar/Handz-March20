@@ -159,7 +159,7 @@ public class ChatAdapter extends BaseAdapter {
             holder.content.setLayoutParams(lp);
             layoutParams = (LinearLayout.LayoutParams) holder.txtMessage.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
-            holder.txtMessage.setPadding(30,0,10,0);
+            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),0,10,context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
             holder.txtMessage.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
             holder.txtMessage.setLayoutParams(layoutParams);
 
