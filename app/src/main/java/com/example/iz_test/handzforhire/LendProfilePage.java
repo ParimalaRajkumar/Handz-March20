@@ -51,7 +51,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
     Button job_list,edit,find_map,need_help;
     String id,address,city,state,zipcode,profile_image,profilename,email,username;
     String employee_rating,pending_notification,posted_notification,active_notification,jobhistory_notification;
-    TextView user;
+    TextView user_name;
     private static final String USERNAME_URL = Constant.SERVER_URL+"get_username";
     private static final String GET_URL = Constant.SERVER_URL+"get_profile_image";
     private static final String GET_AVERAGERAT = Constant.SERVER_URL+"get_average_rating";
@@ -71,6 +71,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
             "along with that website url and logo";
     private SimpleGestureFilter detector;
     RequestMethods req;
+    HashMap<String, String> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +95,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         need_help = (Button) findViewById(R.id.need_help);
         job_list = (Button) findViewById(R.id.list_view);
         edit = (Button) findViewById(R.id.edit_user_profile);
-        user = (TextView) findViewById(R.id.text1);
+        user_name = (TextView) findViewById(R.id.text1);
         rating_value = (TextView) findViewById(R.id.text3);
         profile = (ImageView)findViewById(R.id.profile_image);
         tutorial=(ImageView)findViewById(R.id.tutorial);
@@ -111,7 +112,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         TextView txt = (TextView) findViewById(R.id.txt);
 
         session = new SessionManager(getApplicationContext());
-        HashMap<String, String> user = session.getUserDetails();
+         user = session.getUserDetails();
         // get name
         //user_name = user.get(SessionManager.USERNAME);
         id = user.get(SessionManager.ID);
@@ -420,7 +421,14 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
             status = jResult.getString("status");
 
             if (status.equals("success")) {
-                profile_image = jResult.getString("profile_image");
+                if(user.get("facebook_id")!=null)
+                {
+                    profile_image = "http://graph.facebook.com/"+user.get("facebook_id")+"/picture?type=large";
+                }
+                else
+                {
+                    profile_image = jResult.getString("profile_image");
+                }
                 profilename = jResult.getString("profile_name");
                 username = jResult.getString("username");
                 employee_rating = jResult.getString("employee_rating");

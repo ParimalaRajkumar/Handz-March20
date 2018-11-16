@@ -59,7 +59,7 @@ import java.util.Map;
 
 import static android.Manifest.permission.READ_PHONE_STATE;
 
-public class LoginActivity extends AbsLoginPage implements ResponseListener1 {
+public class LoginActivity extends AbsLoginPage  {
 
     @Override
     void handleViewClick(int resId) {
@@ -75,9 +75,14 @@ public class LoginActivity extends AbsLoginPage implements ResponseListener1 {
     }
 
     @Override
+    int getResourceLayout() {
+        return R.layout.need_login;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.need_login);
+
         initParameters();
         initFacebookViews();
 
@@ -90,7 +95,7 @@ public class LoginActivity extends AbsLoginPage implements ResponseListener1 {
             }
         });
 
-        forgot.setOnClickListener(new View.OnClickListener() {
+        forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(LoginActivity.this,ForgotPassword.class);
@@ -98,165 +103,45 @@ public class LoginActivity extends AbsLoginPage implements ResponseListener1 {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
 
-            public void onClick(View view) {
-
-                email_id = email.getText().toString().trim();
-                pass = password.getText().toString().trim();
-                if (TextUtils.isEmpty(email_id)) {
-                    // custom dialog
-                    final Dialog dialog = new Dialog(LoginActivity.this);
-                    dialog.setContentView(R.layout.custom_dialog);
-
-                    // set the custom dialog components - text, image and button
-                    TextView text = (TextView) dialog.findViewById(R.id.text);
-                    text.setText("Must Fill In \"Email\" Box");
-                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-                    // if button is clicked, close the custom dialog
-                    dialogButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            dialog.dismiss();
-                        }
-                    });
-
-                    dialog.show();
-                    Window window = dialog.getWindow();
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    return;
-                }
-                if (TextUtils.isEmpty(pass)) {
-
-                    // custom dialog
-                    final Dialog dialog = new Dialog(LoginActivity.this);
-                    dialog.setContentView(R.layout.custom_dialog);
-
-                    // set the custom dialog components - text, image and button
-                    TextView text = (TextView) dialog.findViewById(R.id.text);
-                    text.setText("Must Fill In \"Password\" Box");
-                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-                    // if button is clicked, close the custom dialog
-                    dialogButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    });
-
-                    dialog.show();
-                    Window window = dialog.getWindow();
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    return;
-                }
-                if(email_id.matches(emailPattern))
-                {
-                    type = "email";
-                }
-
-                login();
-            }
-        });
     }
 
+    @Override
+    void launchProfile() {
 
-
-    public void permission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int hasSMSPermission = checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
-            if (hasSMSPermission != PackageManager.PERMISSION_GRANTED) {
-                if (!shouldShowRequestPermissionRationale(Manifest.permission.READ_PHONE_STATE)) {
-                    showMessageOKCancel("You need to allow access to Read Phone State",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                        requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE},
-                                                REQUEST_PHONE_STATE);
-                                    }
-                                }
-                            });
-                    return;
-                }
-                requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE},
-                        REQUEST_PHONE_STATE);
-                return;
-            }
-           // getDeviceId();
-        }
-        //getDeviceId();
-    }
-/*
-    public void getDeviceId()
-    {
-        TelephonyManager telephonyManager;
-        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        deviceId = telephonyManager.getDeviceId();
-        System.out.println("8888888888888:device id:"+ deviceId);
-    }*/
-
-    private boolean checkPermission() {
-        return (ContextCompat.checkSelfPermission(getApplicationContext(), READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED);
+        session.NeedLogin(user_email,user_password,user_name,userType,user_id,facebook_user_id,"","","","","user_type");
+        Intent i = new Intent(LoginActivity.this,ProfilePage.class);
+        startActivity(i);
+        finish();
     }
 
-    private void requestPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{READ_PHONE_STATE}, REQUEST_PHONE_STATE);
+    @Override
+    void launchRegister() {
+        Intent i = new Intent(LoginActivity.this, RegisterPage3.class);
+        HashMap<String,String> map= new HashMap<String, String>();
+        i.putExtra("isfrom", "reg");
+        map.put("firstname",user_first_name);
+        map.put("lastname",user_last_name);
+        map.put("picture",user_profile_pic);
+        map.put("id",facebook_user_id);
+        map.put("name",user_name);
+        map.put("email",user_email);
+        map.put("devicetoken",deviceId);
+        map.put("user_type","employee");
+        JSONObject objects = new JSONObject(map);
+        session.saveregistrationdet(objects.toString());
+        session.savePaypalRedirect("5");
+        startActivity(i);
     }
 
-
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_PHONE_STATE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getApplicationContext(), "Permission Granted, Now you can access", Toast.LENGTH_SHORT).show();
-                    //getDeviceId();
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Permission Denied, You cannot access", Toast.LENGTH_SHORT).show();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (shouldShowRequestPermissionRationale(READ_PHONE_STATE)) {
-                            showMessageOKCancel("You need to allow access to both the permissions",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                requestPermissions(new String[]{READ_PHONE_STATE},
-                                                        REQUEST_PHONE_STATE);
-                                            }
-                                        }
-                                    });
-                            return;
-                        }
-                    }
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
-
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new android.support.v7.app.AlertDialog.Builder(LoginActivity.this)
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show();
-    }
-
-
-    public void login() {
+ /*   public void login() {
 
         dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("need:login:response::" + response);
+
                         onResponserecieved(response, 2);
                         dialog.dismiss();
                     }
@@ -333,19 +218,17 @@ public class LoginActivity extends AbsLoginPage implements ResponseListener1 {
                 map.put(KEY_TYPE, type);
                 map.put(KEY_DEVICETOKEN, deviceId);
                 map.put(Constant.DEVICE, Constant.ANDROID);
-                System.out.println("Params "+map);
                 return map;
             }
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-    }
+    }*/
 
-
+/*
     public void onResponserecieved(String jsonobject, int requesttype) {
         String status = null;
-
         String userdata = null;
 
         try {
@@ -369,20 +252,11 @@ public class LoginActivity extends AbsLoginPage implements ResponseListener1 {
                     user_city = object.getString("city");
                     user_state = object.getString("state");
                     user_zipcode = object.getString("zipcode");
-
-                    Profilevalues.user_id=user_id;
-                    Profilevalues.email=user_email;
-                    Profilevalues.address=user_address;
-                    Profilevalues.city=user_city;
-                    Profilevalues.state=user_state;
-                    Profilevalues.zipcode=user_zipcode;
-                    Profilevalues.username=user_name;
                 }
                 if(user_type.equals("employee"))
                 {
                     final Dialog dialog = new Dialog(LoginActivity.this);
                     dialog.setContentView(R.layout.custom_dialog);
-
                     // set the custom dialog components - text, image and button
                     TextView text = (TextView) dialog.findViewById(R.id.text);
                     text.setText("Please input valid details");
@@ -435,20 +309,5 @@ public class LoginActivity extends AbsLoginPage implements ResponseListener1 {
             e.printStackTrace();
         }
 
-    }
-
-
-    AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
-        @Override
-        protected void onCurrentAccessTokenChanged(
-                AccessToken oldAccessToken,
-                AccessToken currentAccessToken) {
-
-            if (currentAccessToken == null) {
-                //rlProfileArea.setVisibility(View.GONE);
-            }
-        }
-    };
-
-
+    } */
 }
