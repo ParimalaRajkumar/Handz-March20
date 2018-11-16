@@ -385,6 +385,8 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
                 if (!profile_image.equals("") && !profile_image.equals("null")) {
                     photo_text.setVisibility(View.INVISIBLE);
                     image.setVisibility(View.VISIBLE);
+                    if(profile_image.contains("http://graph.facebook.com/"))
+                    profile_image = profile_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
                     Glide.with(LendEditUserProfile.this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
                 }
 
