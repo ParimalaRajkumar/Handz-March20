@@ -61,7 +61,7 @@ import java.util.Map;
 
 import static android.Manifest.permission.READ_PHONE_STATE;
 
-public class LendLoginPage extends AppCompatActivity implements ResponseListener1 {
+public class LendLoginPage extends AbsLoginPage implements ResponseListener1 {
 
     LinearLayout layout;
     EditText email, password;
@@ -89,6 +89,12 @@ public class LendLoginPage extends AppCompatActivity implements ResponseListener
     private CallbackManager callbackManager;
     private AccessToken accessToken;
     LoginButton login_withfacebook;
+
+    @Override
+    void handleViewClick(int resId) {
+        
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
