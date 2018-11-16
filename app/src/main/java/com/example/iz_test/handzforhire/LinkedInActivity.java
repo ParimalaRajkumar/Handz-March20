@@ -50,10 +50,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by IZ-Parimala on 19-09-2018.
- */
-public class LinkedInActivity extends Activity {
+
+public class LinkedInActivity extends Activity
+{
     private String TAG=LinkedInActivity.class.getSimpleName();
 
     public static final String LINKED_IN_PEOPLE_PROFILE = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,picture-url)?format=json"; // specific basic details
@@ -288,16 +287,12 @@ public class LinkedInActivity extends Activity {
 
         URL obj = new URL(LINKED_IN_PEOPLE_PROFILE);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
         // optional default is GET
         con.setRequestMethod("GET");
-
         //add request header
         con.setRequestProperty("Host", "api.linkedin.com");
         con.setRequestProperty("Connection", "Keep-Alive");
         con.setRequestProperty("Authorization", "Bearer "+	access_token);
-
-
 
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'GET' request to URL : " + LINKED_IN_PEOPLE_PROFILE);
@@ -312,7 +307,6 @@ public class LinkedInActivity extends Activity {
             response.append(inputLine);
         }
         in.close();
-
         //print result
         System.out.println(response.toString());
 
@@ -342,7 +336,6 @@ public class LinkedInActivity extends Activity {
         con.setRequestProperty("Host", "api.linkedin.com");
         con.setRequestProperty("Connection", "Keep-Alive");
         con.setRequestProperty("Authorization", "Bearer "+	access_token);
-
 
 
         int responseCode = con.getResponseCode();

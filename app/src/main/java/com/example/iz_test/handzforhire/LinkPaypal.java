@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by IZ-Parimala on 18-10-2018.
- */
 
 public class LinkPaypal extends Activity {
 

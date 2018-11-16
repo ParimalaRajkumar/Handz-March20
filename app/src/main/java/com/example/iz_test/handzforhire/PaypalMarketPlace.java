@@ -32,12 +32,12 @@ public class PaypalMarketPlace {
     public static String getAccessToken() {
 
         HttpClient httpclient = new DefaultHttpClient();
-        //HttpPost httppost = new HttpPost("https://api.paypal.com/v1/oauth2/token");
-        HttpPost httppost = new HttpPost("https://api.sandbox.paypal.com/v1/oauth2/token");
+        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/oauth2/token");
+        //HttpPost httppost = new HttpPost("https://api.sandbox.paypal.com/v1/oauth2/token");
 
         try {
-            String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
-            // String text=PayPalConfig.PAYPAL_LIVE_CLIENT_ID":"+PayPalConfig.PAYPAL_LIVE_SECRET_KEY;
+            //String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
+            String text=PayPalConfig.PAYPAL_LIVE_CLIENT_ID+":"+PayPalConfig.PAYPAL_LIVE_SECRET_KEY;
             byte[] data = text.getBytes("UTF-8");
             String base64 = Base64.encodeToString(data, Base64.NO_WRAP);
             httppost.addHeader("Accept","application/json");
@@ -45,10 +45,8 @@ public class PaypalMarketPlace {
             httppost.addHeader("content-type", "application/x-www-form-urlencoded");
             httppost.addHeader("Authorization", "Basic " + base64);
 
-            StringEntity se=new StringEntity("grant_type=client_credentials&client_id="+PayPalConfig.PAYPAL_CLIENT_ID+"&client_secret="+PayPalConfig.PAYPAL_SECRET_KEY);
-
+            StringEntity se=new StringEntity("grant_type=client_credentials&client_id="+PayPalConfig.PAYPAL_LIVE_CLIENT_ID+"&client_secret="+PayPalConfig.PAYPAL_LIVE_SECRET_KEY);
             httppost.setEntity(se);
-
 // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
             String responseContent = EntityUtils.toString(response.getEntity());
@@ -78,8 +76,8 @@ public class PaypalMarketPlace {
     private static String partnerReferralPrefillAPI(String  accesstoken) {
 
         HttpClient httpclient = new DefaultHttpClient();
-        //HttpPost httppost = new HttpPost("https://api.paypal.com/v1/oauth2/token");
-        HttpPost httppost = new HttpPost("https://api.sandbox.paypal.com/v1/customer/partner-referrals/");
+       // HttpPost httppost = new HttpPost("https://api.paypal.com/v1/oauth2/token");
+        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/customer/partner-referrals/");
 
         try {
             httppost.addHeader("content-type", "application/json");
@@ -162,7 +160,7 @@ public class PaypalMarketPlace {
     private static String getMerchantIdOfSeller(String  trackvalue,String accesstoken) {
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpget = new HttpGet("https://api.sandbox.paypal.com/v1/customer/partners/2NPBRNULVL7GS/merchant-integrations?tracking_id="+trackvalue);
+        HttpGet httpget = new HttpGet("https://api.paypal.com/v1/customer/partners/QLMCC9XV8A6GS/merchant-integrations?tracking_id="+trackvalue);
 
         try {
             httpget.addHeader("Authorization", "Bearer " + accesstoken);
@@ -195,7 +193,7 @@ public class PaypalMarketPlace {
     private static String getMerchantStatus(String  merchant_id,String accesstoken) {
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpget = new HttpGet("https://api.sandbox.paypal.com/v1/customer/partners/2NPBRNULVL7GS/merchant-integrations/"+merchant_id);
+        HttpGet httpget = new HttpGet("https://api.paypal.com/v1/customer/partners/QLMCC9XV8A6GS/merchant-integrations/"+merchant_id);
 
         try {
             httpget.addHeader("Authorization", "Bearer " + accesstoken);

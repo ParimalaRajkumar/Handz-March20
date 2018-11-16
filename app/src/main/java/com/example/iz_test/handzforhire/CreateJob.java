@@ -9,6 +9,7 @@ import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -144,6 +145,8 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         hour = (TextView) findViewById(R.id.hour);
 
+
+
         Intent i = getIntent();
         id = i.getStringExtra("userId");
         address = i.getStringExtra("address");
@@ -264,14 +267,24 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             public void onClick(View v) {
                 final Dialog dialog=new Dialog(CreateJob.this,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
                 dialog.setContentView(R.layout.payment_details);
-
+                String fontPath = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+                Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
                 ImageView close = (ImageView) dialog.findViewById(R.id.close_btn);
                 ImageView logo = (ImageView) dialog.findViewById(R.id.logo);
                 payamount = (EditText) dialog.findViewById(R.id.amount);
                 Button update = (Button) dialog.findViewById(R.id.update_btn);
                 final TextView text = (TextView) dialog.findViewById(R.id.text);
-
+                final TextView text1 = (TextView) dialog.findViewById(R.id.text1);
+                final TextView text2 = (TextView) dialog. findViewById(R.id.text2);
+                final TextView text3 = (TextView) dialog.findViewById(R.id.text3);
+                payamount.setTypeface (tf);
+                text.setTypeface(tf);
+                text1.setTypeface(tf);
+                text2.setTypeface(tf);
+                text3.setTypeface(tf);
                 payamount.addTextChangedListener(tw);
+
+
 
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override

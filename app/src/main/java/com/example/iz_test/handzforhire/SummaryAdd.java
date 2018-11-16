@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -437,7 +438,17 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                     dialog.setContentView(R.layout.create_job_popup);
                     Button ok_Button = (Button) dialog.findViewById(R.id.ok_btn);
                     final CheckBox checkBox = (CheckBox) dialog.findViewById(R.id.checkBox);
-                    // if button is clicked, close the custom dialog
+                    TextView text1 = (TextView) dialog.findViewById(R.id.text1);
+                    TextView text2 = (TextView) dialog.findViewById(R.id.text2);
+                    TextView text3 = (TextView) dialog.findViewById(R.id.text3);
+                    String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+                    Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+                    ok_Button.setTypeface(tf);
+                    checkBox.setTypeface(tf);
+                    text1.setTypeface(tf);
+                    text2.setTypeface(tf);
+                    text3.setTypeface(tf);
+
                     ok_Button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

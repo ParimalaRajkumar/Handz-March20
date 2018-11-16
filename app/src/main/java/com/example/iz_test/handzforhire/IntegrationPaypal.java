@@ -32,8 +32,8 @@ public class IntegrationPaypal extends Activity implements View.OnClickListener,
     private SimpleGestureFilter detector;
     private static PayPalConfiguration config = new PayPalConfiguration()
 
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
-            .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
+            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
+            .clientId(PayPalConfig.PAYPAL_LIVE_CLIENT_ID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
