@@ -100,8 +100,8 @@ public class LendLoginPage extends AbsLoginPage  {
     @Override
     void launchProfile() {
 
-        session.NeedLogin(user_email,user_password,user_name,userType,user_id,facebook_user_id,"","","","","user_type");
-        Intent i = new Intent(LendLoginPage.this,LendProfilePage.class);
+        session.LendLogin(user_email,user_password,user_name,userType,user_id,facebook_user_id,"","","","","user_type");
+        Intent i = new Intent(LendLoginPage.this,MapActivity.class);
         startActivity(i);
         finish();
     }

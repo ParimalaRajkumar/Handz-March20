@@ -3,6 +3,7 @@ package com.example.iz_test.handzforhire;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -272,7 +273,7 @@ public class LinkedInActivity extends Activity
 
          //      webView.clearCache(true);
                webView.setVisibility(View.GONE);
-               finish();
+             //  finish();
             }
 
             if(dialog!=null && dialog.isShowing()){
@@ -369,7 +370,8 @@ public class LinkedInActivity extends Activity
                     @Override
                     public void onResponse(String response) {
                     //    onResponserecieved(response, 1);
-
+                        setResult(RESULT_OK , new Intent().putExtra("response",response));
+                        finish();
                         System.out.println("Response "+response);
 
                     }

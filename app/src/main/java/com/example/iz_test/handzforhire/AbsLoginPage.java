@@ -360,10 +360,7 @@ public abstract class AbsLoginPage extends Activity {
                 }
                 else
                 {
-                    session.NeedLogin(user_email,user_password,user_name,user_type,user_id,user_address,user_city,user_state,user_zipcode,userType);
-                    Intent i = new Intent(AbsLoginPage.this,ProfilePage.class);
-                    startActivity(i);
-                    finish();
+                    launchProfile();
                 }
             }
             else

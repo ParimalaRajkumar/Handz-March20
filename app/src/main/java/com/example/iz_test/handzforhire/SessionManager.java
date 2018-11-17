@@ -101,6 +101,26 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void LendLogin(String email,String password,String name,String type,String id,String facebook_id,String address,String city,String state,String zipcode,String lendusertype){
+        // Storing login value as TRUE
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putBoolean(LOGIN_STATUS, false);
+        editor.putString(EMAIL, email);
+        editor.putString(PASSWORD, password);
+        editor.putString(USERNAME, name);
+        editor.putString(TYPE, type);
+        editor.putString(ID, id);
+        editor.putString(KEY_FACEBOOK_ID ,facebook_id);
+        editor.putString(ADDRESS, address);
+        editor.putString(CITY, city);
+        editor.putString(STATE, state);
+        editor.putString(ZIPCODE, zipcode);
+        editor.putString(USER_TYPE, lendusertype);
+
+        // commit changes
+        editor.commit();
+    }
+
     public void saveCheckboxStatus(String checkboxStatus){
         // Storing login value as TRUE
         editor.putString(CHECKBOX_STATUS, checkboxStatus);

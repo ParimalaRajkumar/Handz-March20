@@ -9,6 +9,7 @@ public class Constant
     public static String ANDROID = "android";
     public static final String FIREBASE_URL = "https://handz-8ac86.firebaseio.com/channels/";
     public static final int LINK_PAYPAL = 100;
+    public static final int LINKEDIN_REQUEST=101;
     public static final String SUMMARY_ADD ="7";
     public static final String SUMMARY_SUBTRACT ="8";
     public static final String APPLY_JOB ="9";
