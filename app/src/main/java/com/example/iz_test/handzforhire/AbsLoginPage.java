@@ -95,6 +95,7 @@ public abstract class AbsLoginPage extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d("AbsLogin" ,"oncreate");
         super.onCreate(savedInstanceState);
         setContentView(getResourceLayout());
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
