@@ -310,7 +310,10 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
 
                 time.setText(formatedDate);
                 type.setText(get_type);
-                amount.setText(get_amount);
+                String s1 = "1.00";
+                String multi = String.valueOf(Float.valueOf(get_amount)*Float.valueOf(s1));
+                String total_amount = String.format("%.2f", Float.valueOf(multi));
+                amount.setText(total_amount);
                 name.setText(get_name);
 
                 if(image.equals(""))
