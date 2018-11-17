@@ -141,7 +141,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                    linkedlogin();
                 }else{
                     Toast.makeText(getApplicationContext(),"App not installed ",Toast.LENGTH_LONG).show();
-                   LinkedInActivity.userid=id;
+                     LinkedInActivity.userid=id;
                     Intent in_linkedin=new Intent(LendReviewRating.this,LinkedInActivity.class);
                     startActivity(in_linkedin);
                 }
@@ -365,8 +365,13 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                 String last_name=obj.getString("last_name");
                 String profile_url=obj.getString("profile_url");
                 String picture_url=obj.getString("picture_url");
+                System.out.println("fff"+first_name);
+                System.out.println("lll"+last_name);
+                System.out.println("pul"+picture_url);
 
                 txt_profilename.setText("VIEW "+first_name+" "+last_name);
+
+
 
                 Glide.with(LendReviewRating.this).load(picture_url).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(LendReviewRating.this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(imageprofile);
 
