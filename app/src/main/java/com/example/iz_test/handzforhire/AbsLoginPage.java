@@ -325,8 +325,7 @@ public abstract class AbsLoginPage extends Activity {
             if (status.equals("success"))
             {
                 JSONObject object = new JSONObject(userdata);
-                for(int n = 0; n < object.length(); n++)
-                {
+               // for(int n = 0; n < object.length(); n++) {
                     user_id = object.getString("id");
                     user_type = object.getString("usertype");
                     user_name = object.getString("username");
@@ -336,7 +335,7 @@ public abstract class AbsLoginPage extends Activity {
                     user_city = object.getString("city");
                     user_state = object.getString("state");
                     user_zipcode = object.getString("zipcode");
-                }
+              //  }
                 if(user_type.equals("employee"))
                 {
                     final Dialog dialog = new Dialog(AbsLoginPage.this);

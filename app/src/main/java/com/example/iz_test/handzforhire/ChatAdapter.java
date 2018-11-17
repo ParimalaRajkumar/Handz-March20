@@ -125,7 +125,7 @@ public class ChatAdapter extends BaseAdapter {
     private void setAlignment(ViewHolder holder, boolean isMe) {
         if (!isMe) {
             //holder.contentWithBG.setBackgroundResource(R.drawable.green_bg_c);
-            holder.txtMessage.setBackgroundResource(R.drawable.green_bg_c);
+            holder.txtMessage.setBackgroundResource(R.drawable.green_bg_c_9);
             LinearLayout.LayoutParams layoutParams =
                     (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
             layoutParams.gravity = Gravity.RIGHT;
@@ -146,7 +146,7 @@ public class ChatAdapter extends BaseAdapter {
             holder.img_view.setLayoutParams(layoutParams);
         } else {
            // holder.contentWithBG.setBackgroundResource(R.drawable.yellow_bg_c);
-            holder.txtMessage.setBackgroundResource(R.drawable.yellow_bg_c);
+            holder.txtMessage.setBackgroundResource(R.drawable.yellow_bg_c_9);
             LinearLayout.LayoutParams layoutParams =
                     (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
@@ -159,7 +159,7 @@ public class ChatAdapter extends BaseAdapter {
             holder.content.setLayoutParams(lp);
             layoutParams = (LinearLayout.LayoutParams) holder.txtMessage.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
-            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),0,10,context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
+            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
             holder.txtMessage.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
             holder.txtMessage.setLayoutParams(layoutParams);
 
@@ -191,10 +191,11 @@ public class ChatAdapter extends BaseAdapter {
             @Override
             public void onSuccess(Uri uri) {
                // Glide.with(image_view.getContext()).load(uri.toString()).into(image_view);
-
-                RequestManager requestManager = Glide.with(context);
-                requestManager.load(uri.toString()).into(image_view);
-
+                if(context != null)
+                {
+                    RequestManager requestManager = Glide.with(context);
+                    requestManager.load(uri.toString()).into(image_view);
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
