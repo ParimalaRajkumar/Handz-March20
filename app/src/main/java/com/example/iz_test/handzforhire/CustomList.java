@@ -81,7 +81,10 @@ public class CustomList extends BaseAdapter {
 
         job_name.setText(get_name);
         date.setText(get_date);
-        amount.setText(get_amount);
+        String s1 = "1.00";
+        String multi = String.valueOf(Float.valueOf(get_amount)*Float.valueOf(s1));
+        String total_amount = String.format("%.2f", Float.valueOf(multi));
+        amount.setText(total_amount);
         type.setText(get_type);
         jobId.setText(get_id);
         rating.setText(average_rating);

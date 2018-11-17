@@ -136,7 +136,10 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
 
         job_name.setText(get_name);
         job_name.setTypeface(font);
-        amount.setText(get_amount);
+        String s1 = "1.00";
+        String multi = String.valueOf(Float.valueOf(get_amount)*Float.valueOf(s1));
+        String total_amount = String.format("%.2f", Float.valueOf(multi));
+        amount.setText(total_amount);
         job_id.setText(get_jobid);
         employer_id.setText(get_employer);
         employee_id.setText(get_employee);
