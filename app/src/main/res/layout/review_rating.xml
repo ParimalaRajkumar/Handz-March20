@@ -141,7 +141,7 @@
             android:orientation="vertical"
             android:background="#fff"
             android:gravity="center"
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/lin_linkin">
 
            <TextView
@@ -171,7 +171,7 @@
         android:orientation="vertical"
         android:background="#fff"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/lin_linkininfo">
 
       <LinearLayout
@@ -201,6 +201,7 @@
               android:textColor="#000" />
 
       </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
