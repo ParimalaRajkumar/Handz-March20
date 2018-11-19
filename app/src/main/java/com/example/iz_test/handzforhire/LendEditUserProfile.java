@@ -271,7 +271,7 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
                     LinkedInActivity.userid=id;
                     Toast.makeText(getApplicationContext(),"App not installed ",Toast.LENGTH_LONG).show();
                     Intent in_linkedin=new Intent(LendEditUserProfile.this,LinkedInActivity.class);
-                    startActivity(in_linkedin);
+                    startActivityForResult(in_linkedin,Constant.LINKEDIN_REQUEST);
                 }
 
             }
@@ -498,13 +498,11 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
                 } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                     Exception error = result.getError();
                 }
-            }else {
+            }  else {
                 LISessionManager.getInstance(getApplicationContext()).onActivityResult(this, requestCode, resultCode, data);
-                System.out.println("Request code "+requestCode);
-                System.out.println("Data "+data);
+                System.out.println("Request code " + requestCode);
+                System.out.println("Data " + data);
             }
-        } else {
-
         }
     }
 

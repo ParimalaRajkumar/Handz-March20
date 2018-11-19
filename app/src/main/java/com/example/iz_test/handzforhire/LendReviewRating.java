@@ -105,7 +105,6 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         txt_profilename=(TextView)findViewById(R.id.txt_profilename);
         imageprofile=(ImageView)findViewById(R.id.imageprofile);
 
-
         Intent i = getIntent();
         id = i.getStringExtra("userId");
         profile_image = i.getStringExtra("image");
@@ -143,14 +142,11 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     Toast.makeText(getApplicationContext(),"App not installed ",Toast.LENGTH_LONG).show();
                      LinkedInActivity.userid=id;
                     Intent in_linkedin=new Intent(LendReviewRating.this,LinkedInActivity.class);
-                    startActivity(in_linkedin);
+                    startActivityForResult(in_linkedin,Constant.LINKEDIN_REQUEST);
                 }
 
             }
         });
-
-// the
-        lin_linkin.setVisibility(View.VISIBLE);
 
         thisActivity = this;
     }
@@ -222,29 +218,6 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                             //    }
 
-                                if(jsonObject.isNull("linked_in_data"))
-                                {
-                                   lin_linkin.setVisibility(View.VISIBLE);
-                                    lin_linkininfo.setVisibility(View.GONE);
-                                    System.out.println("Null value");
-                                }else{
-                                   lin_linkininfo.setVisibility(View.VISIBLE);
-                                    lin_linkin.setVisibility(View.GONE);
-                                    String linked_in_data=jsonObject.getString("linked_in_data");
-                                    JSONObject obj=new JSONObject(linked_in_data);
-                                    String id=obj.getString("id");
-                                    String email=obj.getString("email");
-                                    String first_name=obj.getString("first_name");
-                                    String last_name=obj.getString("last_name");
-                                    String profile_url=obj.getString("profile_url");
-                                    String picture_url=obj.getString("picture_url");
-
-                                    txt_profilename.setText("VIEW "+first_name+" "+last_name);
-
-                                    Glide.with(LendReviewRating.this).load(picture_url).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(LendReviewRating.this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(imageprofile);
-
-                                }
-
                             } catch (JSONException e) {
                                 //Handle a malformed json response
                                 System.out.println("volley error ::" + e.getMessage());
@@ -278,6 +251,22 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         LISessionManager.getInstance(getApplicationContext()).onActivityResult(this, requestCode, resultCode, data);
         System.out.println("Request code "+requestCode);
         System.out.println("Data "+data);
+
+        if(requestCode == Constant.LINKEDIN_REQUEST && resultCode == RESULT_OK)
+        {
+            if(data != null && data.getExtras().getString("response")!= null)
+            {
+                try {
+                    JSONObject json = new JSONObject(data.getExtras().getString("response"));
+                    if(json.getString("status").equals("success"))
+                    {
+                        completerating();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     public void onResponserecieved(String jsonobject, int i) {
@@ -289,27 +278,45 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         try {
             JSONObject jResult = new JSONObject(jsonobject);
             status = jResult.getString("status");
-            if(status.equals("success"))
-            {
+            if (status.equals("success")) {
                 rating_list = jResult.getString("rating_lists");
                 JSONArray array = new JSONArray(rating_list);
-                for(int n = 0; n < array.length(); n++) {
+                JSONObject jobj = array.getJSONObject(0);
+                if (jobj.isNull("linkedin_data")) {
+                    lin_linkin.setVisibility(View.VISIBLE);
+                    lin_linkininfo.setVisibility(View.GONE);
+                    System.out.println("Null value");
+                } else {
+                    lin_linkininfo.setVisibility(View.VISIBLE);
+                    lin_linkin.setVisibility(View.GONE);
+                    String linked_in_data = jobj.getString("linkedin_data");
+                    JSONObject obj = new JSONObject(linked_in_data);
+                    String id = obj.getString("id");
+                    String email = obj.getString("email");
+                    String first_name = obj.getString("first_name");
+                    String last_name = obj.getString("last_name");
+                    String profile_url = obj.getString("profile_url");
+                    String picture_url = obj.getString("picture_url");
+                    txt_profilename.setText("VIEW " + first_name + " " + last_name);
+                    Glide.with(LendReviewRating.this).load(picture_url).apply(new RequestOptions().circleCrop().error(R.drawable.default_profile)).into(imageprofile);
+                }
+                for (int n = 0; n < array.length(); n++) {
                     JSONObject object = (JSONObject) array.get(n);
                     final String employer = object.getString("employer");
                     date = object.getString("job_date");
                     JSONArray emparray = new JSONArray(employer);
-                    avg_rat=object.getString("average_rating");
-                    for(int a = 0; a < emparray.length(); a++) {
-                        JSONObject obj=emparray.getJSONObject(a);
+                    avg_rat = object.getString("average_rating");
+                    for (int a = 0; a < emparray.length(); a++) {
+                        JSONObject obj = emparray.getJSONObject(a);
                         image = obj.getString("profile_image");
                         average_rating = obj.getString("rating");
                     }
 
                     HashMap<String, String> map = new HashMap<String, String>();
-                    map.put("image",image);
-                    map.put("average",average_rating);
-                    map.put("comments",object.getString("comments"));
-                    map.put("date",date);
+                    map.put("image", image);
+                    map.put("average", average_rating);
+                    map.put("comments", object.getString("comments"));
+                    map.put("date", date);
                     job_list.add(map);
 
                 }
@@ -342,42 +349,8 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     }
                 });
 
-                txt_rating.setText("Rating: "+avg_rat);
-
+                txt_rating.setText("Rating: " + avg_rat);
             }
-            else
-            {
-
-            }
-            if(jResult.isNull("linked_in_data"))
-            {
-                lin_linkin.setVisibility(View.VISIBLE);
-                lin_linkininfo.setVisibility(View.GONE);
-                System.out.println("Null value");
-            }else{
-                lin_linkininfo.setVisibility(View.VISIBLE);
-                lin_linkin.setVisibility(View.GONE);
-                String linked_in_data=jResult.getString("linked_in_data");
-                JSONObject obj=new JSONObject(linked_in_data);
-                String id=obj.getString("id");
-                String email=obj.getString("email");
-                String first_name=obj.getString("first_name");
-                String last_name=obj.getString("last_name");
-                String profile_url=obj.getString("profile_url");
-                String picture_url=obj.getString("picture_url");
-                System.out.println("fff"+first_name);
-                System.out.println("lll"+last_name);
-                System.out.println("pul"+picture_url);
-
-                txt_profilename.setText("VIEW "+first_name+" "+last_name);
-
-
-
-                Glide.with(LendReviewRating.this).load(picture_url).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(LendReviewRating.this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(imageprofile);
-
-            }
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -434,7 +407,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
 
     public void linkedlogin() {
 
-        LISessionManager.getInstance(getApplicationContext()).init(thisActivity, buildScope(), new AuthListener() {
+        LISessionManager.getInstance(getApplicationContext()).init(getParent(), buildScope(), new AuthListener() {
             @Override
             public void onAuthSuccess () {
                 // Authentication was successful.  You can now do

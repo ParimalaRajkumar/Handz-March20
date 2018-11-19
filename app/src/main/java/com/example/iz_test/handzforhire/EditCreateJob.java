@@ -719,6 +719,7 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
 
         expected_hours = end_time_text.getText().toString();
         System.out.println("eeeeeeeee:expected_hours:::"+expected_hours);
+        expected_hours = end_time_text.getText().toString().replaceAll("[^0-9]","");
         job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
         System.out.println("eeeeeeeee:estimated:::"+job_estimated);
         job_expire = date_format + " " + st_time ;

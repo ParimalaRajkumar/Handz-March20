@@ -92,7 +92,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    String header,sub_category,job_category_color,job_expire,expected_hours,post_address;
+    String header,sub_category,job_category_color,job_expire,expected_hours,post_address ;
     Dialog dialog;
     private SimpleGestureFilter detector;
     ImageView main_category_image;
@@ -711,6 +711,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         }
 
         expected_hours = end_time_text.getText().toString();
+        expected_hours = end_time_text.getText().toString().replaceAll("[^0-9]","");
         System.out.println("eeeeeeeee:expected_hours:::"+expected_hours);
         job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
         System.out.println("eeeeeeeee:estimated:::"+job_estimated);
@@ -742,6 +743,15 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         i.putExtra("job_expire", job_expire);
         i.putExtra("duration", duration);
         i.putExtra("employeeId", employeeId);
+        i.putExtra("current_location", current_location);
+        i.putExtra("post_address", post_address);
+        i.putExtra("duration", duration);
+        i.putExtra("job_address", address);
+        i.putExtra("latitude",latitude);
+        i.putExtra("longitude", longitude);
+        i.putExtra("job_city", city);
+        i.putExtra("job_state", state);
+        i.putExtra("job_zipcode", zipcode);
         startActivity(i);
     }
 
@@ -860,6 +870,11 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 String profilename = object.getString("profile_name");
 
                 String firstname = object.getString("firstname");
+
+                post_address = object.getString("post_address");
+                current_location = object.getString("currentlocation");
+                latitude = object.getString("latitude");
+                longitude = object.getString("longitude");
 
                 if(profilename.equals(""))
                 {

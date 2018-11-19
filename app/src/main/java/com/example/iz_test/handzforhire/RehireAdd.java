@@ -382,12 +382,12 @@ public class RehireAdd extends Activity implements SimpleGestureFilter.SimpleGes
                 params.put(JOB_PAYMENT_TYPE,duration);
                 params.put(ADDRESS,address);
                 params.put(CITY,city);
-                params.put(CURRENT_LOCATION,current_location);
+                params.put(CURRENT_LOCATION,current_location==null?"":current_location);
                 params.put(STATE,state);
                 params.put(ZIPCODE,zipcode);
-                params.put(POST_ADDRESS,post_address);
-                params.put(LATITUDE,latitude);
-                params.put(LONGITUDE,longitude);
+                params.put(POST_ADDRESS,post_address==null?"":post_address);
+                params.put(LATITUDE,latitude==null?"":latitude);
+                params.put(LONGITUDE,longitude==null?"":longitude);
                 params.put(JOB_ADDRESS,address);
                 params.put(JOB_CITY,city);
                 params.put(JOB_STATE,state);
