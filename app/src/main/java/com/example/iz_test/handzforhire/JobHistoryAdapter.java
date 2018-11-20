@@ -183,7 +183,11 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
 
         if(job_status.equals("job_canceled"))
         {
-            if(comments.equals(""))
+<<<<<<< HEAD
+            if(rating_value.equals(""))
+=======
+            if(comments!= null && comments.equals(""))
+>>>>>>> 0f40577218389c57ab2a597ac8fb67d95519342b
             {
                 holder.edit_rating.setVisibility(View.GONE);
                 holder.leave_rating.setVisibility(View.GONE);
