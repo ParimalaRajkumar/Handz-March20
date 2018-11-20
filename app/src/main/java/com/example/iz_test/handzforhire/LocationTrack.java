@@ -24,10 +24,11 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.listeners.Callback;
 
 import java.util.Locale;
 
-public class LocationTrack extends Service implements LocationListener {
+public class LocationTrack  implements LocationListener {
 
     private final Context mContext;
 
@@ -43,7 +44,7 @@ public class LocationTrack extends Service implements LocationListener {
     double latitude;
     double longitude;
 
-
+    Callback callback;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
 
 
@@ -51,8 +52,9 @@ public class LocationTrack extends Service implements LocationListener {
     protected LocationManager locationManager;
     FusedLocationProviderClient mFusedLocationClient;
 
-    public LocationTrack(Context mContext) {
+    public LocationTrack(Context mContext ) {
         this.mContext = mContext;
+        this.callback = (Callback) mContext;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mContext);
         getLocation();
     }
@@ -76,6 +78,9 @@ public class LocationTrack extends Service implements LocationListener {
                     public void onComplete(@NonNull Task<Location> task) {
                         if (task.isSuccessful() && task.getResult() != null) {
                            loc = task.getResult();
+                           if(callback != null) {
+                               callback.onUpdate(task.getResult());
+                           }
                         }
                     }
                 });
@@ -142,11 +147,6 @@ public class LocationTrack extends Service implements LocationListener {
             }
             locationManager.removeUpdates(LocationTrack.this);
         }
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
     }
 
     @Override
