@@ -15,7 +15,8 @@
         android:id="@+id/lin_bottom"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:background="#80E8C64B">
+        android:alpha="0.6"
+        android:background="#E8C64B">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
