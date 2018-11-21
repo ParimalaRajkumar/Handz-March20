@@ -99,7 +99,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
-                                android:layout_marginTop="10sp"
+                                android:layout_marginTop="5sp"
                                 android:textColor="#000000"
                                 android:text="Job Title:"
                                 android:paddingLeft="20sp"/>
@@ -109,6 +109,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:textSize="16sp"
+                                android:maxLines="1"
+                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ "
                                 android:paddingRight="20sp"
                                 android:inputType="textCapCharacters"
                                 android:layout_marginBottom="5sp"

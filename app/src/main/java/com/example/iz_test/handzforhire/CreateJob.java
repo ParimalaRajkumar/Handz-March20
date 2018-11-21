@@ -14,6 +14,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.Selection;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -174,6 +175,10 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             }
         });
 
+        InputFilter[] FilterArray = new InputFilter[1];
+        FilterArray[0] = new InputFilter.LengthFilter(30);
+        job_name.setFilters(FilterArray);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -329,7 +334,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             @Override
             public void onClick(View v) {
 
-
                 final Dialog dialog = new Dialog(CreateJob.this);
                 dialog.setContentView(R.layout.category_popup);
 
@@ -349,6 +353,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                     @Override
                     public boolean onGroupClick(ExpandableListView parent, View v,
                                                 int groupPosition, long id) {
+                        System.out.println("fffffff:::::setOnGroupClickListener");
                         // Toast.makeText(getApplicationContext(),
                         // "Group Clicked " + listDataHeader.get(groupPosition),
                         // Toast.LENGTH_SHORT).show();
@@ -361,6 +366,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
                     @Override
                     public void onGroupExpand(int groupPosition) {
+                        System.out.println("ffffff::::setOnGroupExpandListener");
                      /*   Toast.makeText(getApplicationContext(),
                                 listDataHeader.get(groupPosition) + " Expanded",
                                 Toast.LENGTH_SHORT).show();*/
@@ -372,6 +378,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
                     @Override
                     public void onGroupCollapse(int groupPosition) {
+                        System.out.println("ffffff::;;;setOnGroupCollapseListener");
                         /*Toast.makeText(getApplicationContext(),
                                 listDataHeader.get(groupPosition) + " Collapsed",
                                 Toast.LENGTH_SHORT).show();*/
@@ -386,6 +393,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                     public boolean onChildClick(ExpandableListView parent, View v,
                                                 int groupPosition, int childPosition, long id) {
                         // TODO Auto-generated method stub
+                        System.out.println("ffffff::::setOnChildClickListener");
                        /* Toast.makeText(
                                 getApplicationContext(),
                                 listDataHeader.get(groupPosition)
