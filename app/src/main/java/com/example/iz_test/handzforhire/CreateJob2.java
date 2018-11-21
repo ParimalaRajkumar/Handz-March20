@@ -53,6 +53,19 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
     String edit_job = "no";
     private SimpleGestureFilter detector;
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constant.GPS_SETTING_REQUEST) {
+
+           if( locationTrack!= null) {
+
+               locationTrack.getLocation();
+           }
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

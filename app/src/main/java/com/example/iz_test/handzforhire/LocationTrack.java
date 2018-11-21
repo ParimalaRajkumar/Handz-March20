@@ -28,26 +28,16 @@ import com.listeners.Callback;
 
 import java.util.Locale;
 
-public class LocationTrack  implements LocationListener {
+import static android.content.Context.LOCATION_SERVICE;
+
+public class LocationTrack  {
 
     private final Context mContext;
-
-
-    boolean checkGPS = false;
-
-
-    boolean checkNetwork = false;
-
-    boolean canGetLocation = true;
-
     Location loc;
     double latitude;
     double longitude;
-
     Callback callback;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
-
-
     private static final long MIN_TIME_BW_UPDATES = 1000 * 10;
     protected LocationManager locationManager;
     FusedLocationProviderClient mFusedLocationClient;
@@ -55,23 +45,19 @@ public class LocationTrack  implements LocationListener {
     public LocationTrack(Context mContext ) {
         this.mContext = mContext;
         this.callback = (Callback) mContext;
+        locationManager = (LocationManager) mContext
+                .getSystemService(LOCATION_SERVICE);
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mContext);
         getLocation();
     }
 
-    private void getLocation() {
+    public void getLocation() {
 
         if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return ;
         }
-
         mFusedLocationClient.getLastLocation()
                 .addOnCompleteListener((Activity) mContext, new OnCompleteListener<Location>() {
                     @Override
@@ -101,26 +87,20 @@ public class LocationTrack  implements LocationListener {
     }
 
     public boolean canGetLocation() {
-        return this.canGetLocation;
+
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-
-
         alertDialog.setTitle("GPS is not Enabled!");
-
         alertDialog.setMessage("Do you want to turn on GPS?");
-
-
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                mContext.startActivity(intent);
+                ((Activity)mContext).startActivityForResult(intent , Constant.GPS_SETTING_REQUEST);
             }
         });
-
-
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -129,45 +109,5 @@ public class LocationTrack  implements LocationListener {
 
 
         alertDialog.show();
-    }
-
-
-    public void stopListener() {
-        if (locationManager != null) {
-
-            if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            locationManager.removeUpdates(LocationTrack.this);
-        }
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-
-        Log.d("Current Location" , " Lat = "+location.getLatitude() +"Log ="+location.getLongitude());
-
-    }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
     }
 }
