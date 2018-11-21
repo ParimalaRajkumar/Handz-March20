@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
@@ -34,6 +35,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
+import com.listeners.Callback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +46,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EditCreateJob2 extends Activity implements SimpleGestureFilter.SimpleGestureListener{
+public class EditCreateJob2 extends Activity implements SimpleGestureFilter.SimpleGestureListener,Callback<Location> {
 
     String id, address, city, state, zipcode, name, category, date, start_time, end_time, amount, type, description;
     private static final String GET_JOB = Constant.SERVER_URL+"job_detail_view";
@@ -64,13 +66,27 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
     static String get_lat;
     static String get_lon;
     double lat,lon;
-    static String latitude;
-    static String longitude;
+    static String latitude="0.0";
+    static String longitude="0.0";
     String estimated_amount,flexible_status,job_expire,job_category_color,sub_category,expected_hours;
     LocationTrack locationTrack;
     String edit_job = "yes";
     Dialog dialog;
     private SimpleGestureFilter detector;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constant.GPS_SETTING_REQUEST) {
+
+            if( locationTrack!= null) {
+
+                locationTrack.getLocation();
+            }
+
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +152,8 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
         if(current_location.equals("yes"))
         {
             check1.setChecked(true);
+            locationTrack = LocationTrack.getInstance(this);
+            locationTrack.getLocation();
         }
         else {
             check1.setChecked(false);
@@ -254,15 +272,11 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
                     cit.setText("");
                     stat.setText("");
                     zip.setText("");
-                    locationTrack = new LocationTrack(EditCreateJob2.this);
+                    locationTrack = LocationTrack.getInstance(EditCreateJob2.this);
                     if (locationTrack.canGetLocation()) {
-                        lon = locationTrack.getLongitude();
-                        lat = locationTrack.getLatitude();
-                        latitude = String.valueOf(lat);
-                        longitude = String.valueOf(lon);
-                        System.out.println("kkkkkkkkkkkkkk:latitude::check::"+latitude);
-                        System.out.println("kkkkkkkkkkkkkk:longitude:check::"+longitude);
-                        Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
+
+
+
                     } else {
                         locationTrack.showSettingsAlert();
                     }
@@ -323,44 +337,20 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
         }
         else {
             post_address = "no";
-            String address = j_address + j_city + j_state + j_zipcode;
-            System.out.println("ssssssssss:add::"+ address);
-            getGeoCoordsFromAddress(this,address);
-            System.out.println("kkkkkkkkkkkkkk:getlatitude:"+get_lat);
-            System.out.println("kkkkkkkkkkkkkk:getlatitude:"+get_lon);
-            latitude = get_lat;
-            longitude = get_lon;
-            System.out.println("kkkkkkkkkkkkkk:latitude:"+latitude);
-            System.out.println("kkkkkkkkkkkkkk:longitude:"+longitude);
+
         }
         if(check1.isChecked())
         {
             current_location = "yes";
-            locationTrack = new LocationTrack(EditCreateJob2.this);
-            if (locationTrack.canGetLocation()) {
-                lon = locationTrack.getLongitude();
-                lat = locationTrack.getLatitude();
-                latitude = String.valueOf(lat);
-                longitude = String.valueOf(lon);
-                System.out.println("kkkkkkkkkkkkkk:latitude::check::"+latitude);
-                System.out.println("kkkkkkkkkkkkkk:longitude:check::"+longitude);
-                Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
-            } else {
-                locationTrack.showSettingsAlert();
-            }
+
         }
         else
         {
             current_location = "no";
             String address = j_address + j_city + j_state + j_zipcode;
-            System.out.println("ssssssssss:add::"+ address);
             getGeoCoordsFromAddress(this,address);
-            System.out.println("kkkkkkkkkkkkkk:getlatitude:"+get_lat);
-            System.out.println("kkkkkkkkkkkkkk:getlatitude:"+get_lon);
             latitude = get_lat;
             longitude = get_lon;
-            System.out.println("kkkkkkkkkkkkkk:latitude:"+latitude);
-            System.out.println("kkkkkkkkkkkkkk:longitude:"+longitude);
         }
         if (!check1.isChecked() && (j_address.equals("") || j_state.equals("") || j_city.equals("") || j_zipcode.equals(""))) {
             final Dialog dialog = new Dialog(EditCreateJob2.this);
@@ -602,4 +592,11 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
         return super.dispatchTouchEvent(event);
     }
 
+
+    @Override
+    public void onUpdate(Location location) {
+        latitude = String.valueOf(location.getLatitude());
+        longitude = String.valueOf(location.getLongitude());
+
+    }
 }

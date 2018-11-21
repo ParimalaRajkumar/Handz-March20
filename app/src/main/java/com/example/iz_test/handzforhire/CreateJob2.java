@@ -216,7 +216,7 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
                     cit.setText("");
                     stat.setText("");
                     zip.setText("");
-                    locationTrack = new LocationTrack(CreateJob2.this );
+                    locationTrack = LocationTrack.getInstance(CreateJob2.this );
                     if (locationTrack.canGetLocation()) {
 
                         //Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
@@ -286,19 +286,6 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
         if(check1.isChecked())
         {
             current_location = "yes";
-         //   locationTrack = new LocationTrack(CreateJob2.this);
-//            if (locationTrack.canGetLocation()) {
-////                //lon = locationTrack.getLongitude();
-////                //lat = locationTrack.getLatitude();
-////                latitude = String.valueOf(lat);
-////                longitude = String.valueOf(lon);
-////                System.out.println("kkkkkkkkkkkkkk:latitude::check::"+latitude);
-////                System.out.println("kkkkkkkkkkkkkk:longitude:check::"+longitude);
-//                // Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
-//            } else {
-//                locationTrack.showSettingsAlert();
-//            }
-
         }
         else
         {

@@ -42,7 +42,18 @@ public class LocationTrack  {
     protected LocationManager locationManager;
     FusedLocationProviderClient mFusedLocationClient;
 
-    public LocationTrack(Context mContext ) {
+    static  LocationTrack mLocationTrack = null;
+
+    static LocationTrack getInstance(Context mContext)
+    {
+        if(mLocationTrack ==null) {
+            mLocationTrack = new LocationTrack(mContext);
+        }
+
+        return mLocationTrack;
+    }
+
+    private LocationTrack(Context mContext ) {
         this.mContext = mContext;
         this.callback = (Callback) mContext;
         locationManager = (LocationManager) mContext
