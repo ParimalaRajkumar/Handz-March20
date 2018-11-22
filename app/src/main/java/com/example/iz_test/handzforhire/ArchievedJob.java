@@ -333,7 +333,6 @@ public class ArchievedJob extends Activity {
                     type = object.getString("job_payment_type");
                     amount = object.getString("job_estimated_payment");
 
-
                     HashMap<String, String> map = new HashMap<String, String>();
                     map.put("jobId", jobId);
                     map.put("name", name);

@@ -42,30 +42,30 @@
 
                 <Button
                     android:id="@+id/btn1"
-                    android:layout_width="70sp"
-                    android:layout_height="90sp"
+                    android:layout_width="60sp"
+                    android:layout_height="80sp"
                     android:paddingTop="10sp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:paddingBottom="10sp"
-                    android:background="@drawable/active_button"/>
+                    android:background="@drawable/active_button_new"/>
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="90sp"
+                    android:layout_height="90sp"
                     android:layout_weight="1"
                     android:src="@drawable/logo" />
 
                 <Button
                     android:id="@+id/btn2"
-                    android:layout_width="70sp"
-                    android:layout_height="90sp"
+                    android:layout_width="60sp"
+                    android:layout_height="80sp"
                     android:paddingTop="10sp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:paddingBottom="10sp"
-                    android:background="@drawable/job_history_button"/>
+                    android:background="@drawable/job_history_button_new"/>
 
             </LinearLayout>
 
@@ -209,6 +209,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="right" >
+
+        <TextView
+            android:id="@+id/tex1"
+            android:layout_width="120sp"
+            android:layout_height="40sp"
+            android:layout_marginTop="20sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/handz"/>
+
 
         <ListView
             android:id="@+id/listview"

@@ -4,7 +4,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="100"
     android:gravity="center">
 
     <!--<View
@@ -39,14 +38,14 @@
            <ImageView
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:layout_marginLeft="70sp"
+                android:layout_marginLeft="50sp"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/info_icon"/>
 
             <Button
                 android:id="@+id/ok"
-                android:layout_width="90sp"
-                android:layout_height="35sp"
+                android:layout_width="100sp"
+                android:layout_height="40sp"
                 android:text="Okay"
                 android:textAllCaps="true"
                 android:textStyle="bold"
@@ -58,7 +57,7 @@
             <ImageView
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:layout_marginRight="70sp"
+                android:layout_marginRight="50sp"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/info_icon"/>
 
