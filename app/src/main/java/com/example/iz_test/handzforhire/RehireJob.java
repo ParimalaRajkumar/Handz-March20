@@ -301,7 +301,6 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 dialog.show();
                 Window window = dialog.getWindow();
                 dialog.getWindow().
-
                         setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 return;
