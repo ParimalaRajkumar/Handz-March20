@@ -87,12 +87,16 @@
                 android:layout_height="wrap_content"
                 android:textAllCaps="true"
                 android:layout_gravity="center"
+                android:textColor="#CBCACA"
+                android:textStyle="bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:text="Link to Archived posted jobs"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textColor="#CBCACA"
+                android:textStyle="bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="(Click Here To View All Expired Posted Jobs)"/>
         </LinearLayout>

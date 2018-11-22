@@ -233,7 +233,6 @@
                 android:layout_width="120sp"
                 android:layout_height="40sp"
                 android:layout_marginTop="30sp"
-                android:layout_marginLeft="20sp"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/handz"/>
 

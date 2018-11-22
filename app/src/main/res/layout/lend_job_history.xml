@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:paddingBottom="10sp"
                 android:textSize="17sp"
-                android:background="@drawable/pending_jobs"/>
+                android:background="@drawable/pending_jobs_new"/>
 
             <ImageView
                 android:id="@+id/logo"
@@ -58,7 +58,7 @@
                 android:layout_weight="1"
                 android:paddingBottom="10sp"
                 android:textSize="17sp"
-                android:background="@drawable/active_button"/>
+                android:background="@drawable/active_button_new"/>
 
         </LinearLayout>
 
