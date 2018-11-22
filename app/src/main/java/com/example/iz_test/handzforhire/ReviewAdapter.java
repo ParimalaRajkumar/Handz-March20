@@ -63,6 +63,7 @@ public class ReviewAdapter extends BaseAdapter {
         final TextView date = (TextView) vi.findViewById(R.id.date);
         ImageView image1 = (ImageView) vi.findViewById(R.id.img1);
         RatingBar rating_bar = (RatingBar) vi.findViewById(R.id.ratingBar1);
+        TextView cancel_job = vi.findViewById(R.id.cancel_job);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface font = Typeface.createFromAsset(activity.getAssets(), fontPath);
@@ -99,7 +100,15 @@ public class ReviewAdapter extends BaseAdapter {
 
         System.out.println("Average rating "+get_average);
         if(get_average!=null && !get_average.equals(""))
-        rating_bar.setRating(Float.parseFloat(get_average));
+        {
+            rating_bar.setVisibility(View.VISIBLE);
+            rating_bar.setRating(Float.parseFloat(get_average));
+            cancel_job.setVisibility(View.INVISIBLE);
+        }else {
+            rating_bar.setVisibility(View.INVISIBLE);
+            cancel_job.setVisibility(View.VISIBLE);
+        }
+
      /*   if(get_image.equals(""))
         {
             image1.setVisibility(View.VISIBLE);

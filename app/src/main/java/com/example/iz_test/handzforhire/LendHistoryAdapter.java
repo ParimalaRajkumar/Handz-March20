@@ -217,7 +217,6 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
 
                 jobId = items.get("jobId");
                 getratingcount(items.get("user_id"));
-
                 Intent intent = new Intent(activity, LendLeaveRating.class);
                 intent.putExtra("jobId",items.get("jobId"));
                 intent.putExtra("employer_id", items.get("employer"));

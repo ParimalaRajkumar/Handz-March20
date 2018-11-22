@@ -72,6 +72,14 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
     private SimpleGestureFilter detector;
     RequestMethods req;
     HashMap<String, String> user;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        getProfileimage();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,7 +159,6 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
         profile_name.setTypeface(tf2);
 
-        getProfileimage();
         getUsername();
         getAverageRatigng();
 

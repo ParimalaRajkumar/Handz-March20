@@ -76,15 +76,11 @@ public class LendActiveJobAdapter extends BaseAdapter{
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
         Firebase.setAndroidContext(activity);
-        // reference1 = new Firebase("https://handz-8ac86.firebaseio.com/channels");
-        reference1 = new Firebase("https://handzdev-9e758.firebaseio.com/channels");
-
+          reference1 = new Firebase("https://handz-8ac86.firebaseio.com/channels");
+        //reference1 = new Firebase("https://handzdev-9e758.firebaseio.com/channels");
         sender_id = current_user_id + Profilevalues.user_id;
         get_user=Profilevalues.username;
-
     }
 
     public int getCount() {
@@ -240,7 +236,8 @@ public class LendActiveJobAdapter extends BaseAdapter{
 
                 jobId = items.get("jobId");
 
-                getmsgcount(userId);
+                //getmsgcount(userId);
+                Utility.updateNotificationCount(activity,dialog,Utility.getApiParams(userId,jobId,"notificationCountMessage"));
 
                 Intent i = new Intent(activity,ChatNeed.class);
                 i.putExtra("jobId",jobId);
@@ -283,7 +280,6 @@ public class LendActiveJobAdapter extends BaseAdapter{
                             if(status.equals("success")){
                                 final Dialog dialog = new Dialog(activity);
                                 dialog.setContentView(R.layout.custom_dialog);
-
                                 // set the custom dialog components - text, image and button
                                 TextView text = (TextView) dialog.findViewById(R.id.text);
                                 text.setText("Request Payment Sent Successfully");
@@ -417,6 +413,7 @@ public class LendActiveJobAdapter extends BaseAdapter{
                     }
                 }) {
             @Override
+
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put(XAPP_KEY, value);

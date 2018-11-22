@@ -68,12 +68,23 @@
                         android:scaleX="0.9"
                         android:scaleY="0.9"
                         android:layout_centerHorizontal="true" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cancel_job"
+                        android:layout_centerHorizontal="true"
+                        android:text="Cancelled Job"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:layout_above="@+id/date_container"/>
+
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
+                        android:id="@+id/date_container"
                         android:layout_below="@+id/ratingBar1">
 
                     <TextView

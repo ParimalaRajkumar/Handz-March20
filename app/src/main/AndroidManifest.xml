@@ -107,6 +107,12 @@
         <activity
             android:name=".LendLeaveComments"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".JobCancelEditComments"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".JobCancelLeaveComments"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
             android:name=".LoginActivity"

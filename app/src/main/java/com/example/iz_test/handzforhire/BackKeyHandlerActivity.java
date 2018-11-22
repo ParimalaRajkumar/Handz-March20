@@ -24,7 +24,7 @@ public class BackKeyHandlerActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(intent.getStringExtra("isfrom") !=null && intent.getStringExtra("isfrom").equals("paypal")) {
+        if(intent != null && intent.getStringExtra("isfrom") !=null && intent.getStringExtra("isfrom").equals("paypal")) {
             if (this instanceof ApplyJob) {
                 Intent i = new Intent(this, LendProfilePage.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
