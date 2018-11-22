@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.Selection;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
@@ -172,6 +173,10 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
                 finish();
             }
         });
+
+        InputFilter[] FilterArray = new InputFilter[1];
+        FilterArray[0] = new InputFilter.LengthFilter(30);
+        job_name.setFilters(FilterArray);
 
         date_layout.setOnClickListener(this);
         time_layout.setOnClickListener(this);
