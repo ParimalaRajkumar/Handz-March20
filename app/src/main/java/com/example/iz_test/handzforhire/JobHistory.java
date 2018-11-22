@@ -66,6 +66,12 @@ public class JobHistory extends Activity implements SimpleGestureFilter.SimpleGe
     private SimpleGestureFilter detector;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        activeJobs();
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.job_history);
@@ -90,7 +96,8 @@ public class JobHistory extends Activity implements SimpleGestureFilter.SimpleGe
         state = i.getStringExtra("state");
         zipcode = i.getStringExtra("zipcode");
 
-        activeJobs();
+        Utility.updateNotificationCount(this,dialog,Utility.getApiParams(user_id,null,"notificationCountJobHistory"));
+       // activeJobs();
         adapter = new JobHistoryAdapter(this, arraylist);
 
         editsearch.setOnClickListener(new View.OnClickListener() {

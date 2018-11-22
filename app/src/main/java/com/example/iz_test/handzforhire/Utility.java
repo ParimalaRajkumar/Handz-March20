@@ -90,6 +90,18 @@ public class Utility {
         //myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return myIntent;
     }
+    static public Map getApiParams(String userId ,String jobId , String type)
+    {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(Constant.XAPP_KEY, Constant.XAPP_VALUE);
+        params.put(Constant.KEY_USERID, userId);
+        if(jobId != null) {
+            params.put(Constant.KEY_JOBID, jobId);
+        }
+        params.put(Constant.KEY_TYPE,type);
+        params.put(Constant.DEVICE, Constant.ANDROID);
+        return params;
+    }
 
     static public void updateNotificationCount(final Context context , final Dialog dialog , final Map<String , String> params)
     {

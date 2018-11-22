@@ -7,6 +7,8 @@ public class Constant
   //  public static String SERVER_URL = "http://162.144.41.156/~izaapinn/handzforhire/service/";
     public static String DEVICE = "device";
     public static String ANDROID = "android";
+
+  public static final String XAPP_VALUE = "HandzForHire@~";
     public static final String FIREBASE_URL = "https://handz-8ac86.firebaseio.com/channels/";
     public static final int LINK_PAYPAL = 100;
     public static final int LINKEDIN_REQUEST=101;
@@ -21,6 +23,7 @@ public class Constant
   public static final String XAPP_KEY = "X-APP-KEY";
   public static final String KEY_TYPE = "type";
   protected static final String TAG = "";
-
+  public static final String KEY_USERID = "user_id";
+  public static final String KEY_JOBID = "job_id";
 
 }

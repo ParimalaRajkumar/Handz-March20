@@ -251,19 +251,10 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 else
                     username=item.getProfilename();
                 jobId = item.getJobId();
-               // getratingcount(item.getUserid());
-                Map<String, String> params = new HashMap<String, String>();
-                params.put(XAPP_KEY, value);
-                params.put(KEY_USERID, item.getUserid());
-                params.put(JOB_ID, jobId);
-                params.put(TYPE,"notificationCountStarRating");
-                params.put(Constant.DEVICE, Constant.ANDROID);
-                System.out.println("Params "+params);
-                Utility.updateNotificationCount(mContext , dialog , params);
+                Utility.updateNotificationCount(mContext , dialog , Utility.getApiParams(item.getUserid(),jobId,"notificationCountStarRating"));
                 Intent intent = new Intent(mContext, LeaveRating.class);
                 intent.putExtra("jobId", item.getJobId());
                 intent.putExtra("employer_id",item.getEmployerId());
-                intent.putExtra("employee_id",item.getEmployeeId());
                 intent.putExtra("user_id",item.getUserid());
                 intent.putExtra("image",item.getImage());
                 intent.putExtra("profilename",username);
@@ -271,7 +262,6 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 v.getContext().startActivity(intent);
             }
         });
-
 
         holder.edit_rating.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -327,16 +317,7 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 else
                     username=item.getProfilename();
                 userId=item.getUserid();
-
-               // getmsgcountjobhis(item.getUserid());
-                Map<String, String> params = new HashMap<String, String>();
-                params.put(XAPP_KEY, value);
-                params.put(KEY_USERID, item.getUserid());
-                params.put(JOB_ID, jobId);
-                params.put(TYPE,"notificationCountMsgJobhistory");
-                params.put(Constant.DEVICE, Constant.ANDROID);
-                Utility.updateNotificationCount(mContext,dialog,params);
-
+                Utility.updateNotificationCount(mContext,dialog,Utility.getApiParams(item.getUserid(),jobId,"notificationCountMsgJobhistory"));
                 Intent i = new Intent(mContext,ChatNeed.class);
                 i.putExtra("jobId",jobId);
                 i.putExtra("channel",channel_id);
@@ -346,8 +327,6 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 i.putExtra("user_type","employer");
                 i.putExtra("receiverid",item.getEmployeeId());
                 view.getContext().startActivity(i);
-
-
                 System.out.println("channel id "+channel_id);
 
             }
@@ -404,6 +383,7 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 String employerId = item.getEmployerId();
                 String employeeId = item.getEmployeeId();
                 String profile_image =item.getImage();
+                Utility.updateNotificationCount(mContext,dialog,Utility.getApiParams(item.getUserid(),jobId,"notificationCountStarRating"));
                 Intent intent = new Intent(mContext, JobCancelLeaveComments.class);
                 intent.putExtra("jobId",jobId);
                 intent.putExtra("employerId",employerId);

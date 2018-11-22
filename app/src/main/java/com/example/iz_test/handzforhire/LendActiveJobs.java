@@ -58,6 +58,13 @@ public class LendActiveJobs extends Activity implements SimpleGestureFilter.Simp
     String jobDate,startTime,endTime,amount,type,job_name,image;
     Dialog dialog;
     private SimpleGestureFilter detector;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        activeJobs();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +91,7 @@ public class LendActiveJobs extends Activity implements SimpleGestureFilter.Simp
         zipcode = i.getStringExtra("zipcode");
         System.out.println("iiiiiiiiiiiiiiiiiiiii:"+user_id);
 
-        activeJobs();
+       // activeJobs();
 
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,6 +239,7 @@ public class LendActiveJobs extends Activity implements SimpleGestureFilter.Simp
             if(status.equals("success"))
             {
                 JSONArray array = new JSONArray(jobList);
+                job_list.clear();
                 for(int n = 0; n < array.length(); n++) {
                     JSONObject object = (JSONObject) array.get(n);
                     job_name = object.getString("job_name");

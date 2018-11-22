@@ -178,12 +178,13 @@ public class ActiveJobAdapter extends BaseAdapter {
                     JSONObject object = new JSONObject(items);
                     System.out.println("activejobadapter:::object::: "+object);
                     sessoin.savepaymentdetails(object.toString());
-
                     String  userId=items.get("userId");
-                    getpaymentcount(userId);
+                    String  jobId =  items.get("jobId");
+                    //getpaymentcount(userId);
+                    Utility.updateNotificationCount(activity,dialog,Utility.getApiParams(userId,jobId,"notificationCountMakePayment"));
 
                     String username="";
-                    String  jobId =  items.get("jobId");;
+                   // String  jobId =  items.get("jobId");;
 
 
                     String name=items.get("name");
@@ -220,7 +221,8 @@ public class ActiveJobAdapter extends BaseAdapter {
                     HashMap<String, String> items =data.get(pos);
                     String  userId=items.get("userId");
                     jobId = items.get("jobId");
-                    getmsgcount(userId);
+                   // getmsgcount(userId);
+                    Utility.updateNotificationCount(activity,dialog,Utility.getApiParams(userId,jobId,"notificationCountMessage"));
                     String username="";
                     String  jobId =  items.get("jobId");;
                     String channel_id=items.get("channel");

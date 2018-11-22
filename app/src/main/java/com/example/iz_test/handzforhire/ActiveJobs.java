@@ -59,20 +59,22 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
     int timeout = 60000;
     Dialog dialog;
     private SimpleGestureFilter detector;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        activeJobs();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.active_jobs);
-
-
         detector = new SimpleGestureFilter(this,this);
-
         dialog = new Dialog(ActiveJobs.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-
         posted_job = (Button) findViewById(R.id.btn1);
         job_history = (Button)findViewById(R.id.btn2);
         logo = (ImageView)findViewById(R.id.logo);
@@ -85,8 +87,8 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
         state = i.getStringExtra("state");
         zipcode = i.getStringExtra("zipcode");
         System.out.println("iiiiiiiiiiiiiiiiiiiii:"+user_id);
-
-        activeJobs();
+        //Utility.updateNotificationCount(this,dialog,Utility.getApiParams(user_id,null,"notificationCountActive"));
+       // activeJobs();
 
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -239,6 +241,7 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
             if(status.equals("success"))
             {
                 JSONArray array = new JSONArray(jobList);
+                job_list.clear();
                 for(int n = 0; n < array.length(); n++) {
                     JSONObject object = (JSONObject) array.get(n);
                     job_name = object.getString("job_name");
@@ -275,7 +278,6 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
                     map.put("fee_details",fee_details);
                     map.put("job_payment_amount",job_payment_amount);
                     map.put("merchant_id",object.getString("merchant_id"));
-
                     job_list.add(map);
                     System.out.println("job_list:::" + job_list);
                     ActiveJobAdapter arrayAdapter = new ActiveJobAdapter(this, job_list) {
