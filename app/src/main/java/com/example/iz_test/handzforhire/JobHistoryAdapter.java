@@ -251,8 +251,15 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 else
                     username=item.getProfilename();
                 jobId = item.getJobId();
-                getratingcount(item.getUserid());
-
+               // getratingcount(item.getUserid());
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(XAPP_KEY, value);
+                params.put(KEY_USERID, item.getUserid());
+                params.put(JOB_ID, jobId);
+                params.put(TYPE,"notificationCountStarRating");
+                params.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println("Params "+params);
+                Utility.updateNotificationCount(mContext , dialog , params);
                 Intent intent = new Intent(mContext, LeaveRating.class);
                 intent.putExtra("jobId", item.getJobId());
                 intent.putExtra("employer_id",item.getEmployerId());
@@ -321,7 +328,14 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                     username=item.getProfilename();
                 userId=item.getUserid();
 
-                getmsgcountjobhis(item.getUserid());
+               // getmsgcountjobhis(item.getUserid());
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(XAPP_KEY, value);
+                params.put(KEY_USERID, item.getUserid());
+                params.put(JOB_ID, jobId);
+                params.put(TYPE,"notificationCountMsgJobhistory");
+                params.put(Constant.DEVICE, Constant.ANDROID);
+                Utility.updateNotificationCount(mContext,dialog,params);
 
                 Intent i = new Intent(mContext,ChatNeed.class);
                 i.putExtra("jobId",jobId);
