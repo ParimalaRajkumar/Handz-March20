@@ -1,7 +1,6 @@
 package com.example.iz_test.handzforhire;
 
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -346,10 +345,10 @@ public class ApplyJob extends BackKeyHandlerActivity implements SimpleGestureFil
         {
             name.setText(profile_name);
         }
-        String s1 = "1.00";
+        /*String s1 = "1.00";
         String multi = String.valueOf(Float.valueOf(amount)*Float.valueOf(s1));
-        String total_amount = String.format("%.2f", Float.valueOf(multi));
-        amt.setText(total_amount);
+        String total_amount = String.format("%.2f", Float.valueOf(multi));*/
+        amt.setText(amount);
         type_text.setText(type);
         text.setText(profile_name);
         job.setText(job_name);

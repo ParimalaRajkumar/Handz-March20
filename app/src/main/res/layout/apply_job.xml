@@ -202,17 +202,18 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100sp"
-                    android:gravity="center_horizontal"
-                    android:background="#166266">
+                    android:layout_height="200sp"
+                    android:background="@drawable/applyjob_background">
 
                     <TextView
                         android:id="@+id/tv6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
                         android:text="Include a Message for "
                         android:textColor="#000000"
                         android:textSize="19sp"
+                        android:paddingLeft="10sp"
                         android:layout_marginTop="10sp" />
 
                     <TextView
@@ -224,14 +225,20 @@
                         android:textSize="19sp"
                         android:layout_marginTop="10sp" />
 
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100sp"
-                    android:background="#4d4d4d"
-                    android:gravity="bottom">
-
+                    <EditText
+                        android:id="@+id/edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginRight="20sp"
+                        android:background="@drawable/border"
+                        android:gravity="top"
+                        android:layout_alignParentBottom="true"
+                        android:hint="Place comments here(optional).."
+                        android:maxLines="200"
+                        android:paddingLeft="15sp"
+                        android:paddingTop="10sp"
+                        android:textColorHint="#000000" />
 
                 </RelativeLayout>
 
@@ -297,22 +304,6 @@
 
         </ScrollView>
 
-        <EditText
-            android:id="@+id/edit"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_marginTop="310dp"
-            android:background="@drawable/border"
-            android:gravity="top"
-            android:hint="Place comments here(optional).."
-            android:maxLines="200"
-            android:paddingLeft="15sp"
-            android:paddingTop="10sp"
-            android:textColorHint="#000000" />
     </FrameLayout>
 
 </LinearLayout>

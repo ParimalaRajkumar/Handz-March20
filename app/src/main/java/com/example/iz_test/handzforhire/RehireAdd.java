@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -187,13 +188,6 @@ public class RehireAdd extends Activity implements SimpleGestureFilter.SimpleGes
             @Override
             public void onClick(View v) {
                onBackPressed();
-//                String hourly_wage = hourly_value.getText().toString();
-//                String expected_hours = expected_value.getText().toString();
-//                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
-//                Intent i = new Intent(RehireAdd.this,RehireMultiply.class);
-//                i.putExtra("payment_amount",hourly_wage);
-//                i.putExtra("expected_hours",expected_hours);
-//                startActivity(i);
             }
         });
 
@@ -249,10 +243,22 @@ public class RehireAdd extends Activity implements SimpleGestureFilter.SimpleGes
                 }
                 else
                 {
+
                     final Dialog dialog = new Dialog(RehireAdd.this);
                     dialog.setContentView(R.layout.create_job_popup);
                     Button ok_Button = (Button) dialog.findViewById(R.id.ok_btn);
                     final CheckBox checkBox = (CheckBox) dialog.findViewById(R.id.checkBox);
+                    TextView text1 = (TextView) dialog.findViewById(R.id.text1);
+                    TextView text2 = (TextView) dialog.findViewById(R.id.text2);
+                    TextView text3 = (TextView) dialog.findViewById(R.id.text3);
+                    String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+                    Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+                    ok_Button.setTypeface(tf);
+                    checkBox.setTypeface(tf);
+                    text1.setTypeface(tf);
+                    text2.setTypeface(tf);
+                    text3.setTypeface(tf);
+
                     // if button is clicked, close the custom dialog
                     ok_Button.setOnClickListener(new View.OnClickListener() {
                         @Override

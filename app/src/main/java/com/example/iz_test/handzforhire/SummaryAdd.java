@@ -1,6 +1,5 @@
 package com.example.iz_test.handzforhire;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -399,15 +398,6 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
             @Override
             public void onClick(View v) {
                 onBackPressed();
-//                String hourly_wage = hourly_value.getText().toString();
-//                String expected_hours = expected_value.getText().toString();
-//                System.out.println("sssssssssssss:hourly_wage:::"+hourly_wage+":::expected_hours:::"+expected_hours);
-//                Intent i = new Intent(SummaryAdd.this,SummaryMultiply.class);
-//                i.putExtra("payment_amount",hourly_wage);
-//                i.putExtra("expected_hours",expected_hours);
-//                i.putExtra("edit_job",edit_job);
-//                startActivity(i);
-//                finish();
             }
         });
 
@@ -524,10 +514,22 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                 }
                 else
                 {
+
                     final Dialog dialog = new Dialog(SummaryAdd.this);
                     dialog.setContentView(R.layout.create_job_popup);
                     Button ok_Button = (Button) dialog.findViewById(R.id.ok_btn);
                     final CheckBox checkBox = (CheckBox) dialog.findViewById(R.id.checkBox);
+                    TextView text1 = (TextView) dialog.findViewById(R.id.text1);
+                    TextView text2 = (TextView) dialog.findViewById(R.id.text2);
+                    TextView text3 = (TextView) dialog.findViewById(R.id.text3);
+                    String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+                    Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+                    ok_Button.setTypeface(tf);
+                    checkBox.setTypeface(tf);
+                    text1.setTypeface(tf);
+                    text2.setTypeface(tf);
+                    text3.setTypeface(tf);
+
                     // if button is clicked, close the custom dialog
                     ok_Button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -694,7 +696,10 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
 
         };
 
-
+        System.out.println("summaryadd::"+key+"/1/"+id+"/2/"+name+"/3/"+usertype+"/4/"+category+"/5/"+description+"/6/"+date);
+        System.out.println("summaryadd1::"+start_time+"/7/"+expense+"/8/"+duration+"/9/"+amount+"/10/"+address+"/11/"+city+"/12/"+current_location);
+        System.out.println("summaryadd2::"+state+"/13/"+zipcode+"/14/"+post_address+"/15/"+latitude+"/16/"+longitude+"/17/"+payout+"/18/"+flexible_status);
+        System.out.println("summaryadd3::"+fee+"/19/"+fee_details+"/20/"+job_expire+"/21/"+sub_category+"/22/"+job_category_color+"/23/"+delist);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }

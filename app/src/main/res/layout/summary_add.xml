@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#4D4D4D"
+    android:background="#4C4C4C"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -15,26 +16,26 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10sp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10sp">
 
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="50sp"
-                android:layout_centerVertical="true"
-                android:layout_height="50sp"
-                android:layout_marginLeft="30sp"
-                android:src="@drawable/back_img" />
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="50sp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="50sp"
+                    android:layout_marginLeft="30sp"
+                    android:src="@drawable/back_img" />
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="100sp"
-                android:layout_height="100sp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/logo" />
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logo" />
 
             </RelativeLayout>
 
@@ -196,16 +197,17 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginLeft="30sp"
+                        android:layout_marginLeft="50sp"
                         android:gravity="right" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="$"
+                            android:gravity="right"
                             android:textSize="22sp"
                             android:textStyle="bold"
                             android:textAllCaps="true"
@@ -230,10 +232,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Advertised\nJob Payout"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:textAllCaps="false"
-                        android:layout_marginLeft="50sp"
+                        android:layout_marginLeft="20sp"
                         android:textColor="#000000"
                         android:layout_gravity="center" />
 
@@ -260,6 +262,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginLeft="10sp"
+                        android:layout_gravity="center_vertical"
                         android:gravity="right" >
 
                         <TextView
@@ -321,6 +324,7 @@
                         android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10sp"
                         android:gravity="right" >
 
@@ -384,11 +388,11 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginLeft="30sp"
-                        android:gravity="center" >
+                        android:layout_marginLeft="50sp"
+                        android:gravity="right" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -421,7 +425,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:textAllCaps="false"
-                        android:layout_marginLeft="40sp"
+                        android:layout_marginLeft="20sp"
                         android:textColor="#000000"
                         android:layout_gravity="center" />
 

@@ -954,7 +954,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
             System.out.println("eeeeeeeee:estimated:::"+job_estimated);
             System.out.println("eeeeeeeee:time_value:::"+time_value);
-            String job_expire = date_format + " " + st_time ;
+            String job_expire = date_format + " " + time_value ;
             System.out.println("eeeeeeeee:job_expire:::"+job_expire);
             String hours = hour.getText().toString();
             String duration = expected_hours+" "+hours;

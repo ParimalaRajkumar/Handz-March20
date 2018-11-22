@@ -234,7 +234,7 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
             String s1 = "1.00";
             String multi = String.valueOf(Float.valueOf(job_payment_amount)*Float.valueOf(s1));
             String total_amount = String.format("%.2f", Float.valueOf(multi));
-            txt_amount.setText("PAY: $"+total_amount);
+            txt_amount.setText("PAY:$"+total_amount);
             txt_dur.setText("EXPECTED DURATION: "+duration);
             txt_obj.setText(object.toString());
 
