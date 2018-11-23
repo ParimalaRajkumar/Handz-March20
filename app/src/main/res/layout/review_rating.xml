@@ -125,7 +125,7 @@
                 android:background="@drawable/image_border"
                android:src="@drawable/default_profile"
                android:padding="4dp"
-                android:scaleType="fitCenter"
+                android:scaleType="fitXY"
                 android:layerType="software"  />
 
 

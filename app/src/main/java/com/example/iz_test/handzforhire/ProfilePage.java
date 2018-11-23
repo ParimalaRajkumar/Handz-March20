@@ -80,7 +80,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
     Activity activity;
     String description="https://www.handzforhire.com";
-    String tittle="Whether you need a hand or would like to lend a hand, Handz for Hire is built to connect you and your neighbors looking to get jobs done. Visit HandzForHire.com or download the app in the App Store or Google Play.\"\n" +
+    String title="Whether you need a hand or would like to lend a hand, Handz for Hire is built to connect you and your neighbors looking to get jobs done. Visit HandzForHire.com or download the app in the App Store or Google Play.\"\n" +
             "along with that website url and logo";
 
     float x1,x2;
@@ -98,8 +98,6 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-
 
         Button edit_profile = (Button) findViewById(R.id.edit_user_profile);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
@@ -282,6 +280,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                 i.putExtra("userId", id);
                 i.putExtra("image",profile_image);
                 i.putExtra("name", profilename);
+                i.putExtra("username", user_name);
                 startActivity(i);
             }
         });
@@ -785,7 +784,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         share.setType("text/plain");
         share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         share.putExtra(Intent.EXTRA_SUBJECT,"HandzForHire");
-        share.putExtra(Intent.EXTRA_TEXT,tittle);
+        share.putExtra(Intent.EXTRA_TEXT,title);
         startActivity(Intent.createChooser(share, "Share link!"));
 
     }

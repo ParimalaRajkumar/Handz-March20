@@ -691,6 +691,7 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                 params.put(CATEGORY_COLOR,job_category_color);
                 params.put(DELIST,delist);
                 params.put(Constant.DEVICE, Constant.ANDROID);
+
                 return params;
             }
 

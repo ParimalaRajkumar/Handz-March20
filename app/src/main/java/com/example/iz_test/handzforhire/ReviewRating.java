@@ -50,6 +50,8 @@ public class ReviewRating extends Activity implements SimpleGestureFilter.Simple
 
     String address, city, state, zipcode, id;
     private static final String URL = Constant.SERVER_URL + "review_rating";
+    private static final String USERNAME_URL = Constant.SERVER_URL+"get_username";
+    private static final String GET_AVERAGERAT = Constant.SERVER_URL+"get_average_rating";
     ArrayList<HashMap<String, String>> job_list = new ArrayList<HashMap<String, String>>();
     public static String KEY_USERID = "user_id";
     public static String XAPP_KEY = "X-APP-KEY";
@@ -87,9 +89,11 @@ public class ReviewRating extends Activity implements SimpleGestureFilter.Simple
         id = i.getStringExtra("userId");
         profile_image = i.getStringExtra("image");
         profilename = i.getStringExtra("name");
+        String username = i.getStringExtra("username");
         System.out.println("iiiiiiiiiiiiiiiiiiiii:" + id);
 
         completerating();
+        getAverageRatigng();
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,19 +102,62 @@ public class ReviewRating extends Activity implements SimpleGestureFilter.Simple
             }
         });
 
-        name.setText(profilename);
-        if (profile_image.equals("") && profile_image.equals(null)) {
+        if(profilename.equals(""))
+        {
+            name.setText(username);
+        }
+        else
+        {
+            name.setText(profilename);
+        }
 
-        }
-        else {
             Glide.with(this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, 0, Glideconstants.sCorner, Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
-        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         LISessionManager.getInstance(getApplicationContext()).onActivityResult(this, requestCode, resultCode, data);
+    }
+
+    public void getAverageRatigng() {
+        dialog.show();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_AVERAGERAT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("average rat:" + response);
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            rate.setText(object.getString("average_rating"));
+                        }catch (Exception e){
+                            System.out.println("exception "+e.getMessage());
+                        }
+                        dialog.dismiss();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        dialog.dismiss();
+                        //Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put(XAPP_KEY, value);
+                map.put(KEY_USERID, id);
+                map.put(TYPE, "employer");
+                map.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println(" Map "+map);
+                return map;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     public void completerating() {

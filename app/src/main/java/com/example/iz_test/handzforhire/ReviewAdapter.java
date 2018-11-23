@@ -2,12 +2,6 @@ package com.example.iz_test.handzforhire;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +16,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.glide.Glideconstants;
 import com.glide.RoundedCornersTransformation;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -99,15 +90,11 @@ public class ReviewAdapter extends BaseAdapter {
 
         System.out.println("Average rating "+get_average);
         if(get_average!=null && !get_average.equals(""))
-        rating_bar.setRating(Float.parseFloat(get_average));
-     /*   if(get_image.equals(""))
         {
-            image1.setVisibility(View.VISIBLE);
+            rating_bar.setRating(Float.parseFloat(get_average));
         }
-        else {*/
-            Glide.with(activity).load(get_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image1);
 
-    //    }
+            Glide.with(activity).load(get_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image1);
 
         return vi;
     }
