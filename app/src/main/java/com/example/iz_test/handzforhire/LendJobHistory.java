@@ -66,6 +66,13 @@ public class LendJobHistory extends Activity implements SimpleGestureFilter.Simp
     String lend_status = "lend";
     LendHistoryAdapter arrayAdapter;
     private SimpleGestureFilter detector;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        activeJobs();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +99,7 @@ public class LendJobHistory extends Activity implements SimpleGestureFilter.Simp
 
         detector = new SimpleGestureFilter(this,this);
 
-        activeJobs();
+        //activeJobs();
 
         ed_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,6 +282,7 @@ public class LendJobHistory extends Activity implements SimpleGestureFilter.Simp
             if(status.equals("success"))
             {
                 JSONArray array = new JSONArray(jobList);
+                job_list.clear();
                 for(int n = 0; n < array.length(); n++) {
                     JSONObject object = (JSONObject) array.get(n);
                     final String job_name = object.getString("job_name");

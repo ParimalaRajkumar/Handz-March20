@@ -8,13 +8,13 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '28.0.3'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.example.iz_test.handzforhire"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -32,7 +32,7 @@ android {
         key{
             keyAlias 'handzforhire'
             keyPassword 'android'
-            storeFile file('E:/Handzdebugfile/handz.jks')
+            storeFile file('C:/Users/Mohanbabu/Desktop/handz.jks')
             storePassword 'android'
         }
     }
@@ -83,21 +83,21 @@ dependencies {
     compile files('libs/mint-5.2.2.jar')
     compile files('libs/picasso-2.5.2.jar')
     //compile files('libs/YouTubeAndroidPlayerApi.jar')
-    compile 'com.android.support:cardview-v7:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     //noinspection OutdatedLibrary
     compile 'com.facebook.android:facebook-android-sdk:4.5.0'
-    compile 'com.android.volley:volley:1.0.0'
-    compile 'com.google.android.gms:play-services-maps:10.0.1'
-    compile 'com.google.android.gms:play-services-location:10.0.1'
+    compile 'com.android.volley:volley:1.1.0'
+    compile 'com.google.android.gms:play-services-maps:16.0.0'
+    compile 'com.google.android.gms:play-services-location:16.0.0'
     compile 'com.ramesh.mypicker:pickerview:1.0'
     compile 'com.firebase:firebase-client-android:2.5.2'
 
-    compile 'com.google.firebase:firebase-storage:10.0.1'
-    compile 'com.google.firebase:firebase-auth:10.0.1'
-    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.google.firebase:firebase-storage:16.0.5'
+    compile 'com.google.firebase:firebase-auth:16.0.5'
+    compile 'com.google.firebase:firebase-messaging:17.3.4'
     //  compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.pierfrancescosoffritti.androidyoutubeplayer:core:8.0.1'
     compile 'android.arch.lifecycle:runtime:1.0.0'

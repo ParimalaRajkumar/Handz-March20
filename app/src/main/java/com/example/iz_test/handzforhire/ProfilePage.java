@@ -87,6 +87,19 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     float y1, y2;
     RequestMethods req;
     HashMap<String, String> user;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getProfileimage(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,7 +185,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
         //paymentCheck();
 
-        getProfileimage(getIntent());
+       // getProfileimage(getIntent());
         getUsername();
         getAverageRatigng();
         edit_profile.setOnClickListener(new View.OnClickListener() {

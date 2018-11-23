@@ -79,7 +79,6 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-
         logo = (ImageView)findViewById(R.id.logo);
         list = (ListView)findViewById(R.id.listview);
         //rating_lay = (RelativeLayout) findViewById(R.id.rating);
@@ -97,6 +96,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
         detector = new SimpleGestureFilter(this,this);
 
        // getProfileimage();
+       // Utility.updateNotificationCount(this,dialog,Utility.getApiParams(id,null,"notificationCountPosted"));
         listPostedJobs();
        // getcount();
 
@@ -686,7 +686,6 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
                     if (items.get("no_of_applicants").equals("0")) {
                         /*final Dialog dialog = new Dialog(activity);
                         dialog.setContentView(R.layout.custom_dialog);
-
                         // set the custom dialog components - text, image and button
                         TextView text = (TextView) dialog.findViewById(R.id.text);
                         text.setText("No Job Applied");
