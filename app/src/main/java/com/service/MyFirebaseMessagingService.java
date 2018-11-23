@@ -140,6 +140,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                       resultIntent = new Intent(getApplicationContext(), SplashScreen.class);
                 }
                 resultIntent.putExtra("message", message);
+            resultIntent.putExtra("userId", title);
                 showNotificationMessage(getApplicationContext(), title, message, timestamp, resultIntent);
          //   }
         } catch (JSONException e) {
@@ -162,7 +163,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.logo)
-                        .setContentTitle(message);
+                        .setContentTitle(message)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setDefaults(Notification.DEFAULT_ALL);
 
         System.out.println("I ntent "+intent);
 
