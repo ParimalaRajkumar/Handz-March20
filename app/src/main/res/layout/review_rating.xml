@@ -139,7 +139,7 @@
             android:orientation="vertical"
             android:background="#fff"
             android:gravity="center"
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/lin_linkin">
 
             <TextView
@@ -169,7 +169,7 @@
             android:orientation="vertical"
             android:background="#fff"
             android:gravity="center"
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/lin_linkininfo">
 
             <RelativeLayout

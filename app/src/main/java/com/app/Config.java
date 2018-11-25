@@ -22,4 +22,10 @@ public class Config {
 
     public static final String LINKEDIN_CLIENTID = "81qt2f2mg525a4";
     public static final String LINKEDIN_SECRETKEY = "E3VnJD4wY2l5x9U7";
+
+    public static enum BUILD_TYPE
+    {
+        DEVELOP ,
+        RELEASE
+    }
 }

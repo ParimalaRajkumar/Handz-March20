@@ -218,7 +218,7 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
                     zip.setText("");
                     locationTrack = LocationTrack.getInstance(CreateJob2.this );
                     if (locationTrack.canGetLocation()) {
-
+                       locationTrack.getLocation();
                         //Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
                     } else {
                         locationTrack.showSettingsAlert();
