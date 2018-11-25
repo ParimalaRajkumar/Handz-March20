@@ -295,6 +295,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                 i.putExtra("userId", id);
                 i.putExtra("image",profile_image);
                 i.putExtra("name", profilename);
+                i.putExtra("username", user_name);
                 startActivity(i);
             }
         });

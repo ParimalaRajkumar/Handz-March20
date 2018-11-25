@@ -178,6 +178,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("userId", id);
                 i.putExtra("image",profile_image);
                 i.putExtra("name", profilename);
+                i.putExtra("username", username);
                 startActivity(i);
             }
         });

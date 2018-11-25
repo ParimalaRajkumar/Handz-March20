@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 
         ComputePackageHash();
 
-        text.setText(Html.fromHtml("Handz is currently offered in the Jacksonville,FL \narea. Want Handz in your area? <u>Click Here</u>"));
+        text.setText(Html.fromHtml("Handz is currently offered in the Jacksonville,FL \narea. Want Handz in your area?   <u>Click Here</u>"));
 
         text.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -93,7 +93,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    String header,sub_category,job_category_color,job_expire,expected_hours,post_address ;
+    String header,sub_category,job_category_color,job_expire,expected_hours,post_address,time_value ;
     Dialog dialog;
     private SimpleGestureFilter detector;
     ImageView main_category_image;
@@ -301,7 +301,6 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 dialog.show();
                 Window window = dialog.getWindow();
                 dialog.getWindow().
-
                         setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 return;
@@ -610,6 +609,12 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                             String hour_day = (hour < 10) ? "0" + hour : "" + hour;
                             start_time = hour_day + ":" + min + ":" + sec;
                             System.out.println("77777777:start_time::::::"+start_time);
+                            String text = (hour < 10 ? "0" : "") + hour;
+                            System.out.println("77777777:text::::::"+text);
+                            int text1 = Integer.parseInt(text) + 1;
+                            System.out.println("77777777:text1::::::"+text1);
+                            time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
+                            System.out.println("77777777:time_value::::::"+time_value);
 
                             hourr = hour_day;
                             System.out.println("77777777:hourr::::::"+hourr);
@@ -716,11 +721,10 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         }
 
         expected_hours = end_time_text.getText().toString();
-        expected_hours = end_time_text.getText().toString().replaceAll("[^0-9]","");
         System.out.println("eeeeeeeee:expected_hours:::"+expected_hours);
         job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
         System.out.println("eeeeeeeee:estimated:::"+job_estimated);
-        job_expire = date_format + " " + st_time ;
+        job_expire = date_format + " " + time_value ;
         System.out.println("eeeeeeeee:job_expire:::"+job_expire);
         String hours = hour.getText().toString();
         String duration = expected_hours+" "+hours;
@@ -735,7 +739,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         i.putExtra("sub_category", sub_category);
         i.putExtra("job_decription",description);
         i.putExtra("job_date", date_format);
-        i.putExtra("start_time",st_time);
+        i.putExtra("start_time",time_value);
         i.putExtra("expected_hours",expected_hours);
         i.putExtra("payment_type", expected_hours);
         i.putExtra("payment_amount",amount);
@@ -845,41 +849,32 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 System.out.println("jjjjjjjjjjjjjjjob:::job_data:::" + job_data);
                 JSONObject object = new JSONObject(job_data);
                 String get_name = object.getString("job_name");
-
                 job_category = object.getString("job_category");
-
                 String get_description = object.getString("description");
-
                 String get_date = object.getString("job_date");
-
                 String get_start_time = object.getString("start_time");
-
                 String get_amount = object.getString("job_payment_amount");
-
                 String get_type = object.getString("job_payment_type");
-
                 String flexible = object.getString("job_date_time_flexible");
-
                 String sub_cat = object.getString("sub_category");
-
                 String cat_color = object.getString("job_category_color");
-
                 String job_estimated_payment = object.getString("job_estimated_payment");
-
                 String job_expire_date_time = object.getString("job_expire_date_time");
-
                 job_id = object.getString("job_id");
-
                 String username = object.getString("username");
-
                 String profilename = object.getString("profile_name");
-
                 String firstname = object.getString("firstname");
-
                 post_address = object.getString("post_address");
                 current_location = object.getString("currentlocation");
                 latitude = object.getString("latitude");
                 longitude = object.getString("longitude");
+                String[] splited = get_type.split(" ");
+                System.out.println("resssssssssssssssss:editjob:splited:" + splited);
+                String split_one=splited[0];
+                String split_second=splited[1];
+                System.out.println("resssssssssssssssss:editjob:split_one:" + split_one);
+                System.out.println("resssssssssssssssss:editjob:split_second:" + split_second);
+
 
                 if(profilename.equals(""))
                 {
@@ -938,12 +933,17 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
 
                 job_name.setText(get_name);
                 job_description.setText(get_description);
-                end_time_text.setText(get_type);
+                end_time_text.setText(split_one);
+                hour.setText(split_second);
                 pay_text.setVisibility(View.GONE);
                 arrow.setVisibility(View.VISIBLE);
                 arrow1.setVisibility(View.GONE);
                 payment_layout.setVisibility(View.VISIBLE);
-                job_amount.setText(get_amount);
+                String s1 = "1.00";
+                String multi = String.valueOf(Float.valueOf(get_amount)*Float.valueOf(s1));
+                String total_amount = String.format("%.2f", Float.valueOf(multi));
+                System.out.println("sssssssssssss:editcreatejob:multi:"+multi+"....."+total_amount);
+                job_amount.setText(total_amount);
                 amount_text.setText("Hourly Wage");
                 if(flexible.equals("yes"))
                 {

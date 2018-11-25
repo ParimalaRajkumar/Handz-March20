@@ -110,14 +110,13 @@
                                 android:layout_height="match_parent"
                                 android:textSize="16sp"
                                 android:maxLines="1"
-                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^*"
                                 android:paddingRight="20sp"
                                 android:inputType="textCapCharacters"
                                 android:layout_marginBottom="5sp"
                                 android:background="@android:color/transparent"
                                 android:textColor="#000000"
                                 android:paddingLeft="20sp"/>
-
                         </LinearLayout>
 
                         <LinearLayout

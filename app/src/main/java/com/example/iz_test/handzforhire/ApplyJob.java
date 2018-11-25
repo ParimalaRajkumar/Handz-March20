@@ -353,7 +353,7 @@ public class ApplyJob extends BackKeyHandlerActivity implements SimpleGestureFil
         }
         String multi = String.valueOf(Float.valueOf(amount)*Float.valueOf(s1));
         String total_amount = String.format("%.2f", Float.valueOf(multi));
-        amt.setText(total_amount);
+        amt.setText("$"+total_amount);
         type_text.setText(type);
         text.setText(profile_name);
         job.setText(job_name);

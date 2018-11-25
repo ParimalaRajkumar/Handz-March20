@@ -66,7 +66,8 @@ public class JobHistory extends Activity implements SimpleGestureFilter.SimpleGe
     private SimpleGestureFilter detector;
 
     @Override
-    protected void onStart() {
+    protected void onStart()
+    {
         super.onStart();
         activeJobs();
     }

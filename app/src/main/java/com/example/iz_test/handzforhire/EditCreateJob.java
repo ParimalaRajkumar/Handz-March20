@@ -94,7 +94,7 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    String header,sub_category,job_category_color,job_expire,expected_hours,post_address,current_location;
+    String header,sub_category,job_category_color,job_expire,expected_hours,post_address,current_location,time_value;
     Dialog dialog;
     private SimpleGestureFilter detector;
     @Override
@@ -617,6 +617,12 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
                             String hour_day = (hour < 10) ? "0" + hour : "" + hour;
                             start_time = hour_day + ":" + min + ":" + sec;
                             System.out.println("77777777:start_time::::::"+start_time);
+                            String text = (hour < 10 ? "0" : "") + hour;
+                            System.out.println("77777777:text::::::"+text);
+                            int text1 = Integer.parseInt(text) + 1;
+                            System.out.println("77777777:text1::::::"+text1);
+                            time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
+                            System.out.println("77777777:time_value::::::"+time_value);
 
                             hourr = hour_day;
                             System.out.println("77777777:hourr::::::"+hourr);
@@ -724,10 +730,9 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
 
         expected_hours = end_time_text.getText().toString();
         System.out.println("eeeeeeeee:expected_hours:::"+expected_hours);
-        expected_hours = end_time_text.getText().toString().replaceAll("[^0-9]","");
         job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
         System.out.println("eeeeeeeee:estimated:::"+job_estimated);
-        job_expire = date_format + " " + st_time ;
+        job_expire = date_format + " " + time_value ;
         System.out.println("eeeeeeeee:job_expire:::"+job_expire);
         String hours = hour.getText().toString();
         String duration = expected_hours+" "+hours;
@@ -742,7 +747,7 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
         i.putExtra("sub_category", sub_category);
         i.putExtra("job_decription",description);
         i.putExtra("job_date", date_format);
-        i.putExtra("start_time",st_time);
+        i.putExtra("start_time",time_value);
         i.putExtra("expected_hours",expected_hours);
         i.putExtra("payment_amount",amount);
         i.putExtra("payment_type", expected_hours);
@@ -858,6 +863,12 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
                 String job_state = object.getString("job_state");
                 String job_city = object.getString("job_city");
                 String job_zipcode = object.getString("job_zipcode");
+                String[] splited = get_type.split(" ");
+                System.out.println("resssssssssssssssss:editjob:splited:" + splited);
+                String split_one=splited[0];
+                String split_second=splited[1];
+                System.out.println("resssssssssssssssss:editjob:split_one:" + split_one);
+                System.out.println("resssssssssssssssss:editjob:split_second:" + split_second);
 
                 name = get_name;
                 categoryId = job_category;
@@ -907,12 +918,17 @@ public class EditCreateJob extends Activity implements View.OnClickListener,Simp
 
                 job_name.setText(get_name);
                 job_description.setText(get_description);
-                end_time_text.setText(get_type);
+                end_time_text.setText(split_one);
+                hour.setText(split_second);
                 pay_text.setVisibility(View.GONE);
                 arrow.setVisibility(View.VISIBLE);
                 arrow1.setVisibility(View.GONE);
                 payment_layout.setVisibility(View.VISIBLE);
-                job_amount.setText(get_amount);
+                String s1 = "1.00";
+                String multi = String.valueOf(Float.valueOf(get_amount)*Float.valueOf(s1));
+                String total_amount = String.format("%.2f", Float.valueOf(multi));
+                System.out.println("sssssssssssss:editcreatejob:multi:"+multi+"....."+total_amount);
+                job_amount.setText(total_amount);
                 amount_text.setText("Hourly Wage");
                 if(flexible.equals("yes"))
                 {
