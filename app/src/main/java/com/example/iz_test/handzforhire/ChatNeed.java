@@ -153,8 +153,6 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
         Tv.setText(get_user);
         sender_id = current_user_id + user_id;
         child_id = channel_id + job_id;
-
-
         Firebase.setAndroidContext(this);
        reference1 = new Firebase("https://handz-8ac86.firebaseio.com/channels");
        //reference1 = new Firebase("https://handzdev-9e758.firebaseio.com/channels");

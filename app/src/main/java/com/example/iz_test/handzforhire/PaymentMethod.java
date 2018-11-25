@@ -89,7 +89,7 @@ public class PaymentMethod extends Activity implements SimpleGestureFilter.Simpl
             // or live (ENVIRONMENT_PRODUCTION)
              .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
             //.environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
-            .clientId(PayPalConfig.PAYPAL_LIVE_CLIENT_ID)
+            .clientId(PayPalConfig.PAYPAL_CLIENT_ID)
             //.clientId(PayPalConfig.PAYPAL_CLIENT_ID)
             .merchantName("HandzForHire")
             .merchantPrivacyPolicyUri(Uri.parse("https://www.homeadvisor.com/rfs/aboutus/privacyPolicy.jsp"))
@@ -192,12 +192,12 @@ public class PaymentMethod extends Activity implements SimpleGestureFilter.Simpl
     {
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/oauth2/token");
+        HttpPost httppost = new HttpPost(PayPalConfig.PAYPAL_TOKEN_URL);
         //HttpPost httppost = new HttpPost("https://api.sandbox.paypal.com/v1/oauth2/token");
 
         try {
             //String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
-             String text=PayPalConfig.PAYPAL_LIVE_CLIENT_ID+":"+PayPalConfig.PAYPAL_LIVE_SECRET_KEY;
+             String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
             byte[] data = text.getBytes("UTF-8");
             String base64 = Base64.encodeToString(data, Base64.NO_WRAP);
 
@@ -234,7 +234,7 @@ public class PaymentMethod extends Activity implements SimpleGestureFilter.Simpl
     {
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/identity/openidconnect/userinfo/?schema=openid");
+        HttpPost httppost = new HttpPost(PayPalConfig.PAYPAL_CUSTOMER_INFO_URL);
         //HttpPost httppost = new HttpPost("https://api.sandbox.paypal.com/v1/identity/openidconnect/userinfo/?schema=openid");
         try {
 

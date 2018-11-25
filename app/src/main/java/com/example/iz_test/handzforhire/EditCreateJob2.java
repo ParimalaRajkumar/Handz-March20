@@ -87,6 +87,18 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
 
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(current_location!= null && current_location.equals("yes"))
+        {
+           // check1.setChecked(true);
+            locationTrack = LocationTrack.getInstance(this);
+            locationTrack.getLocation();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -275,7 +287,7 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
                     locationTrack = LocationTrack.getInstance(EditCreateJob2.this);
                     if (locationTrack.canGetLocation()) {
 
-
+                         locationTrack.getLocation();
 
                     } else {
                         locationTrack.showSettingsAlert();

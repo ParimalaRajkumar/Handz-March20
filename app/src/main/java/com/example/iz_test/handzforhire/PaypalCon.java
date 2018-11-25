@@ -40,11 +40,11 @@ public class PaypalCon {
 
         String access_token="";
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/oauth2/token");
+        HttpPost httppost = new HttpPost(PayPalConfig.PAYPAL_TOKEN_URL);
 
         try {
             //String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
-            String text=PayPalConfig.PAYPAL_LIVE_CLIENT_ID+":"+PayPalConfig.PAYPAL_LIVE_SECRET_KEY;
+            String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
             byte[] data = text.getBytes("UTF-8");
             String base64 = Base64.encodeToString(data, Base64.NO_WRAP);
             httppost.addHeader("Accept","application/json");
@@ -52,7 +52,7 @@ public class PaypalCon {
             httppost.addHeader("content-type", "application/x-www-form-urlencoded");
             httppost.addHeader("Authorization", "Basic " + base64);
 
-            StringEntity se=new StringEntity("grant_type=client_credentials&client_id="+PayPalConfig.PAYPAL_LIVE_CLIENT_ID+"&client_secret="+PayPalConfig.PAYPAL_LIVE_SECRET_KEY);
+            StringEntity se=new StringEntity("grant_type=client_credentials&client_id="+PayPalConfig.PAYPAL_CLIENT_ID+"&client_secret="+PayPalConfig.PAYPAL_SECRET_KEY);
 
             httppost.setEntity(se);
 
@@ -86,7 +86,7 @@ public class PaypalCon {
 
         String returnulr="";
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/checkout/orders/");
+        HttpPost httppost = new HttpPost(PayPalConfig.PAYPAL_ORDER_URL);
         try {
             httppost.addHeader("Accept","application/json");
             httppost.addHeader("Accept-Language", "en_US");
@@ -94,7 +94,7 @@ public class PaypalCon {
             httppost.addHeader("Authorization", "Bearer " + accesstoken);
             httppost.addHeader("PayPal-Partner-Attribution-Id", "HandzForHire_SP_PPM");
             httppost.addHeader("PayPal-Request-Id", date);
-            httppost.addHeader("Paypal-Client-Metadata-Id", "AUJXB6Fw9-KIrL9Igu4ou05tf7mWydAqV8cHu-OPcWeZJfrUgwp0CXYo9-pG7GukKaM35WKGakqjoClj");
+            httppost.addHeader("Paypal-Client-Metadata-Id", PayPalConfig.PAYPAL_CLIENT_ID);
             StringEntity se=  new StringEntity(orderapibody);
             httppost.setEntity(se);
 
@@ -122,17 +122,19 @@ public class PaypalCon {
 
         String payorderapi="";
 
-        String ur="https://api.paypal.com/v1/checkout/orders/"+orderid+"/pay";
+       // String ur="https://api.paypal.com/v1/checkout/orders/"+orderid+"/pay";
+
+       // ur = String.format(PayPalConfig.PAYPAL_ORDER_URL,orderid);
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/checkout/orders/"+orderid+"/pay");
+        HttpPost httppost = new HttpPost( String.format(PayPalConfig.PAYPAL_ORDER_URL,orderid));
         try {
 
             httppost.addHeader("content-type", "application/json");
             httppost.addHeader("Authorization", "Bearer " + accesstoken);
             httppost.addHeader("PayPal-Partner-Attribution-Id", "HandzForHire_SP_PPM");
             httppost.addHeader("PayPal-Request-Id", date);
-            httppost.addHeader("Paypal-Client-Metadata-Id", "AUJXB6Fw9-KIrL9Igu4ou05tf7mWydAqV8cHu-OPcWeZJfrUgwp0CXYo9-pG7GukKaM35WKGakqjoClj");
+            httppost.addHeader("Paypal-Client-Metadata-Id", PayPalConfig.PAYPAL_CLIENT_ID);
 
             JSONObject  objj= new JSONObject();
             try {
@@ -261,7 +263,7 @@ public class PaypalCon {
         String link="";
         HttpClient httpclient = new DefaultHttpClient();
         //HttpPost httppost = new HttpPost("https://api.paypal.com/v1/oauth2/token");
-        HttpPost httppost = new HttpPost("https://api.paypal.com/v1/customer/partner-referrals/");
+        HttpPost httppost = new HttpPost(PayPalConfig.PAYPAL_PARTNER_REFFERAL_URL);
 
         try {
             httppost.addHeader("content-type", "application/json");
@@ -362,7 +364,8 @@ public class PaypalCon {
         String Merchantid="";
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpget = new HttpGet("https://api.paypal.com/v1/customer/partners/QLMCC9XV8A6GS/merchant-integrations?tracking_id="+trackvalue);
+       // HttpGet httpget = new HttpGet("https://api.paypal.com/v1/customer/partners/QLMCC9XV8A6GS/merchant-integrations?tracking_id="+trackvalue);
+        HttpGet httpget = new HttpGet(PayPalConfig.PAYPAL_MERCHANT_ID_URL+trackvalue);
 
         try {
             httpget.addHeader("Authorization", "Bearer " + accesstoken);
@@ -395,7 +398,7 @@ public class PaypalCon {
     public static String getMerchantStatus(String  merchant_id,String accesstoken) {
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpget = new HttpGet("https://api.paypal.com/v1/customer/partners/QLMCC9XV8A6GS/merchant-integrations/"+merchant_id);
+        HttpGet httpget = new HttpGet(PayPalConfig.PAYPAL_MERCHANT_STATUS_URL+merchant_id);
 
         try {
             httpget.addHeader("Authorization", "Bearer " + accesstoken);

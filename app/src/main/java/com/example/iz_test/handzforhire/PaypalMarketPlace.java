@@ -37,7 +37,7 @@ public class PaypalMarketPlace {
 
         try {
             //String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
-            String text=PayPalConfig.PAYPAL_LIVE_CLIENT_ID+":"+PayPalConfig.PAYPAL_LIVE_SECRET_KEY;
+            String text=PayPalConfig.PAYPAL_CLIENT_ID+":"+PayPalConfig.PAYPAL_SECRET_KEY;
             byte[] data = text.getBytes("UTF-8");
             String base64 = Base64.encodeToString(data, Base64.NO_WRAP);
             httppost.addHeader("Accept","application/json");
@@ -45,7 +45,7 @@ public class PaypalMarketPlace {
             httppost.addHeader("content-type", "application/x-www-form-urlencoded");
             httppost.addHeader("Authorization", "Basic " + base64);
 
-            StringEntity se=new StringEntity("grant_type=client_credentials&client_id="+PayPalConfig.PAYPAL_LIVE_CLIENT_ID+"&client_secret="+PayPalConfig.PAYPAL_LIVE_SECRET_KEY);
+            StringEntity se=new StringEntity("grant_type=client_credentials&client_id="+PayPalConfig.PAYPAL_CLIENT_ID+"&client_secret="+PayPalConfig.PAYPAL_SECRET_KEY);
             httppost.setEntity(se);
 // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
