@@ -8,4 +8,5 @@
     <color name="profile_top_bg">#007679</color>
     <color name="rating_text_color">#000000</color>
     <color name="profile_icon_text">#ffffff</color>
+    <color name="app_bg">#4D4D4D</color>
 </resources>

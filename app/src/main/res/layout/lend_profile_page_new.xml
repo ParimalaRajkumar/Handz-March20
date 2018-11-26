@@ -102,7 +102,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="need a hand"
+        android:text="lend a hand"
         android:textAllCaps="true"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="#CBCACA"
@@ -125,41 +125,41 @@
     <Button
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
-        android:id="@+id/create_job"
+        android:id="@+id/find_job"
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius_top"
         app:layout_constraintCircleAngle="335"
         app:layout_constraintBottom_toTopOf="@+id/create_job_text"
-        android:background="@drawable/create_job"/>
+        android:background="@drawable/job_map"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/create_job_text"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="create a job"
+        android:text="job map view"
         style="@style/ProfileIconText"
-        app:layout_constraintLeft_toLeftOf="@id/create_job"
-        app:layout_constraintRight_toRightOf="@id/create_job"
-        app:layout_constraintTop_toBottomOf="@+id/create_job" />
+        app:layout_constraintLeft_toLeftOf="@id/find_job"
+        app:layout_constraintRight_toRightOf="@id/find_job"
+        app:layout_constraintTop_toBottomOf="@+id/find_job" />
 
     <Button
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
-        android:id="@+id/edit_posted_job"
+        android:id="@+id/list_view"
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius_top"
         app:layout_constraintCircleAngle="25"
-        android:background="@drawable/edit_job"/>
+        android:background="@drawable/job_list"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="edit a job"
+        android:text="Job List View"
         android:layout_centerInParent="true"
         style="@style/ProfileIconText"
-        app:layout_constraintLeft_toLeftOf="@id/edit_posted_job"
-        app:layout_constraintRight_toRightOf="@id/edit_posted_job"
-        app:layout_constraintTop_toBottomOf="@+id/edit_posted_job"
+        app:layout_constraintLeft_toLeftOf="@id/list_view"
+        app:layout_constraintRight_toRightOf="@id/list_view"
+        app:layout_constraintTop_toBottomOf="@+id/list_view"
         />
 
     <FrameLayout
@@ -206,7 +206,7 @@
         app:layout_constraintCircleRadius="@dimen/circle_radius_top"
         app:layout_constraintCircleAngle="155"
         android:background="@drawable/edit_user"
-         />
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
         app:layout_constraintTop_toBottomOf="@+id/job_history"
         />
     <FrameLayout
-        android:id="@+id/posted_job"
+        android:id="@+id/pending_job"
         android:layout_width="@dimen/profile_icon_size"
         android:background="@drawable/posted_jobs"
         app:layout_constraintCircle="@+id/logo"
@@ -276,16 +276,16 @@
             android:background="@drawable/circle_shape" />
 
     </FrameLayout>
+
     <TextView
+        style="@style/ProfileIconText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="posted jobs"
         android:layout_centerInParent="true"
-        style="@style/ProfileIconText"
-        app:layout_constraintLeft_toLeftOf="@id/posted_job"
-        app:layout_constraintRight_toRightOf="@id/posted_job"
-        app:layout_constraintTop_toBottomOf="@+id/posted_job"
-        />
+        android:text="pending jobs"
+        app:layout_constraintLeft_toLeftOf="@id/pending_job"
+        app:layout_constraintRight_toRightOf="@id/pending_job"
+        app:layout_constraintTop_toBottomOf="@+id/pending_job" />
 
     <RelativeLayout
         android:id="@+id/tutorial_layout"
@@ -324,7 +324,7 @@
         android:layout_marginRight="16dp">
 
         <ImageView
-            android:id="@+id/sha_need"
+            android:id="@+id/sha_lend"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:src="@drawable/share"/>
@@ -338,7 +338,7 @@
             android:layout_centerHorizontal="true"
             android:textSize="12sp"
             android:textColor="#ffffff"
-            android:layout_below="@+id/sha_need"/>
+            android:layout_below="@+id/sha_lend"/>
 
     </RelativeLayout>
 

@@ -74,13 +74,12 @@
                             android:id="@+id/text2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rating: "
-                            android:textStyle="italic|bold"
-                            android:layout_toLeftOf="@+id/text3"
                             android:layout_marginRight="5sp"
+                            android:layout_toLeftOf="@+id/text3"
+                            android:text="Rating: "
+                            android:textColor="#000000"
                             android:textSize="22sp"
-                            android:layout_centerVertical="true"
-                            android:textColor="#000000"/>
+                            android:textStyle="italic|bold" />
 
                         <ImageView
                             android:layout_width="40sp"

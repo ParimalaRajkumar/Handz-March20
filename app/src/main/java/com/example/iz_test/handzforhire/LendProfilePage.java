@@ -62,7 +62,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
     ProgressDialog progress_dialog;
     ImageView profile,handz,menu,share_lend,tutorial;
     TextView profile_name,rating_value;
-    RelativeLayout rating_lay;
+    View rating_lay ,rating_img;
     SessionManager session;
     FrameLayout pending,active_job,job_history;
     Dialog dialog;
@@ -83,7 +83,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lend_profile_page);
+        setContentView(R.layout.lend_profile_page_new);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -112,12 +112,13 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         pending = (FrameLayout) findViewById(R.id.pending_job);
         active_job = (FrameLayout) findViewById(R.id.active_job);
         job_history = (FrameLayout) findViewById(R.id.job_history);
-        rating_lay = (RelativeLayout) findViewById(R.id.rating);
+        rating_lay =  findViewById(R.id.text2);
+        rating_img = findViewById(R.id.imageView6);
         menu = (ImageView)findViewById(R.id.menu);
         txt_postedjobcnt = (TextView) findViewById(R.id.txt_postedjobcnt);
         txt_activejobscnt = (TextView) findViewById(R.id.txt_activejobscnt);
         job_historycnt = (TextView) findViewById(R.id.job_historycnt);
-        TextView txt = (TextView) findViewById(R.id.txt);
+        TextView txt = (TextView) findViewById(R.id.textView5);
 
         session = new SessionManager(getApplicationContext());
          user = session.getUserDetails();
@@ -152,7 +153,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
         txt.setTypeface(tf);
         edit.setTypeface(tf);
-        need_help.setTypeface(tf);
+      //  need_help.setTypeface(tf);
         rating_value.setTypeface(tf);
 
         String fontPath2 = "fonts/cambriab.ttf";
@@ -172,6 +173,17 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         });*/
 
         rating_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LendProfilePage.this,LendReviewRating.class);
+                i.putExtra("userId", id);
+                i.putExtra("image",profile_image);
+                i.putExtra("name", profilename);
+                i.putExtra("username", username);
+                startActivity(i);
+            }
+        });
+        rating_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(LendProfilePage.this,LendReviewRating.class);

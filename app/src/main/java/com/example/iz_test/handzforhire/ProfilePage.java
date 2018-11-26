@@ -72,7 +72,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     ImageView profile,logo,menu,share_need,tutorial;
     ProgressDialog progress_dialog;
     ProgressBar progress;
-    RelativeLayout rating_lay;
+    View rating_lay,rating_img;
     SessionManager session;
     FrameLayout posted,history,active;
     ProgressBar pb;
@@ -87,6 +87,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     float y1, y2;
     RequestMethods req;
     HashMap<String, String> user;
+    Button edit_profile;
 
     @Override
     protected void onStart() {
@@ -103,7 +104,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.profile_page_new);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -112,8 +113,9 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        Button edit_profile = (Button) findViewById(R.id.edit_user_profile);
-        rating_lay = (RelativeLayout) findViewById(R.id.rating);
+        edit_profile = (Button) findViewById(R.id.edit_user_profile);
+        rating_lay =  findViewById(R.id.text2);
+        rating_img =findViewById(R.id.imageView6);
         profile_name = (TextView) findViewById(R.id.text1);
         rating_value = (TextView) findViewById(R.id.text3);
         need_help = (Button) findViewById(R.id.need_help);
@@ -282,6 +284,18 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                 i.putExtra("city", city);
                 i.putExtra("state", state);
                 i.putExtra("zipcode", zipcode);
+                startActivity(i);
+            }
+        });
+
+        rating_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfilePage.this,ReviewRating.class);
+                i.putExtra("userId", id);
+                i.putExtra("image",profile_image);
+                i.putExtra("name", profilename);
+                i.putExtra("username", user_name);
                 startActivity(i);
             }
         });

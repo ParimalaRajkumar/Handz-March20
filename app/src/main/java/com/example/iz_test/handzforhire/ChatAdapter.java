@@ -95,7 +95,7 @@ public class ChatAdapter extends BaseAdapter {
         boolean myMsg = chatMessage.isMe() ;//Just a dummy check
         setAlignment(holder, myMsg);
         if(chatMessage.getMessage().equals("FROM HANDZ: Just a reminder that payment has not been completed on this job! Have a great day!"))
-            holder.txtMessage.setBackgroundResource(R.drawable.gray_bg_c_9);
+            holder.txtMessage.setBackgroundResource(R.drawable.char_gray_bg);
         holder.txtMessage.setText(chatMessage.getMessage());
         if(chatMessage.has_Attachemnt) {
             DownloadImage(chatMessage.getPhotoURL(),holder.img_view);
@@ -119,7 +119,7 @@ public class ChatAdapter extends BaseAdapter {
     private void setAlignment(ViewHolder holder, boolean isMe) {
         if (!isMe) {
             //holder.contentWithBG.setBackgroundResource(R.drawable.green_bg_c);
-            holder.txtMessage.setBackgroundResource(R.drawable.green_bg_c_9);
+            holder.txtMessage.setBackgroundResource(R.drawable.chat_green_bg);
             LinearLayout.LayoutParams layoutParams =
                     (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
             layoutParams.gravity = Gravity.RIGHT;
@@ -140,7 +140,7 @@ public class ChatAdapter extends BaseAdapter {
             holder.img_view.setLayoutParams(layoutParams);
         } else {
            // holder.contentWithBG.setBackgroundResource(R.drawable.yellow_bg_c);
-            holder.txtMessage.setBackgroundResource(R.drawable.yellow_bg_c_9);
+            holder.txtMessage.setBackgroundResource(R.drawable.chat_yellow_bg);
             LinearLayout.LayoutParams layoutParams =
                     (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
