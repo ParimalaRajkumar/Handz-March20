@@ -33,5 +33,18 @@
         <item name="android:minHeight">45dip</item>
         <item name="android:maxHeight">45dip</item>
     </style>
+    <style name="RatingText" >
+        <item name="android:textColor">@color/rating_text_color</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">22dp</item>
+    </style>
+    <style name="ProfileIconText">
+        <item name="android:textColor">@color/profile_icon_text</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+
+    </style>
 </resources>
 
