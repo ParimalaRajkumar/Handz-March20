@@ -59,6 +59,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
    public static String  image,id,date,profile_image,profilename,average_rating,comments,avg_rat;
     private static final String URL = Constant.SERVER_URL+"review_rating";
     private static final String LINKEDIN_URL = Constant.SERVER_URL+"linked_in ";
+    private static final String GET_AVERAGERAT = Constant.SERVER_URL+"get_average_rating";
     ArrayList<HashMap<String, String>> job_list = new ArrayList<HashMap<String, String>>();
     public static String KEY_USERID = "user_id";
     public static String XAPP_KEY = "X-APP-KEY";
@@ -84,7 +85,6 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
     private SimpleGestureFilter detector;
     Activity thisActivity;
     String firstnmae,lastnmae,lin_email,lin_id,pictureurl,profileurl;
-    ImageView mLinkedinUpdate;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.review_rating);
@@ -93,6 +93,8 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+
         list = (ListView) findViewById(R.id.listview);
         close = (Button) findViewById(R.id.cancel_btn);
         ImageView image = (ImageView)findViewById(R.id.profile_image);
@@ -103,49 +105,93 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         lin_linkininfo=(LinearLayout)findViewById(R.id.lin_linkininfo);
         txt_profilename=(TextView)findViewById(R.id.txt_profilename);
         imageprofile=(ImageView)findViewById(R.id.imageprofile);
-        mLinkedinUpdate = findViewById(R.id.linkedin_refresh);
+
         Intent i = getIntent();
         id = i.getStringExtra("userId");
         profile_image = i.getStringExtra("image");
         profilename = i.getStringExtra("name");
+        String username = i.getStringExtra("username");
+
         detector = new SimpleGestureFilter(this,this);
+
         completerating();
+        getAverageRatigng();
+
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        name.setText(profilename);
-        if(!profile_image.equals(""))
+
+        if(profilename.equals(""))
         {
-            Glide.with(LendReviewRating.this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(LendReviewRating.this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
+            name.setText(username);
         }
+        else
+        {
+            name.setText(profilename);
+        }
+
+        Glide.with(this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, 0, Glideconstants.sCorner, Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
+
         lin_linkin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              linkedinAuthentication();
+
+               if(appInstalledOrNot()) {
+                   linkedlogin();
+                }else{
+                    Toast.makeText(getApplicationContext(),"App not installed ",Toast.LENGTH_LONG).show();
+                     LinkedInActivity.userid=id;
+                    Intent in_linkedin=new Intent(LendReviewRating.this,LinkedInActivity.class);
+                    startActivityForResult(in_linkedin,Constant.LINKEDIN_REQUEST);
+                }
+
             }
         });
+
         thisActivity = this;
-        mLinkedinUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linkedinAuthentication();
-            }
-        });
     }
 
-    private void linkedinAuthentication(){
+    public void getAverageRatigng() {
+        dialog.show();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_AVERAGERAT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("average rat:" + response);
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            txt_rating.setText(object.getString("average_rating"));
+                        }catch (Exception e){
+                            System.out.println("exception "+e.getMessage());
+                        }
+                        dialog.dismiss();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-        if(appInstalledOrNot()) {
-            linkedlogin();
-        }else{
-            Toast.makeText(getApplicationContext(),"App not installed ",Toast.LENGTH_LONG).show();
-            LinkedInActivity.userid=id;
-            Intent in_linkedin=new Intent(LendReviewRating.this,LinkedInActivity.class);
-            startActivityForResult(in_linkedin,Constant.LINKEDIN_REQUEST);
-        }
+                        dialog.dismiss();
+                        //Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put(XAPP_KEY, value);
+                map.put(KEY_USERID, id);
+                map.put(TYPE, "employer");
+                map.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println(" Map "+map);
+                return map;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     public void completerating() {
@@ -314,7 +360,6 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     map.put("average", average_rating);
                     map.put("comments", object.getString("comments"));
                     map.put("date", date);
-                    job_list.clear();
                     job_list.add(map);
 
                 }

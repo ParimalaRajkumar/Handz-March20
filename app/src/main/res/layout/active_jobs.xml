@@ -32,13 +32,11 @@
 
         <Button
             android:id="@+id/btn1"
-            android:layout_width="60sp"
-            android:layout_height="90sp"
-            android:paddingTop="10sp"
+            android:layout_width="70sp"
+            android:layout_height="100sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:paddingBottom="10sp"
-            android:background="@drawable/posted"/>
+            android:background="@drawable/posted_new"/>
 
         <ImageView
             android:id="@+id/logo"
@@ -49,13 +47,12 @@
 
         <Button
             android:id="@+id/btn2"
-            android:layout_width="60sp"
-            android:layout_height="90sp"
+            android:layout_width="70sp"
+            android:layout_height="100sp"
             android:paddingTop="10sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:paddingBottom="10sp"
-            android:background="@drawable/job_history_button"/>
+            android:background="@drawable/job_history_button_new"/>
 
     </LinearLayout>
 

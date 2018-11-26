@@ -331,6 +331,7 @@
                             android:layout_alignParentEnd="true"
                             android:textColor="#000000"
                             android:visibility="gone"
+                            android:textStyle="bold"
                             android:layout_below="@+id/red"
                             />
                     </RelativeLayout>
@@ -401,7 +402,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center"
+                    android:gravity="left"
+                    android:layout_marginLeft="10sp"
                     android:layout_marginTop="10sp">
 
                     <TextView
@@ -474,7 +476,7 @@
                         android:text="Pay: "
                         android:textColor="#000000"
                         android:textStyle="bold"
-                        android:textSize="22sp" />
+                        android:textSize="24sp" />
 
 
                     <TextView
@@ -483,7 +485,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:textStyle="bold"
-                        android:textSize="22sp"/>
+                        android:textSize="24sp"/>
 
                 </LinearLayout>
 

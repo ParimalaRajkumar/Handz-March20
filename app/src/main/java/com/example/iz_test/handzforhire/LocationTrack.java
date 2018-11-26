@@ -60,7 +60,7 @@ public class LocationTrack  {
                 .getSystemService(LOCATION_SERVICE);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mContext);
-        getLocation();
+        //getLocation();
     }
 
     public void getLocation() {

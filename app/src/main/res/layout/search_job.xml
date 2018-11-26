@@ -208,14 +208,13 @@
                 android:layout_height="wrap_content"
                 android:background="#4D4D4D">
 
-
                 <Button
                     android:id="@+id/search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Search"
                     android:textAllCaps="true"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:textSize="20sp"
@@ -229,7 +228,6 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
                 android:layout_marginTop="20sp"
                 android:layout_alignParentBottom="true">
 
@@ -238,7 +236,6 @@
                     android:layout_height="40sp"
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/handz"/>
-
             </RelativeLayout>
 
 

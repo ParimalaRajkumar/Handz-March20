@@ -2,6 +2,7 @@ package com.example.iz_test.handzforhire;
 
 import android.app.Application;
 
+import com.app.Config;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
@@ -17,5 +18,6 @@ public class MyApplication extends Application {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+        PayPalConfig.setBuild(Config.BUILD_TYPE.DEVELOP);
     }
 }
