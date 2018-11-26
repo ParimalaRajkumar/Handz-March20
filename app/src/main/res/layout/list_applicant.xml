@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#C8A854"
+    android:background="#BFE8C64B"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -75,7 +75,7 @@
                 android:gravity="center"
                 android:layout_centerVertical="true"
                 android:textColor="#000000"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textStyle="italic|bold" />
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/txt1"
                 android:textColor="#000000"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             </RelativeLayout>
@@ -162,7 +162,7 @@
                     android:text="hire \napplicant"
                     android:textAllCaps="true"
                     android:textColor="#DCDCDC"
-                    android:textSize="22sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -205,7 +205,7 @@
                     android:text="decline \napplicant"
                     android:textAllCaps="true"
                     android:textColor="#DCDCDC"
-                    android:textSize="22sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>

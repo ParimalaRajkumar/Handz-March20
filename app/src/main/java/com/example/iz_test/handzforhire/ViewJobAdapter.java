@@ -57,6 +57,7 @@ public class ViewJobAdapter extends BaseAdapter {
         job.setText(job_category);
         id.setText(job_id);
         imageView.setImageResource(imageId[position]);
+
         return vi;
     }
 }
