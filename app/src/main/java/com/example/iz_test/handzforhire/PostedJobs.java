@@ -580,6 +580,8 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
             unchecked.setTag(position);
             rel_viewapplicant.setTag(position);
 
+
+
             if (dlist.equals("no"))
             {
                 unchecked.setVisibility(View.VISIBLE);
