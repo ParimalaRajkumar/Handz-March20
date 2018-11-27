@@ -179,6 +179,7 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                     ChatItems item=new ChatItems();
                     item.setSenderId(sender_id);
                     item.setMessage(messageText);
+                    item.setSenderName(get_user);
                     item.setPhotoURL("");
                     item.setHas_Attachemnt(true);
                     item.setHas_Attachemnt(false);
@@ -223,6 +224,8 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
 
                             ChatItems item=new ChatItems();
 
+
+
                             if(sender_id.equals(recipient.child("senderId").getValue()))
                             {
                                 item.setMe(true);
@@ -231,7 +234,7 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                             }
 
                             item.setSenderId(String.valueOf(recipient.child("senderId").getValue()));
-
+                            item.setSenderName(String.valueOf(recipient.child("senderName").getValue()));
                             if(recipient.hasChild("photoURL")) {
                                 String photoURL = String.valueOf(recipient.child("photoURL").getValue());
                                 item.setMessage("");
@@ -323,6 +326,7 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                             ChatItems item=new ChatItems();
                             item.setSenderId(sender_id);
                             item.setMessage("");
+                            item.setSenderName(get_user);
                             item.setPhotoURL(photourl);
                             item.setHas_Attachemnt(true);
 

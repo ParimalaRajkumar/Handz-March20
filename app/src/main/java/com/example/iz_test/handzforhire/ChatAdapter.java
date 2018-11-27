@@ -95,8 +95,9 @@ public class ChatAdapter extends BaseAdapter {
         boolean myMsg = chatMessage.isMe() ;//Just a dummy check
         setAlignment(holder, myMsg);
         if(chatMessage.getMessage().equals("FROM HANDZ: Just a reminder that payment has not been completed on this job! Have a great day!"))
-            holder.txtMessage.setBackgroundResource(R.drawable.char_gray_bg);
+            holder.txtMessage.setBackgroundResource(R.drawable.bubblegray_in);
         holder.txtMessage.setText(chatMessage.getMessage());
+        holder.chatTime.setText(chatMessage.getSenderName());
         if(chatMessage.has_Attachemnt) {
             DownloadImage(chatMessage.getPhotoURL(),holder.img_view);
             holder.txtMessage.setVisibility(View.GONE);
@@ -119,7 +120,7 @@ public class ChatAdapter extends BaseAdapter {
     private void setAlignment(ViewHolder holder, boolean isMe) {
         if (!isMe) {
             //holder.contentWithBG.setBackgroundResource(R.drawable.green_bg_c);
-            holder.txtMessage.setBackgroundResource(R.drawable.chat_green_bg);
+            holder.txtMessage.setBackgroundResource(R.drawable.bubble_in);
             LinearLayout.LayoutParams layoutParams =
                     (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
             layoutParams.gravity = Gravity.RIGHT;
@@ -132,15 +133,18 @@ public class ChatAdapter extends BaseAdapter {
             holder.content.setLayoutParams(lp);
             layoutParams = (LinearLayout.LayoutParams) holder.txtMessage.getLayoutParams();
             layoutParams.gravity = Gravity.RIGHT;
+            layoutParams = (LinearLayout.LayoutParams) holder.chatTime.getLayoutParams();
+            layoutParams.gravity = Gravity.RIGHT;
+            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_top_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
             holder.txtMessage.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
             holder.txtMessage.setLayoutParams(layoutParams);
-
             layoutParams = (LinearLayout.LayoutParams) holder.img_view.getLayoutParams();
             layoutParams.gravity = Gravity.RIGHT;
+            holder.chatTime.setGravity(Gravity.RIGHT);
             holder.img_view.setLayoutParams(layoutParams);
         } else {
            // holder.contentWithBG.setBackgroundResource(R.drawable.yellow_bg_c);
-            holder.txtMessage.setBackgroundResource(R.drawable.chat_yellow_bg);
+            holder.txtMessage.setBackgroundResource(R.drawable.bubble_out);
             LinearLayout.LayoutParams layoutParams =
                     (LinearLayout.LayoutParams) holder.contentWithBG.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
@@ -153,10 +157,11 @@ public class ChatAdapter extends BaseAdapter {
             holder.content.setLayoutParams(lp);
             layoutParams = (LinearLayout.LayoutParams) holder.txtMessage.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
-            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
-            holder.txtMessage.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
+            layoutParams = (LinearLayout.LayoutParams) holder.chatTime.getLayoutParams();
+            layoutParams.gravity = Gravity.LEFT;
+            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_top_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_top_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
+            holder.txtMessage.setGravity(Gravity.LEFT|Gravity.CENTER);
             holder.txtMessage.setLayoutParams(layoutParams);
-
             layoutParams = (LinearLayout.LayoutParams) holder.img_view.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
             holder.img_view.setLayoutParams(layoutParams);
@@ -169,6 +174,7 @@ public class ChatAdapter extends BaseAdapter {
         holder.content = (LinearLayout) v.findViewById(R.id.content);
         holder.contentWithBG = (LinearLayout) v.findViewById(R.id.contentWithBackground);
         holder.img_view = (ImageView) v.findViewById(R.id.img_view);
+        holder.chatTime = v.findViewById(R.id.user);
         return holder;
     }
 
@@ -177,6 +183,7 @@ public class ChatAdapter extends BaseAdapter {
         public ImageView img_view;
         public LinearLayout content;
         public LinearLayout contentWithBG;
+        public TextView chatTime;
     }
     private String DownloadImage(String url,final ImageView image_view){
         photourl="";
