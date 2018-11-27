@@ -187,7 +187,6 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                         messagelist.add(item);
                         adapter = new ChatAdapter(ChatNeed.this, messagelist);
                         messagesContainer.setAdapter(adapter);
-
                     }else {
                         displayMessage(item);
                     }
