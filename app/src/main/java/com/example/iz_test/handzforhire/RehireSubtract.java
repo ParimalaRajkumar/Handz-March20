@@ -125,6 +125,21 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
         expected_value = (EditText) findViewById(R.id.expected_text);
         ImageView info = (ImageView) findViewById(R.id.info);
 
+        TextView text = (TextView) findViewById(R.id.text);
+        TextView text1 = (TextView) findViewById(R.id.text1);
+        TextView text2 = (TextView) findViewById(R.id.text2);
+        TextView text3 = (TextView) findViewById(R.id.text3);
+        TextView text4 = (TextView) findViewById(R.id.text4);
+        TextView text5 = (TextView) findViewById(R.id.text5);
+        TextView text6 = (TextView) findViewById(R.id.text6);
+        TextView text7 = (TextView) findViewById(R.id.text7);
+        TextView text8 = (TextView) findViewById(R.id.text8);
+        TextView text9 = (TextView) findViewById(R.id.text9);
+        TextView text10 = (TextView) findViewById(R.id.text10);
+        TextView text11 = (TextView) findViewById(R.id.text11);
+        TextView text12 = (TextView) findViewById(R.id.text12);
+        TextView total = (TextView) findViewById(R.id.total);
+
         Intent i = getIntent();
         id = i.getStringExtra("userId");
         name = i.getStringExtra("job_name");
@@ -147,6 +162,35 @@ public class RehireSubtract extends Activity implements SimpleGestureFilter.Simp
         post_address = i.getStringExtra("post_address");
         latitude = i.getStringExtra("latitude");
         longitude = i.getStringExtra("longitude");
+
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        text.setTypeface(tf);
+        create_job.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        text1.setTypeface(tf1);
+        text2.setTypeface(tf1);
+        text3.setTypeface(tf1);
+        text4.setTypeface(tf1);
+        text5.setTypeface(tf1);
+        text6.setTypeface(tf1);
+        text8.setTypeface(tf1);
+        text10.setTypeface(tf1);
+        text11.setTypeface(tf1);
+        text12.setTypeface(tf1);
+        pocket_expense.setTypeface(tf1);
+        paypal_merchant.setTypeface(tf1);
+        job_payout.setTypeface(tf1);
+        hourly_value.setTypeface(tf1);
+        expected_value.setTypeface(tf1);
+        total.setTypeface(tf1);
+
+        String fontPath2 = "fonts/LibreFranklin-Italic.ttf";
+        Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
+        text7.setTypeface(tf2);
+        text9.setTypeface(tf2);
 
         detector = new SimpleGestureFilter(this,this);
 

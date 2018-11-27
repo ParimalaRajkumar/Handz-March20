@@ -68,6 +68,7 @@ public class CustomList extends BaseAdapter {
         t1.setTypeface(tf);
         t2.setTypeface(tf);
         t3.setTypeface(tf);
+        rating.setTypeface(tf);
 
         HashMap<String, String> items = new HashMap<String, String>();
         items = data.get(position);

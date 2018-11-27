@@ -34,6 +34,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.glide.Glideconstants;
+import com.glide.RoundedCornersTransformation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -85,6 +89,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
         active_btn = (Button) findViewById(R.id.btn1);
         history_btn = (Button) findViewById(R.id.btn2);
         lin_archievedjob=(LinearLayout)findViewById(R.id.lin_archievedjob);
+        image=(ImageView)findViewById(R.id.img1);
 
         Intent i = getIntent();
         id = i.getStringExtra("userId");
@@ -95,9 +100,9 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
 
         detector = new SimpleGestureFilter(this,this);
 
-       // getProfileimage();
+         //getProfileimage();
        // Utility.updateNotificationCount(this,dialog,Utility.getApiParams(id,null,"notificationCountPosted"));
-        listPostedJobs();
+           listPostedJobs();
        // getcount();
 
         logo.setOnClickListener(new View.OnClickListener() {
@@ -493,7 +498,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
                 System.out.println("ggggggggget:profilename:" + profilename);
                 profile_name.setText(profilename);
                 System.out.println("ggggggggget:profile_image:" + profile_image);
-            /*    profile.setVisibility(View.GONE);
+                /*profile.setVisibility(View.GONE);
                 Glide.with(this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
 */
             }
@@ -555,6 +560,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
 
             ImageView checked=(ImageView)vi.findViewById(R.id.img);
             ImageView unchecked=(ImageView)vi.findViewById(R.id.img1);
+
 
             String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
             Typeface font = Typeface.createFromAsset(activity.getAssets(), fontPath);
@@ -819,7 +825,8 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
 
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent event){
+    public boolean dispatchTouchEvent(MotionEvent event)
+    {
 
         this.detector.onTouchEvent(event);
         return super.dispatchTouchEvent(event);

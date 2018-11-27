@@ -2,6 +2,7 @@ package com.example.iz_test.handzforhire;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -33,6 +34,12 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
         ImageView back = (ImageView) findViewById(R.id.back);
         subtract = (TextView) findViewById(R.id.subtract);
         ImageView logo = (ImageView) findViewById(R.id.logo);
+
+        TextView text = (TextView) findViewById(R.id.text);
+        TextView text1 = (TextView) findViewById(R.id.text1);
+        TextView text2 = (TextView) findViewById(R.id.text2);
+        TextView text3 = (TextView) findViewById(R.id.text3);
+        TextView text4 = (TextView) findViewById(R.id.text4);
 
         Intent i = getIntent();
         id = i.getStringExtra("userId");
@@ -68,6 +75,22 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
 
         pay_amount.addTextChangedListener(tw);
         hours.addTextChangedListener(tw1);
+
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        text.setTypeface(tf);
+        add.setTypeface(tf);
+        subtract.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        text1.setTypeface(tf1);
+        text2.setTypeface(tf1);
+        text3.setTypeface(tf1);
+        text4.setTypeface(tf1);
+        pay_amount.setTypeface(tf1);
+        hours.setTypeface(tf1);
+        total.setTypeface(tf1);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

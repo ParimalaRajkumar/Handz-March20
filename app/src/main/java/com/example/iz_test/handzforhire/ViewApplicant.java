@@ -56,7 +56,7 @@ public class ViewApplicant extends Activity implements SimpleGestureFilter.Simpl
     public static String XAPP_KEY = "X-APP-KEY";
     public static String JOB_ID = "job_id";
     String value = "HandzForHire@~";
-    String address, city, state, zipcode,rating, user_id, firstname,job_id,name,username,comments,employee,profile_image,profilename;
+    String address, city, state, zipcode,rating, user_id, firstname,image,job_id,name,username,comments,employee,profile_image,profilename;
     TextView profile_name,job_name;
     ListView list;
     ProgressDialog progress_dialog;
@@ -95,6 +95,7 @@ public class ViewApplicant extends Activity implements SimpleGestureFilter.Simpl
         detector = new SimpleGestureFilter(this,this);
 
         job_name.setText(name);
+
 
         getProfileimage();
         listPostedJobs();
@@ -190,9 +191,14 @@ public class ViewApplicant extends Activity implements SimpleGestureFilter.Simpl
             JSONObject jResult = new JSONObject(jsonobject);
             status = jResult.getString("status");
 
-            if (status.equals("success")) {
+            if (status.equals("success"))
+            {
 
             }
+
+
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -266,7 +272,7 @@ public class ViewApplicant extends Activity implements SimpleGestureFilter.Simpl
                     firstname = object.getString("firstname");
                     profilename = object.getString("profile_name");
                     rating = object.getString("average_rating");
-
+                    String image = object.getString("profile_image");
                     System.out.println("ressss:username::" + username);
                     System.out.println("ressss:comments::" + comments);
                     System.out.println("ressss:employee_id::" + employee);
@@ -282,6 +288,7 @@ public class ViewApplicant extends Activity implements SimpleGestureFilter.Simpl
                 map.put("jobname",name);
                 map.put("profilename",profilename);
                 map.put("firstname",firstname);
+                map.put("profile_image",image);
                 job_list.add(map);
                 System.out.println("job_list:::" + job_list);
                 ApplicantAdapter arrayAdapter = new ApplicantAdapter(this, job_list) {

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.glide.Glideconstants;
+import com.glide.RoundedCornersTransformation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +58,7 @@ public class ApplicantAdapter extends BaseAdapter {
     public static String USER_TYPE = "user_type";
     String value = "HandzForHire@~";
     String usertype = "employer";
-    String employee_id,job_id,employer_id,job_name,profilename,firstname,average_rating;
+    String employee_id,job_id,employer_id,job_name,profilename,firstname,average_rating,profile_image;
 
     public ApplicantAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
         activity = a;
@@ -84,6 +89,8 @@ public class ApplicantAdapter extends BaseAdapter {
         TextView hire = (TextView) vi.findViewById(R.id.hire);
         TextView refuse = (TextView) vi.findViewById(R.id.refuse);
         TextView rating = (TextView) vi.findViewById(R.id.rating_value);
+        ImageView image1 = (ImageView) vi.findViewById(R.id.img1);
+
 
         hire.setTag(position);
         refuse.setTag(position);
@@ -133,6 +140,8 @@ public class ApplicantAdapter extends BaseAdapter {
         profilename = items.get("profilename");
         firstname = items.get("firstname");
         average_rating = items.get("rating");
+        profile_image = items.get("profile_image");
+        Glide.with(activity).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image1);
 
         comments.setText(get_comments);
         comments.setTypeface(font);
