@@ -27,18 +27,18 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:textColor="#000000"
-        android:textSize="26sp"
+        style="@style/RatingText"
         app:layout_constraintBottom_toBottomOf="@+id/menu"
         app:layout_constraintEnd_toStartOf="@+id/menu"
-        app:layout_constraintTop_toTopOf="@+id/menu" />
+        app:layout_constraintTop_toTopOf="@+id/top_container" />
 
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="@dimen/profile_width"
+        android:layout_height="@dimen/profile_width"
         android:layout_marginStart="24dp"
         android:layout_marginTop="3dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,14 +48,14 @@
         app:srcCompat="@drawable/default_profile" />
 
     <ImageView
+        android:id="@+id/menu"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:id="@+id/menu"
+        android:src="@drawable/menu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/menu" />
+        app:layout_constraintTop_toTopOf="@+id/top_container" />
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
@@ -85,10 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="5.0"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        style="@style/Ratingvalue"
         app:layout_constraintBottom_toBottomOf="@+id/text2"
         app:layout_constraintStart_toEndOf="@+id/text2"
         app:layout_constraintTop_toTopOf="@+id/text2" />
@@ -98,13 +95,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="lend a hand"
         android:textAllCaps="true"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="#CBCACA"
         android:textSize="34dp"
+        app:layout_constraintBottom_toTopOf="@+id/find_job"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_container" />
@@ -113,12 +110,14 @@
         android:id="@+id/logo"
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/tutorial_layout"
+        app:layout_constraintBottom_toBottomOf="@+id/need_help"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias=".45" />
+        app:layout_constraintVertical_bias=".47"
+        app:layout_constraintTop_toBottomOf="@+id/top_container" />
 
     <Button
         android:layout_width="@dimen/profile_icon_size"
@@ -347,7 +346,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/bulb"
-        app:layout_constraintBottom_toTopOf="@+id/tutorial_layout"
+        app:layout_constraintBottom_toTopOf="@+id/tex1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     <ProgressBar
