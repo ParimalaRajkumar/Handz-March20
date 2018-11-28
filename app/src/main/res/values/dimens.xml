@@ -5,7 +5,7 @@
     <dimen name="chatitem_left_margin">14dp</dimen>
     <dimen name="chatitem_top_margin">4dp</dimen>
     <dimen name="chatitem_bottom_margin">8dp</dimen>
-    <dimen name="profile_icon_size">95dp</dimen>
-    <dimen name="circle_radius">105dp</dimen>
-    <dimen name="circle_radius_top">150dp</dimen>
+    <dimen name="profile_icon_size">95sp</dimen>
+    <dimen name="circle_radius">105sp</dimen>
+    <dimen name="circle_radius_top">150sp</dimen>
 </resources>
