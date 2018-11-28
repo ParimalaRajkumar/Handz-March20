@@ -7,7 +7,9 @@
     <dimen name="chatitem_top_margin">4dp</dimen>
     <dimen name="chatitem_bottom_margin">8dp</dimen>
     <dimen name="profile_icon_size">95sp</dimen>
-    <dimen name="circle_radius">110sp</dimen>
+    <dimen name="circle_radius">110dp</dimen>
     <dimen name="profile_width">130dp</dimen>
     <dimen name="circle_radius_top">150sp</dimen>
+    <dimen name="rating_icon_size">60dp</dimen>
+    <dimen name="rating_value_margin_left">8dp</dimen>
 </resources>

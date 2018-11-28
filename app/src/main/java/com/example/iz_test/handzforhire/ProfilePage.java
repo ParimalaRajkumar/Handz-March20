@@ -180,6 +180,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
         String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
         Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating.setTypeface(tf1);
 
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);

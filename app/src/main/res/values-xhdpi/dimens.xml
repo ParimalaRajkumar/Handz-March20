@@ -10,4 +10,6 @@
     <dimen name="circle_radius">95dp</dimen>
     <dimen name="profile_width">105dp</dimen>
     <dimen name="circle_radius_top">115dp</dimen>
+    <dimen name="rating_icon_size">40dp</dimen>
+    <dimen name="rating_value_margin_left">8dp</dimen>
 </resources>

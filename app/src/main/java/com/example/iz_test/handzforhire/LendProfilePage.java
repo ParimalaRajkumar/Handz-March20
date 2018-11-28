@@ -61,8 +61,8 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
     String value = "HandzForHire@~";
     ProgressDialog progress_dialog;
     ImageView profile,handz,menu,share_lend,tutorial;
-    TextView profile_name,rating_value;
-    View rating_lay ,rating_img;
+    TextView profile_name,rating_value,rating_text;
+    View rating_img;
     SessionManager session;
     FrameLayout pending,active_job,job_history;
     Dialog dialog;
@@ -103,7 +103,6 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         need_help = (Button) findViewById(R.id.need_help);
         job_list = (Button) findViewById(R.id.list_view);
         edit = (Button) findViewById(R.id.edit_user_profile);
-        user_name = (TextView) findViewById(R.id.text1);
         rating_value = (TextView) findViewById(R.id.text3);
         profile = (ImageView)findViewById(R.id.profile_image);
         tutorial=(ImageView)findViewById(R.id.tutorial);
@@ -112,7 +111,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         pending = (FrameLayout) findViewById(R.id.pending_job);
         active_job = (FrameLayout) findViewById(R.id.active_job);
         job_history = (FrameLayout) findViewById(R.id.job_history);
-        rating_lay =  findViewById(R.id.text2);
+        rating_text =  findViewById(R.id.text2);
         rating_img = findViewById(R.id.imageView6);
         menu = (ImageView)findViewById(R.id.menu);
         txt_postedjobcnt = (TextView) findViewById(R.id.txt_postedjobcnt);
@@ -156,6 +155,10 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
       //  need_help.setTypeface(tf);
         rating_value.setTypeface(tf);
 
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
+
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
         profile_name.setTypeface(tf2);
@@ -172,7 +175,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
             }
         });*/
 
-        rating_lay.setOnClickListener(new View.OnClickListener() {
+        rating_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(LendProfilePage.this,LendReviewRating.class);
