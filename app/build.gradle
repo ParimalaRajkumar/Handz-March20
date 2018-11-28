@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+
+
+//keyalias : handzforhire
+//keystore Pass : android
+//key Pass : android
+//path C:\Users\IZ-Parimala\Desktop\handz.jks
+
+android {
+
+    compileSdkVersion 26
+    buildToolsVersion '28.0.3'
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.example.iz_test.handzforhire"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+
+            abortOnError false
+        }
+    }
+    signingConfigs{
+        key{
+            keyAlias 'handzforhire'
+            keyPassword 'android'
+            storeFile file('C:/Users/Mohanbabu/Desktop/handz.jks')
+            storePassword 'android'
+        }
+    }
+    buildTypes {
+        debug{
+            signingConfig signingConfigs.key
+        }
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/notice'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+    }
+
+    configurations{
+        all*.exclude group: 'com.android.volley'
+    }
+}
+
+repositories {
+
+    maven {
+        url uri('mint-plugin-repo-5.2.2')
+    }
+    maven { url 'https://dl.google.com/dl/android/maven2/'}
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile files('libs/paypal-2.0.2.jar')
+    compile('com.paypal.sdk:paypal-android-sdk:2.14.2') {
+        exclude group: 'io.card'
+    }
+    compile files('libs/commons-net-3.3-ftp.jar')
+    compile files('libs/simpleftp.jar')
+    compile files('libs/mint-5.2.2.jar')
+    compile files('libs/picasso-2.5.2.jar')
+    //compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.1.3'
+    //noinspection OutdatedLibrary
+    compile 'com.facebook.android:facebook-android-sdk:4.5.0'
+    compile 'com.android.volley:volley:1.1.0'
+    compile 'com.google.android.gms:play-services-maps:16.0.0'
+    compile 'com.google.android.gms:play-services-location:16.0.0'
+    compile 'com.ramesh.mypicker:pickerview:1.0'
+    compile 'com.firebase:firebase-client-android:2.5.2'
+
+    compile 'com.google.firebase:firebase-storage:16.0.5'
+    compile 'com.google.firebase:firebase-auth:16.0.5'
+    compile 'com.google.firebase:firebase-messaging:17.3.4'
+    //  compile 'com.google.firebase:firebase-database:10.0.1'
+    compile 'com.pierfrancescosoffritti.androidyoutubeplayer:core:8.0.1'
+    compile 'android.arch.lifecycle:runtime:1.0.0'
+    annotationProcessor "android.arch.lifecycle:common-java8:1.0.0-rc1"
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.4.7'
+    compile 'com.github.bumptech.glide:glide:4.0.0'
+    compile 'com.daasuu:BubbleLayout:1.1.1'
+    testCompile 'junit:junit:4.12'
+    compile project(':linkedin-sdk')
+}
+
+
+
+apply plugin: 'com.google.gms.google-services'
