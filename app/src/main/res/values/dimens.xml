@@ -13,4 +13,5 @@
     <dimen name="circle_radius_top">135sp</dimen>
     <dimen name="rating_icon_size">60dp</dimen>
     <dimen name="rating_value_margin_left">8dp</dimen>
+    <dimen name="notification_count_margin">8dp</dimen>
 </resources>

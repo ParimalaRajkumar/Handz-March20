@@ -128,6 +128,7 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:id="@+id/create_job"
+
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius_top"
         app:layout_constraintCircleAngle="335"
@@ -166,13 +167,16 @@
 
     <FrameLayout
         android:id="@+id/active_job"
-        android:layout_width="@dimen/profile_icon_size"
-        android:background="@drawable/active_jobs"
+        android:layout_width="wrap_content"
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius"
         app:layout_constraintCircleAngle="90"
-        android:padding="5dp"
-        android:layout_height="@dimen/profile_icon_size">
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/profile_icon_size"
+            android:layout_height="@dimen/profile_icon_size"
+            android:layout_margin="@dimen/notification_count_margin"
+            android:background="@drawable/active_jobs"></ImageView>
 
         <TextView
             android:id="@+id/txt_activejobscnt"
@@ -222,12 +226,17 @@
 
     <FrameLayout
         android:id="@+id/job_history"
-        android:layout_width="@dimen/profile_icon_size"
-        android:background="@drawable/job_history"
+        android:layout_width="wrap_content"
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius_top"
         app:layout_constraintCircleAngle="205"
-        android:layout_height="@dimen/profile_icon_size">
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="@dimen/profile_icon_size"
+            android:layout_height="@dimen/profile_icon_size"
+            android:layout_margin="@dimen/notification_count_margin"
+            android:background="@drawable/job_history"></ImageView>
 
         <TextView
             android:id="@+id/job_historycnt"
@@ -250,18 +259,24 @@
         android:text="job history"
         android:layout_centerInParent="true"
         style="@style/ProfileIconText"
+        android:layout_marginTop="-10dp"
         app:layout_constraintLeft_toLeftOf="@id/job_history"
         app:layout_constraintRight_toRightOf="@id/job_history"
         app:layout_constraintTop_toBottomOf="@+id/job_history"
         />
     <FrameLayout
         android:id="@+id/posted_job"
-        android:layout_width="@dimen/profile_icon_size"
-        android:background="@drawable/posted_jobs"
+        android:layout_width="wrap_content"
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius"
         app:layout_constraintCircleAngle="270"
-        android:layout_height="@dimen/profile_icon_size">
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="@dimen/profile_icon_size"
+            android:layout_height="@dimen/profile_icon_size"
+            android:layout_margin="@dimen/notification_count_margin"
+            android:background="@drawable/posted_jobs"></ImageView>
 
         <TextView
             android:id="@+id/txt_postedjobcnt"
@@ -269,7 +284,7 @@
             android:layout_height="25sp"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
-            android:padding="-15dp"
+
             android:visibility="invisible"
             android:textColor="#ffffff"
             android:textSize="17sp"
