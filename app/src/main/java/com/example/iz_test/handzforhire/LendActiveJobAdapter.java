@@ -134,8 +134,12 @@ public class LendActiveJobAdapter extends BaseAdapter{
         items = data.get(position);
         final String get_name = items.get("name");
 
-        final String get_image = items.get("image");
-        final String get_user = items.get("user");
+         String get_image = items.get("image");
+       if(items.get("image").contains("http://graph.facebook.com/"))
+       {
+           get_image = get_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+       }
+        final String get_user = items.get("user_name");
         final String get_job_id = items.get("jobId");
         final String user_id = items.get("userId");
         final String jobDate = items.get("jobDate");
@@ -228,7 +232,7 @@ public class LendActiveJobAdapter extends BaseAdapter{
                 String channel_id=items.get("channel");
 
                 if(items.get("profile").isEmpty())
-                    username=items.get("user");
+                    username=items.get("user_name");
                 else
                     username= items.get("profile");
 

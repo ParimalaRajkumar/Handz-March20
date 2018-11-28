@@ -263,6 +263,7 @@ public class LendActiveJobs extends Activity implements SimpleGestureFilter.Simp
                     map.put("name",job_name);
                     map.put("image",image);
                     map.put("jobId",job_id);
+                    map.put("user_name",user_name);
                     map.put("userId",user_id);
                     map.put("jobDate",jobDate);
                     map.put("start_time",startTime);
@@ -276,6 +277,7 @@ public class LendActiveJobs extends Activity implements SimpleGestureFilter.Simp
                     map.put("channel",channelid);
                     map.put("message_count",message_count);
                     map.put("payment_count",payment_count);
+
                     job_list.add(map);
                     System.out.println("job_list:::" + job_list);
                     LendActiveJobAdapter arrayAdapter = new LendActiveJobAdapter(this, job_list) {

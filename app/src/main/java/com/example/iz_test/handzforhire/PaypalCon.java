@@ -127,7 +127,7 @@ public class PaypalCon {
        // ur = String.format(PayPalConfig.PAYPAL_ORDER_URL,orderid);
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost( String.format(PayPalConfig.PAYPAL_ORDER_URL,orderid));
+        HttpPost httppost = new HttpPost( String.format(PayPalConfig.PAYPAL_CHECKOUT_URL,orderid));
         try {
 
             httppost.addHeader("content-type", "application/json");

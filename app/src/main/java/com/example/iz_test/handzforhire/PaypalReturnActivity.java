@@ -32,12 +32,14 @@ public class PaypalReturnActivity extends Activity {
             Intent in_reg=new Intent(PaypalReturnActivity.this,RegisterPage4.class);
             in_reg.putExtra("isfrom", "paypal");
             startActivity(in_reg);
+            finish();
 
         } else if(paypalredirect.equals("2"))
         {
             Intent in_reg=new Intent(PaypalReturnActivity.this,LendRegisterPage4.class);
             in_reg.putExtra("isfrom", "paypal");
             startActivity(in_reg);
+            finish();
 
         }
         else if(paypalredirect.equals("3"))
@@ -45,34 +47,40 @@ public class PaypalReturnActivity extends Activity {
             Intent in_reg=new Intent(PaypalReturnActivity.this,EditUserProfile.class);
             in_reg.putExtra("isfrom", "paypal");
             startActivity(in_reg);
+            finish();
 
         } else if(paypalredirect.equals("4"))
         {
             Intent in_reg=new Intent(PaypalReturnActivity.this,LendEditUserProfile.class);
             in_reg.putExtra("isfrom", "paypal");
             startActivity(in_reg);
+            finish();
 
         }else if(paypalredirect.equals("1")){
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,PayEmployee.class);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
+            finish();
         }else if(paypalredirect.equals("5")){
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,RegisterPage4.class);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
+            finish();
         }else if(paypalredirect.equals("6")){
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,LendRegisterPage4.class);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
+            finish();
         }else if(paypalredirect.equals("7")){
 
             Intent in_payment=new Intent(PaypalReturnActivity.this,SummaryAdd.class);
           //  in_payment.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
+            finish();
         }
         else if(paypalredirect.equals("8")){
 
@@ -80,6 +88,7 @@ public class PaypalReturnActivity extends Activity {
            // in_payment.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             in_payment.putExtra("isfrom", "paypal");
             startActivity(in_payment);
+            finish();
         }
         else if(paypalredirect.equals("9")){
 
@@ -87,6 +96,7 @@ public class PaypalReturnActivity extends Activity {
             in_payment.putExtra("isfrom", "paypal");
            // in_payment.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(in_payment);
+            finish();
         }
     }
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
@@ -97,7 +98,7 @@ public class ChatAdapter extends BaseAdapter {
         if(chatMessage.getMessage().equals("FROM HANDZ: Just a reminder that payment has not been completed on this job! Have a great day!"))
             holder.txtMessage.setBackgroundResource(R.drawable.bubblegray_in);
         holder.txtMessage.setText(chatMessage.getMessage());
-        holder.chatTime.setText(chatMessage.getSenderName());
+        holder.chatTime.setText(chatMessage.getSenderName()==null ?"":chatMessage.getSenderName());
         if(chatMessage.has_Attachemnt) {
             DownloadImage(chatMessage.getPhotoURL(),holder.img_view);
             holder.txtMessage.setVisibility(View.GONE);
@@ -140,6 +141,7 @@ public class ChatAdapter extends BaseAdapter {
             holder.txtMessage.setLayoutParams(layoutParams);
             layoutParams = (LinearLayout.LayoutParams) holder.img_view.getLayoutParams();
             layoutParams.gravity = Gravity.RIGHT;
+            holder.txtMessage.setTextColor(Color.WHITE);
             holder.chatTime.setGravity(Gravity.RIGHT);
             holder.img_view.setLayoutParams(layoutParams);
         } else {
@@ -159,7 +161,7 @@ public class ChatAdapter extends BaseAdapter {
             layoutParams.gravity = Gravity.LEFT;
             layoutParams = (LinearLayout.LayoutParams) holder.chatTime.getLayoutParams();
             layoutParams.gravity = Gravity.LEFT;
-            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_top_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_top_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
+            holder.txtMessage.setPadding(context.getResources().getDimensionPixelSize(R.dimen.chatitem_left_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_top_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_right_margin),context.getResources().getDimensionPixelSize(R.dimen.chatitem_bottom_margin));
             holder.txtMessage.setGravity(Gravity.LEFT|Gravity.CENTER);
             holder.txtMessage.setLayoutParams(layoutParams);
             layoutParams = (LinearLayout.LayoutParams) holder.img_view.getLayoutParams();

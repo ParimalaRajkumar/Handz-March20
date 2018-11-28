@@ -17,13 +17,13 @@
                                {
                                "capability": "API_INTEGRATION",
                                "api_integration_preference": {
-                                 "partner_id": "QLMCC9XV8A6GS",
+                                 "partner_id": "2NPBRNULVL7GS",
                                "rest_api_integration": {
                                "integration_method": "PAYPAL",
                                "integration_type": "THIRD_PARTY"
                                },
                                "rest_third_party_details": {
-                                "partner_client_id": "AUJXB6Fw9-KIrL9Igu4ou05tf7mWydAqV8cHu-OPcWeZJfrUgwp0CXYo9-pG7GukKaM35WKGakqjoClj",
+                                "partner_client_id": "AZKGEIXjRP25L9gE8PZLI17F5BujtqTehLicuLknK1RUTmqErqBvIuJ84edzXOn5dOfNn67sTaUL3mgV",
                                "feature_list": [
                                                 "PAYMENT",
                                                 "REFUND",
