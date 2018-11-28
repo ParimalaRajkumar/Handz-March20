@@ -272,7 +272,7 @@ public class ViewApplicant extends Activity implements SimpleGestureFilter.Simpl
                     firstname = object.getString("firstname");
                     profilename = object.getString("profile_name");
                     rating = object.getString("average_rating");
-                    String image = object.getString("profile_image");
+                    image = object.getString("profile_image");
                     System.out.println("ressss:username::" + username);
                     System.out.println("ressss:comments::" + comments);
                     System.out.println("ressss:employee_id::" + employee);

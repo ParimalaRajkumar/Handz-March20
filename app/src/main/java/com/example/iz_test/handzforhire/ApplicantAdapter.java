@@ -89,7 +89,7 @@ public class ApplicantAdapter extends BaseAdapter {
         TextView hire = (TextView) vi.findViewById(R.id.hire);
         TextView refuse = (TextView) vi.findViewById(R.id.refuse);
         TextView rating = (TextView) vi.findViewById(R.id.rating_value);
-        ImageView image1 = (ImageView) vi.findViewById(R.id.img1);
+        ImageView image1 = (ImageView) vi.findViewById(R.id.img2);
 
 
         hire.setTag(position);
