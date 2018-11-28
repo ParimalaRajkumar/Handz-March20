@@ -9,4 +9,5 @@
     <color name="rating_text_color">#000000</color>
     <color name="profile_icon_text">#ffffff</color>
     <color name="app_bg">#4D4D4D</color>
+    <color name="chatitem_time">#9E9E9E</color>
 </resources>

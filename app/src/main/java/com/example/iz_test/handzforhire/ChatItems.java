@@ -16,6 +16,16 @@ public class ChatItems {
 
     public boolean isMe;
 
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    private String senderName;
+
     public String getSenderId() {
         return senderId;
     }

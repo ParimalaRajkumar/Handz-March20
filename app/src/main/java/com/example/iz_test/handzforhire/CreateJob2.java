@@ -57,7 +57,7 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == Constant.GPS_SETTING_REQUEST) {
+        if (requestCode ==LocationTrack.REQUEST_CHECK_SETTINGS) {
 
            if( locationTrack!= null) {
 
@@ -217,11 +217,9 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
                     stat.setText("");
                     zip.setText("");
                     locationTrack = LocationTrack.getInstance(CreateJob2.this );
-                    if (locationTrack.canGetLocation()) {
+                    if (locationTrack != null) {
                        locationTrack.getLocation();
                         //Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
-                    } else {
-                        locationTrack.showSettingsAlert();
                     }
                 }
 

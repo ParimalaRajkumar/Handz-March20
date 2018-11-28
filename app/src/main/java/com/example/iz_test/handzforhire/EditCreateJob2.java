@@ -78,7 +78,7 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == Constant.GPS_SETTING_REQUEST) {
+        if (requestCode == LocationTrack.REQUEST_CHECK_SETTINGS) {
 
             if( locationTrack!= null) {
 
@@ -285,12 +285,10 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
                     stat.setText("");
                     zip.setText("");
                     locationTrack = LocationTrack.getInstance(EditCreateJob2.this);
-                    if (locationTrack.canGetLocation()) {
+                    if (locationTrack != null) {
 
                          locationTrack.getLocation();
 
-                    } else {
-                        locationTrack.showSettingsAlert();
                     }
                 }
             }
