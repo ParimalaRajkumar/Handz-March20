@@ -67,7 +67,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     public static String XAPP_KEY = "X-APP-KEY";
     public static String TYPE = "type";
     String value = "HandzForHire@~";
-    Button create,edit,need_help;
+    Button need_help;
     String address,city,state,zipcode,profile_image,profilename,type;
     ImageView profile,logo,menu,share_need,tutorial;
     ProgressDialog progress_dialog;
@@ -87,7 +87,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
     float y1, y2;
     RequestMethods req;
     HashMap<String, String> user;
-    Button edit_profile;
+    FrameLayout create,edit_profile,edit;
 
     @Override
     protected void onStart() {
@@ -113,14 +113,14 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        edit_profile = (Button) findViewById(R.id.edit_user_profile);
+        edit_profile =  findViewById(R.id.edit_user_profile);
         rating_lay =  findViewById(R.id.text2);
         rating_img =findViewById(R.id.imageView6);
         profile_name = (TextView) findViewById(R.id.text1);
         rating_value = (TextView) findViewById(R.id.text3);
         need_help = (Button) findViewById(R.id.need_help);
-        create = (Button) findViewById(R.id.create_job);
-        edit = (Button) findViewById(R.id.edit_posted_job);
+        create =  findViewById(R.id.create_job);
+        edit =  findViewById(R.id.edit_posted_job);
         posted = (FrameLayout) findViewById(R.id.posted_job);
         active = (FrameLayout) findViewById(R.id.active_job);
         history = (FrameLayout) findViewById(R.id.job_history);
@@ -145,16 +145,12 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
         state = user.get(SessionManager.KEY_STATE);
         zipcode = user.get(SessionManager.KEY_ZIPCODE);
         type = user.get(SessionManager.TYPE);
-
-
         share_need=(ImageView)findViewById(R.id.sha_need);
         share_need.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-
                 share();
-
             }
         });
 
@@ -171,9 +167,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
-        create.setTypeface(tf);
-        edit.setTypeface(tf);
-        edit_profile.setTypeface(tf);
+
         need_help.setTypeface(tf);
         txt.setTypeface(tf);
         rating_value.setTypeface(tf);

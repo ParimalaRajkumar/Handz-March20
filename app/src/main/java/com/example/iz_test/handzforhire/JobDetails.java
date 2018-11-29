@@ -345,7 +345,7 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
                 Intent i;
-                if(Profilevalues.usertype.equals("1")) {
+                if(Profilevalues.usertype!= null && Profilevalues.usertype.equals("1")) {
                     i = new Intent(getApplicationContext(), ProfilePage.class);
                 }else{
                     i = new Intent(getApplicationContext(), LendProfilePage.class);

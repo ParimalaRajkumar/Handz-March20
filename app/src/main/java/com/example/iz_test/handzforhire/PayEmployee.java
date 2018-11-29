@@ -690,6 +690,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
                                 map.put("text", "FROM HANDZ: Transaction completed on "+transaction_date+" for the amount of $"+job_payout);
                                 reference1.child(child_id).child("messages").push().setValue(map);
                                 Intent i =new Intent(PayEmployee.this,ProfilePage.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
                             }
                         }catch (Exception e){

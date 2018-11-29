@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class LendProfilePage extends Activity implements SimpleGestureFilter.SimpleGestureListener,ResponseListener{
 
-    Button job_list,edit,find_map,need_help;
+    Button need_help;
     String id,address,city,state,zipcode,profile_image,profilename,email,username;
     String employee_rating,pending_notification,posted_notification,active_notification,jobhistory_notification;
     TextView user_name;
@@ -72,7 +72,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
     private SimpleGestureFilter detector;
     RequestMethods req;
     HashMap<String, String> user;
-
+    FrameLayout job_list,edit,find_map;
     @Override
     protected void onStart() {
         super.onStart();
@@ -101,13 +101,13 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
 
         handz = (ImageView) findViewById(R.id.handz);
         need_help = (Button) findViewById(R.id.need_help);
-        job_list = (Button) findViewById(R.id.list_view);
-        edit = (Button) findViewById(R.id.edit_user_profile);
+        job_list =  findViewById(R.id.list_view);
+        edit = findViewById(R.id.edit_user_profile);
         rating_value = (TextView) findViewById(R.id.text3);
         profile = (ImageView)findViewById(R.id.profile_image);
         tutorial=(ImageView)findViewById(R.id.tutorial);
         profile_name = (TextView) findViewById(R.id.text1);
-        find_map = (Button) findViewById(R.id.find_job);
+        find_map =  findViewById(R.id.find_job);
         pending = (FrameLayout) findViewById(R.id.pending_job);
         active_job = (FrameLayout) findViewById(R.id.active_job);
         job_history = (FrameLayout) findViewById(R.id.job_history);
@@ -151,7 +151,6 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
         txt.setTypeface(tf);
-        edit.setTypeface(tf);
       //  need_help.setTypeface(tf);
         rating_value.setTypeface(tf);
 

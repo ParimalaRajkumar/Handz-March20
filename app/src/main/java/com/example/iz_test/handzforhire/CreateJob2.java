@@ -52,6 +52,7 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
     String usertype = "employer";
     String edit_job = "no";
     private SimpleGestureFilter detector;
+    Location mCurrentLocation;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -61,7 +62,10 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
 
            if( locationTrack!= null) {
 
-               locationTrack.getLocation();
+               if(locationTrack.getLocation() !=null)
+               {
+                   mCurrentLocation = locationTrack.getLocation();
+               }
            }
 
         }

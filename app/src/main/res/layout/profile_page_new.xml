@@ -135,6 +135,7 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
+        android:clickable="false"
         android:background="@drawable/create_job"/>
 </FrameLayout>
 
@@ -160,6 +161,7 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
+        android:clickable="false"
         android:background="@drawable/edit_job"/>
     </FrameLayout>
     <TextView
@@ -219,11 +221,11 @@
     app:layout_constraintCircleRadius="@dimen/circle_radius_top"
     app:layout_constraintCircleAngle="155">
     <Button
-
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:background="@drawable/edit_user"
+        android:clickable="false"
          />
 </FrameLayout>
     <TextView

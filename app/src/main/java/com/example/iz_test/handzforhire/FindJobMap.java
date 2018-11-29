@@ -35,6 +35,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.listeners.Callback;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -50,7 +51,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 
 
-public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListener,GoogleMap.OnMyLocationChangeListener,GoogleMap.OnCameraChangeListener,ResponseListener,OnMapReadyCallback{
+public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListener,GoogleMap.OnMyLocationChangeListener,GoogleMap.OnCameraChangeListener,ResponseListener,OnMapReadyCallback {
 
    Context context ;
     private static final String URL = Constant.SERVER_URL+"job_lists";
@@ -59,7 +60,8 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
     String user_id;
     ArrayList<HashMap<String,String>> disclosed = new ArrayList<HashMap<String,String>>();
     private GoogleMap googleMap;
-    GPSTracker gps;
+    //GPSTracker gps;
+    LocationTrack locationTrack;
     public static int  MY_PERMISSIONS_REQUEST_READ_CONTACTS=1;
     public static Double lat,lon;
     TextView txt_undisclosedjob;
@@ -74,8 +76,10 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
     View rootView;
     int undisclosedjob=0;
     Dialog dialog;
-
+    Location mCurrentLocaton=null;
     public static String job_id;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -116,8 +120,8 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
         /// Changing map type
 
         // create class object
-        gps = new GPSTracker(getActivity());
-
+       // gps = new GPSTracker(getActivity());
+        locationTrack = LocationTrack.getInstance(getActivity());
         String fontPath = "fonts/LibreFranklin-SemiBoldItalic.ttf";
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), fontPath);
         txt_undisclosedjob.setTypeface(font);
@@ -438,34 +442,32 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
         googleMap.setOnCameraChangeListener(this);
         googleMap.setOnMyLocationChangeListener(this);
 
-        // check if GPS enabled
-        if(gps.canGetLocation()){
-
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(new LatLng(latitude,
-                            longitude)).zoom(15).build();
-            lat=latitude;
-            lon=longitude;
-            session.savelocation(String.valueOf(lat),String.valueOf(lon));
-            googleMap.animateCamera(CameraUpdateFactory
-                    .newCameraPosition(cameraPosition));
-            try {
-                RestClientPost rest = new RestClientPost(getActivity(), 1);
-                rest.execute(RestClientPost.RequestMethod.POST, getActivity(),FindJobMap.this);
-            }catch (Exception e){
-                System.out.println("exception "+e.getMessage());
-            }
-            // \n is for new line
-        }else{
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
+        try {
+            RestClientPost rest = new RestClientPost(getActivity(), 1);
+            rest.execute(RestClientPost.RequestMethod.POST, getActivity(),FindJobMap.this);
+        }catch (Exception e){
+            System.out.println("exception "+e.getMessage());
         }
+
+       getLocation();
+
     }
 
+    public void UpdateLocation(Location location)
+    {
+       mCurrentLocaton = location;
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(mCurrentLocaton.getLatitude(),
+                        mCurrentLocaton.getLongitude())).zoom(10).build();
+        session.savelocation(String.valueOf(mCurrentLocaton.getLatitude()),String.valueOf(mCurrentLocaton.getLongitude()));
+        googleMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
 
+    }
+
+    public void getLocation()
+    {
+        locationTrack.getLocation();
+    }
 
 }

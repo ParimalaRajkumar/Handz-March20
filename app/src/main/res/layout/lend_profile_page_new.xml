@@ -131,6 +131,7 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
+        android:clickable="false"
         android:background="@drawable/job_map"/>
     </FrameLayout>
 
@@ -158,6 +159,7 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
+        android:clickable="false"
         android:background="@drawable/job_list"/>
     </FrameLayout>
     <TextView
@@ -222,6 +224,7 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
+        android:clickable="false"
         android:background="@drawable/edit_user"
         />
  </FrameLayout>
@@ -249,7 +252,6 @@
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
             android:background="@drawable/job_history"></ImageView>
-
 
         <TextView
             android:id="@+id/job_historycnt"
