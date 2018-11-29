@@ -68,13 +68,8 @@ public class LocationTrack  {
     Location mCurrentLocation =null;
     static  LocationTrack mLocationTrack = null;
 
-    static LocationTrack getInstance(Context mContext)
-    {
-        if(mLocationTrack ==null) {
-            mLocationTrack = new LocationTrack(mContext);
-        }
-
-        return mLocationTrack;
+    static LocationTrack getInstance(Context mContext) {
+        return mLocationTrack = new LocationTrack(mContext);
     }
 
     private LocationTrack(Context mContext ) {
@@ -103,16 +98,9 @@ public class LocationTrack  {
         //getLocation();
     }
 
-    public Location getLocation() {
+    public void getLocation() {
 
-      if(mCurrentLocation!=null) {
           startLocationUpdates();
-      }else
-      {
-          return mCurrentLocation;
-      }
-
-      return null;
     }
 
     private void startLocationUpdates() {

@@ -217,8 +217,12 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
             }
 
         }
-
-        Glide.with(mContext).load(worldpopulationlist.get(position).getImage()).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(mContext,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(holder.image);
+        String get_image = worldpopulationlist.get(position).getImage();
+        if(worldpopulationlist.get(position).getImage()!= null && worldpopulationlist.get(position).getImage().contains("http://graph.facebook.com/"))
+        {
+           get_image = worldpopulationlist.get(position).getImage().replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+        }
+        Glide.with(mContext).load(get_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(mContext,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(holder.image);
         if(msg_notification.equals("0"))
         {
             holder.message.setVisibility(View.INVISIBLE);

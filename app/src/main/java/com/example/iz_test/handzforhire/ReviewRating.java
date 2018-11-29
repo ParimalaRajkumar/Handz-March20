@@ -258,6 +258,7 @@ public class ReviewRating extends Activity implements SimpleGestureFilter.Simple
         try {
             JSONObject jResult = new JSONObject(jsonobject);
             status = jResult.getString("status");
+            job_list.clear();
             rating_list = jResult.getString("rating_lists");
             if (status.equals("success")) {
                 JSONArray array = new JSONArray(rating_list);

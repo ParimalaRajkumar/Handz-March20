@@ -11,3 +11,5 @@ linkedin-sdk/build/generated/not_namespaced_r_class_sources/
 linkedin-sdk/build/intermediates/
 linkedin-sdk/build/
 .idea/
+app/release/app-release.apk
+app/release/output.json

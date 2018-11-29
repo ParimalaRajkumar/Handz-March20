@@ -372,6 +372,7 @@ public class EditPostedJobs extends Activity implements SimpleGestureFilter.Simp
             jobList = jResult.getString("job_lists");
 
             if(status.equals("success")) {
+                job_list.clear();
                 JSONArray array = new JSONArray(jobList);
                 for (int n = 0; n < array.length(); n++) {
                     JSONObject object = (JSONObject) array.get(n);

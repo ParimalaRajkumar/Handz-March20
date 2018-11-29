@@ -442,6 +442,7 @@ public class ViewSearchJob extends Activity implements SimpleGestureFilter.Simpl
             status = result.getString("status");
             if(status.equals("success"))
             {
+               job_list.clear();
                 String job = result.getString("job_lists");
                 JSONArray array = new JSONArray(job);
                 for(int n = 0; n < array.length(); n++)

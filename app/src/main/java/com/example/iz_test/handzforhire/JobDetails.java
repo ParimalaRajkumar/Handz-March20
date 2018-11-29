@@ -269,15 +269,27 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 description.setText(get_description);
 
 
+//                if(get_profile_name.equals("") && !get_username.equals(""))
+//                {
+//                    profile_name.setText(get_username);
+//                }
+//                if(get_profile_name.equals("")&&get_username.equals(""))
+//                {
+//                    profile_name.setText(get_firstname);
+//                }
+//                else {
+//                    profile_name.setText(get_profile_name);
+//                }
+
                 if(get_profile_name.equals(""))
                 {
-                    profile_name.setText(get_username);
-                }
-                if(get_profile_name.equals("")&&get_username.equals(""))
-                {
-                    profile_name.setText(get_firstname);
-                }
-                else {
+                    if(get_firstname.equals(""))
+                    {
+                        profile_name.setText(get_username);
+                    }else {
+                        profile_name.setText(get_firstname);
+                    }
+                }else {
                     profile_name.setText(get_profile_name);
                 }
 
@@ -320,6 +332,11 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 {
                 }
                 else {
+                    if(image!= null && image.contains("http://graph.facebook.com/"))
+                    {
+                        image = image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+                    }
+
                     Glide.with(this).load(image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(profile_image);
                 }
 

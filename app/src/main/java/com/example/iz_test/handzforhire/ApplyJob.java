@@ -373,6 +373,10 @@ public class ApplyJob extends BackKeyHandlerActivity implements SimpleGestureFil
             System.out.println("error " + e.getMessage());
         }
 
+        if(image!= null && image.contains("http://graph.facebook.com/"))
+        {
+            image = image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+        }
 
         Glide.with(ApplyJob.this).load(image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(profile_image);
 

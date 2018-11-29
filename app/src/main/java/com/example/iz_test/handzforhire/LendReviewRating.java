@@ -322,6 +322,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
             JSONObject jResult = new JSONObject(jsonobject);
             status = jResult.getString("status");
             if (status.equals("success")) {
+                job_list.clear();
                 rating_list = jResult.getString("rating_lists");
                 JSONArray array = new JSONArray(rating_list);
                 JSONObject jobj = array.getJSONObject(0);

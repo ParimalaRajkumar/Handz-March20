@@ -281,6 +281,7 @@ public class JobHistory extends Activity implements SimpleGestureFilter.SimpleGe
             jobList = jResult.getString("job_lists");
 
             if (status.equals("success")) {
+                arraylist.clear();
                 JSONArray array = new JSONArray(jobList);
                 for (int n = 0; n < array.length(); n++) {
                     JSONObject object = (JSONObject) array.get(n);

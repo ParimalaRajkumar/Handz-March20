@@ -325,6 +325,7 @@ public class ArchievedJob extends Activity {
             if(status.equals("success")) {
                 jobList = jResult.getString("jobs");
                 JSONArray array = new JSONArray(jobList);
+                job_list.clear();
                 for (int n = 0; n < array.length(); n++) {
                     JSONObject object = (JSONObject) array.get(n);
                     jobId = object.getString("id");

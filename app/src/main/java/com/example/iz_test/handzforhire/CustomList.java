@@ -103,6 +103,11 @@ public class CustomList extends BaseAdapter {
             System.out.println("error " + e.getMessage());
         }
 
+        if(get_image!= null && get_image.contains("http://graph.facebook.com/"))
+        {
+            get_image = get_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+        }
+
         Glide.with(activity).load(get_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(profile);
 
 
