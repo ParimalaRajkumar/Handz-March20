@@ -119,15 +119,21 @@
         app:layout_constraintVertical_bias=".47"
         app:layout_constraintTop_toBottomOf="@+id/top_container" />
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintCircle="@+id/logo"
+        android:id="@+id/find_job"
+        app:layout_constraintCircleRadius="@dimen/circle_radius_top"
+        app:layout_constraintCircleAngle="335"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_text">
     <Button
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
-        android:id="@+id/find_job"
-        app:layout_constraintCircle="@+id/logo"
-        app:layout_constraintCircleRadius="@dimen/circle_radius_top"
-        app:layout_constraintCircleAngle="335"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_text"
+        android:layout_margin="@dimen/notification_count_margin"
         android:background="@drawable/job_map"/>
+    </FrameLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -140,14 +146,20 @@
         app:layout_constraintRight_toRightOf="@id/find_job"
         app:layout_constraintTop_toBottomOf="@+id/find_job" />
 
-    <Button
-        android:layout_width="@dimen/profile_icon_size"
-        android:layout_height="@dimen/profile_icon_size"
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/list_view"
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius_top"
-        app:layout_constraintCircleAngle="25"
+        app:layout_constraintCircleAngle="25">
+
+    <Button
+        android:layout_width="@dimen/profile_icon_size"
+        android:layout_height="@dimen/profile_icon_size"
+        android:layout_margin="@dimen/notification_count_margin"
         android:background="@drawable/job_list"/>
+    </FrameLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -170,7 +182,7 @@
         <ImageView
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/notification_count_margin"
             android:background="@drawable/active_jobs"></ImageView>
 
         <TextView
@@ -198,16 +210,21 @@
         app:layout_constraintRight_toRightOf="@id/active_job"
         app:layout_constraintTop_toBottomOf="@+id/active_job"
         />
-
+ <FrameLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     app:layout_constraintCircle="@+id/logo"
+     android:id="@+id/edit_user_profile"
+     app:layout_constraintCircleRadius="@dimen/circle_radius_top"
+     app:layout_constraintCircleAngle="155">
     <Button
-        android:id="@+id/edit_user_profile"
+
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
-        app:layout_constraintCircle="@+id/logo"
-        app:layout_constraintCircleRadius="@dimen/circle_radius_top"
-        app:layout_constraintCircleAngle="155"
+        android:layout_margin="@dimen/notification_count_margin"
         android:background="@drawable/edit_user"
         />
+ </FrameLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -230,7 +247,7 @@
         <ImageView
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/notification_count_margin"
             android:background="@drawable/job_history"></ImageView>
 
 
@@ -271,7 +288,7 @@
         <ImageView
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/notification_count_margin"
             android:background="@drawable/posted_jobs"></ImageView>
 
         <TextView
@@ -280,7 +297,6 @@
             android:layout_height="25sp"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
-            android:padding="-15dp"
             android:visibility="invisible"
             android:textColor="#ffffff"
             android:textSize="17sp"
