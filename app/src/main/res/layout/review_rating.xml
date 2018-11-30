@@ -241,7 +241,7 @@
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="480sp">
+        android:layout_height="wrap_content">
 
     </ListView>
 
