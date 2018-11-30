@@ -353,6 +353,7 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
         edit_job = i.getStringExtra("edit_job");
         job_id = i.getStringExtra("job_id");
         duration = i.getStringExtra("duration");
+        System.out.println("eeeeeeeee:time_value:sa::"+start_time);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);

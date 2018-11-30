@@ -204,7 +204,8 @@ public class SearchJob extends Activity implements SimpleGestureFilter.SimpleGes
                         int pos = groupPosition+1;
                         categoryId = String.valueOf(pos);
                         header = listDataHeader.get(groupPosition);
-                        System.out.println("fffffff:::::header:::"+header);
+                        sub_category = header;
+                        System.out.println("fffffff:::::setOnGroupClickListener:::"+header+"..."+sub_category);
                         if(header.equals("CARE GIVING"))
                         {
                             main_category_image.setVisibility(View.VISIBLE);

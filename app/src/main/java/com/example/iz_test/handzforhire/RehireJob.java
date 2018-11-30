@@ -344,7 +344,8 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                         int pos = groupPosition+1;
                         categoryId = String.valueOf(pos);
                         header = listDataHeader.get(groupPosition);
-                        System.out.println("fffffff:::::header:::"+header);
+                        sub_category = header;
+                        System.out.println("fffffff:::::setOnGroupClickListener:::"+header+"..."+sub_category);
                         if(header.equals("CARE GIVING"))
                         {
                             main_category_image.setVisibility(View.VISIBLE);
@@ -897,7 +898,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 job_category = object.getString("job_category");
                 String get_description = object.getString("description");
                 String get_date = object.getString("job_date");
-                String get_start_time = object.getString("start_time");
+                time_value = object.getString("start_time");
                 String get_amount = object.getString("job_payment_amount");
                 String get_type = object.getString("job_payment_type");
                 String flexible = object.getString("job_date_time_flexible");
@@ -940,7 +941,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 sub_category = sub_cat;
                 description = get_description;
                 date_format = get_date;
-                st_time = get_start_time;
+                st_time = time_value;
                 expected_hours = get_type;
                 amount = get_amount;
                 type = get_type;
@@ -962,7 +963,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                     e.printStackTrace();
                 }
 
-                String time = get_start_time;
+                String time = time_value;
                 SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
                 SimpleDateFormat sdfs = new SimpleDateFormat("h:mm a");
                 Date dt;

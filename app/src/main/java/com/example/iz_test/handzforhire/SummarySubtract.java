@@ -360,6 +360,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         edit_job = i.getStringExtra("edit_job");
         duration = i.getStringExtra("duration");
         job_id = i.getStringExtra("job_id");
+        System.out.println("eeeeeeeee:time_value:ss::"+start_time);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);

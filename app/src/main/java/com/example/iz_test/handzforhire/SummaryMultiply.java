@@ -63,6 +63,7 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
         edit_job = i.getStringExtra("edit_job");
         job_id = i.getStringExtra("job_id");
         duration = i.getStringExtra("duration");
+        System.out.println("eeeeeeeee:time_value:sm::"+start_time);
 
         detector = new SimpleGestureFilter(this,this);
 

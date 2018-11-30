@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.listeners.Callback;
@@ -91,6 +90,7 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
         System.out.println("estimated amount "+estimated_amount);
         System.out.println("777777777:" + id+".."+name+".."+category+".."+date+".."+start_time+".."+expected_hours+".."+amount+".."+type);
         System.out.println("777777777:" +".."+job_category_color+".."+sub_category);
+        System.out.println("eeeeeeeee:time_value:cr2::"+start_time);
 
         text = (TextView)findViewById(R.id.bt1);
         add = (EditText)findViewById(R.id.address);
@@ -219,7 +219,7 @@ public class CreateJob2 extends AppCompatActivity implements SimpleGestureFilter
                     locationTrack = LocationTrack.getInstance(CreateJob2.this );
                     if (locationTrack != null) {
                        locationTrack.getLocation();
-                        Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
+                       //Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(lon) + "\nLatitude:" + Double.toString(lat), Toast.LENGTH_SHORT).show();
                     }
                 }
 

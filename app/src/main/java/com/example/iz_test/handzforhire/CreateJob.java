@@ -366,7 +366,8 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                         int pos = groupPosition+1;
                         categoryId = String.valueOf(pos);
                         header = listDataHeader.get(groupPosition);
-                        System.out.println("fffffff:::::setOnGroupClickListener:::"+header);
+                        sub_category = header;
+                        System.out.println("fffffff:::::setOnGroupClickListener:::"+header+"..."+sub_category);
                         if(header.equals("CARE GIVING"))
                         {
                             main_category_image.setVisibility(View.VISIBLE);
