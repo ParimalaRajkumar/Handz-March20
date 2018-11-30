@@ -73,7 +73,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
     public static String TYPE = "type";
     String usertype = "employee";
     int timeout = 60000;
-    TextView txt_rating;
+    TextView txt_rating , rating_value ;
     ImageView imageprofile;
     TextView txt_profilename;
 
@@ -99,6 +99,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         super.onCreate(savedInstanceState);
         TextView name = (TextView) findViewById(R.id.t2);
         txt_rating=(TextView)findViewById(R.id.text2);
+        rating_value = findViewById(R.id.text3);
         lin_linkin=(LinearLayout)findViewById(R.id.lin_linkin);
         lin_linkininfo=(LinearLayout)findViewById(R.id.lin_linkininfo);
         txt_profilename=(TextView)findViewById(R.id.txt_profilename);
@@ -108,6 +109,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         id = i.getStringExtra("userId");
         profile_image = i.getStringExtra("image");
         profilename = i.getStringExtra("name");
+        rating_value.setText(i.getStringExtra("avgrating"));
         detector = new SimpleGestureFilter(this,this);
         completerating();
         close.setOnClickListener(new View.OnClickListener() {
@@ -319,7 +321,6 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
 
                 }
 
-
                 ReviewAdapter arrayAdapter = new ReviewAdapter(this, job_list) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
@@ -347,7 +348,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     }
                 });
 
-                txt_rating.setText("Rating: " + avg_rat);
+               // txt_rating.setText("Rating: " + avg_rat);
             }
         } catch (JSONException e) {
             e.printStackTrace();
