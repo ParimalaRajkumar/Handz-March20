@@ -1,6 +1,5 @@
 package com.example.iz_test.handzforhire;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;

@@ -198,8 +198,6 @@ public class ViewApplicant extends Activity implements SimpleGestureFilter.Simpl
 
 
 
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         } /*catch (MalformedURLException e) {

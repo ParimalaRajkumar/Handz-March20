@@ -88,6 +88,7 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+
         description.setTypeface(tf);
         date.setTypeface(tf);
         time.setTypeface(tf);
@@ -325,7 +326,7 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 String s1 = "1.00";
                 String multi = String.valueOf(Float.valueOf(get_amount)*Float.valueOf(s1));
                 String total_amount = String.format("%.2f", Float.valueOf(multi));
-                amount.setText(total_amount);
+                amount.setText("$"+total_amount);
                 name.setText(get_name);
 
                 if(image.equals(""))

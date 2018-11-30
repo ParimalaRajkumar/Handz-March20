@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#BFE8C64B"
+    android:background="#C8A854"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -21,7 +21,7 @@
         android:id="@+id/rel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
+        android:layout_marginLeft="20sp"
         android:layout_marginTop="10sp"
         android:orientation="horizontal">
 
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginLeft="-20sp"
+                android:layout_marginLeft="-30sp"
                 android:layout_marginTop="20sp">
 
             <ImageView
@@ -64,7 +64,7 @@
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:layout_marginRight="5sp"
-                android:src="@drawable/star_border_icon" />
+                android:src="@drawable/ic_star" />
 
             <TextView
                 android:id="@+id/txt1"
@@ -75,7 +75,7 @@
                 android:gravity="center"
                 android:layout_centerVertical="true"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:textStyle="italic|bold" />
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/txt1"
                 android:textColor="#000000"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             </RelativeLayout>
@@ -102,7 +102,7 @@
                 android:layout_below="@+id/rating_lay"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/jobname"
@@ -129,7 +129,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80sp"
+            android:layout_height="70sp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_marginLeft="20sp"
@@ -147,7 +147,7 @@
                     android:textSize="18sp"
                     android:layout_marginTop="-10sp"
                     android:textStyle="bold"
-                    android:gravity="center"
+                    android:gravity="top|right"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
@@ -155,7 +155,7 @@
                 <TextView
                     android:id="@+id/hire"
                     android:layout_width="match_parent"
-                    android:layout_height="80sp"
+                    android:layout_height="70sp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:gravity="center"
@@ -171,7 +171,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80sp"
+            android:layout_height="70sp"
             android:layout_weight="1"
             android:layout_marginLeft="10sp"
             android:background="#4D4D4D"
@@ -183,14 +183,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
+                    android:layout_width="45sp"
+                    android:layout_height="45sp"
                     android:background="@drawable/decline"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:layout_marginTop="-5sp"
+                    android:layout_marginTop="-10sp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
