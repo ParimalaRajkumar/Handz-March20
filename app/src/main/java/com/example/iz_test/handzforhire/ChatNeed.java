@@ -129,6 +129,7 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
         Tv = (TextView) findViewById(R.id.txt1);
         txt_sendmsg=(TextView)findViewById(R.id.txt_sendmsg);
         messagesContainer=(ListView)findViewById(R.id.messagesContainer);
+        messagesContainer.setStackFromBottom(true);
 
         messagelist=new ArrayList<ChatItems>();
 
