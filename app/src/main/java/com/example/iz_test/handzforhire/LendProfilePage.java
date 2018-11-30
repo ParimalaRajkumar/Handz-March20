@@ -182,6 +182,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("image",profile_image);
                 i.putExtra("name", profilename);
                 i.putExtra("username", username);
+                i.putExtra("avgrating",rating_value.getText().toString());
                 startActivity(i);
             }
         });
@@ -193,6 +194,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
                 i.putExtra("image",profile_image);
                 i.putExtra("name", profilename);
                 i.putExtra("username", username);
+                i.putExtra("avgrating",rating_value.getText().toString());
                 startActivity(i);
             }
         });

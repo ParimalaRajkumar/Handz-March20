@@ -56,10 +56,9 @@ import java.util.Map;
 
 public class LendReviewRating extends Activity implements SimpleGestureFilter.SimpleGestureListener{
 
-   public static String  image,id,date,profile_image,profilename,average_rating,comments,avg_rat;
+    public static String  image,id,date,profile_image,profilename,average_rating,comments,avg_rat;
     private static final String URL = Constant.SERVER_URL+"review_rating";
     private static final String LINKEDIN_URL = Constant.SERVER_URL+"linked_in ";
-    private static final String GET_AVERAGERAT = Constant.SERVER_URL+"get_average_rating";
     ArrayList<HashMap<String, String>> job_list = new ArrayList<HashMap<String, String>>();
     public static String KEY_USERID = "user_id";
     public static String XAPP_KEY = "X-APP-KEY";
@@ -74,7 +73,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
     public static String TYPE = "type";
     String usertype = "employee";
     int timeout = 60000;
-    TextView txt_rating;
+    TextView txt_rating , rating_value ;
     ImageView imageprofile;
     TextView txt_profilename;
 
@@ -85,6 +84,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
     private SimpleGestureFilter detector;
     Activity thisActivity;
     String firstnmae,lastnmae,lin_email,lin_id,pictureurl,profileurl;
+    ImageView mLinkedinUpdate;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.review_rating);
@@ -93,105 +93,61 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-
         list = (ListView) findViewById(R.id.listview);
         close = (Button) findViewById(R.id.cancel_btn);
         ImageView image = (ImageView)findViewById(R.id.profile_image);
         super.onCreate(savedInstanceState);
         TextView name = (TextView) findViewById(R.id.t2);
         txt_rating=(TextView)findViewById(R.id.text2);
+        rating_value = findViewById(R.id.text3);
         lin_linkin=(LinearLayout)findViewById(R.id.lin_linkin);
         lin_linkininfo=(LinearLayout)findViewById(R.id.lin_linkininfo);
         txt_profilename=(TextView)findViewById(R.id.txt_profilename);
         imageprofile=(ImageView)findViewById(R.id.imageprofile);
-
+        mLinkedinUpdate = findViewById(R.id.linkedin_refresh);
         Intent i = getIntent();
         id = i.getStringExtra("userId");
         profile_image = i.getStringExtra("image");
         profilename = i.getStringExtra("name");
-        String username = i.getStringExtra("username");
-
+        rating_value.setText(i.getStringExtra("avgrating"));
         detector = new SimpleGestureFilter(this,this);
-
         completerating();
-        getAverageRatigng();
-
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-
-        if(profilename.equals(""))
+        name.setText(profilename);
+        if(!profile_image.equals(""))
         {
-            name.setText(username);
+            Glide.with(LendReviewRating.this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(LendReviewRating.this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
         }
-        else
-        {
-            name.setText(profilename);
-        }
-
-        Glide.with(this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this, 0, Glideconstants.sCorner, Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
-
         lin_linkin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               if(appInstalledOrNot()) {
-                   linkedlogin();
-                }else{
-                    Toast.makeText(getApplicationContext(),"App not installed ",Toast.LENGTH_LONG).show();
-                     LinkedInActivity.userid=id;
-                    Intent in_linkedin=new Intent(LendReviewRating.this,LinkedInActivity.class);
-                    startActivityForResult(in_linkedin,Constant.LINKEDIN_REQUEST);
-                }
-
+                linkedinAuthentication();
             }
         });
-
         thisActivity = this;
+        mLinkedinUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                linkedinAuthentication();
+            }
+        });
     }
 
-    public void getAverageRatigng() {
-        dialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_AVERAGERAT,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        System.out.println("average rat:" + response);
-                        try {
-                            JSONObject object = new JSONObject(response);
-                            txt_rating.setText(object.getString("average_rating"));
-                        }catch (Exception e){
-                            System.out.println("exception "+e.getMessage());
-                        }
-                        dialog.dismiss();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+    private void linkedinAuthentication(){
 
-                        dialog.dismiss();
-                        //Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<String, String>();
-                map.put(XAPP_KEY, value);
-                map.put(KEY_USERID, id);
-                map.put(TYPE, "employer");
-                map.put(Constant.DEVICE, Constant.ANDROID);
-                System.out.println(" Map "+map);
-                return map;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        if(appInstalledOrNot()) {
+            linkedlogin();
+        }else{
+            Toast.makeText(getApplicationContext(),"App not installed ",Toast.LENGTH_LONG).show();
+            LinkedInActivity.userid=id;
+            Intent in_linkedin=new Intent(LendReviewRating.this,LinkedInActivity.class);
+            startActivityForResult(in_linkedin,Constant.LINKEDIN_REQUEST);
+        }
     }
 
     public void completerating() {
@@ -238,28 +194,28 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                                 JSONObject jsonObject = new JSONObject(responseBody);
                                 System.out.println("error" + jsonObject);
                                 String status = jsonObject.getString("msg");
-                             //   if (status.equals("This User Currently Does Not Have Any Ratings")) {
-                                    // custom dialog
-                                    final Dialog dialog = new Dialog(LendReviewRating.this);
-                                    dialog.setContentView(R.layout.custom_dialog);
+                                //   if (status.equals("This User Currently Does Not Have Any Ratings")) {
+                                // custom dialog
+                                final Dialog dialog = new Dialog(LendReviewRating.this);
+                                dialog.setContentView(R.layout.custom_dialog);
 
-                                    // set the custom dialog components - text, image and button
-                                    TextView text = (TextView) dialog.findViewById(R.id.text);
-                                    text.setText(status);
-                                    Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-                                    // if button is clicked, close the custom dialog
-                                    dialogButton.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            dialog.dismiss();
-                                        }
-                                    });
+                                // set the custom dialog components - text, image and button
+                                TextView text = (TextView) dialog.findViewById(R.id.text);
+                                text.setText(status);
+                                Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+                                // if button is clicked, close the custom dialog
+                                dialogButton.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                    }
+                                });
 
-                                    dialog.show();
-                                    Window window = dialog.getWindow();
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                    window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                            //    }
+                                dialog.show();
+                                Window window = dialog.getWindow();
+                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                //    }
 
                             } catch (JSONException e) {
                                 //Handle a malformed json response
@@ -284,7 +240,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-      //  stringRequest.setRetryPolicy(new DefaultRetryPolicy(timeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //  stringRequest.setRetryPolicy(new DefaultRetryPolicy(timeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(stringRequest);
     }
 
@@ -322,7 +278,6 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
             JSONObject jResult = new JSONObject(jsonobject);
             status = jResult.getString("status");
             if (status.equals("success")) {
-                job_list.clear();
                 rating_list = jResult.getString("rating_lists");
                 JSONArray array = new JSONArray(rating_list);
                 JSONObject jobj = array.getJSONObject(0);
@@ -361,10 +316,10 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     map.put("average", average_rating);
                     map.put("comments", object.getString("comments"));
                     map.put("date", date);
+                    job_list.clear();
                     job_list.add(map);
 
                 }
-
 
                 ReviewAdapter arrayAdapter = new ReviewAdapter(this, job_list) {
                     @Override
@@ -393,7 +348,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     }
                 });
 
-                txt_rating.setText("Rating: " + avg_rat);
+               // txt_rating.setText("Rating: " + avg_rat);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -473,7 +428,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
     }
 
     public void getPersonelinfo(){
-      //  String url = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email,picture-url,profile_url)";
+        //  String url = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email,picture-url,profile_url)";
         String url = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,picture-url,picture-urls::(original),positions,date-of-birth,phone-numbers,location)?format=json";
         APIHelper apiHelper = APIHelper.getInstance(getApplicationContext());
         apiHelper.getRequest(this, url, new ApiListener() {
@@ -482,22 +437,22 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                 // Success!
                 JSONObject json=apiResponse.getResponseDataAsJson();
                 System.out.println("json res "+json);
-             try{
+                try{
 
-                 lin_email=json.getString("emailAddress");
-                 firstnmae=json.getString("firstName");
-                 lastnmae=json.getString("lastName");
-                 lin_id=json.getString("id");
-                 String pictureUrl="";
-                 if(json.has("pictureUrl")){
-                     pictureUrl=json.getString("pictureUrl");
-                 }
-                 pictureurl=pictureUrl;
-                 getpublicprofileurl();
-              } catch (Exception e)
-              {
+                    lin_email=json.getString("emailAddress");
+                    firstnmae=json.getString("firstName");
+                    lastnmae=json.getString("lastName");
+                    lin_id=json.getString("id");
+                    String pictureUrl="";
+                    if(json.has("pictureUrl")){
+                        pictureUrl=json.getString("pictureUrl");
+                    }
+                    pictureurl=pictureUrl;
+                    getpublicprofileurl();
+                } catch (Exception e)
+                {
 
-               }
+                }
                 System.out.println("Json "+json);
             }
 
@@ -551,7 +506,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                 break;
             }
         }
-            return appinstalled;
+        return appinstalled;
     }
 
     public void UpdatelinkedingData() {
@@ -560,7 +515,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                      //  onResponserecieved(response, 1);
+                        //  onResponserecieved(response, 1);
                         System.out.println("Response "+response);
                         dialog.dismiss();
                     }

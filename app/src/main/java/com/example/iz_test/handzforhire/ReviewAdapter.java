@@ -2,6 +2,12 @@ package com.example.iz_test.handzforhire;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +22,9 @@ import com.bumptech.glide.request.RequestOptions;
 import com.glide.Glideconstants;
 import com.glide.RoundedCornersTransformation;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,6 +63,7 @@ public class ReviewAdapter extends BaseAdapter {
         final TextView date = (TextView) vi.findViewById(R.id.date);
         ImageView image1 = (ImageView) vi.findViewById(R.id.img1);
         RatingBar rating_bar = (RatingBar) vi.findViewById(R.id.ratingBar1);
+        TextView cancel_job = vi.findViewById(R.id.cancel_job);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface font = Typeface.createFromAsset(activity.getAssets(), fontPath);
@@ -62,7 +72,7 @@ public class ReviewAdapter extends BaseAdapter {
 
         HashMap<String, String> items = new HashMap<String, String>();
         items = data.get(position);
-        String get_image= items.get("image");
+        final String get_image= items.get("image");
         final String get_average = items.get("average");
         final String get_date = items.get("date");
         final String comment = items.get("comments");
@@ -71,7 +81,7 @@ public class ReviewAdapter extends BaseAdapter {
 
         rating.setText(get_average);
         rating.setTypeface(font);
-      //  date.setText(get_date);
+        //  date.setText(get_date);
         rating.setTypeface(font1);
         comments.setText(comment);
         comments.setTypeface(font1);
@@ -91,13 +101,22 @@ public class ReviewAdapter extends BaseAdapter {
         System.out.println("Average rating "+get_average);
         if(get_average!=null && !get_average.equals(""))
         {
+            rating_bar.setVisibility(View.VISIBLE);
             rating_bar.setRating(Float.parseFloat(get_average));
+            cancel_job.setVisibility(View.INVISIBLE);
+        }else {
+            rating_bar.setVisibility(View.INVISIBLE);
+            cancel_job.setVisibility(View.VISIBLE);
         }
-        if(get_image!= null && get_image.contains("http://graph.facebook.com/"))
+
+     /*   if(get_image.equals(""))
         {
-            get_image = get_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+            image1.setVisibility(View.VISIBLE);
         }
-            Glide.with(activity).load(get_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image1);
+        else {*/
+        Glide.with(activity).load(get_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image1);
+
+        //    }
 
         return vi;
     }

@@ -81,14 +81,14 @@
                         android:layout_centerHorizontal="true"
                         android:text="Cancelled Job"
                         android:textStyle="bold"
+
                         android:textColor="@android:color/black"
-                        android:layout_above="@+id/date_container"/>
+                        />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:gravity="center"
                         android:id="@+id/date_container"
                         android:layout_below="@+id/ratingBar1">
 
@@ -97,7 +97,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10sp"
-                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/date"
                         android:textColor="#000000"
                         android:textSize="30sp" />
 
@@ -105,11 +106,10 @@
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20sp"
-                        android:layout_toRightOf="@+id/rating"
+                        android:layout_marginLeft="20dp"
                         android:textColor="#000000"
                         android:textSize="12sp"
+                        android:textStyle="bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
 
                     </RelativeLayout>
