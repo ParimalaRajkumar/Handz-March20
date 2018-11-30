@@ -85,7 +85,10 @@ public class RehireMultiply extends Activity implements SimpleGestureFilter.Simp
 
         pay_amount.setText(amount);
         hours.setText(expected_hours);
-        total.setText(estimated_amount);
+        String job_estimated = String.valueOf(Float.valueOf(amount)*Float.valueOf(expected_hours));
+        System.out.println("sssssssssssss:job_estimated:multiply:"+job_estimated+"...expected_hours.."+expected_hours);
+        String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+        total.setText(job_pay_value);
 
         pay_amount.addTextChangedListener(tw);
         hours.addTextChangedListener(tw1);

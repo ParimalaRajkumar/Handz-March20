@@ -264,6 +264,10 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 intent.putExtra("image",item.getImage());
                 intent.putExtra("profilename",username);
                 intent.putExtra("ratingId",item.getRatingId());
+                intent.putExtra("employee_id",item.getEmployeeId());
+                intent.putExtra("rating",item.getRatingValue());
+                intent.putExtra("username",item.getUsername());
+                intent.putExtra("job_status",item.getJobStatus());
                 v.getContext().startActivity(intent);
             }
         });
@@ -274,6 +278,10 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 int pos= (int) v.getTag();
                 WorldPopulation item=worldpopulationlist.get(pos);
                 jobId = item.getJobId();
+                if(item.getProfilename().isEmpty())
+                    username=item.getUsername();
+                else
+                    username=item.getProfilename();
                 String employerId = item.getEmployerId();
                 String employeeId = item.getEmployeeId();
                 String profile_image =item.getImage();
@@ -289,7 +297,7 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
                 intent.putExtra("cat3",item.getCategory3());
                 intent.putExtra("cat4",item.getCategory4());
                 intent.putExtra("cat5",item.getCategory5());
-                intent.putExtra("profilename",profile_name);
+                intent.putExtra("profilename",username);
                 intent.putExtra("username",username);
                 v.getContext().startActivity(intent);
             }
