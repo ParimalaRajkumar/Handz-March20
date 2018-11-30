@@ -342,47 +342,89 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                 // preparing list data
                 prepareListData();
 
-                listAdapter = new ExpandableListAdapter(CreateJob.this, listDataHeader, listDataChild);
+                listAdapter = new ExpandableListAdapter(CreateJob.this, listDataHeader, listDataChild)
+                {
+                    @Override
+                    public void OnIndicatorClick(boolean isExpanded, int position) {
+                        if(isExpanded){
+                            expListView.collapseGroup(position);
+                        }else{
+                            expListView.expandGroup(position);
+                        }
+                    }
 
-                // setting list adapter
+                    public void OnTextClick() {
+                        //Do whatever you want to do on text click
+                    }
+                };
+
                 expListView.setAdapter(listAdapter);
 
-                // Listview Group click listener
                 expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-
                     @Override
-                    public boolean onGroupClick(ExpandableListView parent, View v,
-                                                int groupPosition, long id) {
-                        System.out.println("fffffff:::::setOnGroupClickListener");
-                        // Toast.makeText(getApplicationContext(),
-                        // "Group Clicked " + listDataHeader.get(groupPosition),
-                        // Toast.LENGTH_SHORT).show();
-                        return false;
-                    }
-                });
-
-                // Listview Group expanded listener
-                expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-                    @Override
-                    public void onGroupExpand(int groupPosition) {
-                        System.out.println("ffffff::::setOnGroupExpandListener");
-                     /*   Toast.makeText(getApplicationContext(),
-                                listDataHeader.get(groupPosition) + " Expanded",
-                                Toast.LENGTH_SHORT).show();*/
-                    }
-                });
-
-                // Listview Group collasped listener
-                expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-                    @Override
-                    public void onGroupCollapse(int groupPosition) {
-                        System.out.println("ffffff::;;;setOnGroupCollapseListener");
-                        /*Toast.makeText(getApplicationContext(),
-                                listDataHeader.get(groupPosition) + " Collapsed",
-                                Toast.LENGTH_SHORT).show();*/
-
+                    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                        int pos = groupPosition+1;
+                        categoryId = String.valueOf(pos);
+                        header = listDataHeader.get(groupPosition);
+                        System.out.println("fffffff:::::setOnGroupClickListener:::"+header);
+                        if(header.equals("CARE GIVING"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.care_giving);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("COACHING"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.coaching);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("HOLIDAYS"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.holidays);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("INSIDE THE HOME"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.inside_home);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("OUTSIDE THE HOME"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.outside_home);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("PERSONAL SERVICES"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.personal_services);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("PETCARE"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.petcare);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("TUTORING"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.tutoring);
+                            select_category.setText(header);
+                            dialog.dismiss();
+                        }
+                        System.out.println("fffffff:::::categoryId:::"+categoryId);
+                        return true;
                     }
                 });
 
@@ -394,15 +436,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                                                 int groupPosition, int childPosition, long id) {
                         // TODO Auto-generated method stub
                         System.out.println("ffffff::::setOnChildClickListener");
-                       /* Toast.makeText(
-                                getApplicationContext(),
-                                listDataHeader.get(groupPosition)
-                                        + " : "
-                                        + listDataChild.get(
-                                        listDataHeader.get(groupPosition)).get(
-                                        childPosition), Toast.LENGTH_SHORT)
-                                .show();*/
-
 
                         int pos = groupPosition+1;
                         categoryId = String.valueOf(pos);
@@ -469,7 +502,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
             }
         });
-
     }
 
     public void prepareListData() {
@@ -621,28 +653,13 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         }
         if (v == time_layout) {
 
-        /*    // Get Current Time
-            TimeZone tz = TimeZone.getTimeZone("US/Eastern");
-            System.out.println(tz.getDisplayName());
-            System.out.println(tz.getRawOffset());
-            System.out.println(tz.getID());
-
-            //get the date at this timezone.
-            Calendar cal = new GregorianCalendar(tz);
-            final Calendar c =  new GregorianCalendar(tz);
-           // final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
+            final Calendar c = Calendar.getInstance();
             mMinute = c.get(Calendar.MINUTE);
-            if(mMinute >0 && mMinute < 60){
-                mHour=mHour+1;
+            if(mMinute!=0) {
+                c.add(Calendar.HOUR, 1);
                 mMinute=0;
             }
-                System.out.println("Calendar "+c);*/
-
-            final Calendar c = Calendar.getInstance();
             mHour = c.get(Calendar.HOUR_OF_DAY);
-            mMinute = c.get(Calendar.MINUTE);
-
 
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -661,7 +678,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                             System.out.println("77777777:start_time::::::"+start_time+"..."+hour);
                             String text = (hour < 10 ? "0" : "") + hour;
                             System.out.println("77777777:text::::::"+text);
-                            int text1 = Integer.parseInt(text) + 1;
+                            int text1 = Integer.parseInt(text);
                             System.out.println("77777777:text1::::::"+text1);
                             time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
                             System.out.println("77777777:time_value::::::"+time_value);

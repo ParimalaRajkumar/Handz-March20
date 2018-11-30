@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+public abstract class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 	private Context _context;
 	private List<String> _listDataHeader; // header titles
@@ -77,8 +78,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent) {
+	public View getGroupView(int groupPosition, final boolean isExpanded,
+							 View convertView, ViewGroup parent) {
 		String headerTitle = (String) getGroup(groupPosition);
 		//System.out.println("hhhhhhhhhhhhh:headerTitle:::"+headerTitle);
 		if (convertView == null) {
@@ -118,6 +119,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			convertView.setBackgroundResource(R.drawable.bottom_expandable_shape);
 		}
 
+		ImageView indicator = (ImageView) convertView.findViewById(R.id.plus);
+		indicator.setSelected(isExpanded);
+		indicator.setTag(groupPosition);
+
+		indicator.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int position = (Integer)v.getTag();
+				OnIndicatorClick(isExpanded,position);
+
+			}
+		});
+
 		return convertView;
 	}
 
@@ -131,4 +145,5 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		return true;
 	}
 
+	public abstract void OnIndicatorClick(boolean isExpanded, int position);
 }

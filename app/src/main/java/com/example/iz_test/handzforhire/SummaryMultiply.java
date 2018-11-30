@@ -66,6 +66,8 @@ public class SummaryMultiply extends Activity implements SimpleGestureFilter.Sim
 
         detector = new SimpleGestureFilter(this,this);
 
+        System.out.println("sssssssssssss:latitude:multiply:"+latitude+"...longitude.."+longitude);
+
         pay_amount.setText(amount);
         hours.setText(expected_hours);
         String job_estimated = String.valueOf(Float.valueOf(amount)*Float.valueOf(expected_hours));
