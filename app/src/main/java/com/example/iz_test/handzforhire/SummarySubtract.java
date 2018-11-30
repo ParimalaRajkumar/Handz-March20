@@ -360,6 +360,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         edit_job = i.getStringExtra("edit_job");
         duration = i.getStringExtra("duration");
         job_id = i.getStringExtra("job_id");
+        System.out.println("eeeeeeeee:time_value:ss::"+start_time);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
@@ -733,6 +734,10 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 params.put(CATEGORY_COLOR,job_category_color);
                 params.put(DELIST,delist);
                 params.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println("summaryadd::"+key+"/1/"+id+"/2/"+name+"/3/"+usertype+"/4/"+category+"/5/"+description+"/6/"+date);
+                System.out.println("summaryadd1::"+start_time+"/7/"+expense+"/8/"+duration+"/9/"+amount+"/10/"+address+"/11/"+city+"/12/"+current_location);
+                System.out.println("summaryadd2::"+state+"/13/"+zipcode+"/14/"+post_address+"/15/"+latitude+"/16/"+longitude+"/17/"+payout+"/18/"+flexible_status);
+                System.out.println("summaryadd3::"+fee+"/19/"+fee_details+"/20/"+job_expire+"/21/"+sub_category+"/22/"+job_category_color+"/23/"+delist);
                 return params;
             }
 
@@ -1026,6 +1031,10 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 params.put(DELIST,delist);
                 params.put(JOB_ID,job_id);
                 params.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println("summaryadd::"+key+"/1/"+id+"/2/"+name+"/3/"+usertype+"/4/"+category+"/5/"+description+"/6/"+date);
+                System.out.println("summaryadd1::"+start_time+"/7/"+expense+"/8/"+duration+"/9/"+amount+"/10/"+address+"/11/"+city+"/12/"+current_location);
+                System.out.println("summaryadd2::"+state+"/13/"+zipcode+"/14/"+post_address+"/15/"+latitude+"/16/"+longitude+"/17/"+payout+"/18/"+flexible_status);
+                System.out.println("summaryadd3::"+fee+"/19/"+fee_details+"/20/"+job_expire+"/21/"+sub_category+"/22/"+job_category_color+"/23/"+delist);
                 return params;
             }
         };

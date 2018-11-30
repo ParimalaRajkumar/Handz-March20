@@ -320,40 +320,90 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 // preparing list data
                 prepareListData();
 
-                listAdapter = new ExpandableListAdapter(RehireJob.this, listDataHeader, listDataChild);
+                listAdapter = new ExpandableListAdapter(RehireJob.this, listDataHeader, listDataChild)
+                {
+                    @Override
+                    public void OnIndicatorClick(boolean isExpanded, int position) {
+                        if(isExpanded){
+                            expListView.collapseGroup(position);
+                        }else{
+                            expListView.expandGroup(position);
+                        }
+                    }
 
-                // setting list adapter
+                    public void OnTextClick() {
+                        //Do whatever you want to do on text click
+                    }
+                };
+
                 expListView.setAdapter(listAdapter);
 
-                // Listview Group click listener
                 expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-
                     @Override
-                    public boolean onGroupClick(ExpandableListView parent, View v,
-                                                int groupPosition, long id) {
-                        // Toast.makeText(getApplicationContext(),
-                        // "Group Clicked " + listDataHeader.get(groupPosition),
-                        // Toast.LENGTH_SHORT).show();
-                        return false;
-                    }
-                });
-
-                // Listview Group expanded listener
-                expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-                    @Override
-                    public void onGroupExpand(int groupPosition) {
-                        // Toast.makeText(getApplicationContext(), listDataHeader.get(groupPosition) + " Expanded", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                // Listview Group collasped listener
-                expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-                    @Override
-                    public void onGroupCollapse(int groupPosition) {
-                        //Toast.makeText(getApplicationContext(), listDataHeader.get(groupPosition) + " Collapsed", Toast.LENGTH_SHORT).show();
-
+                    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                        int pos = groupPosition+1;
+                        categoryId = String.valueOf(pos);
+                        header = listDataHeader.get(groupPosition);
+                        sub_category = header;
+                        System.out.println("fffffff:::::setOnGroupClickListener:::"+header+"..."+sub_category);
+                        if(header.equals("CARE GIVING"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.care_giving);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("COACHING"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.coaching);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("HOLIDAYS"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.holidays);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("INSIDE THE HOME"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.inside_home);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("OUTSIDE THE HOME"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.outside_home);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("PERSONAL SERVICES"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.personal_services);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("PETCARE"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.petcare);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        if(header.equals("TUTORING"))
+                        {
+                            main_category_image.setVisibility(View.VISIBLE);
+                            main_category_image.setImageResource(R.drawable.tutoring);
+                            category_name.setText(header);
+                            dialog.dismiss();
+                        }
+                        System.out.println("fffffff:::::categoryId:::"+categoryId);
+                        return true;
                     }
                 });
 
@@ -364,14 +414,13 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                     public boolean onChildClick(ExpandableListView parent, View v,
                                                 int groupPosition, int childPosition, long id) {
                         // TODO Auto-generated method stub
-                        //Toast.makeText(getApplicationContext(), listDataHeader.get(groupPosition) + " : " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                        System.out.println("ffffff::::setOnChildClickListener");
+
                         int pos = groupPosition+1;
                         categoryId = String.valueOf(pos);
                         header =  listDataHeader.get(groupPosition);
                         sub_category =  listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition);
                         System.out.println("ccccccccc:"+header+",,"+sub_category+",,"+pos+"id:"+categoryId);
-                       // category_name.setText(header+" - "+sub_category);
-
                         if(header.equals("CARE GIVING"))
                         {
                             main_category_image.setVisibility(View.VISIBLE);
@@ -420,23 +469,17 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                             main_category_image.setImageResource(R.drawable.tutoring);
                             category_name.setText(sub_category);
                         }
-
-
                         dialog.dismiss();
                         return false;
                     }
                 });
-
                 dialog.show();
                 Window window = dialog.getWindow();
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 return;
-
-            }
+                }
         });
-
-
     }
 
     public void prepareListData() {
@@ -589,10 +632,13 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         }
         if (v == time_layout) {
 
-            // Get Current Time
             final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
             mMinute = c.get(Calendar.MINUTE);
+            if(mMinute!=0) {
+                c.add(Calendar.HOUR, 1);
+                mMinute=0;
+            }
+            mHour = c.get(Calendar.HOUR_OF_DAY);
 
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -611,7 +657,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                             System.out.println("77777777:start_time::::::"+start_time);
                             String text = (hour < 10 ? "0" : "") + hour;
                             System.out.println("77777777:text::::::"+text);
-                            int text1 = Integer.parseInt(text) + 1;
+                            int text1 = Integer.parseInt(text);
                             System.out.println("77777777:text1::::::"+text1);
                             time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
                             System.out.println("77777777:time_value::::::"+time_value);
@@ -852,7 +898,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 job_category = object.getString("job_category");
                 String get_description = object.getString("description");
                 String get_date = object.getString("job_date");
-                String get_start_time = object.getString("start_time");
+                time_value = object.getString("start_time");
                 String get_amount = object.getString("job_payment_amount");
                 String get_type = object.getString("job_payment_type");
                 String flexible = object.getString("job_date_time_flexible");
@@ -895,7 +941,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 sub_category = sub_cat;
                 description = get_description;
                 date_format = get_date;
-                st_time = get_start_time;
+                st_time = time_value;
                 expected_hours = get_type;
                 amount = get_amount;
                 type = get_type;
@@ -917,7 +963,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                     e.printStackTrace();
                 }
 
-                String time = get_start_time;
+                String time = time_value;
                 SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
                 SimpleDateFormat sdfs = new SimpleDateFormat("h:mm a");
                 Date dt;
