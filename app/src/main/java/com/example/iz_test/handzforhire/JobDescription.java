@@ -47,7 +47,7 @@ import java.util.Map;
 public class JobDescription extends Activity implements SimpleGestureFilter.SimpleGestureListener {
 
     ImageView profile_image,close;
-    TextView profile_name, description, date, time, amount, type,name,apply,rat_val;
+    TextView profile_name, description, date, time, amount, type,name,apply,rat_val,rating_text;
     private static final String URL = Constant.SERVER_URL+"job_detail_view";
     public static String APP_KEY = "X-APP-KEY";
     public static String JOB_ID = "job_id";
@@ -91,6 +91,8 @@ public class JobDescription extends Activity implements SimpleGestureFilter.Simp
         TextView t2 = (TextView) findViewById(R.id.t2);
         TextView t3 = (TextView) findViewById(R.id.t3);
         TextView t4 = (TextView) findViewById(R.id.t4);
+        TextView check = (TextView) findViewById(R.id.check);
+        rating_text = (TextView) findViewById(R.id.text2);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
@@ -105,6 +107,12 @@ public class JobDescription extends Activity implements SimpleGestureFilter.Simp
         t4.setTypeface(tf);
         apply.setTypeface(tf);
         rat_val.setTypeface(tf);
+        description.setTypeface(tf);
+        check.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
 
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);

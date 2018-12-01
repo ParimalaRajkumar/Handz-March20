@@ -61,7 +61,7 @@ public class ApplyJob extends BackKeyHandlerActivity implements SimpleGestureFil
     public static String TYPE = "type";
     String value = "HandzForHire@~";
     String job_id,user_id,employer_id,job_name,profile_name,image,date,start_time,end_time,amount,type,comments,username,firstname;
-    TextView name,dat,amt,pay,text,job,rat_val,type_text;
+    TextView name,dat,amt,pay,text,job,rat_val,type_text,rating_text;
     ProgressDialog progress_dialog;
     ImageView profile_image;
     EditText com;
@@ -299,6 +299,11 @@ public class ApplyJob extends BackKeyHandlerActivity implements SimpleGestureFil
         TextView t2 = (TextView) findViewById(R.id.t2);
         TextView t3 = (TextView) findViewById(R.id.t3);
         TextView t4 = (TextView) findViewById(R.id.tv6);
+        rating_text = (TextView) findViewById(R.id.text2);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);

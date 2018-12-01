@@ -77,9 +77,9 @@
                             android:layout_marginRight="5sp"
                             android:layout_toLeftOf="@+id/text3"
                             android:text="Rating: "
+                            android:layout_centerVertical="true"
                             android:textColor="#000000"
-                            android:textSize="22sp"
-                            android:textStyle="italic|bold" />
+                            android:textSize="22sp" />
 
                         <ImageView
                             android:layout_width="40sp"

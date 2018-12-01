@@ -71,7 +71,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:gravity="center"
                                     android:textStyle="bold"
-                                    android:textSize="22sp"/>
+                                    android:textSize="26sp"/>
 
                             </RelativeLayout>
 
@@ -89,7 +89,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Rating: "
-                                    android:textStyle="italic|bold"
                                     android:layout_toLeftOf="@+id/rating_value"
                                     android:textSize="22sp"
                                     android:layout_centerVertical="true"
@@ -158,27 +157,31 @@
                     </RelativeLayout>
                 </RelativeLayout>
             <LinearLayout
+                android:id="@+id/linear"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:orientation="vertical"
-                android:background="#4D4D4D">
+                android:layout_height="wrap_content"
+                android:background="#4D4D4D"
+                android:layout_below="@+id/r1">
 
                 <TextView
                     android:id="@+id/description_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20sp"
-                    android:textStyle="bold"
                     android:gravity="center"
+                    android:padding="10sp"
                     android:scrollbars="vertical"
                     android:textColor="#DCDCDC"
                     android:textSize="18sp" />
 
-                <LinearLayout
+            </LinearLayout>
+
+            <LinearLayout
                     android:id="@+id/flexible_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="10sp"
                     android:visibility="gone">
 
                     <View
@@ -187,11 +190,11 @@
                         android:background="#000000"/>
 
                     <TextView
+                        android:id="@+id/check"
                         android:layout_width="match_parent"
                         android:layout_height="46sp"
                         android:background="#178487"
                         android:textAllCaps="false"
-                        android:textStyle="italic|bold"
                         android:gravity="center"
                         android:textSize="20sp"
                         android:textColor="#000000"
@@ -204,13 +207,10 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#BFE8C64B"
-                android:layout_marginTop="20sp"
                 android:orientation="vertical">
 
                     <LinearLayout
@@ -307,7 +307,6 @@
                             android:text="pay:"
                             android:textColor="#000000"
                             android:textSize="24sp"
-                            android:textStyle="bold"
                             android:textAllCaps="true"/>
 
                         <TextView

@@ -39,7 +39,7 @@
                             android:layout_marginTop="20sp"
                             android:gravity="center"
                             android:textColor="#000000"
-                            android:textSize="20sp" />
+                            android:textSize="26sp" />
 
                         <RelativeLayout
                             android:id="@+id/rating"
@@ -58,14 +58,13 @@
                                 android:layout_toLeftOf="@+id/text3"
                                 android:text="Rating: "
                                 android:textColor="#000000"
-                                android:textSize="20sp"
-                                android:textStyle="italic" />
+                                android:textSize="22sp" />
 
                             <ImageView
                                 android:layout_width="40sp"
-                                android:layout_height="45sp"
+                                android:layout_height="40sp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginRight="10sp"
+                                android:layout_marginRight="5sp"
                                 android:layout_toLeftOf="@+id/text2"
                                 android:background="@drawable/starnew" />
 
@@ -75,9 +74,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
-                                android:text="4.5"
                                 android:textColor="#000000"
-                                android:textSize="22sp" />
+                                android:textSize="24sp" />
 
                         </RelativeLayout>
 
@@ -119,6 +117,7 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/t1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv1"
@@ -146,6 +145,7 @@
                     android:gravity="bottom">
 
                     <TextView
+                        android:id="@+id/t2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"

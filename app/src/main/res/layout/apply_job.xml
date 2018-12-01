@@ -40,7 +40,7 @@
                             android:layout_marginTop="20sp"
                             android:gravity="center"
                             android:textColor="#000000"
-                            android:textSize="22sp" />
+                            android:textSize="26sp" />
 
                         <RelativeLayout
                             android:id="@+id/rating"
@@ -58,16 +58,15 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="5sp"
                                 android:layout_toLeftOf="@+id/text3"
-                                android:text="Rating: "
+                                android:text="Rating:"
                                 android:textColor="#000000"
-                                android:textSize="22sp"
-                                android:textStyle="italic|bold" />
+                                android:textSize="22sp"/>
 
                             <ImageView
                                 android:layout_width="40sp"
                                 android:layout_height="40sp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginRight="10sp"
+                                android:layout_marginRight="5sp"
                                 android:layout_toLeftOf="@+id/text2"
                                 android:background="@drawable/starnew" />
 
@@ -78,7 +77,6 @@
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:textColor="#000000"
-                                android:textStyle="bold"
                                 android:layout_marginTop="2sp"
                                 android:textSize="24sp" />
 
@@ -179,7 +177,6 @@
                         android:gravity="center"
                         android:layout_marginBottom="5sp">
 
-
                     <TextView
                         android:id="@+id/t3"
                         android:layout_width="wrap_content"
@@ -188,10 +185,7 @@
                         android:text="Pay:"
                         android:textAllCaps="true"
                         android:textColor="#000000"
-                        android:textStyle="bold"
                         android:textSize="24sp" />
-
-
 
                     <TextView
                         android:id="@+id/tv4"

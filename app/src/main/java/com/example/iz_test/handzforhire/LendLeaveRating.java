@@ -63,6 +63,7 @@ public class LendLeaveRating extends Activity implements SimpleGestureFilter.Sim
             profile = (ImageView) findViewById(R.id.profile_image);
             rating_lay = (RelativeLayout) findViewById(R.id.rating);
             rating = (TextView) findViewById(R.id.text3);
+            TextView rating_text=(TextView)findViewById(R.id.text2);
 
             Intent i = getIntent();
             job_id = i.getStringExtra("jobId");
@@ -72,6 +73,10 @@ public class LendLeaveRating extends Activity implements SimpleGestureFilter.Sim
             image = i.getStringExtra("image");
             profilename = i.getStringExtra("profilename");
             username = i.getStringExtra("username");
+
+            String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+            Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+            rating_text.setTypeface(tf1);
 
             String fontPath2 = "fonts/cambriab.ttf";
             Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -88,23 +89,27 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.review_rating);
+        super.onCreate(savedInstanceState);
 
         dialog = new Dialog(LendReviewRating.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.progressbar);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
         list = (ListView) findViewById(R.id.listview);
         close = (Button) findViewById(R.id.cancel_btn);
         ImageView image = (ImageView)findViewById(R.id.profile_image);
-        super.onCreate(savedInstanceState);
+        TextView t1 = (TextView) findViewById(R.id.t1);
         TextView name = (TextView) findViewById(R.id.t2);
+        TextView text1 = (TextView) findViewById(R.id.text1);
         txt_rating=(TextView)findViewById(R.id.text2);
-        rating_value = findViewById(R.id.text3);
+        rating_value = (TextView)findViewById(R.id.text3);
         lin_linkin=(LinearLayout)findViewById(R.id.lin_linkin);
         lin_linkininfo=(LinearLayout)findViewById(R.id.lin_linkininfo);
         txt_profilename=(TextView)findViewById(R.id.txt_profilename);
         imageprofile=(ImageView)findViewById(R.id.imageprofile);
-        mLinkedinUpdate = findViewById(R.id.linkedin_refresh);
+        mLinkedinUpdate = (ImageView)findViewById(R.id.linkedin_refresh);
+
         Intent i = getIntent();
         id = i.getStringExtra("userId");
         profile_image = i.getStringExtra("image");
@@ -119,6 +124,21 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
             }
         });
         name.setText(profilename);
+
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        rating_value.setTypeface(tf);
+        t1.setTypeface(tf);
+        text1.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        txt_rating.setTypeface(tf1);
+
+        String fontPath2 = "fonts/cambriab.ttf";
+        Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
+        name.setTypeface(tf2);
+
         if(!profile_image.equals(""))
         {
             Glide.with(LendReviewRating.this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(LendReviewRating.this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);

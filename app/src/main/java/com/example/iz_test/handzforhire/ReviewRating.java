@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -82,7 +83,10 @@ public class ReviewRating extends Activity implements SimpleGestureFilter.Simple
         list = (ListView) findViewById(R.id.listview);
         close = (Button) findViewById(R.id.cancel_btn);
         ImageView image = (ImageView) findViewById(R.id.profile_image);
+        TextView t1 = (TextView) findViewById(R.id.t1);
         TextView name = (TextView) findViewById(R.id.t2);
+        TextView text1 = (TextView) findViewById(R.id.text1);
+        TextView txt_rating=(TextView)findViewById(R.id.text2);
         rate = (TextView) findViewById(R.id.text3);
 
         Intent i = getIntent();
@@ -91,6 +95,21 @@ public class ReviewRating extends Activity implements SimpleGestureFilter.Simple
         profilename = i.getStringExtra("name");
         String username = i.getStringExtra("username");
         System.out.println("iiiiiiiiiiiiiiiiiiiii:" + id);
+
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        rate.setTypeface(tf);
+        t1.setTypeface(tf);
+        text1.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        txt_rating.setTypeface(tf1);
+
+        String fontPath2 = "fonts/cambriab.ttf";
+        Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
+        name.setTypeface(tf2);
+
 
         completerating();
         getAverageRatigng();

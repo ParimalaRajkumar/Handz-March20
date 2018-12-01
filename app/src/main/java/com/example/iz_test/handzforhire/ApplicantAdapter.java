@@ -90,7 +90,20 @@ public class ApplicantAdapter extends BaseAdapter {
         TextView refuse = (TextView) vi.findViewById(R.id.refuse);
         TextView rating = (TextView) vi.findViewById(R.id.rating_value);
         ImageView image1 = (ImageView) vi.findViewById(R.id.img2);
+        TextView text1 = (TextView) vi.findViewById(R.id.txt1);
 
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(activity.getAssets(), fontPath);
+        rating.setTypeface(tf);
+        comments.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(activity.getAssets(), fontPath1);
+        text1.setTypeface(tf1);
+
+        String fontPath2 = "fonts/calibri.ttf";
+        Typeface font1 = Typeface.createFromAsset(activity.getAssets(), fontPath2);
+        name.setTypeface(font1);
 
         hire.setTag(position);
         refuse.setTag(position);
@@ -123,10 +136,7 @@ public class ApplicantAdapter extends BaseAdapter {
             }
         });
 
-        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
-        Typeface font = Typeface.createFromAsset(activity.getAssets(), fontPath);
-        String fontPath1 = "fonts/calibri.ttf";
-        Typeface font1 = Typeface.createFromAsset(activity.getAssets(), fontPath1);
+
 
         HashMap<String, String> items = new HashMap<String, String>();
         items = data.get(position);
@@ -148,24 +158,20 @@ public class ApplicantAdapter extends BaseAdapter {
         Glide.with(activity).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image1);
 
         comments.setText(get_comments);
-        comments.setTypeface(font);
         jobname.setText(job_name);
         rating.setText(average_rating);
 
         if(profilename.equals(""))
         {
             name.setText(get_name);
-            name.setTypeface(font);
         }
         if(profilename.equals("")&&get_name.equals(""))
         {
             name.setText(firstname);
-            name.setTypeface(font);
         }
         else
         {
             name.setText(profilename);
-            name.setTypeface(font);
         }
         return vi;
     }

@@ -2,6 +2,7 @@ package com.example.iz_test.handzforhire;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MotionEvent;
@@ -62,6 +63,7 @@ public class LendRating extends Activity implements SimpleGestureFilter.SimpleGe
         prof=(TextView)findViewById(R.id.text1);
         profile = (ImageView) findViewById(R.id.profile_image);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
+        TextView rating_text = (TextView) findViewById(R.id.text2);
 
         Intent i = getIntent();
         job_id = i.getStringExtra("jobId");
@@ -70,6 +72,18 @@ public class LendRating extends Activity implements SimpleGestureFilter.SimpleGe
         employee_id = i.getStringExtra("employee_id");
         profilename = i.getStringExtra("profilename");
         prof.setText(profilename);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
+
+        String fontPath2 = "fonts/cambriab.ttf";
+        Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
+        prof.setTypeface(tf2);
+
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        ra.setTypeface(tf);
 
         detector = new SimpleGestureFilter(this,this);
 

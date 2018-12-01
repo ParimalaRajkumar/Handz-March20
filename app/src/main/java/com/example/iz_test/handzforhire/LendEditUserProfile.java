@@ -85,7 +85,7 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
     Button home, email, update, paypal_login, terms_condition, logo,add_link;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     Bitmap finalbitmap;
-    TextView photo_text,rating_value;
+    TextView photo_text,rating_value,rating_text;
     EditText profile_name;
     private static final String URL = Constant.SERVER_URL+"update_profile_image";
     private static final String GET_URL = Constant.SERVER_URL+"get_profile_image";
@@ -162,6 +162,7 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
         update = (Button) findViewById(R.id.update_email);
         rating_value = (TextView) findViewById(R.id.text3);
+        rating_text = (TextView) findViewById(R.id.text2);
         image = (ImageView) findViewById(R.id.profile_image);
         photo_text = (TextView) findViewById(R.id.text_photo);
         profile_name = (EditText) findViewById(R.id.name);
@@ -199,6 +200,10 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
         home.setTypeface(tf);
         rating_value.setTypeface(tf);
         add_link.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
 
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
@@ -253,6 +258,7 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
                 i.putExtra("city", city);
                 i.putExtra("state", state);
                 i.putExtra("zipcode", zipcode);
+                startActivity(i);
             }
         });
 

@@ -58,6 +58,7 @@ public class CustomList extends BaseAdapter {
         TextView t1 = (TextView) vi.findViewById(R.id.t1);
         TextView t2 = (TextView) vi.findViewById(R.id.t2);
         TextView t3 = (TextView) vi.findViewById(R.id.t3);
+        TextView rating_text = (TextView) vi.findViewById(R.id.txt2);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(activity.getAssets(), fontPath);
@@ -69,6 +70,10 @@ public class CustomList extends BaseAdapter {
         t2.setTypeface(tf);
         t3.setTypeface(tf);
         rating.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(activity.getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
 
         HashMap<String, String> items = new HashMap<String, String>();
         items = data.get(position);
@@ -85,7 +90,7 @@ public class CustomList extends BaseAdapter {
         String s1 = "1.00";
         String multi = String.valueOf(Float.valueOf(get_amount)*Float.valueOf(s1));
         String total_amount = String.format("%.2f", Float.valueOf(multi));
-        amount.setText(total_amount);
+        amount.setText("$"+total_amount);
         type.setText(get_type);
         jobId.setText(get_id);
         rating.setText(average_rating);

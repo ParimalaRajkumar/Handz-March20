@@ -66,6 +66,7 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
         pname=(TextView)findViewById(R.id.text1);
         profile_image = (ImageView) findViewById(R.id.profile_image);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
+        TextView rating_text=(TextView)findViewById(R.id.text2);
 
         Intent i = getIntent();
         job_id = i.getStringExtra("jobId");
@@ -82,6 +83,10 @@ public class EditRating extends Activity implements SimpleGestureFilter.SimpleGe
         cat5 = i.getStringExtra("cat5");
         rating_id = i.getStringExtra("ratingId");
         lend_status = i.getStringExtra("lend_status");
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
 
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);

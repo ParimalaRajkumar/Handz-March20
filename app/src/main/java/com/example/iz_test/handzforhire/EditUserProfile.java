@@ -73,7 +73,7 @@ public class EditUserProfile extends Activity implements SimpleGestureFilter.Sim
     Button home, email, update, paypal_login, terms_condition, logo;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     Bitmap finalbitmap;
-    TextView photo_text,rating,rating_value;
+    TextView photo_text,rating,rating_value,rating_text;
     EditText profile_name;
     private static final String URL = Constant.SERVER_URL+"update_profile_image";
     private static final String GET_URL = Constant.SERVER_URL+"get_profile_image";
@@ -129,6 +129,7 @@ public class EditUserProfile extends Activity implements SimpleGestureFilter.Sim
         rating_value = (TextView) findViewById(R.id.text3);
         rating = (TextView) findViewById(R.id.text2);
         profile_name = (EditText) findViewById(R.id.name);
+        rating_text = (TextView) findViewById(R.id.text2);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
         paypal_login = (Button) findViewById(R.id.login);
         terms_condition = (Button) findViewById(R.id.condition);
@@ -163,6 +164,10 @@ public class EditUserProfile extends Activity implements SimpleGestureFilter.Sim
         terms_condition.setTypeface(tf);
         home.setTypeface(tf);
         rating_value.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
 
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);

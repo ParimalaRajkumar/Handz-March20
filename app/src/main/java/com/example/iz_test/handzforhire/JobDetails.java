@@ -46,7 +46,7 @@ import java.util.Map;
 public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGestureListener{
 
     ImageView profile_image,close;
-    TextView profile_name, description, date, time, amount, type,name,rating_value;
+    TextView profile_name, description, date, time, amount, type,name,rating_value,rating_text;
     private static final String URL = Constant.SERVER_URL+"job_detail_view";
     private static final String GET_AVERAGE_RATING = Constant.SERVER_URL+"get_average_rating";
     public static String APP_KEY = "X-APP-KEY";
@@ -85,10 +85,10 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
         TextView text5 = (TextView) findViewById(R.id.txt5);
         TextView text6 = (TextView) findViewById(R.id.text6);
         TextView text7 = (TextView) findViewById(R.id.t4);
+        rating_text = (TextView) findViewById(R.id.text2);
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
-
         description.setTypeface(tf);
         date.setTypeface(tf);
         time.setTypeface(tf);
@@ -99,6 +99,10 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
         text6.setTypeface(tf);
         rating_value.setTypeface(tf);
         text7.setTypeface(tf);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
 
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
@@ -268,19 +272,6 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 String start_time=object.getString("start_time");
                 employerId = object.getString("employer_id");
                 description.setText(get_description);
-
-
-//                if(get_profile_name.equals("") && !get_username.equals(""))
-//                {
-//                    profile_name.setText(get_username);
-//                }
-//                if(get_profile_name.equals("")&&get_username.equals(""))
-//                {
-//                    profile_name.setText(get_firstname);
-//                }
-//                else {
-//                    profile_name.setText(get_profile_name);
-//                }
 
                 if(get_profile_name.equals(""))
                 {

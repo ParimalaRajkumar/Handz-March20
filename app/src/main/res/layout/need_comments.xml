@@ -41,7 +41,7 @@
                         android:layout_marginLeft="150sp"
                         android:gravity="center"
                         android:textColor="#000000"
-                        android:textSize="22sp" />
+                        android:textSize="26sp" />
 
                     <RelativeLayout
                         android:id="@+id/rating"
@@ -61,14 +61,13 @@
                             android:layout_toLeftOf="@+id/text3"
                             android:text="Rating: "
                             android:textColor="#000000"
-                            android:textSize="22sp"
-                            android:textStyle="italic" />
+                            android:textSize="22sp" />
 
                         <ImageView
                             android:layout_width="40sp"
                             android:layout_height="40sp"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="10sp"
+                            android:layout_marginRight="5sp"
                             android:layout_toLeftOf="@+id/text2"
                             android:background="@drawable/starnew" />
 
@@ -79,7 +78,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:textColor="#000000"
-                            android:textSize="22sp" />
+                            android:textSize="24sp" />
 
                     </RelativeLayout>
 
@@ -123,11 +122,11 @@
                     android:layout_marginTop="10sp"
                     android:text="COMMENTS!"
                     android:textAllCaps="true"
-                    android:textStyle="bold"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/t1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv1"
@@ -164,12 +163,12 @@
             </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/t2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="THANK YOU!"
                     android:paddingBottom="5sp"
-                    android:textStyle="bold"
                     android:gravity="center"
                     android:textAllCaps="true"
                     android:background="#ACACAB"

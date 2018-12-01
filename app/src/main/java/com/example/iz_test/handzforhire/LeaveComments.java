@@ -87,6 +87,10 @@ public class LeaveComments extends Activity implements SimpleGestureFilter.Simpl
         pn_needcmd=(TextView)findViewById(R.id.text1);
         ImageView handz = (ImageView) findViewById(R.id.handz_logo);
         ImageView back = (ImageView) findViewById(R.id.back);
+        TextView rating_text = (TextView) findViewById(R.id.text2);
+        TextView comment_text = (TextView) findViewById(R.id.tv1);
+        TextView t1 = (TextView) findViewById(R.id.tv1);
+        TextView t2 = (TextView) findViewById(R.id.tv1);
 
         Intent i = getIntent();
         rating = i.getStringExtra("rating");
@@ -105,6 +109,10 @@ public class LeaveComments extends Activity implements SimpleGestureFilter.Simpl
 
         System.out.println("rrrrrrrrrrrr:lend_status.."+lend_status);
 
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
+
         String fontPath2 = "fonts/cambriab.ttf";
         Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
         pn_needcmd.setTypeface(tf2);
@@ -112,6 +120,9 @@ public class LeaveComments extends Activity implements SimpleGestureFilter.Simpl
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
         t3.setTypeface(tf);
+        t1.setTypeface(tf);
+        t2.setTypeface(tf);
+        comment_text.setTypeface(tf);
 
         detector = new SimpleGestureFilter(this,this);
 

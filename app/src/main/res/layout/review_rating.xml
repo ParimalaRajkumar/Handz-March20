@@ -23,7 +23,6 @@
                 android:layout_height="wrap_content"
                 android:text="Ratings for "
                 android:textColor="#DCDCDC"
-                android:textStyle="bold"
                 android:layout_marginLeft="20sp"
                 android:textAllCaps="false"
                 android:textSize="20sp"
@@ -37,11 +36,9 @@
                 android:layout_height="wrap_content"
                 android:textAllCaps="false"
                 android:textColor="#DCDCDC"
-                android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/t1"
-                />
+                android:layout_toRightOf="@+id/t1" />
 
             <Button
                 android:id="@+id/cancel_btn"
@@ -65,7 +62,6 @@
                 android:layout_height="40sp"
                 android:gravity="center"
                 android:text="overall average"
-                android:textStyle="bold"
                 android:textAllCaps="true"
                 android:layout_marginRight="20sp"
                 android:textSize="16sp"
@@ -84,17 +80,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rating: "
-                    android:textStyle="italic"
                     android:layout_toLeftOf="@+id/text3"
                     android:layout_marginRight="5sp"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:layout_centerVertical="true"
                     android:textColor="#DCDCDC"/>
 
                 <ImageView
                     android:layout_width="40sp"
                     android:layout_height="40sp"
-                    android:layout_marginRight="10sp"
+                    android:layout_marginRight="5sp"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/text2"
                     android:background="@drawable/starnew"/>
@@ -105,8 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     android:textColor="#DCDCDC"/>
 
             </RelativeLayout>

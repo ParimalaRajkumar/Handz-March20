@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -28,24 +28,19 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
 import com.glide.Glideconstants;
 import com.glide.RoundedCornersTransformation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,6 +85,10 @@ public class NeedComments extends Activity implements SimpleGestureFilter.Simple
         profile = (ImageView) findViewById(R.id.profile_image);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
         pn_needcmd=(TextView)findViewById(R.id.text1);
+        TextView rating_text = (TextView) findViewById(R.id.text2);
+        TextView comment_text = (TextView) findViewById(R.id.tv1);
+        TextView t1 = (TextView) findViewById(R.id.t1);
+        TextView t2 = (TextView) findViewById(R.id.t2);
 
         Intent i = getIntent();
         rating = i.getStringExtra("rating");
@@ -105,6 +104,21 @@ public class NeedComments extends Activity implements SimpleGestureFilter.Simple
         image = i.getStringExtra("image");
         profilename = i.getStringExtra("name");
         pn_needcmd.setText(profilename);
+
+        String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+        Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+        rating_text.setTypeface(tf1);
+
+        String fontPath2 = "fonts/cambriab.ttf";
+        Typeface tf2 = Typeface.createFromAsset(getAssets(), fontPath2);
+        pn_needcmd.setTypeface(tf2);
+
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        t3.setTypeface(tf);
+        t1.setTypeface(tf);
+        t2.setTypeface(tf);
+        comment_text.setTypeface(tf);
 
         detector = new SimpleGestureFilter(this,this);
 

@@ -63,6 +63,7 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
             pname=(TextView)findViewById(R.id.text1);
             profile_image = (ImageView) findViewById(R.id.profile_image);
             rating_lay = (RelativeLayout) findViewById(R.id.rating);
+            TextView rating_text=(TextView)findViewById(R.id.text2);
 
             Intent i = getIntent();
             job_id = i.getStringExtra("jobId");
@@ -78,6 +79,10 @@ public class LendEditRating extends Activity implements SimpleGestureFilter.Simp
             cat4 = i.getStringExtra("category4");
             cat5 = i.getStringExtra("category5");
             rating_id = i.getStringExtra("ratingId");
+
+            String fontPath1 = "fonts/LibreFranklin-SemiBoldItalic.ttf";
+            Typeface tf1 = Typeface.createFromAsset(getAssets(), fontPath1);
+            rating_text.setTypeface(tf1);
 
             System.out.println("rrrrrrrrrrrr:lendeditrating:cat1::" + cat1);
             System.out.println("rrrrrrrrrrrr:lendeditrating:cat2::" + cat2);
