@@ -56,7 +56,7 @@ public class LocationTrack  {
     public static final int REQUEST_CHECK_SETTINGS = 0x1;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 10;
-    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 1000*60*60;
+    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
     private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
             UPDATE_INTERVAL_IN_MILLISECONDS / 2;
     protected LocationManager locationManager;

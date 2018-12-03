@@ -17,7 +17,7 @@
         android:id="@+id/top_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/top_banner_margin_top"
         android:background="@color/profile_top_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".15"
@@ -28,23 +28,26 @@
         style="@style/ProfileNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
+        android:text="mohanbabu"
         app:layout_constraintBottom_toBottomOf="@+id/menu"
         app:layout_constraintEnd_toStartOf="@+id/menu"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toTopOf="@+id/top_container" />
 
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="@dimen/profile_width"
         android:layout_height="@dimen/profile_width"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="3dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="4dp"
+        android:layout_marginStart="@dimen/start_margin_left"
         android:background="@drawable/image_border"
+        android:padding="4dp"
+        android:layout_marginBottom="@dimen/start_margin_left"
+        app:layout_constraintBottom_toBottomOf="@+id/top_container"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/default_profile" />
 
     <ImageView
@@ -61,12 +64,12 @@
         android:id="@+id/imageView6"
         android:layout_width="@dimen/rating_icon_size"
         android:layout_height="@dimen/rating_icon_size"
+        android:layout_marginStart="@dimen/start_margin_left"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/starrating"
         app:layout_constraintBottom_toBottomOf="@+id/top_container"
-        app:layout_constraintEnd_toStartOf="@+id/text2"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toBottomOf="@+id/text1" />
 
     <TextView
@@ -74,10 +77,10 @@
         style="@style/RatingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="Rating:"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintEnd_toStartOf="@+id/text3"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
     <TextView
@@ -85,22 +88,18 @@
         style="@style/Ratingvalue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/rating_value_margin_left"
+        android:layout_marginStart="8dp"
+        android:text="5.0"
         app:layout_constraintBottom_toBottomOf="@+id/text2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text2"
         app:layout_constraintTop_toTopOf="@+id/text2" />
 
     <TextView
         android:id="@+id/textView5"
+        style="@style/ProfileTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:text="lend a hand"
-        android:textAllCaps="true"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="#CBCACA"
-        android:textSize="34dp"
         app:layout_constraintBottom_toTopOf="@+id/find_job"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,12 +136,12 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
         android:id="@+id/create_job_text"
+        style="@style/ProfileIconText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="job map view"
-        style="@style/ProfileIconText"
         app:layout_constraintLeft_toLeftOf="@id/find_job"
         app:layout_constraintRight_toRightOf="@id/find_job"
         app:layout_constraintTop_toBottomOf="@+id/find_job" />
@@ -322,27 +321,27 @@
         android:id="@+id/tutorial_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/tex1"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="15dp"
-        >
+        android:layout_marginBottom="@dimen/profile_page_bottom_margin"
+        app:layout_constraintBottom_toTopOf="@id/tex1"
+        app:layout_constraintLeft_toLeftOf="parent">
 
         <ImageView
             android:id="@+id/tutorial"
             android:layout_width="50sp"
             android:layout_height="30sp"
             android:gravity="center"
-            android:src="@drawable/tutorial_image"/>
+            android:src="@drawable/tutorial_image" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tutorial"
             android:text="tutorial"
-            android:textStyle="bold"
             android:textAllCaps="true"
-            android:textSize="12sp"
             android:textColor="#ffffff"
-            android:layout_below="@+id/tutorial"/>
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -351,6 +350,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/tex1"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="@dimen/profile_page_bottom_margin"
         android:layout_marginRight="16dp">
 
         <ImageView
@@ -380,7 +380,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/bulb"
-        app:layout_constraintBottom_toTopOf="@+id/tex1"
+        app:layout_constraintBottom_toTopOf="@+id/tutorial_layout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     <ProgressBar

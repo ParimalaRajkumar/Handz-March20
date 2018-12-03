@@ -14,4 +14,10 @@
     <dimen name="rating_icon_size">60dp</dimen>
     <dimen name="rating_value_margin_left">8dp</dimen>
     <dimen name="notification_count_margin">8dp</dimen>
+    <dimen name="top_banner_margin_top">20dp</dimen>
+    <dimen name="profile_page_bottom_margin">0dp</dimen>
+    <dimen name="start_margin_left">8dp</dimen>
+    <dimen name="rating_text_size">25dp</dimen>
+    <dimen name="profile_icon_text">12dp</dimen>
+
 </resources>

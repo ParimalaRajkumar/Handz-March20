@@ -278,6 +278,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
             JSONObject jResult = new JSONObject(jsonobject);
             status = jResult.getString("status");
             if (status.equals("success")) {
+                job_list.clear();
                 rating_list = jResult.getString("rating_lists");
                 JSONArray array = new JSONArray(rating_list);
                 JSONObject jobj = array.getJSONObject(0);
@@ -297,6 +298,7 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     String profile_url = obj.getString("profile_url");
                     String picture_url = obj.getString("picture_url");
                     txt_profilename.setText("VIEW " + first_name + " " + last_name);
+
                     Glide.with(LendReviewRating.this).load(picture_url).apply(new RequestOptions().circleCrop().error(R.drawable.default_profile)).into(imageprofile);
                 }
                 for (int n = 0; n < array.length(); n++) {
@@ -316,7 +318,6 @@ public class LendReviewRating extends Activity implements SimpleGestureFilter.Si
                     map.put("average", average_rating);
                     map.put("comments", object.getString("comments"));
                     map.put("date", date);
-                    job_list.clear();
                     job_list.add(map);
 
                 }

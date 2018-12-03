@@ -135,6 +135,10 @@ public class LeaveComments extends Activity implements SimpleGestureFilter.Simpl
             pn_needcmd.setText(profilename);
         }
 
+        if(image!= null && image.contains("http://graph.facebook.com/"))
+        {
+            image = image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+        }
         Glide.with(this).load(image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(profile);
 
         b1.setOnClickListener(new View.OnClickListener() {
