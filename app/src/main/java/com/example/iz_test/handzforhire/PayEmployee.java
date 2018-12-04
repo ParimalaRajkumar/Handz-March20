@@ -265,6 +265,10 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
 
         }
         else {
+            if(profile_image!= null && profile_image.contains("http://graph.facebook.com/"))
+            {
+                profile_image = profile_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+            }
             Glide.with(this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
         }
         if(profile_name.equals(""))

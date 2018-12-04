@@ -10,4 +10,5 @@
     <color name="profile_icon_text">#ffffff</color>
     <color name="app_bg">#4D4D4D</color>
     <color name="chatitem_time">#9E9E9E</color>
+    <color name="profile_title_color">#CBCACA</color>
 </resources>
