@@ -134,7 +134,7 @@ public class LendActiveJobAdapter extends BaseAdapter{
         items = data.get(position);
         final String get_name = items.get("name");
 
-         String get_image = items.get("image");
+        String get_image = items.get("image");
        if(items.get("image").contains("http://graph.facebook.com/"))
        {
            get_image = get_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
