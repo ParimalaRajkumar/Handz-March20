@@ -99,7 +99,11 @@
                 </RelativeLayout>
 
             </RelativeLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000000"
+                />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="65sp"
@@ -116,6 +120,11 @@
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000000"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -130,7 +139,7 @@
                     android:text="Employee showed up on time..."
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    android:layout_marginTop="10sp"/>
+                    android:layout_marginTop="5sp"/>
 
                 <RatingBar
                     android:id="@+id/ratingBar1"
@@ -145,6 +154,11 @@
                     android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000000"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -156,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="5sp"
                     android:text="Employee was respectful..."
                     android:textColor="#000000"
                     android:textSize="18sp" />
@@ -174,6 +188,11 @@
                     android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000000"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -187,7 +206,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="Employee worked hard..."
                     android:textColor="#000000"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="5sp"
                     android:textSize="18sp" />
 
                 <RatingBar
@@ -204,6 +223,11 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000000"
+                />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="75sp"
@@ -216,7 +240,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="Employee was skilled at assigned task..."
                     android:textColor="#000000"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="5sp"
                     android:textSize="18sp" />
 
                 <RatingBar
@@ -232,6 +256,11 @@
                     android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000000"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -246,7 +275,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="I'd hire this person again..."
                     android:textColor="#000000"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="5sp"
                     android:textSize="18sp" />
 
                 <RatingBar
@@ -263,6 +292,11 @@
                     android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000000"
+                />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
