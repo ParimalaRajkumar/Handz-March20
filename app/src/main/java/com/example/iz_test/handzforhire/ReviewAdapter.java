@@ -85,6 +85,7 @@ public class ReviewAdapter extends BaseAdapter {
         rating.setTypeface(font1);
         comments.setText(comment);
         comments.setTypeface(font1);
+        cancel_job.setTypeface(font1);
 
         DateFormat dateInstance = SimpleDateFormat.getDateInstance();
         DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
