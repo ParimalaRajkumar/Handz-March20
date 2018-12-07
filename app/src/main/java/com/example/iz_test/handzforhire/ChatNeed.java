@@ -114,11 +114,11 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
     String value = "HandzForHire@~";
     int timeout = 60000;
     private SimpleGestureFilter detector;
+    HashMap<String, String> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
         layout = (LinearLayout) findViewById(R.id.layout1);
         lin_layoutmsg=(LinearLayout)findViewById(R.id.lin_layoutmsg);
         layout2 = (RelativeLayout) findViewById(R.id.layout2);
@@ -132,9 +132,8 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
         messagesContainer.setStackFromBottom(true);
 
         messagelist=new ArrayList<ChatItems>();
-
         session = new SessionManager(getApplicationContext());
-        HashMap<String, String> user = session.getUserDetails();
+        user = session.getUserDetails();
         user_type = user.get(SessionManager.USER_TYPE);
 
         detector = new SimpleGestureFilter(this,this);
@@ -171,7 +170,7 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                 if (!messageText.equals("")) {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("senderId", sender_id);
-                    map.put("senderName", get_user);
+                    map.put("senderName", user.get(SessionManager.USERNAME));
                     map.put("text", messageText);
                     reference1.child(child_id).child("messages").push().setValue(map);
                    // addMessageBox(messageText,sender_id);

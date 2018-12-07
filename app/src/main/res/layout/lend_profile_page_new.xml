@@ -188,8 +188,8 @@
 
         <TextView
             android:id="@+id/txt_activejobscnt"
-            android:layout_width="25sp"
-            android:layout_height="25sp"
+            android:layout_width="@dimen/notification_icon_size"
+            android:layout_height="@dimen/notification_icon_size"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
             android:textStyle="bold"
@@ -254,8 +254,8 @@
 
         <TextView
             android:id="@+id/job_historycnt"
-            android:layout_width="25sp"
-            android:layout_height="25sp"
+            android:layout_width="@dimen/notification_icon_size"
+            android:layout_height="@dimen/notification_icon_size"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
             android:textColor="#ffffff"
@@ -294,8 +294,8 @@
 
         <TextView
             android:id="@+id/txt_postedjobcnt"
-            android:layout_width="25sp"
-            android:layout_height="25sp"
+            android:layout_width="@dimen/notification_icon_size"
+            android:layout_height="@dimen/notification_icon_size"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
             android:visibility="invisible"
@@ -328,8 +328,8 @@
 
         <ImageView
             android:id="@+id/tutorial"
-            android:layout_width="50sp"
-            android:layout_height="30sp"
+            android:layout_width="@dimen/bottom_icon_size"
+            android:layout_height="@dimen/bottom_icon_height"
             android:gravity="center"
             android:src="@drawable/tutorial_image" />
 
@@ -355,8 +355,8 @@
 
         <ImageView
             android:id="@+id/sha_lend"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/bottom_icon_size"
+            android:layout_height="@dimen/bottom_icon_height"
             android:layout_alignParentStart="true"
             android:layout_marginStart="0dp"
             android:src="@drawable/share" />
@@ -376,8 +376,8 @@
 
     <Button
         android:id="@+id/need_help"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/bottom_icon_size"
+        android:layout_height="@dimen/bottom_icon_size"
         android:layout_centerHorizontal="true"
         android:background="@drawable/bulb"
         app:layout_constraintBottom_toTopOf="@+id/tutorial_layout"

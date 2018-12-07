@@ -19,5 +19,8 @@
     <dimen name="start_margin_left">8dp</dimen>
     <dimen name="rating_text_size">25dp</dimen>
     <dimen name="profile_icon_text">12dp</dimen>
+    <dimen name="bottom_icon_size">50dp</dimen>
+    <dimen name="bottom_icon_height">30dp</dimen>
+    <dimen name="notification_icon_size">25dp</dimen>
 
 </resources>

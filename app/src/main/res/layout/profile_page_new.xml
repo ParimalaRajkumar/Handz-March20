@@ -188,17 +188,17 @@
 
         <TextView
             android:id="@+id/txt_activejobscnt"
-            android:layout_width="25sp"
-            android:layout_height="25sp"
+            android:layout_width="@dimen/notification_icon_size"
+            android:layout_height="@dimen/notification_icon_size"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:visibility="invisible"
-            android:textSize="17sp"
+            android:background="@drawable/circle_shape"
             android:gravity="center"
             android:scaleType="fitStart"
-            android:background="@drawable/circle_shape" />
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
 
     </FrameLayout>
     <TextView
@@ -253,17 +253,17 @@
 
         <TextView
             android:id="@+id/job_historycnt"
-            android:layout_width="25sp"
-            android:layout_height="25sp"
+            android:layout_width="@dimen/notification_icon_size"
+            android:layout_height="@dimen/notification_icon_size"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:visibility="invisible"
-            android:textSize="17sp"
+            android:background="@drawable/circle_shape"
             android:gravity="center"
             android:scaleType="fitStart"
-            android:background="@drawable/circle_shape" />
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
 
     </FrameLayout>
     <TextView
@@ -293,8 +293,8 @@
 
         <TextView
             android:id="@+id/txt_postedjobcnt"
-            android:layout_width="25sp"
-            android:layout_height="25sp"
+            android:layout_width="@dimen/notification_icon_size"
+            android:layout_height="@dimen/notification_icon_size"
             android:layout_gravity="top|right"
             android:adjustViewBounds="true"
 
@@ -329,8 +329,8 @@
         >
         <ImageView
             android:id="@+id/tutorial"
-            android:layout_width="50sp"
-            android:layout_height="30sp"
+            android:layout_width="@dimen/bottom_icon_size"
+            android:layout_height="@dimen/bottom_icon_height"
             android:gravity="center"
             android:src="@drawable/tutorial_image"/>
 
@@ -349,7 +349,6 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
         app:layout_constraintBottom_toTopOf="@id/tex1"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="@dimen/profile_page_bottom_margin"
@@ -357,9 +356,11 @@
 
         <ImageView
             android:id="@+id/sha_need"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:src="@drawable/share"/>
+            android:layout_width="@dimen/bottom_icon_size"
+            android:layout_height="@dimen/bottom_icon_height"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/share" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -376,11 +377,11 @@
 
     <Button
         android:id="@+id/need_help"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/bottom_icon_size"
+        android:layout_height="@dimen/bottom_icon_size"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/tutorial_layout"
         android:background="@drawable/bulb"
+        app:layout_constraintBottom_toTopOf="@+id/tutorial_layout"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
