@@ -175,7 +175,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         });
 
         InputFilter[] FilterArray = new InputFilter[1];
-        FilterArray[0] = new InputFilter.LengthFilter(50);
+        FilterArray[0] = new InputFilter.LengthFilter(30);
         job_name.setFilters(FilterArray);
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -193,12 +193,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         });
 
         date_layout.setOnClickListener(this);
-        /*time_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timePicker.show();
-            }
-        });*/
         time_layout.setOnClickListener(this);
 
         estimate_layout.setOnClickListener(this);
@@ -653,84 +647,10 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 
         if (v == date_layout) {
-            /*DialogFragment dialogfragment = new datepickerClass();
-            dialogfragment.show(getFragmentManager(), "DatePickerDialog");*/
             openDatePickerDialog(v);
         }
         if (v == time_layout) {
-
             openTimePickerDialog(v);
-          /*  final Calendar c = Calendar.getInstance();
-            mMinute = c.get(Calendar.MINUTE);
-            if(mMinute!=0) {
-                c.add(Calendar.HOUR, 1);
-                mMinute=0;
-            }
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-
-            // Launch Time Picker Dialog
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                    new TimePickerDialog.OnTimeSetListener() {
-
-                        @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay,
-                                              int minute) {
-                            int second = 00;
-                            int hour = hourOfDay;
-                            int minutes = minute;
-                            String sec = (second < 10) ? "0" + second : "" + second;
-                            String min = (minutes < 10) ? "0" + minutes : "" + minutes;
-                            String hour_day = (hour < 10) ? "0" + hour : "" + hour;
-                            start_time = hour_day + ":" + min + ":" + sec;
-                            System.out.println("77777777:start_time::::::"+start_time+"..."+hour);
-                            String text = (hour < 10 ? "0" : "") + hour;
-                            System.out.println("77777777:text::::::"+text);
-                            int text1 = Integer.parseInt(text);
-                            System.out.println("77777777:text1::::::"+text1);
-                            time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
-                            System.out.println("77777777:time_value::::::"+time_value);
-                            hourr = hour_day;
-                            System.out.println("77777777:hourr::::::"+hourr);
-
-
-                            String timeSet = "";
-                            if (hour > 12) {
-                                hour -= 12;
-                                timeSet = "PM";
-                            } else if (hour == 0) {
-                                hour += 12;
-                                timeSet = "AM";
-                            }
-                            else if (hour == 12){
-                                timeSet = "PM";
-                            }else{
-                                timeSet = "AM";
-                            }
-
-                            String min1 = "";
-                            if (minutes < 10)
-                            {
-                                min1 = "0" + minutes ;
-                            } else {
-                                min1 = String.valueOf(minutes);
-                            }
-                            if (minutes > 00) {
-                                min1 = "00";
-                                hour = hour + 1;
-                            }
-                            if(hour == 13)
-                            {
-                                String hour_new = "1";
-                                start_time_text.setText(hour_new + ":" + min1 + " " + timeSet);
-                            }
-                            else
-                            {
-                                start_time_text.setText(hour + ":" + min1 + " " + timeSet);
-                            }
-
-                        }
-                    }, mHour, mMinute, false);
-            timePickerDialog.show();*/
         }
 
     }
@@ -1091,55 +1011,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         }
     }
 
-   /* public static class datepickerClass extends DialogFragment implements DatePickerDialog.OnDateSetListener{
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            final Calendar calendar = Calendar.getInstance();
-
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int month = calendar.get(Calendar.MONTH);
-            int year = calendar.get(Calendar.YEAR);
-
-            DatePickerDialog datepickerdialog = new DatePickerDialog(getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,this,year,month,day);
-            datepickerdialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-            return datepickerdialog;
-
-        }
-
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            // TODO Auto-generated method stub
-
-
-            //TextView textview = (TextView) getActivity().findViewById(R.id.textView1);
-
-            Calendar calander2 = Calendar.getInstance();
-
-            calander2.setTimeInMillis(0);
-
-            calander2.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
-
-            Date SelectedDate = calander2.getTime();
-
-            int mm = monthOfYear + 1;
-            String month = (mm < 10) ? "0" + mm : "" + mm;
-            date_format = year + "-" + month + "-" + dayOfMonth;
-            System.out.println("dddddddddd:date_format:::"+date_format);
-
-            DateFormat dateformat_US = DateFormat.getDateInstance(DateFormat.LONG, Locale.US);
-            String StringDateformat_US = dateformat_US.format(SelectedDate);
-            date_text.setText(StringDateformat_US);
-
-            *//*DateFormat dateformat_UK = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.UK);
-            String StringDateformat_UK = dateformat_UK.format(SelectedDate);
-            date_text.setText(date_text.getText() + StringDateformat_UK + "\n");*//*
-
-        }
-    }
-*/
-
     TextWatcher tw = new TextWatcher() {
 
         @Override
@@ -1222,13 +1093,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
                 break;
-            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
-                break;
-            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;
-*/
         }
-        //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -1346,40 +1211,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                     text2 = 1;
                     System.out.println("hhhhhhhhhhhhh:8:::"+text1+"..."+text2);
                 }
-               /* if(min==00)
-                {
-                    text1 = hour;
-                    text2 = hour;
-                }
-                else
-                {
-                    text1 = hour+1;
-                    text2 = hour+1;
-                }
-                if(hour==12)
-                {
-                    text1 = 1;
-                    text2 = 1;
-                    System.out.println("hhhhhhhhhhhhh:12:::"+text1);
-                }
-                if(hour==13)
-                {
-                    text2 = 1;
-                }
-                if(hour==12&&u.equals("PM"))
-                {
-                    text1 = 1;
-                }
-                if(u.equals("PM"))
-                {
-                    text1 = hour+12;
-                    System.out.println("hhhhhhhhhhhhh:PM:::"+text1);
-                }
-                else
-                {
-                    text1 = text2;
-                    System.out.println("hhhhhhhhhhhhh:AM:::"+text1);
-                }*/
                 time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
                 System.out.println("hhhhhhhhhhhhh:time_value:::"+time_value);
                 String s = text2 + ":"+ "00" +" "+ u;
