@@ -389,6 +389,7 @@ public class LendProfilePage extends Activity implements SimpleGestureFilter.Sim
             {
                 user_name = jResult.getString("username");
                 System.out.println("resssssss:user_name:" + user_name);
+                session.SaveUsername(user_name);
                 profile_name.setText(user_name);
             }
 

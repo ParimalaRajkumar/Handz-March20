@@ -63,6 +63,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
     String profile_name,user_name,job_payout,paypal_fee,estimated_payment,fee_details,job_payment_amount,merchant_id,new_payout_value;
     Integer total_value;
     Dialog dialog;
+
     private SimpleGestureFilter detector;
     private String current = "";
     SessionManager session;
@@ -120,6 +121,8 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
         name = (TextView) findViewById(R.id.name);
         date = (TextView) findViewById(R.id.transaction_date);
         total = (TextView) findViewById(R.id.total);
+
+
        // TextView text1 = (TextView) findViewById(R.id.text1);
         TextView text2 = (TextView) findViewById(R.id.text2);
         TextView text3 = (TextView) findViewById(R.id.text3);
@@ -234,6 +237,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
             payout.setText(new_payout_value);
             String get_service_fee = service_fee.getText().toString().trim();
             String get_tip = tip.getText().toString().trim();
+            service_fee.setText(get_service_fee);
             paypal_value= paypal_fee;
             paypal_value = paypal_value.substring(1);
             processing_fee.setText(paypal_value);
@@ -248,6 +252,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
             payout.setText(estimated_value);
             String get_service_fee = service_fee.getText().toString().trim();
             String get_tip = tip.getText().toString().trim();
+            service_fee.setText(get_service_fee);
             paypal_value= paypal_fee;
             paypal_value = paypal_value.substring(1);
             processing_fee.setText(paypal_value);
@@ -265,6 +270,10 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
 
         }
         else {
+            if(profile_image!= null && profile_image.contains("http://graph.facebook.com/"))
+            {
+                profile_image = profile_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+            }
             Glide.with(this).load(profile_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(this,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image);
         }
         if(profile_name.equals(""))

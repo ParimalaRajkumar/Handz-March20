@@ -215,8 +215,8 @@
                     android:layout_width="120sp"
                     android:layout_height="40sp"
                     android:layout_marginLeft="5sp"
-                    android:layout_alignParentBottom="true"
                     android:background="@drawable/handz"
+                    android:layout_marginTop="80sp"
                     android:id="@+id/textView" />
 
                 <Button

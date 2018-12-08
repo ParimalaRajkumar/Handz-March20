@@ -458,7 +458,7 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
        mCurrentLocaton = location;
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(mCurrentLocaton.getLatitude(),
-                        mCurrentLocaton.getLongitude())).zoom(10).build();
+                        mCurrentLocaton.getLongitude())).zoom(12).build();
         session.savelocation(String.valueOf(mCurrentLocaton.getLatitude()),String.valueOf(mCurrentLocaton.getLongitude()));
         googleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));

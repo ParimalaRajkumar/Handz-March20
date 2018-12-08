@@ -81,6 +81,12 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void SaveUsername(String username)
+    {
+        editor.putString(USERNAME,username);
+        editor.commit();
+    }
+
     public void LendLogin(String email,String password,String name,String type,String id,String address,String city,String state,String zipcode,String lendusertype){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);

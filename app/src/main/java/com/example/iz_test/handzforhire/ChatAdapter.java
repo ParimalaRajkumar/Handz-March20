@@ -119,7 +119,7 @@ public class ChatAdapter extends BaseAdapter {
     }
 
     private void setAlignment(ViewHolder holder, boolean isMe) {
-        if (!isMe) {
+        if (isMe) {
             //holder.contentWithBG.setBackgroundResource(R.drawable.green_bg_c);
             holder.txtMessage.setBackgroundResource(R.drawable.bubble_in);
             LinearLayout.LayoutParams layoutParams =

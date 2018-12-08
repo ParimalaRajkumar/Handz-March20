@@ -72,7 +72,7 @@ public class ReviewAdapter extends BaseAdapter {
 
         HashMap<String, String> items = new HashMap<String, String>();
         items = data.get(position);
-        final String get_image= items.get("image");
+        String get_image= items.get("image");
         final String get_average = items.get("average");
         final String get_date = items.get("date");
         final String comment = items.get("comments");
@@ -85,6 +85,7 @@ public class ReviewAdapter extends BaseAdapter {
         rating.setTypeface(font1);
         comments.setText(comment);
         comments.setTypeface(font1);
+        cancel_job.setTypeface(font1);
 
         DateFormat dateInstance = SimpleDateFormat.getDateInstance();
         DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
@@ -114,6 +115,10 @@ public class ReviewAdapter extends BaseAdapter {
             image1.setVisibility(View.VISIBLE);
         }
         else {*/
+        if(get_image!= null && get_image.contains("http://graph.facebook.com/"))
+        {
+            get_image = get_image.replace("https://www.handzadmin.com/assets/images/uploads/profile/","");
+        }
         Glide.with(activity).load(get_image).apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(activity,0, Glideconstants.sCorner,Glideconstants.sColor, Glideconstants.sBorder)).error(R.drawable.default_profile)).into(image1);
 
         //    }
