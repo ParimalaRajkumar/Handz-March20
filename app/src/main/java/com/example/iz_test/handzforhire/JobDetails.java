@@ -311,7 +311,6 @@ public class JobDetails extends Activity implements SimpleGestureFilter.SimpleGe
                 SimpleDateFormat timeFormat = new SimpleDateFormat(newFormat);
                 formatedDate = timeFormat.format(myDate).toUpperCase().replace(".","");
                 System.out.println("hhhhhhhhhhhhh:newFormat:::"+formatedDate);
-
                 time.setText(formatedDate);
                 type.setText(get_type);
                 String s1 = "1.00";

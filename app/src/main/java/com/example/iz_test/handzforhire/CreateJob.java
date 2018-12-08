@@ -5,9 +5,9 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -32,7 +32,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -42,6 +42,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bigkoo.pickerview.MyOptionsPickerView;
+import com.example.iz_test.handzforhire.DateTimeWheel.DateWheel.DatePickerPopWin;
+import com.example.iz_test.handzforhire.DateTimeWheel.TimeWheel.TimePickerPopWin;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,7 +56,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class CreateJob extends Activity implements View.OnClickListener,SimpleGestureFilter.SimpleGestureListener{
@@ -94,7 +95,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
     MyOptionsPickerView threePicker;
     public static String date_format;
     TextView select_category;
-
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -193,7 +193,14 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         });
 
         date_layout.setOnClickListener(this);
+        /*time_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timePicker.show();
+            }
+        });*/
         time_layout.setOnClickListener(this);
+
         estimate_layout.setOnClickListener(this);
         duration_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -646,14 +653,14 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 
         if (v == date_layout) {
-            DialogFragment dialogfragment = new datepickerClass();
-
-            dialogfragment.show(getFragmentManager(), "DatePickerDialog");
-
+            /*DialogFragment dialogfragment = new datepickerClass();
+            dialogfragment.show(getFragmentManager(), "DatePickerDialog");*/
+            openDatePickerDialog(v);
         }
         if (v == time_layout) {
 
-            final Calendar c = Calendar.getInstance();
+            openTimePickerDialog(v);
+          /*  final Calendar c = Calendar.getInstance();
             mMinute = c.get(Calendar.MINUTE);
             if(mMinute!=0) {
                 c.add(Calendar.HOUR, 1);
@@ -723,7 +730,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
                         }
                     }, mHour, mMinute, false);
-            timePickerDialog.show();
+            timePickerDialog.show();*/
         }
 
     }
@@ -841,75 +848,6 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             return;
         }
-        if (TextUtils.isEmpty(date)) {
-            // custom dialog
-            final Dialog dialog = new Dialog(CreateJob.this);
-            dialog.setContentView(R.layout.custom_dialog);
-
-            // set the custom dialog components - text, image and button
-            TextView text = (TextView) dialog.findViewById(R.id.text);
-            text.setText("Must Fill In \"Job Date\" Box");
-            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-            // if button is clicked, close the custom dialog
-            dialogButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-
-            dialog.show();
-            Window window = dialog.getWindow();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            return;
-        }
-        if (TextUtils.isEmpty(start_time)) {
-            // custom dialog
-            final Dialog dialog = new Dialog(CreateJob.this);
-            dialog.setContentView(R.layout.custom_dialog);
-
-            // set the custom dialog components - text, image and button
-            TextView text = (TextView) dialog.findViewById(R.id.text);
-            text.setText("Must Fill In \"Start Time\" Box");
-            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-            // if button is clicked, close the custom dialog
-            dialogButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-
-            dialog.show();
-            Window window = dialog.getWindow();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            return;
-        }
-        if (TextUtils.isEmpty(end_time)) {
-            // custom dialog
-            final Dialog dialog = new Dialog(CreateJob.this);
-            dialog.setContentView(R.layout.custom_dialog);
-
-            // set the custom dialog components - text, image and button
-            TextView text = (TextView) dialog.findViewById(R.id.text);
-            text.setText("Must Fill In \"End Time\" Box");
-            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
-            // if button is clicked, close the custom dialog
-            dialogButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-
-            dialog.show();
-            Window window = dialog.getWindow();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            return;
-        }
         if (TextUtils.isEmpty(amount)) {
             // custom dialog
             final Dialog dialog = new Dialog(CreateJob.this);
@@ -964,8 +902,78 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         {
             flexible_status = "no";
         }
+        if(date.equals("Job Date"))
+        {
+            final Dialog dialog = new Dialog(CreateJob.this);
+            dialog.setContentView(R.layout.custom_dialog);
+
+            // set the custom dialog components - text, image and button
+            TextView text = (TextView) dialog.findViewById(R.id.text);
+            text.setText("Must choose \"Job Date\"");
+            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+            // if button is clicked, close the custom dialog
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+            Window window = dialog.getWindow();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            return;
+        }
+        if(start_time.equals("Start Time"))
+        {
+            final Dialog dialog = new Dialog(CreateJob.this);
+            dialog.setContentView(R.layout.custom_dialog);
+
+            // set the custom dialog components - text, image and button
+            TextView text = (TextView) dialog.findViewById(R.id.text);
+            text.setText("Must choose \"Start Time\"");
+            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+            // if button is clicked, close the custom dialog
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+            Window window = dialog.getWindow();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            return;
+        }
+        if(end_time.equals("Expected Duration"))
+        {
+            final Dialog dialog = new Dialog(CreateJob.this);
+            dialog.setContentView(R.layout.custom_dialog);
+
+            // set the custom dialog components - text, image and button
+            TextView text = (TextView) dialog.findViewById(R.id.text);
+            text.setText("Must choose \"Expected Duration\"");
+            Button dialogButton = (Button) dialog.findViewById(R.id.ok);
+            // if button is clicked, close the custom dialog
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+            Window window = dialog.getWindow();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            return;
+        }
         if(!name.equals("")&&!description.equals("")&&!date.equals("")&&!start_time.equals("")&&!end_time.equals("")&&!amount.equals(""))
         {
+            System.out.println("ffff:create:::"+date+"...."+start_time+",."+end_time);
             String expected_hours = end_time_text.getText().toString();
             System.out.println("eeeeeeeee:time:::"+expected_hours+"...."+amount);
             job_estimated = String.valueOf(Float.valueOf(expected_hours)*Float.valueOf(amount));
@@ -1083,7 +1091,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         }
     }
 
-    public static class datepickerClass extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+   /* public static class datepickerClass extends DialogFragment implements DatePickerDialog.OnDateSetListener{
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -1124,15 +1132,13 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             String StringDateformat_US = dateformat_US.format(SelectedDate);
             date_text.setText(StringDateformat_US);
 
-            /*DateFormat dateformat_UK = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.UK);
+            *//*DateFormat dateformat_UK = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.UK);
             String StringDateformat_UK = dateformat_UK.format(SelectedDate);
-            date_text.setText(date_text.getText() + StringDateformat_UK + "\n");*/
+            date_text.setText(date_text.getText() + StringDateformat_UK + "\n");*//*
 
         }
     }
-
-
-
+*/
 
     TextWatcher tw = new TextWatcher() {
 
@@ -1236,6 +1242,162 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
         this.detector.onTouchEvent(event);
         return super.dispatchTouchEvent(event);
+    }
+
+    public void openDatePickerDialog(View view) {
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd ");
+        String strDate = mdformat.format(calendar.getTime());
+        System.out.println("cccccccc:strDate::"+strDate);
+
+        DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(CreateJob.this, new DatePickerPopWin.OnDatePickedListener() {
+            @Override
+            public void onDatePickCompleted(int year, int month, int day, String dateDesc) {
+                Toast.makeText(CreateJob.this, dateDesc, Toast.LENGTH_SHORT).show();
+                System.out.println("cccccccc:dateDesc::"+dateDesc);
+                date_format = dateDesc;
+                DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
+                DateFormat destDf = new SimpleDateFormat("MMMM dd, yyyy");
+                try {
+                    Date dates = srcDf.parse(dateDesc);
+                    date_text.setText("" + destDf.format(dates));
+
+                } catch (Exception e)
+                {
+                    System.out.println("error " + e.getMessage());
+                }
+            }
+        }).textConfirm("Done") //text of confirm button
+                .textCancel("CANCEL") //text of cancel button
+                .btnTextSize(20) // button text size
+                .viewTextSize(25) // pick view text size
+                .colorCancel(Color.parseColor("#999999")) //color of cancel button
+                .colorConfirm(Color.parseColor("#000000"))//color of confirm button
+                .minYear(1990) //min year in loop
+                .maxYear(2550) // max year in loop
+                .dateChose(strDate) // date chose when init popwindow
+                .build();
+
+        pickerPopWin.showPopWin(this);
+    }
+
+    public void openTimePickerDialog(View view) {
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
+        String strTime = mdformat.format(calendar.getTime());
+        System.out.println("cccccccc:strTime::"+strTime);
+
+        TimePickerPopWin pickerPopWin = new TimePickerPopWin.Builder(CreateJob.this, new TimePickerPopWin.OnTimePickedListener() {
+            @Override
+            public void onTimePickCompleted(int hour, int min, int sec, String meridium, String timeDesc) {
+                Toast.makeText(CreateJob.this, timeDesc, Toast.LENGTH_SHORT).show();
+                System.out.println("cccccccc:timeDesc::"+timeDesc);
+                String u = meridium;
+                int text1 = 0;
+                int text2 = 0;
+                if(hour<12&&min==00&&u.equals("AM"))
+                {
+                    text1 = hour;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:1:::"+text1+"..."+text2);
+                }
+                if(hour<12&&min==00&&u.equals("PM"))
+                {
+                    text1 = hour+12;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:2:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min==00&&u.equals("AM"))
+                {
+                    text1 = hour;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:3:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min==00&&u.equals("PM"))
+                {
+                    text1 = 24;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:4:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min!=00&&u.equals("PM"))
+                {
+                    text1 = 1;
+                    text2 = 1;
+                    u = "AM";
+                    System.out.println("hhhhhhhhhhhhh:5:::"+text1+"..."+text2);
+                }
+                if(hour<12&&min!=00&&u.equals("AM"))
+                {
+                    text2 = hour+1;
+                    text1 = text2;
+                    System.out.println("hhhhhhhhhhhhh:6:::"+text1+"..."+text2);
+                }
+                if(hour<12&&min!=00&&u.equals("PM"))
+                {
+                    text2 = hour+1;
+                    text1 = text2+12;
+                    System.out.println("hhhhhhhhhhhhh:7:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min!=00&&u.equals("AM"))
+                {
+                    text1 = 1;
+                    text2 = 1;
+                    System.out.println("hhhhhhhhhhhhh:8:::"+text1+"..."+text2);
+                }
+               /* if(min==00)
+                {
+                    text1 = hour;
+                    text2 = hour;
+                }
+                else
+                {
+                    text1 = hour+1;
+                    text2 = hour+1;
+                }
+                if(hour==12)
+                {
+                    text1 = 1;
+                    text2 = 1;
+                    System.out.println("hhhhhhhhhhhhh:12:::"+text1);
+                }
+                if(hour==13)
+                {
+                    text2 = 1;
+                }
+                if(hour==12&&u.equals("PM"))
+                {
+                    text1 = 1;
+                }
+                if(u.equals("PM"))
+                {
+                    text1 = hour+12;
+                    System.out.println("hhhhhhhhhhhhh:PM:::"+text1);
+                }
+                else
+                {
+                    text1 = text2;
+                    System.out.println("hhhhhhhhhhhhh:AM:::"+text1);
+                }*/
+                time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
+                System.out.println("hhhhhhhhhhhhh:time_value:::"+time_value);
+                String s = text2 + ":"+ "00" +" "+ u;
+                System.out.println("hhhhhhhhhhhhh:s:::"+s);
+                start_time_text.setText(s);
+
+            }
+
+        }).textConfirm("Done") //text of confirm button
+                .textCancel("CANCEL") //text of cancel button
+                .btnTextSize(20) // button text size
+                .viewTextSize(25) // pick view text size
+                .colorCancel(Color.parseColor("#999999")) //color of cancel button
+                .colorConfirm(Color.parseColor("#000000"))
+                .timeChose(strTime)//color of confirm button
+                .build();
+
+        pickerPopWin.showPopWin(this);
     }
 
 

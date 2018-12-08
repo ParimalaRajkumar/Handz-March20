@@ -6,9 +6,9 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -29,7 +29,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -43,6 +42,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bigkoo.pickerview.MyOptionsPickerView;
+import com.example.iz_test.handzforhire.DateTimeWheel.DateWheel.DatePickerPopWin;
+import com.example.iz_test.handzforhire.DateTimeWheel.TimeWheel.TimePickerPopWin;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -624,85 +625,10 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 
         if (v == date_layout) {
-
-            DialogFragment dialogfragment = new datepickerClass();
-
-            dialogfragment.show(getFragmentManager(), "DatePickerDialog");
-
+            openDatePickerDialog(v);
         }
         if (v == time_layout) {
-
-            final Calendar c = Calendar.getInstance();
-            mMinute = c.get(Calendar.MINUTE);
-            if(mMinute!=0) {
-                c.add(Calendar.HOUR, 1);
-                mMinute=0;
-            }
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-
-            // Launch Time Picker Dialog
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                    new TimePickerDialog.OnTimeSetListener() {
-
-                        @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay,
-                                              int minute) {
-                            int second = 00;
-                            int hour = hourOfDay;
-                            int minutes = minute;
-                            String sec = (second < 10) ? "0" + second : "" + second;
-                            String min = (minutes < 10) ? "0" + minutes : "" + minutes;
-                            String hour_day = (hour < 10) ? "0" + hour : "" + hour;
-                            start_time = hour_day + ":" + min + ":" + sec;
-                            System.out.println("77777777:start_time::::::"+start_time);
-                            String text = (hour < 10 ? "0" : "") + hour;
-                            System.out.println("77777777:text::::::"+text);
-                            int text1 = Integer.parseInt(text);
-                            System.out.println("77777777:text1::::::"+text1);
-                            time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
-                            System.out.println("77777777:time_value::::::"+time_value);
-
-                            hourr = hour_day;
-                            System.out.println("77777777:hourr::::::"+hourr);
-
-                            String timeSet = "";
-                            if (hour > 12) {
-                                hour -= 12;
-                                timeSet = "PM";
-                            } else if (hour == 0) {
-                                hour += 12;
-                                timeSet = "AM";
-                            }
-                            else if (hour == 12){
-                                timeSet = "PM";
-                            }else{
-                                timeSet = "AM";
-                            }
-
-                            String min1 = "";
-                            if (minutes < 10)
-                            {
-                                min1 = "0" + minutes ;
-                            } else {
-                                min1 = String.valueOf(minutes);
-                            }
-                            if (minutes > 00) {
-                                min1 = "00";
-                                hour = hour + 1;
-                            }
-                            if(hour == 13)
-                            {
-                                String hour_new = "1";
-                                start_time_text.setText(hour_new + ":" + min1 + " " + timeSet);
-                            }
-                            else
-                            {
-                                start_time_text.setText(hour + ":" + min1 + " " + timeSet);
-                            }
-
-                        }
-                    }, mHour, mMinute, false);
-            timePickerDialog.show();
+            openTimePickerDialog(v);
         }
     }
 
@@ -1166,13 +1092,8 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
                 break;
-            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
-                break;
-            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;*/
 
         }
-        //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -1187,5 +1108,128 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         this.detector.onTouchEvent(event);
         return super.dispatchTouchEvent(event);
     }
+
+    public void openDatePickerDialog(View view) {
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd ");
+        String strDate = mdformat.format(calendar.getTime());
+        System.out.println("cccccccc:strDate::"+strDate);
+
+        DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(RehireJob.this, new DatePickerPopWin.OnDatePickedListener() {
+            @Override
+            public void onDatePickCompleted(int year, int month, int day, String dateDesc) {
+                Toast.makeText(RehireJob.this, dateDesc, Toast.LENGTH_SHORT).show();
+                System.out.println("cccccccc:dateDesc::"+dateDesc);
+                date_format = dateDesc;
+                DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
+                DateFormat destDf = new SimpleDateFormat("MMMM dd, yyyy");
+                try {
+                    Date dates = srcDf.parse(dateDesc);
+                    date_text.setText("" + destDf.format(dates));
+
+                } catch (Exception e)
+                {
+                    System.out.println("error " + e.getMessage());
+                }
+            }
+        }).textConfirm("Done") //text of confirm button
+                .textCancel("CANCEL") //text of cancel button
+                .btnTextSize(20) // button text size
+                .viewTextSize(25) // pick view text size
+                .colorCancel(Color.parseColor("#999999")) //color of cancel button
+                .colorConfirm(Color.parseColor("#000000"))//color of confirm button
+                .minYear(1990) //min year in loop
+                .maxYear(2550) // max year in loop
+                .dateChose(strDate) // date chose when init popwindow
+                .build();
+
+        pickerPopWin.showPopWin(this);
+    }
+
+    public void openTimePickerDialog(View view) {
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
+        String strTime = mdformat.format(calendar.getTime());
+        System.out.println("cccccccc:strTime::"+strTime);
+
+        TimePickerPopWin pickerPopWin = new TimePickerPopWin.Builder(RehireJob.this, new TimePickerPopWin.OnTimePickedListener() {
+            @Override
+            public void onTimePickCompleted(int hour, int min, int sec, String meridium, String timeDesc) {
+                Toast.makeText(RehireJob.this, timeDesc, Toast.LENGTH_SHORT).show();
+                System.out.println("cccccccc:timeDesc::"+timeDesc);
+                String u = meridium;
+                int text1 = 0;
+                int text2 = 0;
+                if(hour<12&&min==00&&u.equals("AM"))
+                {
+                    text1 = hour;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:1:::"+text1+"..."+text2);
+                }
+                if(hour<12&&min==00&&u.equals("PM"))
+                {
+                    text1 = hour+12;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:2:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min==00&&u.equals("AM"))
+                {
+                    text1 = hour;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:3:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min==00&&u.equals("PM"))
+                {
+                    text1 = 24;
+                    text2 = hour;
+                    System.out.println("hhhhhhhhhhhhh:4:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min!=00&&u.equals("PM"))
+                {
+                    text1 = 1;
+                    text2 = 1;
+                    u = "AM";
+                    System.out.println("hhhhhhhhhhhhh:5:::"+text1+"..."+text2);
+                }
+                if(hour<12&&min!=00&&u.equals("AM"))
+                {
+                    text2 = hour+1;
+                    text1 = text2;
+                    System.out.println("hhhhhhhhhhhhh:6:::"+text1+"..."+text2);
+                }
+                if(hour<12&&min!=00&&u.equals("PM"))
+                {
+                    text2 = hour+1;
+                    text1 = text2+12;
+                    System.out.println("hhhhhhhhhhhhh:7:::"+text1+"..."+text2);
+                }
+                if(hour==12&&min!=00&&u.equals("AM"))
+                {
+                    text1 = 1;
+                    text2 = 1;
+                    System.out.println("hhhhhhhhhhhhh:8:::"+text1+"..."+text2);
+                }
+                time_value = (text1 < 10 ? "0" : "") + text1 + ":" + "00" + ":" + "00";
+                System.out.println("hhhhhhhhhhhhh:time_value:::"+time_value);
+                String s = text2 + ":"+ "00" +" "+ u;
+                System.out.println("hhhhhhhhhhhhh:s:::"+s);
+                start_time_text.setText(s);
+
+            }
+
+        }).textConfirm("Done") //text of confirm button
+                .textCancel("CANCEL") //text of cancel button
+                .btnTextSize(20) // button text size
+                .viewTextSize(25) // pick view text size
+                .colorCancel(Color.parseColor("#999999")) //color of cancel button
+                .colorConfirm(Color.parseColor("#000000"))
+                .timeChose(strTime)//color of confirm button
+                .build();
+
+        pickerPopWin.showPopWin(this);
+    }
+
 
 }
