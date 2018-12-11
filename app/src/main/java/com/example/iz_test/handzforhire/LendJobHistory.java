@@ -96,19 +96,15 @@ public class LendJobHistory extends Activity implements SimpleGestureFilter.Simp
         city = i.getStringExtra("city");
         state = i.getStringExtra("state");
         zipcode = i.getStringExtra("zipcode");
-
         detector = new SimpleGestureFilter(this,this);
-
         //activeJobs();
-
+        Utility.updateNotificationCount(this,dialog,Utility.getApiParams(user_id,null,"notificationCountJobHistory"));
         ed_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ed_search.setHint("");
             }
         });
-
-
         ed_search.addTextChangedListener(new TextWatcher() {
 
             @Override

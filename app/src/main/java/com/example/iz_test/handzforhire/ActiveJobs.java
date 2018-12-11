@@ -59,6 +59,8 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
     int timeout = 60000;
     Dialog dialog;
     private SimpleGestureFilter detector;
+    SessionManager session;
+    HashMap<String, String> user;
 
     @Override
     protected void onStart() {
@@ -70,6 +72,8 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.active_jobs);
+        session = new SessionManager(getApplicationContext());
+        user = session.getUserDetails();
         detector = new SimpleGestureFilter(this,this);
         dialog = new Dialog(ActiveJobs.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -81,13 +85,13 @@ public class ActiveJobs extends Activity implements SimpleGestureFilter.SimpleGe
         list = (ListView) findViewById(R.id.listview);
 
         Intent i = getIntent();
-        user_id = i.getStringExtra("userId");
-        address = i.getStringExtra("address");
-        city = i.getStringExtra("city");
-        state = i.getStringExtra("state");
-        zipcode = i.getStringExtra("zipcode");
+        user_id = user.get(SessionManager.KEY_ID);
+        address = user.get(SessionManager.KEY_ADDRESS);
+        city =user.get(SessionManager.KEY_CITY);
+        state = user.get(SessionManager.KEY_STATE);
+        zipcode =  user.get(SessionManager.KEY_ZIPCODE);
         System.out.println("iiiiiiiiiiiiiiiiiiiii:"+user_id);
-        //Utility.updateNotificationCount(this,dialog,Utility.getApiParams(user_id,null,"notificationCountActive"));
+        Utility.updateNotificationCount(this,dialog,Utility.getApiParams(user_id,null,"notificationCountActive"));
        // activeJobs();
 
         logo.setOnClickListener(new View.OnClickListener() {

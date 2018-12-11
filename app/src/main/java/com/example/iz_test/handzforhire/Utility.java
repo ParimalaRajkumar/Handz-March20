@@ -182,13 +182,7 @@ public class Utility {
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put(XAPP_KEY, value);
-//                params.put(KEY_USERID, id);
-//                params.put(JOB_ID, jobId);
-//                params.put(TYPE,"notificationCountStarRating");
-//                params.put(Constant.DEVICE, Constant.ANDROID);
-//                System.out.println("Params "+params);
+//
                 return params;
             }
         };

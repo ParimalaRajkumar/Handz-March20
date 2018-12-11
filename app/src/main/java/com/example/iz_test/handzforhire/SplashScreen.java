@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.app.Config;
@@ -20,12 +21,16 @@ import static java.security.AccessController.getContext;
 public class SplashScreen extends Activity {
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
+    Intent resultIntent = null;
+    SessionManager session;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
             // TODO Auto-generated method stub
             super.onCreate(savedInstanceState);
             setContentView(R.layout.splash_screen);
+        session = new SessionManager(getApplicationContext());
+
         Profilevalues.android_id = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID);
         Mint.initAndStartSession(this.getApplication(), "21afe9a2");
@@ -42,7 +47,46 @@ public class SplashScreen extends Activity {
                     }
                 }
             };
-            timerThread.start();
+            if(getIntent().getExtras() == null || (getIntent().getExtras()!=null && getIntent().getExtras().getString("google.message_id")==null ))
+            {
+                timerThread.start();
+            } else
+            {
+                if(session.getLoginStatus()) {
+                    String type = getIntent().getExtras().getString("type");
+                    if (type!=null && type.equals("notificationCountMakePayment")) {
+                        resultIntent = new Intent(getApplicationContext(), ActiveJobs.class);
+                    } else if (type.equals("hirejob") || type.equals("refusejob")) {
+                        resultIntent = new Intent(getApplicationContext(), LendProfilePage.class);
+                    }else if(type.equals("applyjob")){
+                        resultIntent = new Intent(getApplicationContext(), ProfilePage.class);
+                    }else if(type.equals("jobcanceled")||type.equals("send_message")||type.equals("paymentcompleted")){
+                        if(session.getLoginStatus())
+                            resultIntent = new Intent(getApplicationContext(), ProfilePage.class);
+                        else
+                            resultIntent = new Intent(getApplicationContext(), LendProfilePage.class);
+                    }else{
+                        if(session.getLoginStatus())
+                            resultIntent = new Intent(getApplicationContext(), ProfilePage.class);
+                        else
+                            resultIntent = new Intent(getApplicationContext(), LendProfilePage.class);
+                    }
+
+                }else{
+                    resultIntent = new Intent(getApplicationContext(), MainActivity.class);
+                }
+
+                startActivity(resultIntent);
+            }
+
+//        if (getIntent().getExtras() != null) {
+//            for (String key : getIntent().getExtras().keySet()) {
+//                String value = getIntent().getExtras().getString(key);
+//                Log.d("mohanbabu notification", "Key: " + key + " Value: " + value);
+//            }
+//        }
+
+
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override

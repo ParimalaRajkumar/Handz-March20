@@ -276,8 +276,11 @@ public class JobHistoryAdapter extends BaseAdapter implements Filterable {
             @Override
             public void onClick(View v) {
                 int pos= (int) v.getTag();
+
                 WorldPopulation item=worldpopulationlist.get(pos);
                 jobId = item.getJobId();
+                Utility.updateNotificationCount(mContext,dialog,Utility.getApiParams(item.getUserid(),jobId,"notificationCountStarRating"));
+
                 if(item.getProfilename().isEmpty())
                     username=item.getUsername();
                 else
