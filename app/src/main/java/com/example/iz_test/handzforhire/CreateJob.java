@@ -1119,7 +1119,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(CreateJob.this, new DatePickerPopWin.OnDatePickedListener() {
             @Override
             public void onDatePickCompleted(int year, int month, int day, String dateDesc) {
-                Toast.makeText(CreateJob.this, dateDesc, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CreateJob.this, dateDesc, Toast.LENGTH_SHORT).show();
                 System.out.println("cccccccc:dateDesc::"+dateDesc);
                 date_format = dateDesc;
                 DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
@@ -1157,7 +1157,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         TimePickerPopWin pickerPopWin = new TimePickerPopWin.Builder(CreateJob.this, new TimePickerPopWin.OnTimePickedListener() {
             @Override
             public void onTimePickCompleted(int hour, int min, int sec, String meridium, String timeDesc) {
-                Toast.makeText(CreateJob.this, timeDesc, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CreateJob.this, timeDesc, Toast.LENGTH_SHORT).show();
                 System.out.println("cccccccc:timeDesc::"+timeDesc);
                 String u = meridium;
                 int text1 = 0;
