@@ -280,7 +280,6 @@
     <FrameLayout
         android:id="@+id/pending_job"
         android:layout_width="wrap_content"
-
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius"
         app:layout_constraintCircleAngle="270"
@@ -302,6 +301,7 @@
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:gravity="center"
+            android:textStyle="bold"
             android:scaleType="fitStart"
             android:background="@drawable/circle_shape" />
 

@@ -101,7 +101,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
         detector = new SimpleGestureFilter(this,this);
 
          //getProfileimage();
-       // Utility.updateNotificationCount(this,dialog,Utility.getApiParams(id,null,"notificationCountPosted"));
+           Utility.updateNotificationCount(this,dialog,Utility.getApiParams(id,null,"notificationCountCreateJob"));
            listPostedJobs();
        // getcount();
 

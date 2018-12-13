@@ -216,7 +216,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
                 items = data.get((Integer) v.getTag());
 
                 jobId = items.get("jobId");
-                getratingcount(items.get("user_id"));
+                getratingcount(items.get("user_id"),items.get("jobId"));
                 Intent intent = new Intent(activity, LendLeaveRating.class);
                 intent.putExtra("jobId",items.get("jobId"));
                 intent.putExtra("employer_id", items.get("employer"));
@@ -244,6 +244,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
             public void onClick(View v) {
                 HashMap<String, String> items = new HashMap<String, String>();
                 items = data.get((Integer) v.getTag());
+                getratingcount(items.get("user_id"),items.get("jobId"));
                 Intent intent = new Intent(activity, LendEditRating.class);
                 intent.putExtra("jobId",items.get("jobId"));
                 intent.putExtra("employerId", items.get("employer"));
@@ -269,6 +270,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
             @Override
             public void onClick(View v) {
                 HashMap<String, String> items = new HashMap<String, String>();
+                getratingcount(items.get("user_id"),items.get("jobId"));
                 items = data.get((Integer) v.getTag());
                 Intent intent = new Intent(activity, LendEditComments.class);
                 intent.putExtra("jobId",items.get("jobId"));
@@ -297,6 +299,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
                 HashMap<String, String> items = new HashMap<String, String>();
                 items = data.get((Integer) v.getTag());
                 Intent intent = new Intent(activity, LendLeaveComments.class);
+                getratingcount(items.get("user_id"),items.get("jobId"));
                 intent.putExtra("jobId",items.get("jobId"));
                 intent.putExtra("employerId", items.get("employer"));
                 intent.putExtra("employeeId",items.get("employee"));
@@ -331,7 +334,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
                     username= items.get("profile");
                 jobId = items.get("jobId");
 
-                getmsgcountjobhis(items.get("user_id"));
+                getmsgcountjobhis(items.get("user_id"),jobId);
                 Intent i = new Intent(activity,ChatNeed.class);
                 i.putExtra("jobId",items.get("jobId"));
                 i.putExtra("channel",items.get("channel"));
@@ -448,7 +451,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
 
 
 
-    public void getmsgcountjobhis(final String id) {
+    public void getmsgcountjobhis(final String userId ,final String jobId) {
         dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_COUNT_URL,
                 new Response.Listener<String>() {
@@ -528,7 +531,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put(XAPP_KEY, value);
-                params.put(KEY_USERID, id);
+                params.put(KEY_USERID, userId);
                 params.put(JOB_ID, jobId);
                 params.put(TYPE,"notificationCountMsgJobhistory");
                 params.put(Constant.DEVICE, Constant.ANDROID);
@@ -543,7 +546,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
         requestQueue.add(stringRequest);
     }
 
-    public void getratingcount(final String id) {
+    public void getratingcount(final String id,final String JobID) {
         dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_COUNT_URL,
                 new Response.Listener<String>() {
@@ -624,7 +627,7 @@ public class LendHistoryAdapter extends BaseAdapter implements Filterable {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put(XAPP_KEY, value);
                 params.put(KEY_USERID, id);
-                params.put(JOB_ID, jobId);
+                params.put(JOB_ID, JobID);
                 params.put(TYPE,"notificationCountStarRating");
                 params.put(Constant.DEVICE, Constant.ANDROID);
                 System.out.println("Params "+params);

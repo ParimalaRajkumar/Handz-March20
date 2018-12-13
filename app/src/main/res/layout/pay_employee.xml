@@ -350,7 +350,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="$"
-                                android:layout_marginLeft="25sp"
+                                android:layout_marginRight="15sp"
                                 android:textSize="30sp"
                                 android:textStyle="bold|italic"
                                 android:textColor="#000000"/>
@@ -360,9 +360,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="0.00"
+                                android:layout_marginLeft="-10sp"
                                 android:textStyle="bold"
                                 android:layout_weight="1"
-                                android:layout_marginLeft="5sp"
                                 android:layout_toRightOf="@+id/txt1"
                                 android:textSize="30sp"
                                 android:textColor="#000000" />
