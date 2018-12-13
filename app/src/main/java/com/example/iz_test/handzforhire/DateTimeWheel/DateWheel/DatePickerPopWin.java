@@ -234,12 +234,23 @@ public class DatePickerPopWin extends PopupWindow implements OnClickListener {
             yearList.add(format2LenStr(minYear + i));
         }
 
-        for (int j = 0; j < 12; j++) {
+        /*for (int j = 0; j < 12; j++) {
             monthList.add(format2LenStr(j + 1));
-        }
+        }*/
 
         yearLoopView.setArrayList((ArrayList) yearList);
         yearLoopView.setInitPosition(yearPos);
+
+        int[] months = {0,1,2,3,4,5,6,7,8,9,10,11};
+
+        for (int i = 0; i < months.length; i++) {
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+            cal.set(Calendar.MONTH, months[i]);
+            String month_name = month_date.format(cal.getTime());
+
+            monthList.add(month_name);
+        }
 
         monthLoopView.setArrayList((ArrayList) monthList);
         monthLoopView.setInitPosition(monthPos);
