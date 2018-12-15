@@ -160,6 +160,7 @@ public class LendActiveJobAdapter extends BaseAdapter{
         job_name.setTypeface(font);
         job_id.setText(get_job_id);
         expected_duration.setText(payment_type);
+
         amount.setText(payment_amount);
         employer_id.setText(get_employer);
         employee_id.setText(get_employee);

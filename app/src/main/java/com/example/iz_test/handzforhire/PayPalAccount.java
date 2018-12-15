@@ -14,11 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import org.json.JSONObject;
-
 import java.util.HashMap;
-
 
 public class PayPalAccount extends Activity implements SimpleGestureFilter.SimpleGestureListener{
 

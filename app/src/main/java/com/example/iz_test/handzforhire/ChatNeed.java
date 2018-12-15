@@ -224,7 +224,6 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                             ChatItems item=new ChatItems();
 
 
-
                             if(sender_id.equals(recipient.child("senderId").getValue()))
                             {
                                 item.setMe(true);
