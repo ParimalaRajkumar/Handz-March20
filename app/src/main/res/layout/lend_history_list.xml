@@ -229,8 +229,9 @@
                 android:layout_gravity="center"
                 android:textAllCaps="true"
                 android:layout_margin="7dp"
-                android:background="@drawable/edit_rating_icon"
+                android:background="@drawable/editrating"
                 android:textSize="16sp" />
+
 
             <Button
                 android:id="@+id/leave_comment_btn"
