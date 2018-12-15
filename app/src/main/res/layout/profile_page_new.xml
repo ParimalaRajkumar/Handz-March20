@@ -129,12 +129,13 @@
     app:layout_constraintCircleAngle="335"
     app:layout_constraintBottom_toTopOf="@+id/create_job_text"
     android:layout_height="wrap_content">
-    <Button
+    <ImageView
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        android:background="@drawable/create_job"/>
+        app:srcCompat="@drawable/ic_create_job"
+        />
 </FrameLayout>
 
     <TextView
@@ -155,12 +156,13 @@
         app:layout_constraintCircle="@+id/logo"
         app:layout_constraintCircleRadius="@dimen/circle_radius_top"
         app:layout_constraintCircleAngle="25">
-    <Button
+    <ImageView
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        android:background="@drawable/edit_job"/>
+        app:srcCompat="@drawable/ic_edit_job"
+        />
     </FrameLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -184,7 +186,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            android:background="@drawable/active_jobs"></ImageView>
+            app:srcCompat="@drawable/ic_active_jobs"></ImageView>
 
         <TextView
             android:id="@+id/txt_activejobscnt"
@@ -218,11 +220,11 @@
     app:layout_constraintCircle="@+id/logo"
     app:layout_constraintCircleRadius="@dimen/circle_radius_top"
     app:layout_constraintCircleAngle="155">
-    <Button
+    <ImageView
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
-        android:background="@drawable/edit_user"
+        app:srcCompat="@drawable/ic_edit_user"
         android:clickable="false"
          />
 </FrameLayout>
@@ -249,7 +251,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            android:background="@drawable/job_history"></ImageView>
+            app:srcCompat="@drawable/ic_job_history"></ImageView>
 
         <TextView
             android:id="@+id/job_historycnt"
@@ -289,7 +291,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            android:background="@drawable/posted_jobs"></ImageView>
+            app:srcCompat="@drawable/ic_posted_jobs"></ImageView>
 
         <TextView
             android:id="@+id/txt_postedjobcnt"

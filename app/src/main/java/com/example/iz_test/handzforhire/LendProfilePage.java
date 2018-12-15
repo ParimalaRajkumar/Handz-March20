@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -46,7 +47,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LendProfilePage extends Activity implements SimpleGestureFilter.SimpleGestureListener,ResponseListener{
+public class LendProfilePage extends AppCompatActivity implements SimpleGestureFilter.SimpleGestureListener,ResponseListener{
 
     Button need_help;
     String id,address,city,state,zipcode,profile_image,profilename,email,username;
