@@ -737,10 +737,10 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                 params.put(CATEGORY_COLOR,job_category_color);
                 params.put(DELIST,delist);
                 params.put(Constant.DEVICE, Constant.ANDROID);
-                System.out.println("summaryadd::"+key+"/1/"+id+"/2/"+name+"/3/"+usertype+"/4/"+category+"/5/"+description+"/6/"+date);
-                System.out.println("summaryadd1::"+start_time+"/7/"+expense+"/8/"+duration+"/9/"+amount+"/10/"+address+"/11/"+city+"/12/"+current_location);
-                System.out.println("summaryadd2::"+state+"/13/"+zipcode+"/14/"+post_address+"/15/"+latitude+"/16/"+longitude+"/17/"+payout+"/18/"+flexible_status);
-                System.out.println("summaryadd3::"+fee+"/19/"+fee_details+"/20/"+job_expire+"/21/"+sub_category+"/22/"+job_category_color+"/23/"+delist);
+                System.out.println("summaryadd:X-APP-KEY::"+key+"/user_id::"+id+"/job_name::"+name+"/user_type::"+usertype+"/job_category::"+category+"/job_description::"+description+"/job_date::"+date);
+                System.out.println("summaryadd:start_time::"+start_time+"/out_of_pocket_expense::"+expense+"/job_payment_type::"+duration+"/job_payment_amount::"+amount+"/address::"+address+"/city::"+city+"/currentlocation::"+current_location);
+                System.out.println("summaryadd:state::"+state+"/zipcode::"+zipcode+"/post_address::"+post_address+"/lat::"+latitude+"/lon::"+longitude+"/jobPayout::"+payout+"/job_date_time_flexible::"+flexible_status);
+                System.out.println("summaryadd:paypalFee::"+fee+"/fee_details::"+fee_details+"/job_expire::"+job_expire+"/sub_category::"+sub_category+"/job_category_color::"+job_category_color+"/delist::"+delist+"/job_estimated_payment::"+expense);
                 return params;
             }
 
@@ -1027,10 +1027,10 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                 params.put(DELIST,delist);
                 params.put(JOB_ID,job_id);
                 params.put(Constant.DEVICE, Constant.ANDROID);
-                System.out.println("summaryadd::"+key+"/1/"+id+"/2/"+name+"/3/"+usertype+"/4/"+category+"/5/"+description+"/6/"+date);
-                System.out.println("summaryadd1::"+start_time+"/7/"+expense+"/8/"+duration+"/9/"+amount+"/10/"+address+"/11/"+city+"/12/"+current_location);
-                System.out.println("summaryadd2::"+state+"/13/"+zipcode+"/14/"+post_address+"/15/"+latitude+"/16/"+longitude+"/17/"+payout+"/18/"+flexible_status);
-                System.out.println("summaryadd3::"+fee+"/19/"+fee_details+"/20/"+job_expire+"/21/"+sub_category+"/22/"+job_category_color+"/23/"+delist);
+                System.out.println("summaryadd:X-APP-KEY::"+key+"/user_id::"+id+"/job_name::"+name+"/user_type::"+usertype+"/job_category::"+category+"/job_description::"+description+"/job_date::"+date);
+                System.out.println("summaryadd:start_time::"+start_time+"/out_of_pocket_expense::"+expense+"/job_payment_type::"+duration+"/job_payment_amount::"+amount+"/address::"+address+"/city::"+city+"/currentlocation::"+current_location);
+                System.out.println("summaryadd:state::"+state+"/zipcode::"+zipcode+"/post_address::"+post_address+"/lat::"+latitude+"/lon::"+longitude+"/jobPayout::"+payout+"/job_date_time_flexible::"+flexible_status);
+                System.out.println("summaryadd:paypalFee::"+fee+"/fee_details::"+fee_details+"/job_expire::"+job_expire+"/sub_category::"+sub_category+"/job_category_color::"+job_category_color+"/delist::"+delist+"/job_estimated_payment::"+expense);
                 return params;
             }
         };

@@ -454,6 +454,10 @@ public class RehireAdd extends Activity implements SimpleGestureFilter.SimpleGes
                 params.put(DELIST,delist);
                 params.put(EMPLOYEE_ID,employeeId);
                 params.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println("rehireadd:X-APP-KEY::"+key+"/user_id::"+id+"/job_name::"+name+"/user_type::"+usertype+"/job_category::"+category+"/job_description::"+description+"/job_date::"+date);
+                System.out.println("rehireadd:start_time::"+start_time+"/out_of_pocket_expense::"+expense+"/job_payment_type::"+duration+"/job_payment_amount::"+amount+"/address::"+address+"/city::"+city+"/currentlocation::"+current_location);
+                System.out.println("rehireadd:state::"+state+"/zipcode::"+zipcode+"/post_address::"+post_address+"/lat::"+latitude+"/lon::"+longitude+"/jobPayout::"+payout+"/job_date_time_flexible::"+flexible_status);
+                System.out.println("rehireadd:paypalFee::"+fee+"/fee_details::"+fee_details+"/job_expire::"+job_expire+"/sub_category::"+sub_category+"/job_category_color::"+job_category_color+"/delist::"+delist+"/job_estimated_payment::"+expense);
                 return params;
             }
 

@@ -110,7 +110,7 @@
                                 android:layout_height="match_parent"
                                 android:textSize="16sp"
                                 android:maxLines="1"
-                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                                android:maxLength="30"
                                 android:paddingRight="20sp"
                                 android:inputType="textCapCharacters"
                                 android:layout_marginBottom="5sp"
