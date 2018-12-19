@@ -1114,7 +1114,9 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd ");
         String strDate = mdformat.format(calendar.getTime());
+        Integer current_year = Calendar.getInstance().get(Calendar.YEAR);
         System.out.println("cccccccc:strDate::"+strDate);
+        System.out.println("cccccccc:current_year::"+current_year);
 
         DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(RehireJob.this, new DatePickerPopWin.OnDatePickedListener() {
             @Override
@@ -1139,7 +1141,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
                 .viewTextSize(25) // pick view text size
                 .colorCancel(Color.parseColor("#999999")) //color of cancel button
                 .colorConfirm(Color.parseColor("#000000"))//color of confirm button
-                .minYear(1990) //min year in loop
+                .minYear(current_year) //min year in loop
                 .maxYear(2550) // max year in loop
                 .dateChose(strDate) // date chose when init popwindow
                 .build();
