@@ -19,7 +19,7 @@
         android:layout_marginTop="@dimen/top_banner_margin_top"
         android:background="@color/profile_top_bg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".15"
+        app:layout_constraintHeight_percent=".17"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
 
@@ -54,8 +54,8 @@
         android:id="@+id/menu"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/top_container" />
@@ -133,7 +133,7 @@
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        app:srcCompat="@drawable/ic_create_job"
+        app:srcCompat="@drawable/ic_create_job_1"
         />
 </FrameLayout>
 
@@ -160,13 +160,13 @@
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        app:srcCompat="@drawable/ic_edit_job"
+        app:srcCompat="@drawable/ic_edit_job_1"
         />
     </FrameLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="edit a job"
+        android:text=" edit a job"
         android:layout_centerInParent="true"
         style="@style/ProfileIconText"
         app:layout_constraintLeft_toLeftOf="@id/edit_posted_job"
@@ -185,7 +185,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            app:srcCompat="@drawable/ic_active_jobs"></ImageView>
+            app:srcCompat="@drawable/ic_active_jobs_1"></ImageView>
 
         <TextView
             android:id="@+id/txt_activejobscnt"
@@ -223,14 +223,14 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
-        app:srcCompat="@drawable/ic_edit_user"
+        app:srcCompat="@drawable/ic_edit_user_1"
         android:clickable="false"
          />
 </FrameLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="edit user profile"
+        android:text="    edit user \n      profile"
         android:layout_centerInParent="true"
         style="@style/ProfileIconText"
         app:layout_constraintLeft_toLeftOf="@id/edit_user_profile"
@@ -250,7 +250,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            app:srcCompat="@drawable/ic_job_history"></ImageView>
+            app:srcCompat="@drawable/ic_job_history_1"></ImageView>
 
         <TextView
             android:id="@+id/job_historycnt"
@@ -290,7 +290,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            app:srcCompat="@drawable/ic_posted_jobs"></ImageView>
+            app:srcCompat="@drawable/ic_posted_jobs_1"></ImageView>
 
         <TextView
             android:id="@+id/txt_postedjobcnt"
@@ -326,7 +326,6 @@
         android:layout_marginBottom="@dimen/profile_page_bottom_margin"
         app:layout_constraintBottom_toTopOf="@id/tex1"
         app:layout_constraintLeft_toLeftOf="parent">
-
         >
         <ImageView
             android:id="@+id/tutorial"
@@ -383,7 +382,6 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/bulb"
         app:layout_constraintBottom_toTopOf="@+id/tutorial_layout"
-
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     <ProgressBar

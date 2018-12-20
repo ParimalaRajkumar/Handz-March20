@@ -33,7 +33,7 @@ android {
         key{
             keyAlias 'handzforhire'
             keyPassword 'android'
-            storeFile file('/handz.jks')
+            storeFile file('E:/Handzdebugfile/handz.jks')
             storePassword 'android'
         }
     }
