@@ -359,7 +359,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="job history"                        android:textAllCaps="true"
+                        android:text="job history"
+                        android:textAllCaps="true"
                         android:textStyle="bold"
                         android:layout_marginTop="5sp"
                         android:textSize="12sp"

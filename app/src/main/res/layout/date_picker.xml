@@ -47,7 +47,7 @@
                     android:id="@+id/btn_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingRight="20sp"
+                    android:paddingRight="30sp"
                     android:textAllCaps="false"
                     android:paddingLeft="20sp"
                     android:layout_gravity="center_vertical"

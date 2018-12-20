@@ -3,6 +3,7 @@ package com.example.iz_test.handzforhire.DateTimeWheel.TimeWheel;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -187,6 +188,9 @@ public class TimePickerPopWin extends PopupWindow implements OnClickListener {
         confirmBtn.setTextColor(colorConfirm);
         cancelBtn.setTextSize(btnTextsize);
         confirmBtn.setTextSize(btnTextsize);
+
+        Typeface face = Typeface.createFromAsset(mContext.getAssets(), "fonts/LibreFranklin-SemiBold.ttf");
+        confirmBtn.setTypeface(face);
 
         //do not loop,default can loop
         hourLoopView.setNotLoop();

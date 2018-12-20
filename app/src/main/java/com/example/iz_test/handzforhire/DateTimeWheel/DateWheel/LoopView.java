@@ -114,16 +114,16 @@ public class LoopView extends View {
         }
         paintA.setColor(colorGray);
         paintA.setAntiAlias(true);
-        paintA.setTypeface(Typeface.MONOSPACE);
+        paintA.setTypeface(Typeface.DEFAULT);
         paintA.setTextSize(textSize);
         paintB.setColor(colorBlack);
         paintB.setAntiAlias(true);
         paintB.setTextScaleX(1.05F);
-        paintB.setTypeface(Typeface.MONOSPACE);
+        paintB.setTypeface(Typeface.DEFAULT);
         paintB.setTextSize(textSize);
         paintC.setColor(colorGrayLight);
         paintC.setAntiAlias(true);
-        paintC.setTypeface(Typeface.MONOSPACE);
+        paintC.setTypeface(Typeface.DEFAULT);
         paintC.setTextSize(textSize);
         measureTextWidthHeight();
         halfCircumference = (int) (maxTextHeight * lineSpacingMultiplier * (itemCount - 1));

@@ -1,7 +1,6 @@
 package com.example.iz_test.handzforhire;
 
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -25,7 +24,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -423,6 +421,7 @@ public class LendProfilePage extends AppCompatActivity implements SimpleGestureF
                 Map<String, String> map = new HashMap<String, String>();
                 map.put(XAPP_KEY, value);
                 map.put(KEY_USERID, id);
+                map.put("type", "employer");
                 map.put(Constant.DEVICE, Constant.ANDROID);
                 System.out.println("Params "+map);
                 return map;

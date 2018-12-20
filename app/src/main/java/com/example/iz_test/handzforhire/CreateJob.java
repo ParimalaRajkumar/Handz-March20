@@ -1136,8 +1136,8 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
             }
         }).textConfirm("Done") //text of confirm button
                 .textCancel("CANCEL") //text of cancel button
-                .btnTextSize(20) // button text size
-                .viewTextSize(25) // pick view text size
+                .btnTextSize(22) // button text size
+                .viewTextSize(22) // pick view text size
                 .colorCancel(Color.parseColor("#999999")) //color of cancel button
                 .colorConfirm(Color.parseColor("#000000"))//color of confirm button
                 .minYear(current_year) //min year in loop
@@ -1222,8 +1222,8 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
         }).textConfirm("Done") //text of confirm button
                 .textCancel("CANCEL") //text of cancel button
-                .btnTextSize(20) // button text size
-                .viewTextSize(25) // pick view text size
+                .btnTextSize(22) // button text size
+                .viewTextSize(22) // pick view text size
                 .colorCancel(Color.parseColor("#999999")) //color of cancel button
                 .colorConfirm(Color.parseColor("#000000"))
                 .timeChose(strTime)//color of confirm button
