@@ -36,16 +36,17 @@ public class LendRating extends Activity implements SimpleGestureFilter.SimpleGe
     Button nxt;
     private RatingBar rb1,rb2,rb3,rb4,rb5;
     private static final String GET_URL = Constant.SERVER_URL+"get_profile_image";
-    TextView ra;
+    TextView rating;
     float average;
     String job_id,employer_id,employee_id,user_id,image,profilename,profile_image;
-    String category1,category2,category3,category4,category5;
+    String category1,category2,category3,category4,category5,rating_value,average_rating;
     ImageView profile;
     RelativeLayout rating_lay;
+    private static final String GET_AVERAGERAT = Constant.SERVER_URL+"get_average_rating";
     public static String KEY_USERID = "user_id";
     public static String XAPP_KEY = "X-APP-KEY";
+    public static String TYPE = "type";
     String value = "HandzForHire@~";
-    String rating;
     TextView prof;
     private SimpleGestureFilter detector;
     @Override
@@ -59,11 +60,11 @@ public class LendRating extends Activity implements SimpleGestureFilter.SimpleGe
         rb3 = (RatingBar) findViewById(R.id.ratingBar3);
         rb4 = (RatingBar) findViewById(R.id.ratingBar4);
         rb5 = (RatingBar) findViewById(R.id.ratingBar5);
-        ra = (TextView) findViewById(R.id.text3);
         prof=(TextView)findViewById(R.id.text1);
         profile = (ImageView) findViewById(R.id.profile_image);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
         TextView rating_text = (TextView) findViewById(R.id.text2);
+        rating = (TextView) findViewById(R.id.text3);
 
         Intent i = getIntent();
         job_id = i.getStringExtra("jobId");
@@ -83,11 +84,12 @@ public class LendRating extends Activity implements SimpleGestureFilter.SimpleGe
 
         String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
-        ra.setTypeface(tf);
+        rating.setTypeface(tf);
 
         detector = new SimpleGestureFilter(this,this);
 
         getProfileimage();
+        getAverageRating();
 
         rating_lay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,13 +125,11 @@ public class LendRating extends Activity implements SimpleGestureFilter.SimpleGe
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                ra.setText(String.valueOf(average));
                 System.out.println("rrrrrrrrrrrr" + average);
-                TextView ra = (TextView) findViewById(R.id.text3);
-                rating = ra.getText().toString();
+                rating_value = String.valueOf(average);
 
                 Intent i = new Intent(LendRating.this, LendComments.class);
-                i.putExtra("rating", rating);
+                i.putExtra("rating", rating_value);
                 i.putExtra("userId", user_id);
                 i.putExtra("jobId", job_id);
                 i.putExtra("image",profile_image);
@@ -184,6 +184,43 @@ public class LendRating extends Activity implements SimpleGestureFilter.SimpleGe
 
             }
         });
+    }
+
+    public void getAverageRating() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_AVERAGERAT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("average rat:" + response);
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            average_rating = object.getString("average_rating");
+                            rating.setText(average_rating);
+                        }catch (Exception e){
+                            System.out.println("exception "+e.getMessage());
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG ).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put(XAPP_KEY, value);
+                map.put(KEY_USERID, user_id);
+                map.put(TYPE, "employer");
+                map.put(Constant.DEVICE, Constant.ANDROID);
+                System.out.println(" Map "+map);
+                return map;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     public void getProfileimage()

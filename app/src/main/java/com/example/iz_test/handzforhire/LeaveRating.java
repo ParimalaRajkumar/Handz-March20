@@ -36,7 +36,7 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
     private RatingBar rb1,rb2,rb3,rb4,rb5;
     TextView ra,pname,rating;
     float average;
-    String job_id,employer_id,employee_id,user_id,image,profilename,username,lend_status;
+    String job_id,employer_id,employee_id,user_id,image,profilename,username,rating_value;
     String category1,category2,category3,category4,category5,average_rating,status;
     ImageView profile;
     RelativeLayout rating_lay;
@@ -58,7 +58,6 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
         rb3 = (RatingBar) findViewById(R.id.ratingBar3);
         rb4 = (RatingBar) findViewById(R.id.ratingBar4);
         rb5 = (RatingBar) findViewById(R.id.ratingBar5);
-        ra = (TextView) findViewById(R.id.text3);
         pname=(TextView)findViewById(R.id.text1);
         profile = (ImageView) findViewById(R.id.profile_image);
         rating_lay = (RelativeLayout) findViewById(R.id.rating);
@@ -126,13 +125,10 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                ra.setText(String.valueOf(average));
-
-
-                String rating = ra.getText().toString();
+                rating_value = String.valueOf(average);
 
                 Intent i = new Intent(LeaveRating.this, LeaveComments.class);
-                i.putExtra("rating", rating);
+                i.putExtra("rating", rating_value);
                 i.putExtra("userId", user_id);
                 i.putExtra("jobId", job_id);
                 i.putExtra("image",image);
@@ -182,7 +178,7 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                ra.setText(String.valueOf(average));
+                rating_value = String.valueOf(average);
 
             }
         });
@@ -202,7 +198,7 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                ra.setText(String.valueOf(average));
+                rating_value = String.valueOf(average);
 
             }
         });
@@ -223,7 +219,7 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                ra.setText(String.valueOf(average));
+                rating_value = String.valueOf(average);
             }
         });
         rb4.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -243,7 +239,7 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                ra.setText(String.valueOf(average));
+                rating_value = String.valueOf(average);
 
             }
         });
@@ -265,7 +261,7 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
                 total += rb5.getRating();
                 float average = total / 5;
                 average = Math.round(average);
-                ra.setText(String.valueOf(average));
+                rating_value = String.valueOf(average);
 
             }
         });
@@ -337,13 +333,7 @@ public class LeaveRating extends Activity implements SimpleGestureFilter.SimpleG
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
                 break;
-            /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
-                break;
-            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
-                break;
-*/
         }
-        //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override
