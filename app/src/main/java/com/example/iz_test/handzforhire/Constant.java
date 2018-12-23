@@ -8,7 +8,7 @@ public class Constant
     public static String DEVICE = "device";
     public static String ANDROID = "android";
 
-  public static final String XAPP_VALUE = "HandzForHire@~";
+    public static final String XAPP_VALUE = "HandzForHire@~";
     public static final String FIREBASE_URL = "https://handz-8ac86.firebaseio.com/channels/";
     public static final int LINK_PAYPAL = 100;
     public static final int LINKEDIN_REQUEST=101;
