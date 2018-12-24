@@ -1,6 +1,5 @@
 package com.example.iz_test.handzforhire;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,8 +35,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MakePayment extends Activity implements SimpleGestureFilter.SimpleGestureListener{
-
+public class MakePayment extends Activity implements SimpleGestureFilter.SimpleGestureListener
+{
     String job_id,user_id,job_name;
     private static final String URL = Constant.SERVER_URL+"applied_job_detailed_view";
     private static final String CANCEL_URL = Constant.SERVER_URL+"job_canceled";
@@ -59,10 +57,10 @@ public class MakePayment extends Activity implements SimpleGestureFilter.SimpleG
     Dialog dialog;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.make_payment);
-
         dialog = new Dialog(MakePayment.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.progressbar);
@@ -98,7 +96,7 @@ public class MakePayment extends Activity implements SimpleGestureFilter.SimpleG
         estimated_payment=i.getStringExtra("job_estimated_payment");
         job_payment_amount=i.getStringExtra("job_payment_amount");
         fee_details=i.getStringExtra("fee_details");
-       System.out.println("pppppppp:profilename:::"+profile_name+"---username::::"+user_name);
+        System.out.println("pppppppp:profilename:::"+profile_name+"---username::::"+user_name);
 
         detector = new SimpleGestureFilter(this,this);
 
@@ -149,7 +147,8 @@ public class MakePayment extends Activity implements SimpleGestureFilter.SimpleG
             name.setText(user_name);
             pay_employee.setText("PAY "+ user_name);
         }
-        else {
+        else
+            {
             name.setText(profile_name);
             pay_employee.setText("PAY "+ profile_name);
         }

@@ -59,10 +59,16 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
     EditText tip;
     String job_id,employer_id,employee_id,job_name,profile_image,paypal_value,estimated_value;
     ProgressDialog progress_dialog;
-    TextView name,date,total,payout,service_fee,processing_fee;
+    TextView name;
+    TextView date;
+    TextView total;
+    TextView payout;
+    TextView service_fee;
+    TextView processing_fee;
     String profile_name,user_name,job_payout,paypal_fee,estimated_payment,fee_details,job_payment_amount,merchant_id,new_payout_value;
     Integer total_value;
     Dialog dialog;
+    String date1;
 
     private SimpleGestureFilter detector;
     private String current = "";
@@ -91,11 +97,11 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
     public static String TOTAL_AMOUNT="total_payment";
     public static String EMPLOYEE_ID="employee_id";
     public static String REFERENCE_ID="reference_id";
-
     public static String appkey_value="HandzForHire@~";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_employee);
 
@@ -172,6 +178,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
             fee_details = obj.getString("fee_details");
             job_payment_amount=obj.getString("job_payment_amount");
             merchant_id=obj.getString("merchant_id");
+
         }catch (Exception e){
             System.out.println("Exception "+e.getMessage());
         }
@@ -622,17 +629,18 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String, String> params = new HashMap<String, String>();
-
                 DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
                 DateFormat destDf = new SimpleDateFormat("MMMM dd, yyyy");
                 String date="";
                 Date today = Calendar.getInstance().getTime();
                 try {
-                    date =  destDf.format(today);
+                     date =  destDf.format(today);
+
 
                 } catch (Exception e)
                 {
                     System.out.println("error " + e.getMessage());
+
                 }
 
                 try {
@@ -696,7 +704,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
                                 Map<String, String> map = new HashMap<String, String>();
                                 map.put("senderId", sender_id);
                                 map.put("senderName", get_user);
-                                map.put("text", "FROM HANDZ: Transaction completed on "+transaction_date+" for the amount of $"+job_payout);
+                                map.put("text", "FROM HANDZ: Transaction completed on "+transaction_date+" for the amount of "+job_payout);
                                 reference1.child(child_id).child("messages").push().setValue(map);
                                 Intent i =new Intent(PayEmployee.this,ProfilePage.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
