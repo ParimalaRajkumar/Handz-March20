@@ -45,10 +45,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -263,8 +261,9 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("MMMM dd, yyyy");
-        String strDate = mdformat.format(calendar.getTime());
-        date.setText(strDate);
+        transaction_date = mdformat.format(calendar.getTime());
+        date.setText(transaction_date);
+        System.out.println("dddddddddddddddtransaction_date:payemployee:: " + transaction_date);
 
         if(profile_image==null) {
 
@@ -623,18 +622,6 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
 
                 Map<String, String> params = new HashMap<String, String>();
 
-                DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
-                DateFormat destDf = new SimpleDateFormat("MMMM dd, yyyy");
-                String date="";
-                Date today = Calendar.getInstance().getTime();
-                try {
-                    date =  destDf.format(today);
-
-                } catch (Exception e)
-                {
-                    System.out.println("error " + e.getMessage());
-                }
-
                 try {
 
                     JSONObject obj = new JSONObject(orderresposne);
@@ -649,7 +636,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
                     params.put(JOB_NAME, job_name);
                     params.put(ORDER_ID, obj.getString("id"));
                     params.put(TIP, tip.getText().toString());
-                    params.put(TRANS_DATE, date);
+                    params.put(TRANS_DATE, transaction_date);
                     params.put(JOB_ID, job_id);
                     params.put(PAYPAL_FEE, paypal_fee);
                     params.put(EMPLOYER_ID, employer_id);
