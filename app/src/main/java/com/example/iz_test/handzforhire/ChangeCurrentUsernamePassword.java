@@ -160,6 +160,7 @@ public class ChangeCurrentUsernamePassword extends Activity implements SimpleGes
 
                         dialog.show();
                         Window window = dialog.getWindow();
+                        dialog.getWindow().setDimAmount(0);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         return;
@@ -183,6 +184,7 @@ public class ChangeCurrentUsernamePassword extends Activity implements SimpleGes
 
                         dialog.show();
                         Window window = dialog.getWindow();
+                        dialog.getWindow().setDimAmount(0);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         return;
@@ -206,6 +208,7 @@ public class ChangeCurrentUsernamePassword extends Activity implements SimpleGes
 
                         dialog.show();
                         Window window = dialog.getWindow();
+                        dialog.getWindow().setDimAmount(0);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         return;
@@ -232,6 +235,7 @@ public class ChangeCurrentUsernamePassword extends Activity implements SimpleGes
 
                     dialog.show();
                     Window window = dialog.getWindow();
+                    dialog.getWindow().setDimAmount(0);
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 }
@@ -256,6 +260,7 @@ public class ChangeCurrentUsernamePassword extends Activity implements SimpleGes
 
                         dialog.show();
                         Window window = dialog.getWindow();
+                        dialog.getWindow().setDimAmount(0);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     }
@@ -438,6 +443,7 @@ public class ChangeCurrentUsernamePassword extends Activity implements SimpleGes
 
                 dialog.show();
                 Window window = dialog.getWindow();
+                dialog.getWindow().setDimAmount(0);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             }

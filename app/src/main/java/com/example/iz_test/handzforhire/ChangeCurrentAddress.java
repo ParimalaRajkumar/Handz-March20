@@ -174,6 +174,7 @@ public class ChangeCurrentAddress extends Activity implements SimpleGestureFilte
 
             dialog.show();
             Window window = dialog.getWindow();
+            dialog.getWindow().setDimAmount(0);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             return;
@@ -198,6 +199,7 @@ public class ChangeCurrentAddress extends Activity implements SimpleGestureFilte
 
             dialog.show();
             Window window = dialog.getWindow();
+            dialog.getWindow().setDimAmount(0);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             return;
@@ -286,6 +288,7 @@ public class ChangeCurrentAddress extends Activity implements SimpleGestureFilte
 
                             dialog.show();
                             Window window = dialog.getWindow();
+                            dialog.getWindow().setDimAmount(0);
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }else if (error instanceof AuthFailureError) {
@@ -365,6 +368,7 @@ public class ChangeCurrentAddress extends Activity implements SimpleGestureFilte
 
                 dialog.show();
                 Window window = dialog.getWindow();
+                dialog.getWindow().setDimAmount(0);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             }
@@ -410,6 +414,7 @@ public class ChangeCurrentAddress extends Activity implements SimpleGestureFilte
 
                             dialog.show();
                             Window window = dialog.getWindow();
+                            dialog.getWindow().setDimAmount(0);
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }else if (error instanceof AuthFailureError) {

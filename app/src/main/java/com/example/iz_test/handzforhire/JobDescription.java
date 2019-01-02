@@ -230,6 +230,7 @@ public class JobDescription extends Activity implements SimpleGestureFilter.Simp
 
                                 dialog.show();
                                 Window window = dialog.getWindow();
+                                dialog.getWindow().setDimAmount(0);
                                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                             } catch (JSONException e) {

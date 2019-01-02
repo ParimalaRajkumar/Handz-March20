@@ -3,6 +3,7 @@ package com.example.iz_test.handzforhire;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -51,6 +52,11 @@ public class SwitchingSide extends Activity implements SimpleGestureFilter.Simpl
         lend_txt=(TextView)findViewById(R.id.lend_txt);
         need_txt=(TextView)findViewById(R.id.need_txt);
         need_hand=(Button)findViewById(R.id.need_hand);
+
+        String fontPath = "fonts/LibreFranklin-SemiBold.ttf";
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        lend_txt.setTypeface(tf);
+        need_txt.setTypeface(tf);
 
         System.out.println("ssssssssssss:switchside::::"+Profilevalues.usertype);
 

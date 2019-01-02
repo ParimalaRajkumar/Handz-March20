@@ -373,17 +373,15 @@ public class LendProfilePage extends AppCompatActivity implements SimpleGestureF
         requestQueue.add(stringRequest);
     }
 
-    public void onResponserecieved1(String jsonobject, int requesttype) {
+    public void onResponserecieved1(String jsonobject, int requesttype)
+    {
         String status = null;
-
         String user_name = null;
 
         try {
 
             JSONObject jResult = new JSONObject(jsonobject);
-
             status = jResult.getString("status");
-
             if(status.equals("success"))
             {
                 user_name = jResult.getString("username");

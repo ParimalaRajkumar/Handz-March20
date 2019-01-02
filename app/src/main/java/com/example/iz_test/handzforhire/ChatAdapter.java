@@ -2,15 +2,7 @@ package com.example.iz_test.handzforhire;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
@@ -18,17 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
 import java.util.List;
 
 
@@ -89,6 +82,8 @@ public class ChatAdapter extends BaseAdapter {
             convertView = vi.inflate(R.layout.list_item_chat_message, null);
             holder = createViewHolder(convertView);
             convertView.setTag(holder);
+            holder.chatTime = convertView.findViewById(R.id.user);
+            holder.chatTime.setText(chatMessage.getSenderName());
         }
             holder = (ViewHolder) convertView.getTag();
 
@@ -96,7 +91,7 @@ public class ChatAdapter extends BaseAdapter {
         boolean myMsg = chatMessage.isMe() ;//Just a dummy check
         setAlignment(holder, myMsg);
         if(chatMessage.getMessage().equals("FROM HANDZ: Just a reminder that payment has not been completed on this job! Have a great day!"))
-            holder.txtMessage.setBackgroundResource(R.drawable.bubblegray_in);
+            holder.txtMessage.setBackgroundResource(R.drawable.bubblegray_out);
         holder.txtMessage.setText(chatMessage.getMessage());
         holder.chatTime.setText(chatMessage.getSenderName()==null ?"":chatMessage.getSenderName());
         if(chatMessage.has_Attachemnt) {

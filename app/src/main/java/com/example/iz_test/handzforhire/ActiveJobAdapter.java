@@ -429,6 +429,7 @@ public class ActiveJobAdapter extends BaseAdapter {
 
                                 dialog.show();
                                 Window window = dialog.getWindow();
+                                dialog.getWindow().setDimAmount(0);
                                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 

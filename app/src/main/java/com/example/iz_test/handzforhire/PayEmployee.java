@@ -45,10 +45,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,16 +57,10 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
     EditText tip;
     String job_id,employer_id,employee_id,job_name,profile_image,paypal_value,estimated_value;
     ProgressDialog progress_dialog;
-    TextView name;
-    TextView date;
-    TextView total;
-    TextView payout;
-    TextView service_fee;
-    TextView processing_fee;
+    TextView name,date,total,payout,service_fee,processing_fee;
     String profile_name,user_name,job_payout,paypal_fee,estimated_payment,fee_details,job_payment_amount,merchant_id,new_payout_value;
     Integer total_value;
     Dialog dialog;
-    String date1;
 
     private SimpleGestureFilter detector;
     private String current = "";
@@ -97,11 +89,11 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
     public static String TOTAL_AMOUNT="total_payment";
     public static String EMPLOYEE_ID="employee_id";
     public static String REFERENCE_ID="reference_id";
+
     public static String appkey_value="HandzForHire@~";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState)
-    {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_employee);
 
@@ -178,7 +170,6 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
             fee_details = obj.getString("fee_details");
             job_payment_amount=obj.getString("job_payment_amount");
             merchant_id=obj.getString("merchant_id");
-
         }catch (Exception e){
             System.out.println("Exception "+e.getMessage());
         }
@@ -270,8 +261,9 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("MMMM dd, yyyy");
-        String strDate = mdformat.format(calendar.getTime());
-        date.setText(strDate);
+        transaction_date = mdformat.format(calendar.getTime());
+        date.setText(transaction_date);
+        System.out.println("dddddddddddddddtransaction_date:payemployee:: " + transaction_date);
 
         if(profile_image==null) {
 
@@ -629,19 +621,6 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String, String> params = new HashMap<String, String>();
-                DateFormat srcDf = new SimpleDateFormat("yyyy-MM-dd");
-                DateFormat destDf = new SimpleDateFormat("MMMM dd, yyyy");
-                String date="";
-                Date today = Calendar.getInstance().getTime();
-                try {
-                     date =  destDf.format(today);
-
-
-                } catch (Exception e)
-                {
-                    System.out.println("error " + e.getMessage());
-
-                }
 
                 try {
 
@@ -657,7 +636,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
                     params.put(JOB_NAME, job_name);
                     params.put(ORDER_ID, obj.getString("id"));
                     params.put(TIP, tip.getText().toString());
-                    params.put(TRANS_DATE, date);
+                    params.put(TRANS_DATE, transaction_date);
                     params.put(JOB_ID, job_id);
                     params.put(PAYPAL_FEE, paypal_fee);
                     params.put(EMPLOYER_ID, employer_id);
@@ -703,7 +682,7 @@ public class PayEmployee extends Activity  implements SimpleGestureFilter.Simple
                             if(status.equals("success")){
                                 Map<String, String> map = new HashMap<String, String>();
                                 map.put("senderId", sender_id);
-                                map.put("senderName", get_user);
+                                //map.put("senderName", get_user);
                                 map.put("text", "FROM HANDZ: Transaction completed on "+transaction_date+" for the amount of "+job_payout);
                                 reference1.child(child_id).child("messages").push().setValue(map);
                                 Intent i =new Intent(PayEmployee.this,ProfilePage.class);

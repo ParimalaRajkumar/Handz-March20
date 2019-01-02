@@ -1,6 +1,5 @@
 package com.example.iz_test.handzforhire;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -272,6 +271,7 @@ public class EditComments extends Activity implements SimpleGestureFilter.Simple
 
                                 dialog.show();
                                 Window window = dialog.getWindow();
+                                dialog.getWindow().setDimAmount(0);
                                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                            // }
