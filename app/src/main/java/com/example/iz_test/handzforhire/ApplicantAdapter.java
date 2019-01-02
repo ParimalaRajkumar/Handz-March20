@@ -180,7 +180,7 @@ public class ApplicantAdapter extends BaseAdapter {
     {
 
 
-        final String url = HIRE_URL+"?X-APP-KEY="+value+"&employer_id="+employer_id+"&job_id="+job_id+"&employee_id="+employee_id+"&job_name="+job_name+"&device=android";
+        final String url = HIRE_URL+"?X-APP-KEY="+value+"&employer_id="+employer_id+"&job_id="+job_id+"&employee_id="+employee_id+"&job_name="+job_name+"&usertype="+usertype+"&device=android";
 
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -259,6 +259,7 @@ public class ApplicantAdapter extends BaseAdapter {
 
                             dialog.show();
                             Window window = dialog.getWindow();
+                            dialog.getWindow().setDimAmount(0);
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }else if (error instanceof AuthFailureError) {

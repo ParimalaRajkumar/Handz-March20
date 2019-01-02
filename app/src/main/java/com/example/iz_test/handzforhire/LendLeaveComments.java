@@ -227,6 +227,7 @@ public class LendLeaveComments extends Activity implements SimpleGestureFilter.S
 
                                 dialog.show();
                                 Window window = dialog.getWindow();
+                                dialog.getWindow().setDimAmount(0);
                                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                             }else if (error instanceof AuthFailureError) {
@@ -259,6 +260,7 @@ public class LendLeaveComments extends Activity implements SimpleGestureFilter.S
 
                                         dialog.show();
                                         Window window = dialog.getWindow();
+                                        dialog.getWindow().setDimAmount(0);
                                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                     }

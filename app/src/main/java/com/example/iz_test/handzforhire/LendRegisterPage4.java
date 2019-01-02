@@ -204,6 +204,7 @@ public class LendRegisterPage4 extends Activity implements ApiResponseListener<S
 
                             dialog.show();
                             Window window = dialog.getWindow();
+                            dialog.getWindow().setDimAmount(0);
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }else if (error instanceof AuthFailureError) {
@@ -234,6 +235,7 @@ public class LendRegisterPage4 extends Activity implements ApiResponseListener<S
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
+                                    dialog.getWindow().setDimAmount(0);
                                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }
@@ -392,6 +394,7 @@ public class LendRegisterPage4 extends Activity implements ApiResponseListener<S
 
                                 dialog.show();
                                 Window window = dialog.getWindow();
+                                dialog.getWindow().setDimAmount(0);
                                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                             }else if (error instanceof AuthFailureError) {
@@ -423,6 +426,7 @@ public class LendRegisterPage4 extends Activity implements ApiResponseListener<S
 
                                         dialog.show();
                                         Window window = dialog.getWindow();
+                                        dialog.getWindow().setDimAmount(0);
                                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                     }

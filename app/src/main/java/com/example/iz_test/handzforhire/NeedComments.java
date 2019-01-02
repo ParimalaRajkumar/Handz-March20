@@ -185,6 +185,7 @@ public class NeedComments extends Activity implements SimpleGestureFilter.Simple
 
                             dialog.show();
                             Window window = dialog.getWindow();
+                            dialog.getWindow().setDimAmount(0);
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }else if (error instanceof AuthFailureError) {
@@ -216,6 +217,7 @@ public class NeedComments extends Activity implements SimpleGestureFilter.Simple
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
+                                    dialog.getWindow().setDimAmount(0);
                                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }
