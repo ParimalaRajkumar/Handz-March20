@@ -30,8 +30,7 @@
                 style="@style/ChatitemTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|center"
-                android:layout_margin="1dp"
+                android:layout_gravity="center_horizontal"
                 android:textColor="@android:color/darker_gray" />
             <TextView
                 android:id="@+id/txtMessage"

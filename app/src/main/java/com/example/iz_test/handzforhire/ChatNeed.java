@@ -157,7 +157,7 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                 if (!messageText.equals("")) {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("senderId", sender_id);
-                    map.put("senderName", get_user);
+                    map.put("senderName", user.get(SessionManager.USERNAME));
                     map.put("text", messageText);
                     reference1.child(child_id).child("messages").push().setValue(map);
                    // addMessageBox(messageText,sender_id);
