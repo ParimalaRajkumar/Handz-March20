@@ -90,8 +90,15 @@ public class ChatAdapter extends BaseAdapter {
 
         boolean myMsg = chatMessage.isMe() ;//Just a dummy check
         setAlignment(holder, myMsg);
-        if(chatMessage.getMessage().equals("FROM HANDZ: Just a reminder that payment has not been completed on this job! Have a great day!"))
-            holder.txtMessage.setBackgroundResource(R.drawable.bubblegray_out);
+        //if(chatMessage.getMessage().equals("FROM HANDZ: Just a reminder that payment has not been completed on this job! Have a great day!"))
+            if(chatMessage.getMessage().startsWith("FROM HANDZ:"))
+            {
+                holder.txtMessage.setBackgroundResource(R.drawable.bubblegray_out);
+                holder.chatTime.setVisibility(View.INVISIBLE);
+            }else {
+                holder.chatTime.setVisibility(View.VISIBLE);
+            }
+            //holder.txtMessage.setBackgroundResource(R.drawable.bubblegray_out);
         holder.txtMessage.setText(chatMessage.getMessage());
         holder.chatTime.setText(chatMessage.getSenderName()==null ?"":chatMessage.getSenderName());
         if(chatMessage.has_Attachemnt) {
