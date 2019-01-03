@@ -188,6 +188,7 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:gravity="center"
+                android:translationZ="5dp"
                 android:scaleType="fitStart"
                 android:layout_gravity="top|right"
                 android:background="@drawable/circle_shape" />
@@ -249,6 +250,7 @@
                 android:paddingTop="-10dp"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
+                android:translationZ="5dp"
                 android:gravity="center"
                 android:scaleType="fitStart"
                 android:background="@drawable/circle_shape" />
