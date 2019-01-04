@@ -67,7 +67,7 @@
         android:layout_marginStart="@dimen/start_margin_left"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/starrating"
+        app:srcCompat="@drawable/ic_starrating"
         app:layout_constraintBottom_toBottomOf="@+id/top_container"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toBottomOf="@+id/text1" />
@@ -131,7 +131,7 @@
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        app:srcCompat="@drawable/ic_map_view_1"
+        app:srcCompat="@drawable/ic_map_view_2"
        />
     </FrameLayout>
 
@@ -160,7 +160,7 @@
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        app:srcCompat="@drawable/ic_job_list_1"/>
+        app:srcCompat="@drawable/ic_job_list_2"/>
     </FrameLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            app:srcCompat="@drawable/ic_active_jobs_1"
+            app:srcCompat="@drawable/ic_active_jobs_2"
             ></ImageView>
 
         <TextView
@@ -226,7 +226,7 @@
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        app:srcCompat="@drawable/ic_edit_user_1"
+        app:srcCompat="@drawable/ic_edit_user_2"
         />
  </FrameLayout>
     <TextView
@@ -292,7 +292,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            app:srcCompat="@drawable/ic_posted_jobs_1"
+            app:srcCompat="@drawable/ic_posted_jobs_2"
             ></ImageView>
 
         <TextView

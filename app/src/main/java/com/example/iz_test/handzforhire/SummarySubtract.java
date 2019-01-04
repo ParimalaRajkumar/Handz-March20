@@ -417,6 +417,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         String expected = expected_value.getText().toString();
         hour_expected = String.valueOf(Float.valueOf(hour)*Float.valueOf(expected));
          String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
+        System.out.println("sssssssssssss:summary:job_pay_value:"+job_pay_value);
         job_payout.setText(job_pay_value);
 
         String s1 = "97.1";
@@ -430,6 +431,15 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         System.out.println("sssssssssssss:summary:div:"+div);
         String pocket_value = String.format("%.2f", Float.valueOf(div));
         System.out.println("sssssssssssss:summary:total1:"+pocket_value);
+        Double value = Double.parseDouble(pocket_value);
+        if(value<0)
+        {
+            create_job.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            create_job.setVisibility(View.VISIBLE);
+        }
         String handz_fee = "1.00";
         String pay_fee = String.valueOf(Float.valueOf(hour_expected)-Float.valueOf(pocket_value)-Float.valueOf(handz_fee));
         String total_value = String.format("%.2f", Float.valueOf(pay_fee));

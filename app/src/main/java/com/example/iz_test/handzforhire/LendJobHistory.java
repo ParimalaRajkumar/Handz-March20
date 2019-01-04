@@ -110,8 +110,8 @@ public class LendJobHistory extends Activity implements SimpleGestureFilter.Simp
             @Override
             public void afterTextChanged(Editable arg0) {
                 // TODO Auto-generated method stub
-               /* String text = ed_search.getText().toString().toLowerCase(Locale.getDefault());
-                arrayAdapter.filter(text);*/
+               //String text = ed_search.getText().toString().toLowerCase(Locale.getDefault());
+                //arrayAdapter.filter(text);
                 String charText = ed_search.getText().toString().toLowerCase(Locale.getDefault());
                 arrayAdapter.getFilter().filter(charText);
                 //JobHistory.this.adapter.getFilter().filter(cs);

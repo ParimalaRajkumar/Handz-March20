@@ -418,7 +418,8 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
         String expected = expected_value.getText().toString();
         hour_expected = String.valueOf(Float.valueOf(hour)*Float.valueOf(expected));
         String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
-        Integer pay = Integer.valueOf(job_pay_value);
+        job_payout.setText(job_pay_value);
+      /*  Integer pay = Integer.valueOf(job_pay_value);
         if(pay<0)
         {
             create_job.setVisibility(View.INVISIBLE);
@@ -429,7 +430,7 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
             create_job.setVisibility(View.VISIBLE);
             job_payout.setText(job_pay_value);
         }
-
+*/
 
         String s1 = "100";
         String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(hour_expected));

@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:background="@color/app_bg"
     android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/tex1"
         android:layout_width="120sp"
         android:layout_height="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/handz"/>
+
     <ImageView
         android:id="@+id/top_container"
         android:layout_width="match_parent"
@@ -21,7 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".17"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
-
 
     <TextView
         android:id="@+id/text1"
@@ -67,7 +68,7 @@
         android:layout_height="@dimen/rating_icon_size"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/starrating"
+        app:srcCompat="@drawable/ic_starrating"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
         android:layout_marginStart="@dimen/start_margin_left"
         app:layout_constraintBottom_toBottomOf="@+id/top_container"
@@ -133,7 +134,7 @@
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        app:srcCompat="@drawable/ic_create_job_1"
+        app:srcCompat="@drawable/ic_create_job_2"
         />
 </FrameLayout>
 
@@ -160,7 +161,7 @@
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
         android:clickable="false"
-        app:srcCompat="@drawable/ic_edit_job_1"
+        app:srcCompat="@drawable/ic_edit_job_2"
         />
     </FrameLayout>
     <TextView
@@ -185,7 +186,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            app:srcCompat="@drawable/ic_active_jobs_1"></ImageView>
+            app:srcCompat="@drawable/ic_active_jobs_2"></ImageView>
 
         <TextView
             android:id="@+id/txt_activejobscnt"
@@ -223,7 +224,7 @@
         android:layout_width="@dimen/profile_icon_size"
         android:layout_height="@dimen/profile_icon_size"
         android:layout_margin="@dimen/notification_count_margin"
-        app:srcCompat="@drawable/ic_edit_user_1"
+        app:srcCompat="@drawable/ic_edit_user_2"
         android:clickable="false"
          />
 </FrameLayout>
@@ -289,7 +290,7 @@
             android:layout_width="@dimen/profile_icon_size"
             android:layout_height="@dimen/profile_icon_size"
             android:layout_margin="@dimen/notification_count_margin"
-            app:srcCompat="@drawable/ic_posted_jobs_1"></ImageView>
+            app:srcCompat="@drawable/ic_posted_jobs_2"></ImageView>
 
         <TextView
             android:id="@+id/txt_postedjobcnt"
