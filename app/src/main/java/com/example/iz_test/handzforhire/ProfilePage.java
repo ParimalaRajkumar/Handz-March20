@@ -236,7 +236,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
             @Override
             public void onClick(View v) {
                 try {
-                    req = new RequestMethods(ProfilePage.this, 1, id, "notificationCountPosted");
+                    req = new RequestMethods(ProfilePage.this, 1, id, "notificationCountCreateJob");
                     req.execute(RequestMethods.RequestMethod.POST, ProfilePage.this);
                 }catch (Exception e){
                     System.out.println("Exception e"+e.getMessage());
@@ -577,7 +577,7 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put(XAPP_KEY, value);
                 map.put(KEY_USERID, id);
-                map.put("type", "employee");
+                map.put("type", "employer");
                 map.put(Constant.DEVICE, Constant.ANDROID);
                 System.out.println("Params "+map);
                 return map;

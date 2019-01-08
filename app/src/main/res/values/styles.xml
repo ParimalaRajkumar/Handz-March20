@@ -51,7 +51,7 @@
     </style>
     <style name="ProfileNameText">
     <item name="android:textColor">@color/rating_text_color</item>
-        <item name="android:fontFamily">@fonts/cambriab</item>
+        <item name="android:fontFamily">@fonts/cambriai_0</item>
         <item name="android:textSize">@dimen/rating_text_size</item>
 </style>
     <style name="ChatitemTime">

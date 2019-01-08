@@ -285,7 +285,7 @@ public class LeaveComments extends Activity implements SimpleGestureFilter.Simpl
                 map.put(EMPLOYERID,employer_id);
                 map.put(EMPLOYEEID,employee_id);
                 map.put(RATING_ID,rating_id);
-                map.put(USER_TYPE,type);
+                //map.put(USER_TYPE,type);
                 map.put(Constant.DEVICE, Constant.ANDROID);
                 System.out.println("URL  "+URL);
                 System.out.println("parameter "+map);

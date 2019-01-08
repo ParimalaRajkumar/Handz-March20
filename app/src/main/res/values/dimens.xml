@@ -11,13 +11,13 @@
     <dimen name="circle_radius">90sp</dimen>
     <dimen name="profile_width">100dp</dimen>
     <dimen name="circle_radius_top">135sp</dimen>
-    <dimen name="rating_icon_size">65dp</dimen>
+    <dimen name="rating_icon_size">100dp</dimen>
     <dimen name="rating_value_margin_left">8dp</dimen>
     <dimen name="notification_count_margin">8dp</dimen>
     <dimen name="top_banner_margin_top">20dp</dimen>
     <dimen name="profile_page_bottom_margin">0dp</dimen>
     <dimen name="start_margin_left">8dp</dimen>
-    <dimen name="rating_text_size">25dp</dimen>
+    <dimen name="rating_text_size">35dp</dimen>
     <dimen name="profile_icon_text">12dp</dimen>
     <dimen name="profile_icon_text_margin_top">2dp</dimen>
     <dimen name="bottom_icon_size">50dp</dimen>

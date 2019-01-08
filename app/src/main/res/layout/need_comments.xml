@@ -155,9 +155,8 @@
                     android:layout_marginLeft="20sp"
                     android:layout_marginRight="20sp"
                     android:gravity="top"
-                    android:textColorHint="#000000"
                     android:background="@drawable/border"
-                    android:hint="To need"
+                    android:hint="Explain why the job was canceled"
                     android:paddingLeft="15sp" />
 
             </RelativeLayout>

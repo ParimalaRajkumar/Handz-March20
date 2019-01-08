@@ -435,17 +435,19 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         if(value<0)
         {
             create_job.setVisibility(View.INVISIBLE);
+            paypal_merchant.setText("");
+            pocket_expense.setText("");
         }
         else
         {
             create_job.setVisibility(View.VISIBLE);
+            String handz_fee = "1.00";
+            String pay_fee = String.valueOf(Float.valueOf(hour_expected)-Float.valueOf(pocket_value)-Float.valueOf(handz_fee));
+            String total_value = String.format("%.2f", Float.valueOf(pay_fee));
+            System.out.println("sssssssssssss:summary:pay_fee:"+pay_fee+"total2:::"+total_value);
+            paypal_merchant.setText(total_value);
+            pocket_expense.setText(pocket_value);
         }
-        String handz_fee = "1.00";
-        String pay_fee = String.valueOf(Float.valueOf(hour_expected)-Float.valueOf(pocket_value)-Float.valueOf(handz_fee));
-        String total_value = String.format("%.2f", Float.valueOf(pay_fee));
-        System.out.println("sssssssssssss:summary:pay_fee:"+pay_fee+"total2:::"+total_value);
-        paypal_merchant.setText(total_value);
-        pocket_expense.setText(pocket_value);
 
         hourly_value.addTextChangedListener(tw);
         expected_value.addTextChangedListener(tw1);

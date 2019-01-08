@@ -419,7 +419,7 @@ public class LendProfilePage extends AppCompatActivity implements SimpleGestureF
                 Map<String, String> map = new HashMap<String, String>();
                 map.put(XAPP_KEY, value);
                 map.put(KEY_USERID, id);
-                map.put("type", "employer");
+                map.put("type", "employee");
                 map.put(Constant.DEVICE, Constant.ANDROID);
                 System.out.println("Params "+map);
                 return map;

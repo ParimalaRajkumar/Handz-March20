@@ -32,7 +32,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="mohanbabu"
         app:layout_constraintBottom_toBottomOf="@+id/menu"
         app:layout_constraintEnd_toStartOf="@+id/menu"
         app:layout_constraintStart_toEndOf="@+id/profile_image"

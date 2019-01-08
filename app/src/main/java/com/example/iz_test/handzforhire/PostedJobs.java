@@ -521,6 +521,7 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
 
         private Activity activity;
         String dlist,job_id;
+        RequestMethods req;
         String value = "HandzForHire@~";
         private ArrayList<HashMap<String, String>> data;
         private  LayoutInflater inflater = null;
@@ -653,6 +654,20 @@ public class PostedJobs extends Activity implements SimpleGestureFilter.SimpleGe
             {
                 applicants.setText(get_applicants);
             }
+
+            applicants.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    try {
+                        req = new RequestMethods(PostedJobs.this, 1, id, "notificationCountCreateApplicant");
+                        req.execute(RequestMethods.RequestMethod.POST, PostedJobs.this);
+                    }catch (Exception e){
+                        System.out.println("Exception e"+e.getMessage());
+                    }
+                }
+            });
 
             String mStringDate = start_time;
             String oldFormat= "HH:mm:ss";
