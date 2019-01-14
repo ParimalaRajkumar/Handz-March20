@@ -63,7 +63,8 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
     //GPSTracker gps;
     LocationTrack locationTrack;
     public static int  MY_PERMISSIONS_REQUEST_READ_CONTACTS=1;
-    public static Double lat,lon;
+    public static Double lat=37.3362462,lon=-121.8902967;
+
     TextView txt_undisclosedjob;
     ImageView logo,menu,categprylist,key;
     private static Hashtable<String, String> markers =new Hashtable<String, String>();
@@ -441,6 +442,12 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
         googleMap.getUiSettings().setZoomGesturesEnabled(true);
         googleMap.setOnCameraChangeListener(this);
         googleMap.setOnMyLocationChangeListener(this);
+      //  googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(lat,
+                        lon)).zoom(12).build();
+        googleMap.moveCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
 
         try {
             RestClientPost rest = new RestClientPost(getActivity(), 1);
@@ -450,7 +457,6 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
         }
 
        getLocation();
-
     }
 
     public void UpdateLocation(Location location)
@@ -460,7 +466,7 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
                 .target(new LatLng(mCurrentLocaton.getLatitude(),
                         mCurrentLocaton.getLongitude())).zoom(12).build();
         session.savelocation(String.valueOf(mCurrentLocaton.getLatitude()),String.valueOf(mCurrentLocaton.getLongitude()));
-        googleMap.animateCamera(CameraUpdateFactory
+        googleMap.moveCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
 
     }
