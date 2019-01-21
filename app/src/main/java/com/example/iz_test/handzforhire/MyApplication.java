@@ -18,6 +18,6 @@ public class MyApplication extends Application {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
-        PayPalConfig.setBuild(Config.BUILD_TYPE.RELEASE);
+        PayPalConfig.setBuild(Config.BUILD_TYPE.DEVELOP);
     }
 }

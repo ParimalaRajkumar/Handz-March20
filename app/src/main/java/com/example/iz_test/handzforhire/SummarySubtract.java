@@ -400,7 +400,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         session_status = check.get(SessionManager.CHECKBOX_STATUS);
         System.out.println("sssssssssssss:session:status:::::"+session_status+"...check:::"+check);
 
-        if(edit_job != null && edit_job.equals("yes"))
+        if(edit_job.equals("yes"))
         {
             create_job.setVisibility(View.INVISIBLE);
             edit.setVisibility(View.VISIBLE);
@@ -416,7 +416,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         String hour = hourly_value.getText().toString();
         String expected = expected_value.getText().toString();
         hour_expected = String.valueOf(Float.valueOf(hour)*Float.valueOf(expected));
-         String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
+        String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
         System.out.println("sssssssssssss:summary:job_pay_value:"+job_pay_value);
         job_payout.setText(job_pay_value);
 
@@ -431,23 +431,12 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         System.out.println("sssssssssssss:summary:div:"+div);
         String pocket_value = String.format("%.2f", Float.valueOf(div));
         System.out.println("sssssssssssss:summary:total1:"+pocket_value);
-        Double value = Double.parseDouble(pocket_value);
-        if(value<0)
-        {
-            create_job.setVisibility(View.INVISIBLE);
-            paypal_merchant.setText("");
-            pocket_expense.setText("");
-        }
-        else
-        {
-            create_job.setVisibility(View.VISIBLE);
-            String handz_fee = "1.00";
-            String pay_fee = String.valueOf(Float.valueOf(hour_expected)-Float.valueOf(pocket_value)-Float.valueOf(handz_fee));
-            String total_value = String.format("%.2f", Float.valueOf(pay_fee));
-            System.out.println("sssssssssssss:summary:pay_fee:"+pay_fee+"total2:::"+total_value);
-            paypal_merchant.setText(total_value);
-            pocket_expense.setText(pocket_value);
-        }
+        String handz_fee = "1.00";
+        String pay_fee = String.valueOf(Float.valueOf(hour_expected)-Float.valueOf(pocket_value)-Float.valueOf(handz_fee));
+        String total_value = String.format("%.2f", Float.valueOf(pay_fee));
+        System.out.println("sssssssssssss:summary:pay_fee:"+pay_fee+"total2:::"+total_value);
+        paypal_merchant.setText(total_value);
+        pocket_expense.setText(pocket_value);
 
         hourly_value.addTextChangedListener(tw);
         expected_value.addTextChangedListener(tw1);
@@ -505,8 +494,10 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                     expense = "$" + pocket_expense.getText().toString();
                     fee = "$" + paypal_merchant.getText().toString();
                     System.out.println("sssssssssssss:add:pay:expe:fee:"+payout+".."+expense+".."+fee);
-                    System.out.println("sssssssssssss:check_Ststus::::"+checkbox_status);
+                    checkbox_status = "checked";
+                    session.saveCheckboxStatus(checkbox_status);
                     registerUser();
+                    System.out.println("sssssssssssss:create_if::::"+checkbox_status);
                 }
                 else
                 {
@@ -545,8 +536,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                             expense = "$" + pocket_expense.getText().toString();
                             fee = "$" + paypal_merchant.getText().toString();
                             System.out.println("sssssssssssss:add:pay:expe:fee:"+payout+".."+expense+".."+fee);
-                            System.out.println("sssssssssssss:check_Ststus::::"+checkbox_status);
                             registerUser();
+                            System.out.println("sssssssssssss:create_if_ok::::"+checkbox_status);
                         }
                     });
                     dialog.show();
@@ -567,8 +558,10 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                     expense = "$" + pocket_expense.getText().toString();
                     fee = "$" + paypal_merchant.getText().toString();
                     System.out.println("sssssssssssss:add:pay:expe:fee:"+payout+".."+expense+".."+fee);
-                    System.out.println("sssssssssssss:check_Ststus::::"+checkbox_status);
+                    checkbox_status = "checked";
+                    session.saveCheckboxStatus(checkbox_status);
                     editJob();
+                    System.out.println("sssssssssssss:edit_if::::"+checkbox_status);
                 }
                 else
                 {
@@ -607,8 +600,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                             expense = "$" + pocket_expense.getText().toString();
                             fee = "$" + paypal_merchant.getText().toString();
                             System.out.println("sssssssssssss:add:pay:expe:fee:"+payout+".."+expense+".."+fee);
-                            System.out.println("sssssssssssss:check_Ststus::::"+checkbox_status);
                             editJob();
+                            System.out.println("sssssssssssss:edit_if_ok::::"+checkbox_status);
                         }
                     });
                     dialog.show();
@@ -617,7 +610,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     return;
-            }
+                }
             }
         });
     }
@@ -631,8 +624,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                     @Override
                     public void onResponse(String response) {
                         //Toast.makeText(Registrationpage3.this,response,Toast.LENGTH_LONG).show();
-                        System.out.println("eeeee:createjob2"+response);
                         onResponserecieved(response,1);
+                        System.out.println("eeeee:createjob2"+response);
                         dialog.dismiss();
                     }
                 },
@@ -641,7 +634,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                     public void onErrorResponse(VolleyError error) {
                         dialog.dismiss();
                         if (error instanceof TimeoutError ||error instanceof NoConnectionError) {
-                            final Dialog dialog = new Dialog(SummarySubtract.this);
+                           /* final Dialog dialog = new Dialog(SummarySubtract.this);
                             dialog.setContentView(R.layout.custom_dialog);
                             // set the custom dialog components - text, image and button
                             TextView text = (TextView) dialog.findViewById(R.id.text);
@@ -657,9 +650,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
 
                             dialog.show();
                             Window window = dialog.getWindow();
-                            dialog.getWindow().setDimAmount(0);
                             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);*/
                         }else if (error instanceof AuthFailureError) {
                             Toast.makeText(getApplicationContext(),"Authentication Failure while performing the request",Toast.LENGTH_LONG).show();
                         }else if (error instanceof NetworkError) {
@@ -675,34 +667,20 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                                     dialog.setContentView(R.layout.custom_dialog);
 
                                     // set the custom dialog components - text, image and button
-                                    final TextView text = (TextView) dialog.findViewById(R.id.text);
+                                    TextView text = (TextView) dialog.findViewById(R.id.text);
                                     text.setText(status);
                                     Button dialogButton = (Button) dialog.findViewById(R.id.ok);
                                     // if button is clicked, close the custom dialog
                                     dialogButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
-                                        public void onClick(View v)
-                                        {
-                                            if(text.getText().toString().equals(getString(R.string.paypal_link_error))) {
-
-                                                new Thread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        Intent intent = Utility.GetPaypalLinkIntent(session , SummarySubtract.this , Constant.SUMMARY_SUBTRACT);
-                                                        startActivityForResult(intent ,Constant.LINK_PAYPAL );
-                                                    }
-                                                }).start();
-
-                                            }
-
+                                        public void onClick(View v) {
                                             dialog.dismiss();
                                         }
                                     });
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
-                                    dialog.getWindow().setDimAmount(0);
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }
                             } catch (JSONException e) {
@@ -761,7 +739,6 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
 
         };
 
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
@@ -782,7 +759,6 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
             if(status.equals("success"))
             {
                 Intent i = new Intent(SummarySubtract.this,PostedJobs.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.putExtra("userId", id);
                 i.putExtra("jobId",job_id);
                 i.putExtra("address", address);
@@ -839,7 +815,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
             String new_pay_amount = hourly_value.getText().toString();
             String new_hours = expected_value.getText().toString();
             String job_estimated = String.valueOf(Float.valueOf(new_pay_amount)*Float.valueOf(new_hours));
-             String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+            String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
             job_payout.setText(job_pay_value);
 
             String s1 = "97.1";
@@ -915,7 +891,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
             String estimated = String.valueOf(Float.valueOf(new_hours)*Float.valueOf(new_amount));
             String job_pay_value = String.format("%.2f", Float.valueOf(estimated));
             job_payout.setText(job_pay_value);
-			
+
             String s1 = "97.1";
             String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(estimated));
             String s2 = "130";
@@ -957,7 +933,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                     public void onResponse(String response) {
                         //Toast.makeText(Registrationpage3.this,response,Toast.LENGTH_LONG).show();
                         System.out.println("eeeee:" + response);
-                        onResponserecieved1(response, 1);
+                        onResponserecieved1(response, 2);
                         dialog.dismiss();
                     }
                 },
