@@ -110,9 +110,9 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if(intent.getStringExtra("isfrom") !=null && intent.getStringExtra("isfrom").equals("paypal")){
+         if(intent.getStringExtra("isfrom") !=null && intent.getStringExtra("isfrom").equals("paypal")){
 
-            PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(),this);
+             PaypalCon.partnerReferralPrefillData(session.readReraalapilink(),session.ReadAccessToekn(),this);
             // UpdatePaypal();
 
         }
@@ -686,17 +686,17 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
                                         @Override
                                         public void onClick(View v) {
 
-                                            if(text.getText().toString().equals(getString(R.string.paypal_link_error))) {
+                                          if(text.getText().toString().equals(getString(R.string.paypal_link_error))) {
 
-                                                new Thread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        Intent intent = Utility.GetPaypalLinkIntent(session , SummaryAdd.this , Constant.SUMMARY_ADD);
-                                                        startActivityForResult(intent ,Constant.LINK_PAYPAL );
-                                                    }
-                                                }).start();
+                                              new Thread(new Runnable() {
+                                                  @Override
+                                                  public void run() {
+                                                      Intent intent = Utility.GetPaypalLinkIntent(session , SummaryAdd.this , Constant.SUMMARY_ADD);
+                                                      startActivityForResult(intent ,Constant.LINK_PAYPAL );
+                                                  }
+                                              }).start();
 
-                                            }
+                                          }
                                             dialog.dismiss();
                                         }
                                     });
@@ -843,7 +843,7 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
             String new_hours = expected_value.getText().toString();
             String job_estimated = String.valueOf(Float.valueOf(new_pay_amount)*Float.valueOf(new_hours));
             System.out.println("sssssssssssss:job_estimated:multiply:"+job_estimated);
-            String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+             String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
             job_payout.setText(job_pay_value);
 
             String s1 = "100";
@@ -906,7 +906,7 @@ public class SummaryAdd extends BackKeyHandlerActivity implements SimpleGestureF
             String new_amount = hourly_value.getText().toString();
             String estimated = String.valueOf(Float.valueOf(new_hours)*Float.valueOf(new_amount));
             System.out.println("sssssssssssss:estimated:multiply:"+estimated);
-            String job_pay_value = String.format("%.2f", Float.valueOf(estimated));
+             String job_pay_value = String.format("%.2f", Float.valueOf(estimated));
             job_payout.setText(job_pay_value);
 
             String s1 = "100";

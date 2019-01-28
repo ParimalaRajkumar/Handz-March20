@@ -416,7 +416,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
         String hour = hourly_value.getText().toString();
         String expected = expected_value.getText().toString();
         hour_expected = String.valueOf(Float.valueOf(hour)*Float.valueOf(expected));
-        String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
+         String job_pay_value = String.format("%.2f", Float.valueOf(hour_expected));
         System.out.println("sssssssssssss:summary:job_pay_value:"+job_pay_value);
         job_payout.setText(job_pay_value);
 
@@ -610,7 +610,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     return;
-                }
+            }
             }
         });
     }
@@ -623,9 +623,11 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Toast.makeText(Registrationpage3.this,response,Toast.LENGTH_LONG).show();
-                        onResponserecieved(response,1);
+                        //Toast.makeText(SummarySubtract.this,response,Toast.LENGTH_LONG).show();
                         System.out.println("eeeee:createjob2"+response);
+                        onResponserecieved(response,1);
+                        System.out.println("123");
+
                         dialog.dismiss();
                     }
                 },
@@ -680,7 +682,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
 
                                     dialog.show();
                                     Window window = dialog.getWindow();
-                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 }
                             } catch (JSONException e) {
@@ -730,10 +732,49 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 params.put(CATEGORY_COLOR,job_category_color);
                 params.put(DELIST,delist);
                 params.put(Constant.DEVICE, Constant.ANDROID);
-                System.out.println("summarysubtract:X-APP-KEY::"+key+"/user_id::"+id+"/job_name::"+name+"/user_type::"+usertype+"/job_category::"+category+"/job_description::"+description+"/job_date::"+date);
+                /*System.out.println("summarysubtract:X-APP-KEY::"+key+"/user_id::"+id+"/job_name::"+name+"/user_type::"+usertype+"/job_category::"+category+"/job_description::"+description+"/job_date::"+date);
                 System.out.println("summarysubtract:start_time::"+start_time+"/out_of_pocket_expense::"+expense+"/job_payment_type::"+duration+"/job_payment_amount::"+amount+"/address::"+address+"/city::"+city+"/currentlocation::"+current_location);
                 System.out.println("summarysubtract:state::"+state+"/zipcode::"+zipcode+"/post_address::"+post_address+"/lat::"+latitude+"/lon::"+longitude+"/jobPayout::"+payout+"/job_date_time_flexible::"+flexible_status);
-                System.out.println("summarysubtract:paypalFee::"+fee+"/fee_details::"+fee_details+"/job_expire::"+job_expire+"/sub_category::"+sub_category+"/job_category_color::"+job_category_color+"/delist::"+delist+"/job_estimated_payment::"+expense);
+                System.out.println("summarysubtract:paypalFee::"+fee+"/fee_details::"+fee_details+"/job_expire::"+job_expire+"/sub_category::"+sub_category+"/job_category_color::"+job_category_color+"/delist::"+delist+"/job_estimated_payment::"+expense);*/
+
+                System.out.println("1"+key);
+                System.out.println("2"+id);
+                System.out.println("3"+name);
+                System.out.println("4"+usertype);
+                System.out.println("5"+category);
+                System.out.println("6"+description);
+                System.out.println("7"+date);
+                System.out.println("8"+start_time);
+                System.out.println("9"+start_time);
+                System.out.println("10"+start_time);
+                System.out.println("11"+start_time);
+                System.out.println("12"+amount);
+                System.out.println("13"+expense);
+                System.out.println("14"+duration);
+                System.out.println("15"+address);
+                System.out.println("16"+city);
+                System.out.println("17"+address);
+                System.out.println("18"+current_location);
+                System.out.println("19"+state);
+                System.out.println("20"+zipcode);
+                System.out.println("21"+post_address);
+                System.out.println("22"+latitude);
+                System.out.println("23"+longitude);
+                System.out.println("24"+address);
+                System.out.println("25"+city);
+                System.out.println("26"+state);
+                System.out.println("27"+zipcode);
+                System.out.println("28"+expense);
+                System.out.println("29"+flexible_status);
+                System.out.println("30"+fee);
+                System.out.println("31"+payout);
+                System.out.println("32"+fee_details);
+                System.out.println("33"+job_expire);
+                System.out.println("34"+sub_category);
+                System.out.println("35"+job_category_color);
+                System.out.println("36"+delist);
+
+
                 return params;
             }
 
@@ -815,7 +856,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
             String new_pay_amount = hourly_value.getText().toString();
             String new_hours = expected_value.getText().toString();
             String job_estimated = String.valueOf(Float.valueOf(new_pay_amount)*Float.valueOf(new_hours));
-            String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
+             String job_pay_value = String.format("%.2f", Float.valueOf(job_estimated));
             job_payout.setText(job_pay_value);
 
             String s1 = "97.1";
@@ -891,7 +932,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
             String estimated = String.valueOf(Float.valueOf(new_hours)*Float.valueOf(new_amount));
             String job_pay_value = String.format("%.2f", Float.valueOf(estimated));
             job_payout.setText(job_pay_value);
-
+			
             String s1 = "97.1";
             String multi = String.valueOf(Float.valueOf(s1)*Float.valueOf(estimated));
             String s2 = "130";

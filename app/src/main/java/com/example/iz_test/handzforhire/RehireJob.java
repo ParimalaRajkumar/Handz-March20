@@ -65,7 +65,7 @@ public class RehireJob extends Activity implements View.OnClickListener,SimpleGe
     Spinner list;
     LinearLayout layout,category_layout;
     String id, address, zipcode, state, city, name,job_category,description,date,start_time,end_time,amount,st_time,en_time, type;
-    private static final String GET_JOB = Constant.SERVER_URL+"job_detail_view";
+        private static final String GET_JOB = Constant.SERVER_URL+"job_detail_view";
     Button next;
     EditText job_name, job_description,payamount;
     static TextView date_text;
