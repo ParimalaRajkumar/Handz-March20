@@ -51,6 +51,7 @@ public class LendProfilePage extends AppCompatActivity implements SimpleGestureF
     String id,address,city,state,zipcode,profile_image,profilename,email,username;
     String employee_rating,pending_notification,posted_notification,active_notification,jobhistory_notification;
     TextView user_name;
+    ImageView logo;
     private static final String USERNAME_URL = Constant.SERVER_URL+"get_username";
     private static final String GET_URL = Constant.SERVER_URL+"get_profile_image";
     private static final String GET_AVERAGERAT = Constant.SERVER_URL+"get_average_rating";
@@ -98,7 +99,7 @@ public class LendProfilePage extends AppCompatActivity implements SimpleGestureF
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
 
-        handz = (ImageView) findViewById(R.id.handz);
+        logo = (ImageView) findViewById(R.id.logo);
         need_help = (Button) findViewById(R.id.need_help);
         job_list =  findViewById(R.id.list_view);
         edit = findViewById(R.id.edit_user_profile);
@@ -164,14 +165,14 @@ public class LendProfilePage extends AppCompatActivity implements SimpleGestureF
         getUsername();
         getAverageRatigng();
 
-       /* handz.setOnClickListener(new View.OnClickListener() {
+       logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(LendProfilePage.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }
-        });*/
+        });
 
         rating_text.setOnClickListener(new View.OnClickListener() {
             @Override

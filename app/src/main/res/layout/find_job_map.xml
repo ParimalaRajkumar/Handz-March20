@@ -29,7 +29,7 @@
             />
     </LinearLayout>
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/logo_lend"
         android:layout_width="70sp"
         android:layout_height="70sp"
         android:src="@drawable/logo"

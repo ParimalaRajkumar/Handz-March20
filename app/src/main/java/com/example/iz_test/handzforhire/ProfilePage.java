@@ -202,14 +202,14 @@ public class ProfilePage extends AbsSwipeActivity implements ResponseListener {
             }
         });
 
-       /* logo.setOnClickListener(new View.OnClickListener() {
+       logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ProfilePage.this,MainActivity.class);
                 startActivity(i);
                 finish();
             }
-        });*/
+        });
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override

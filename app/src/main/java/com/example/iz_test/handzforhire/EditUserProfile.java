@@ -55,7 +55,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.glide.Glideconstants;
 import com.glide.RoundedCornersTransformation;
 import com.listeners.ApiResponseListener;
-import com.theartofdev.edmodo.cropper.CropImage;
+//import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -438,7 +438,7 @@ public class EditUserProfile extends Activity implements SimpleGestureFilter.Sim
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == Activity.RESULT_OK) {
+     /*   if (resultCode == Activity.RESULT_OK) {
             if (requestCode == SELECT_FILE)
             {
               //  onSelectFromGalleryResult(data);
@@ -479,7 +479,7 @@ public class EditUserProfile extends Activity implements SimpleGestureFilter.Sim
             }
         } else {
 
-        }
+        }*/
     }
 
     private String uriToFilename(Uri uri) {

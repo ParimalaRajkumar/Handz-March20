@@ -470,7 +470,7 @@ public class RegisterPage4 extends Activity  implements ResponseListener1 ,ApiRe
                     params.put("firstname", firstname);
                     params.put("lastname", lastname);
                     params.put("name", name);
-                    params.put("user_type", user_type);
+                    params.put("user_type", usertype);
                     params.put("devicetoken", devicetoken);
                     params.put("merchantID", merchantid);
                     params.put("id", facebook_id);

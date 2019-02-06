@@ -66,7 +66,7 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
     public static Double lat=37.3362462,lon=-121.8902967;
 
     TextView txt_undisclosedjob;
-    ImageView logo,menu,categprylist,key;
+    ImageView logo_lend,menu,categprylist,key;
     private static Hashtable<String, String> markers =new Hashtable<String, String>();
     public static ArrayList<String> undisclosedjobs=new ArrayList<String>();
     public static JSONArray undisclosedjobsarray=new JSONArray();
@@ -113,7 +113,7 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
         user_id=user.get(SessionManager.ID);
 
         txt_undisclosedjob=(TextView)rootView.findViewById(R.id.txt_undisclosedjob);
-        logo = (ImageView) rootView.findViewById(R.id.logo);
+        logo_lend = (ImageView) rootView.findViewById(R.id.logo_lend);
         menu = (ImageView) rootView.findViewById(R.id.menu);
         categprylist = (ImageView) rootView.findViewById(R.id.categprylist);
         key = (ImageView) rootView.findViewById(R.id.key);
@@ -156,7 +156,7 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
             }
         });
 
-        logo.setOnClickListener(new View.OnClickListener() {
+        logo_lend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), LendProfilePage.class);

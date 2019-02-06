@@ -65,7 +65,7 @@ import com.linkedin.platform.listeners.ApiResponse;
 import com.linkedin.platform.listeners.AuthListener;
 import com.linkedin.platform.utils.Scope;
 import com.listeners.ApiResponseListener;
-import com.theartofdev.edmodo.cropper.CropImage;
+//import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -473,7 +473,7 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == Activity.RESULT_OK) {
+       /* if (resultCode == Activity.RESULT_OK) {
             if (requestCode == SELECT_FILE) {
                 //onSelectFromGalleryResult(data);
                 Uri selectedImageUri = data.getData();
@@ -509,7 +509,7 @@ public class LendEditUserProfile extends Activity implements SimpleGestureFilter
                 System.out.println("Request code " + requestCode);
                 System.out.println("Data " + data);
             }
-        }
+        }*/
     }
 
     private String uriToFilename(Uri uri) {

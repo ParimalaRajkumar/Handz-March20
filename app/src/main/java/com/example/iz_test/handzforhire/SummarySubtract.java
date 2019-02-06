@@ -625,8 +625,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Toast.makeText(SummarySubtract.this,response,Toast.LENGTH_LONG).show();
-                        System.out.println("eeeee:createjob2"+response);
+                        Toast.makeText(SummarySubtract.this,response,Toast.LENGTH_LONG).show();
+                        //System.out.println("eeeee:createjob2"+response);
                         onResponserecieved(response,1);
                         System.out.println("123");
 
@@ -738,45 +738,6 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 System.out.println("summarysubtract:start_time::"+start_time+"/out_of_pocket_expense::"+expense+"/job_payment_type::"+duration+"/job_payment_amount::"+amount+"/address::"+address+"/city::"+city+"/currentlocation::"+current_location);
                 System.out.println("summarysubtract:state::"+state+"/zipcode::"+zipcode+"/post_address::"+post_address+"/lat::"+latitude+"/lon::"+longitude+"/jobPayout::"+payout+"/job_date_time_flexible::"+flexible_status);
                 System.out.println("summarysubtract:paypalFee::"+fee+"/fee_details::"+fee_details+"/job_expire::"+job_expire+"/sub_category::"+sub_category+"/job_category_color::"+job_category_color+"/delist::"+delist+"/job_estimated_payment::"+expense);*/
-
-                System.out.println("1"+key);
-                System.out.println("2"+id);
-                System.out.println("3"+name);
-                System.out.println("4"+usertype);
-                System.out.println("5"+category);
-                System.out.println("6"+description);
-                System.out.println("7"+date);
-                System.out.println("8"+start_time);
-                System.out.println("9"+start_time);
-                System.out.println("10"+start_time);
-                System.out.println("11"+start_time);
-                System.out.println("12"+amount);
-                System.out.println("13"+expense);
-                System.out.println("14"+duration);
-                System.out.println("15"+address);
-                System.out.println("16"+city);
-                System.out.println("17"+address);
-                System.out.println("18"+current_location);
-                System.out.println("19"+state);
-                System.out.println("20"+zipcode);
-                System.out.println("21"+post_address);
-                System.out.println("22"+latitude);
-                System.out.println("23"+longitude);
-                System.out.println("24"+address);
-                System.out.println("25"+city);
-                System.out.println("26"+state);
-                System.out.println("27"+zipcode);
-                System.out.println("28"+expense);
-                System.out.println("29"+flexible_status);
-                System.out.println("30"+fee);
-                System.out.println("31"+payout);
-                System.out.println("32"+fee_details);
-                System.out.println("33"+job_expire);
-                System.out.println("34"+sub_category);
-                System.out.println("35"+job_category_color);
-                System.out.println("36"+delist);
-
-
                 return params;
             }
 
@@ -1165,7 +1126,6 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
 
     @Override
     public void OnResponseReceived(String s, String s2) {
-
         merchantid = s;
         UpdatePaypal();
     }
