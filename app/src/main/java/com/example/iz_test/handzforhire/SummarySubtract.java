@@ -625,7 +625,7 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(SummarySubtract.this,response,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(SummarySubtract.this,response,Toast.LENGTH_LONG).show();
                         //System.out.println("eeeee:createjob2"+response);
                         onResponserecieved(response,1);
                         System.out.println("123");
@@ -743,11 +743,11 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
 
         };
 
-        RetryPolicy policy = new DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        RetryPolicy policy = new DefaultRetryPolicy(50000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(policy);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-    }
+}
 
     public void onResponserecieved(String jsonobject, int requesttype) {
         System.out.println("response from interface"+jsonobject);
@@ -1039,7 +1039,8 @@ public class SummarySubtract extends BackKeyHandlerActivity implements SimpleGes
                 return params;
             }
         };
-
+        RetryPolicy policy = new DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }

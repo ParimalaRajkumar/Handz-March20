@@ -299,7 +299,6 @@ public abstract class AbsLoginPage extends Activity {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put(XAPP_KEY, value);
                 map.put(KEY_USERNAME, email_id);
-
                 map.put(KEY_PASSWORD, pass);
                 map.put(KEY_TYPE, type);
                 map.put(KEY_DEVICETOKEN, deviceId);

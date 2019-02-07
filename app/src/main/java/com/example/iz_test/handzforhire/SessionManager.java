@@ -217,7 +217,6 @@ public class SessionManager {
 
 
 
-
     public  HashMap<String, String> getCheckboxStatus(){
         HashMap<String, String> check = new HashMap<String, String>();
         // Storing name in preferences

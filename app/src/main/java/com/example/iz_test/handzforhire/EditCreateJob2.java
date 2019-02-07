@@ -582,7 +582,6 @@ public class EditCreateJob2 extends Activity implements SimpleGestureFilter.Simp
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                 finish();
-
                 break;
             /*case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
                 break;
