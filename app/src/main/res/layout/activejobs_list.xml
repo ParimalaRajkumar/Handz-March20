@@ -193,13 +193,13 @@
                 android:id="@+id/message_count"
                 android:layout_width="25sp"
                 android:layout_height="25sp"
-                android:layout_gravity="top|right"
                 android:adjustViewBounds="true"
-                android:paddingTop="-10dp"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:gravity="center"
+                android:translationZ="5dp"
                 android:scaleType="fitStart"
+                android:layout_gravity="top|right"
                 android:background="@drawable/circle_shape" />
 
         </FrameLayout>
@@ -224,13 +224,13 @@
                 android:id="@+id/pay_count"
                 android:layout_width="25sp"
                 android:layout_height="25sp"
-                android:layout_gravity="top|right"
                 android:adjustViewBounds="true"
-                android:paddingTop="-10dp"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:gravity="center"
+                android:translationZ="5dp"
                 android:scaleType="fitStart"
+                android:layout_gravity="top|right"
                 android:background="@drawable/circle_shape" />
 
         </FrameLayout>

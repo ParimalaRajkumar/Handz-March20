@@ -196,14 +196,15 @@
                 android:id="@+id/message_count"
                 android:layout_width="25sp"
                 android:layout_height="25sp"
-                android:layout_gravity="top|right"
                 android:adjustViewBounds="true"
-                android:paddingTop="-10dp"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:gravity="center"
+                android:translationZ="5dp"
                 android:scaleType="fitStart"
+                android:layout_gravity="top|right"
                 android:background="@drawable/circle_shape" />
+
 
         </FrameLayout>
 
@@ -252,7 +253,6 @@
                 android:layout_margin="7dp"
                 android:background="@drawable/edit_comment_icon"
                 android:textSize="16sp" />
-
             <TextView
                 android:id="@+id/rating_count"
                 android:layout_width="25sp"
@@ -262,10 +262,10 @@
                 android:paddingTop="-10dp"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
+                android:translationZ="5dp"
                 android:gravity="center"
                 android:scaleType="fitStart"
                 android:background="@drawable/circle_shape" />
-
         </FrameLayout>
 
     </LinearLayout>

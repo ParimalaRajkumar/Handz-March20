@@ -47,15 +47,12 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
 import static android.Manifest.permission.READ_PHONE_STATE;
 
 public abstract class AbsLoginPage extends Activity {
@@ -639,12 +636,8 @@ public abstract class AbsLoginPage extends Activity {
                     params.put("merchantID", "");
                     params.put("id", facebook_user_id);
                     params.put("profilePicture", user_profile_pic);
-
-
                     return params;
-
                 }
-
             };
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(putRequest);
