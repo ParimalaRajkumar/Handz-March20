@@ -80,6 +80,7 @@ public abstract class AbsLoginPage extends Activity {
     protected static final int REQUEST_PHONE_STATE = 0;
     SessionManager session;
     String userType = "employer";
+    //String userType="employee";
 
     protected CallbackManager callbackManager;
     protected AccessToken accessToken;
@@ -666,6 +667,7 @@ public abstract class AbsLoginPage extends Activity {
         }else
         {
             launchRegister();
+
         }
 
     }

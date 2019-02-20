@@ -91,7 +91,8 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
     CustomJobListAdapter adapter;
     public static PopupWindow popupWindowDogs;
 
-    MyOptionsPickerView threePicker;
+    //MyOptionsPickerView threePicker;
+    MyPicker threePicker;
     public static String date_format;
     TextView select_category;
     ExpandableListAdapter listAdapter;
@@ -203,7 +204,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
         });
 
         //Three Options PickerView
-        threePicker = new MyOptionsPickerView(CreateJob.this);
+        threePicker = new MyPicker(CreateJob.this);
         final ArrayList<Integer> numbers = new ArrayList<Integer>(100);
 
         for (int j = 0; j <100; j++)
@@ -1144,7 +1145,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
                     System.out.println("error " + e.getMessage());
                 }
             }
-        }).textConfirm("Done") //text of confirm button
+        }).textConfirm(" Done") //text of confirm button
                 .textCancel("CANCEL") //text of cancel button
                 .btnTextSize(22) // button text size
                 .viewTextSize(22) // pick view text size
@@ -1230,7 +1231,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
             }
 
-        }).textConfirm("Done") //text of confirm button
+        }).textConfirm(" Done") //text of confirm button
                 .textCancel("CANCEL") //text of cancel button
                 .btnTextSize(22) // button text size
                 .viewTextSize(22) // pick view text size

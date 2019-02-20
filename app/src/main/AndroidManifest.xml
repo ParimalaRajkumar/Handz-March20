@@ -55,6 +55,7 @@
             </intent-filter>
         </activity>
 
+
         <activity
             android:name=".EditUserProfile"
             android:windowSoftInputMode="stateHidden|adjustPan" />
