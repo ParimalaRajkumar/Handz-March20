@@ -63,7 +63,8 @@ public class FindJobMap extends Fragment implements GoogleMap.OnMarkerClickListe
     //GPSTracker gps;
     LocationTrack locationTrack;
     public static int  MY_PERMISSIONS_REQUEST_READ_CONTACTS=1;
-    public static Double lat=37.3362462,lon=-121.8902967;
+    //public static Double lat=37.3362462,lon=-121.8902967;
+    public static Double lat=30.13,lon=-81.42;
 
     TextView txt_undisclosedjob;
     ImageView logo_lend,menu,categprylist,key;
