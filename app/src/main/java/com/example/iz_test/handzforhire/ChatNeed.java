@@ -60,7 +60,6 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
 
 
     private static final String SENDMSG_URL = Constant.SERVER_URL+"send_message";
-
     LinearLayout layout,lin_layoutmsg;
     RelativeLayout layout2;
     ImageView sendButton,close_btn;
@@ -307,7 +306,6 @@ public class ChatNeed extends Activity implements SimpleGestureFilter.SimpleGest
                             map.put("senderName", get_user);
                             map.put("photoURL", photourl);
                             reference1.child(child_id).child("messages").push().setValue(map);
-
                             ChatItems item=new ChatItems();
                             item.setSenderId(sender_id);
                             item.setMessage("");

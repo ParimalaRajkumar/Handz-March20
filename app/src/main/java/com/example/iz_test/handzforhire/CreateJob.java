@@ -1231,7 +1231,7 @@ public class CreateJob extends Activity implements View.OnClickListener,SimpleGe
 
             }
 
-        }).textConfirm(" Done") //text of confirm button
+        }).textConfirm("Done") //text of confirm button
                 .textCancel("CANCEL") //text of cancel button
                 .btnTextSize(22) // button text size
                 .viewTextSize(22) // pick view text size

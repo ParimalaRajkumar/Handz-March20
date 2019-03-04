@@ -433,7 +433,6 @@ public class LendProfilePage extends AppCompatActivity implements SimpleGestureF
 
     public void onResponserecieved2(String jsonobject, int requesttype) {
         String status = null;
-
          profile_image = null;
 
          profilename = null;
