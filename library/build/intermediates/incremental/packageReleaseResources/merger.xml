@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res"/><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\build\generated\res\rs\release"/><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\build\generated\res\resValues\release"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res"><file name="pop_win_content_fade_in" path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\anim\pop_win_content_fade_in.xml" qualifiers="" type="anim"/><file name="pop_win_content_fade_out" path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\anim\pop_win_content_fade_out.xml" qualifiers="" type="anim"/><file name="layout_date_picker" path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\layout\layout_date_picker.xml" qualifiers="" type="layout"/><file name="layout_date_picker_inverted" path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\layout\layout_date_picker_inverted.xml" qualifiers="" type="layout"/><file name="layout_time_picker" path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\layout\layout_time_picker.xml" qualifiers="" type="layout"/><file path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\values\attrs.xml" qualifiers=""><declare-styleable name="LoopView">
+        <attr format="color" name="lineColor"/>
+        <attr format="color" name="topBottomTextColor"/>
+        <attr format="color" name="centerTextColor"/>
+        <attr format="dimension" name="textSize"/>
+        <attr format="boolean" name="canLoop"/>
+        <attr format="integer" name="initPosition"/>
+        <attr format="integer" name="drawItemCount"/>
+    </declare-styleable></file><file path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\values\color.xml" qualifiers=""><color name="btn_cancel_color">#999999</color><color name="btn_confirm_color">#303F9F</color></file><file path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\values\dimen.xml" qualifiers=""><dimen name="btn_text_size">10sp</dimen><dimen name="view_text_size">8sp</dimen></file><file path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">pickerview</string></file><file path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\main\res\values\styles.xml" qualifiers=""><style name="FadeInPopWin">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="@android:windowEnterAnimation">@anim/pop_win_content_fade_in</item>
+        <item name="@android:windowExitAnimation">@anim/pop_win_content_fade_out</item>
+    </style></file></source><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\build\generated\res\rs\release"/><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\build\generated\res\resValues\release"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\release\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release" generated-set="release$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Anderoid Projects\backup\feb 19\Handz_1110\library\src\release\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="LoopView">
+        <attr format="color" name="lineColor"/>
+        <attr format="color" name="topBottomTextColor"/>
+        <attr format="color" name="centerTextColor"/>
+        <attr format="dimension" name="textSize"/>
+        <attr format="boolean" name="canLoop"/>
+        <attr format="integer" name="initPosition"/>
+        <attr format="integer" name="drawItemCount"/>
+    </declare-styleable></configuration></mergedItems></merger>
